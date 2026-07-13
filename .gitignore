@@ -1,0 +1,22 @@
+# COMSOL generated and recovery files
+*.mph.lock
+*.mphbin
+*.status
+*.recover
+*.recovery
+*.class
+*.log
+
+# Keep only selected MPH files manually
+models/generated/*.mph
+runs/**
+
+# Raw data is protected; do not commit accidental working copies
+data/raw/*
+!data/raw/.gitkeep
+
+# OS/editor
+Thumbs.db
+.DS_Store
+.vscode/
+.idea/

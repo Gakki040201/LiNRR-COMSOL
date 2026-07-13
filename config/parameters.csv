@@ -1,0 +1,17 @@
+name,expression,unit,description,provenance,status
+Lcell,55,mm,effective liquid-channel length,provisional geometry,verify
+Hcell,4,mm,electrolyte-layer thickness,published reactor description,verify on hardware
+Wcell,55,mm,out-of-plane active width,provisional geometry,verify
+T0,298.15,K,operating temperature,nominal,measure
+Qliq,1,mL/min,liquid flow rate,placeholder,replace with pump calibration
+rho_el,,kg/m^3,electrolyte density,missing,measure
+mu_el,,Pa*s,electrolyte dynamic viscosity,missing,measure
+kappa_el,,S/m,electrolyte conductivity,missing,use EIS or direct measurement
+DN2,,m^2/s,N2 diffusion coefficient in electrolyte,missing,literature or fit
+DNH3,,m^2/s,NH3 effective diffusion coefficient,missing,literature or fit
+cN2_in,,mol/m^3,inlet dissolved N2 concentration,missing,Henry-law data or fit
+j_app,-100,mA/cm^2,nominal applied current density,example,replace
+FE_NH3,0.6,1,nominal ammonia Faradaic efficiency,example,replace
+epsilon_SSC,,1,SSC porosity,missing,measure/image analysis
+K_SSC,,m^2,SSC permeability,missing,pressure-drop fit
+t_SSC,,um,SSC thickness,missing,measure

@@ -1,0 +1,21 @@
+Read AGENTS.md and docs/research_blueprint.md.
+
+Build M01 as a new Java source file without modifying M00.
+
+Requirements:
+- Start from the M00 geometry logic.
+- Add a 2D stationary Laminar Flow model for the electrolyte rectangle.
+- Parameters must include Lcell, Hcell, Wcell, Qliq, rho_el, and mu_el with explicit units.
+- Create durable named selections for inlet, outlet, cathode wall, anode wall, and electrolyte domain. Do not rely on raw boundary numbers in later physics assignments.
+- Inlet: prescribed mean velocity derived from Qliq/(Hcell*Wcell).
+- Outlet: 0 Pa gauge pressure.
+- Electrode walls: no slip.
+- Create a mapped or controlled mesh with refinement through Hcell.
+- Add result plots for speed and pressure.
+- Add derived values for inlet mass flow, outlet mass flow, pressure drop, and mass-balance relative error.
+- Save an editable model as models/generated/LiNRR_M01_flow.mph.
+- Export a CSV summary to results/tables/.
+- Add a PowerShell build/run script.
+- Compile and run the model.
+- Do not proceed if mass-balance error is not acceptable.
+- Document every provisional parameter.

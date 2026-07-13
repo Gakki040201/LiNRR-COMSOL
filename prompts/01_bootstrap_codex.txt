@@ -1,0 +1,18 @@
+You are operating in the root of the Li-NRR COMSOL repository.
+
+Read AGENTS.md, README.md, docs/research_blueprint.md, and docs/DECISIONS.md before editing anything.
+
+Task:
+1. Run scripts/windows/01_check_environment.ps1.
+2. Fix only project-local issues. Do not modify the COMSOL installation.
+3. Run scripts/windows/02_build_M00_geometry.ps1.
+4. Confirm that models/generated/LiNRR_M00_geometry.mph exists.
+5. Inspect runs/latest/M00_build.log for fatal errors and warnings.
+6. If successful, create a concise report at runs/latest/M00_report.md with:
+   - exact commands;
+   - COMSOL executable paths;
+   - output files;
+   - warnings;
+   - next blocking issue.
+7. Do not add physics yet.
+8. Do not overwrite any file under models/master.
