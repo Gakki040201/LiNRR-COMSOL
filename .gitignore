@@ -7,6 +7,9 @@
 *.class
 *.log
 
+# comsolcompile-generated model artifacts beside Java sources
+src/java/*_Model.mph
+
 # Keep only selected MPH files manually
 models/generated/*.mph
 runs/**
