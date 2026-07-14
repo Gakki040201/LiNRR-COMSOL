@@ -95,3 +95,44 @@ Numerical policy:
 - parameter combinations below `-1e-5*cN2_in` are retained and marked FAILED;
 - the two independent nitrogen-atom balances must each be no greater than `1e-4`;
 - M02 passing means numerical smoke-test acceptance only, not experimental validation.
+
+## D0007 — M02.1 conservative transport and positivity audit
+
+Decision: M03 remains blocked. The M02.1 accepted base uses COMSOL TDS conservative
+convection (`AdvancedSettings/ConvectiveTerm=cons`), a confirmed
+`Inflow/BoundaryConditionType=FluxDanckwerts` inlet, `Outflow`, streamline plus
+crosswind consistent stabilization, second-order concentration shape functions,
+and a 350 x 200 mapped mesh.
+
+Reason:
+- M02 already used COMSOL's generated `tds.ntflux_cN2` and `tds.ntflux_cNH3`
+  variables, but its nonconservative convection form produced individual-species
+  errors of about 0.38% and 1.58%; nitrogen-element cancellation hid this defect;
+- conservative convection without stabilization closed species balances but had
+  large high-Peclet oscillations;
+- coarse stabilized cases suppressed oscillations but did not pass the physical
+  total-flux tolerance;
+- the selected second-order 350 x 200 case is the first tested combination that
+  passes both base species balances and the specified FAILED-level concentration
+  threshold.
+
+Boundary interpretation:
+- the physical total flux is `N_i = u*c_i - D_i*grad(c_i)`;
+- the reported COMSOL normal total flux is positive outward, while inlet molar
+  rates are reported positive into the reactor;
+- a zero NH3 feed concentration does not imply zero inlet diffusion, so NH3
+  reverse diffusion is retained and quantified;
+- Danckwerts inflow is preferred for the continuous-flow liquid reactor because
+  it prescribes incoming feed flux without using a fixed boundary concentration
+  to conceal back diffusion.
+
+Numerical acceptance:
+- base N2 and NH3 individual-species errors are below `1e-4`;
+- both nitrogen-element errors are below `1e-4`;
+- base negative concentration is WARNING-level, not FAILED-level;
+- all 25 scan rows are retained and classified; failed rows are numerical/model
+  applicability findings, not proof of a physical mass-transfer limit.
+
+Limitations: all transport properties and the phenomenological wall law remain
+provisional and uncalibrated. M02.1 is numerical acceptance, not experimental
+validation, microscopic-mechanism evidence, or authorization to start M03.
