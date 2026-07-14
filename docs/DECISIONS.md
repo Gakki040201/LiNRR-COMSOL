@@ -136,3 +136,41 @@ Numerical acceptance:
 Limitations: all transport properties and the phenomenological wall law remain
 provisional and uncalibrated. M02.1 is numerical acceptance, not experimental
 validation, microscopic-mechanism evidence, or authorization to start M03.
+
+## D0008 — Decoupled M03A primary-current numerical baseline
+
+Decision: keep the coupled M03 milestone blocked and add an independent M03A model
+that solves only primary current distribution in a uniform electrolyte.
+
+API evidence and implementation:
+- the installed COMSOL 6.4 Electrochemistry Module example reported physics type
+  `PrimaryCurrentDistribution`;
+- an actual construction probe confirmed the direct, no-kinetics boundary feature
+  types `ElectrolyteCurrent` and `ElectrolytePotential`;
+- M03A applies `j_app=Icell/Aelec` at the full upper anode, fixes electrolyte
+  potential to 0 V at the lower cathode, and leaves both side boundaries insulated;
+- no `ElectrodeReaction` feature or empirical kinetic law is present.
+
+Sign convention:
+- reported boundary current is the signed outward-normal integral of electrolyte
+  current density;
+- positive specified `Icell` enters through the anode, so the anode integral is
+  negative and the cathode integral is positive;
+- signs are checked before magnitudes are compared.
+
+Numerical policy:
+- the independent 40x20, 80x40, and 160x80 mapped-mesh audit selects 40x20 as
+  the lowest-cost passing mesh for this exactly linear full-electrode problem;
+- all 25 conductivity-current combinations are retained and checked against
+  `R=Hcell/(kappa_el*Aelec)`;
+- this coarse-mesh choice must not be carried into nonuniform or coupled models
+  without a new audit.
+
+Parameter status and limitation:
+- `kappa_el=0.5 S/m` and `Icell=100 mA` are **PROVISIONAL — numerical smoke test
+  only** and are not assigned to a real LiBF4/Diglyme/EtOH electrolyte;
+- M03A is a pure-ohmic numerical benchmark, not a Li-NRR mechanism model,
+  reaction model, calibration, or experimental validation;
+- Secondary Current Distribution remains gated on traceable conductivity,
+  geometry/effective area, EIS/cell/WE/CE voltage data, and effective cathode and
+  HOR kinetic evidence.
