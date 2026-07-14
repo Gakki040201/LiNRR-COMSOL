@@ -174,3 +174,27 @@ Parameter status and limitation:
 - Secondary Current Distribution remains gated on traceable conductivity,
   geometry/effective area, EIS/cell/WE/CE voltage data, and effective cathode and
   HOR kinetic evidence.
+
+## D0009 — M03A.1 calibration gate and resistance de-embedding
+
+Decision: preserve M03A as a frozen numerical baseline and implement M03A.1 as an
+independent primary-current calibration, resistance-ledger, and uncertainty
+framework. M03A.1 does not add reaction kinetics or Secondary Current
+Distribution.
+
+Calibration policy:
+- total EIS HFR is never identified with electrolyte resistance without evidence;
+- electrolyte resistance is de-embedded by subtracting traceable fixture,
+  contact, membrane, and other series terms;
+- direct conductivity and HFR-derived conductivity remain independent estimates;
+- a difference greater than 10% is a `CALIBRATION_CONFLICT` and does not trigger
+  automatic selection;
+- area and electrode-spacing definitions are explicit readiness items, and an
+  area-basis mismatch blocks calibration;
+- incomplete data produce a reproducible `SYNTHETIC_SMOKE_TEST` or
+  `EXPERIMENTAL_INPUT_INCOMPLETE` state, never `EXPERIMENTALLY_CALIBRATED`.
+
+Uncertainty policy: report both first-order analytical propagation and a
+fixed-seed Monte Carlo calculation with rejection of nonphysical samples. The
+provisional M03A values and any assumed smoke-test uncertainty are not
+experimental evidence and cannot support paper-level quantitative conclusions.

@@ -1,0 +1,39 @@
+field_name,value,unit,uncertainty,uncertainty_unit,status,source_type,source_reference,measurement_date,temperature_K,notes
+Lcell,55,mm,,,PROVISIONAL,ASSUMED,M03A frozen numerical baseline,,298.15,Model geometry only; replace with measured reactor dimension
+Hcell,4,mm,,,PROVISIONAL,ASSUMED,M03A frozen numerical baseline,,298.15,Model equivalent distance; experimental spacing definition is not yet established
+Wcell,55,mm,,,PROVISIONAL,ASSUMED,M03A frozen numerical baseline,,298.15,Out-of-plane model width only
+electrode_active_area,0.003025,m^2,,,PROVISIONAL,DERIVED,M03A Lcell times Wcell,,298.15,Geometric model area; not a measured wetted or EIS area
+temperature,298.15,K,,,PROVISIONAL,ASSUMED,M03A frozen numerical baseline,,298.15,Replace with measured calibration temperature
+kappa_direct,,,,,MISSING,,,,,No direct conductivity measurement supplied
+kappa_direct_uncertainty,,,,,MISSING,,,,,Paired standard uncertainty for kappa_direct
+EIS_HFR_total,,,,,MISSING,,,,,Total HFR is not assumed to be electrolyte resistance
+EIS_HFR_uncertainty,,,,,MISSING,,,,,Paired standard uncertainty for EIS_HFR_total
+fixture_resistance,,,,,MISSING,,,,,Required for HFR de-embedding unless independently demonstrated negligible
+fixture_resistance_uncertainty,,,,,MISSING,,,,,Paired standard uncertainty
+contact_resistance,,,,,MISSING,,,,,Required for HFR de-embedding unless independently demonstrated negligible
+contact_resistance_uncertainty,,,,,MISSING,,,,,Paired standard uncertainty
+membrane_resistance,,,,,MISSING,,,,,Required for HFR de-embedding unless no membrane is present and documented
+membrane_resistance_uncertainty,,,,,MISSING,,,,,Paired standard uncertainty
+other_series_resistance,,,,,MISSING,,,,,Required for HFR de-embedding unless independently demonstrated zero
+other_series_resistance_uncertainty,,,,,MISSING,,,,,Paired standard uncertainty
+Icell,,,,,MISSING,,,,,No experimental current supplied; smoke test falls back to M03A 100 mA
+Icell_uncertainty,,,,,MISSING,,,,,Paired standard uncertainty for Icell
+measured_cell_voltage,,,,,MISSING,,,,,Total cell voltage required for experimental voltage decomposition
+measured_cell_voltage_uncertainty,,,,,MISSING,,,,,Paired standard uncertainty
+area_basis,geometric_electrode_area_Lcell_times_Wcell,category,,,PROVISIONAL,ASSUMED,M03A frozen numerical baseline,,298.15,Does not establish wetted catalytic GDE EIS or reporting area equivalence
+electrode_spacing_definition,model_equivalent_distance,category,,,PROVISIONAL,ASSUMED,M03A frozen numerical baseline,,298.15,Must be replaced by actual electrode spacing or electrolyte layer definition
+electrolyte_composition,,,,,MISSING,,,,,Include salt solvent additives concentrations and preparation basis
+water_content,,,,,MISSING,,,,,Include method units and uncertainty
+measurement_method,,,,,MISSING,,,,,Conductivity and EIS acquisition method
+replicate_count,,,,,MISSING,,,,,Integer replicate count or equivalent uncertainty evidence
+actual_wetted_area,,,,,MISSING,,,,,Area audit field
+catalytic_layer_projected_area,,,,,MISSING,,,,,Area audit field
+GDE_exposed_area,,,,,MISSING,,,,,Area audit field
+EIS_area,,,,,MISSING,,,,,Area to which the reported HFR corresponds
+current_density_reporting_area,,,,,MISSING,,,,,Area used to report experimental current density
+EIS_intercept_definition,,,,,MISSING,,,,,Equivalent circuit or high-frequency intercept definition
+WE_potential,,,,,MISSING,,,,,Working-electrode potential with reference electrode definition
+WE_potential_uncertainty,,,,,MISSING,,,,,Paired standard uncertainty
+CE_potential,,,,,MISSING,,,,,Counter-electrode potential with reference electrode definition
+CE_potential_uncertainty,,,,,MISSING,,,,,Paired standard uncertainty
+
