@@ -198,3 +198,52 @@ Uncertainty policy: report both first-order analytical propagation and a
 fixed-seed Monte Carlo calculation with rejection of nonphysical samples. The
 provisional M03A values and any assumed smoke-test uncertainty are not
 experimental evidence and cannot support paper-level quantitative conclusions.
+
+## D0010 — M00.2 parameterized-geometry selection audit
+
+Decision: preserve the frozen M00/M01/M01.1 files and implement M00.2 as an
+independent no-physics Java model. Coordinate-based Box selections are rebuilt
+and measured after scaling `Lcell`, `Hcell`, and `Wcell` independently by 0.5
+and 2.0, in addition to the baseline case.
+
+Acceptance policy:
+- the electrolyte domain and four boundary selections must each map to exactly
+  one entity in every case;
+- selection measures must match the parameter-derived area or length and remain
+  positive;
+- geometry, mesh, MPH save, and independent-process MPH reload must all pass;
+- any missing or multiple selection mapping is `FAILED_SELECTION_MAPPING`.
+
+Limitation: the audit verifies parameterization, named-selection mapping, and
+serialization only. All dimensions remain provisional, and the result is
+numerical verification rather than experimental validation.
+
+## D0011 — M01.2 parallel-plate analytical closure
+
+Decision: rebuild the frozen M01 model in an isolated timestamped staging root,
+load that MPH as an independent derivative, and leave every frozen M00/M01/M01.1
+source and output unchanged. M01.2 uses the same stationary Laminar Flow physics
+and named selections, raises only the fluid discretization order to 2, and uses
+the required mapped 40x20, 80x40, and 160x80 element families.
+
+Outlet interpretation:
+- the frozen zero-pressure outlet is solved first as a diagnostic truncation
+  reference; its global pressure drop and direct outlet mass discrepancy are
+  retained rather than hidden;
+- analytical acceptance uses COMSOL's fully developed outlet with average exit
+  pressure 0 Pa, which closes the ideal two-dimensional parallel-plate problem;
+- mid-channel center velocity and pressure gradient are evaluated at `x/L=0.5`;
+  no global maximum velocity is substituted for the center value;
+- the global inlet-outlet pressure drop is reported separately from the local
+  middle-channel pressure gradient.
+
+Analytical reference:
+- `Umean=Q/(Hcell*Wcell)`;
+- `u(y)=6*Umean*(y/Hcell)*(1-y/Hcell)` and `umax/Umean=1.5`;
+- `dp/dx=-12*mu*Umean/Hcell^2`;
+- `delta_p=12*mu*Lcell*Umean/Hcell^2`;
+- `abs(tau_wall)=6*mu*Umean/Hcell`.
+
+Parameter status and limitation: geometry, density, viscosity, and flow remain
+**PROVISIONAL**. Passing M01.2 is a synthetic numerical closure and mesh check,
+not experimental validation, calibration, or authorization to enter M03B.
