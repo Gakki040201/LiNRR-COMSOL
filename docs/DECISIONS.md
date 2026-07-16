@@ -247,3 +247,67 @@ Analytical reference:
 Parameter status and limitation: geometry, density, viscosity, and flow remain
 **PROVISIONAL**. Passing M01.2 is a synthetic numerical closure and mesh check,
 not experimental validation, calibration, or authorization to enter M03B.
+
+## D0012 — M02.2 conservative transport verification
+
+Decision: keep M03A.2 and M03B blocked and verify the conservative transport
+operator independently before adding any further physical layer. M02.2 contains
+no electrode kinetics and does not modify the frozen M00–M02.1 implementations.
+
+Benchmark architecture:
+- A verifies that conservative convection with a divergence-free prescribed
+  velocity, Danckwerts inflow, Outflow, and no-flux walls preserves uniform N2
+  and zero NH3 without creating or losing either species;
+- B isolates diffusion, concentration-boundary signs, and outward-normal flux
+  signs against an exactly linear one-dimensional solution;
+- C uses a strictly positive manufactured solution to verify convection,
+  diffusion, volumetric-source sign, units, global source-flux closure, and
+  observed mesh convergence;
+- D derives from an isolated timestamped rebuild of frozen M02.1 and verifies
+  the cathode N2/NH3 signs, 2:1 stoichiometry, individual-species balances,
+  nitrogen-atom balance, and three-grid stability at low Damköhler number;
+- E retains all 25 Pe–Da cases, including failures, to map the numerical range
+  of applicability without treating solver failure as a physical transport limit.
+
+Equation and sign convention: the stationary conservative equation is
+`div(N_i)=R_i`, with physical total flux
+`N_i=u*c_i-D_i*grad(c_i)`. For
+`c_exact=c_ref[1+a*sin(pi*x/Lcell)*sin(pi*y/Hcell)]` and constant
+`u=(U_mms,0)`, the manufactured source is
+`R_exact=-D_mms*laplacian(c_exact)+U_mms*dc_exact/dx`. COMSOL General
+Inward Flux is positive into the liquid, while `tds.ntflux_*` and reported
+boundary-normal total flux are positive outward. Reported inlet flow is made
+positive into the reactor; outlet flow is positive out; cathode N2 consumption
+and NH3 generation are positive magnitudes. A zero NH3 feed concentration does
+not imply zero inlet diffusion, so reverse diffusion remains in every balance.
+
+Boundary interpretation: Danckwerts inflow prescribes incoming feed flux without
+forcing the total inlet diffusion to zero. Outflow supplies the downstream
+transport boundary. Individual N2 and NH3 balances are acceptance checks in
+their own right; nitrogen-element closure cannot be used to cancel or conceal
+opposite single-species errors.
+
+Numerical acceptance: wall-model individual-species and nitrogen-element
+balances use a `1e-4` relative tolerance. Benchmark C reports a separate
+Dirichlet-boundary flux reconstructed from the finite-element concentration
+gradient; because that value is not the conservative boundary reaction flux,
+its fine-grid truncation tolerance is `2e-4`. Benchmark D requires the fine grid
+to meet conservation and the medium-to-fine change in conversion, NH3 outlet,
+and N2 consumption to remain below `0.5%`; coarse and medium rows are retained
+even when they do not yet meet the final-grid tolerance.
+
+Dimensionless and classification policy: `Pe_H=Umean*Hcell/DN2` and
+`Da_H=kN2*Hcell/DN2`. Conservation failure has priority over concentration
+classification. With `cN2_in` as the scale, values below `-1e-5*cN2_in` are
+`FAILED_NEGATIVE_CONCENTRATION`; values from `-1e-5*cN2_in` up to but excluding
+`-1e-8*cN2_in` are `WARNING_NUMERICAL_OSCILLATION`; conservative values at or
+above `-1e-8*cN2_in` are `PASS`. Nonfinite results or solver failure are
+`OUTSIDE_MODEL_APPLICABILITY`. Every row and its original failure reason is
+retained. Concentrations are never clipped by `max`, conditional zeroing, or
+postprocessing replacement.
+
+Parameter status and limitation: all geometry, transport properties, feed
+concentrations, velocities, and the phenomenological first-order wall law remain
+**PROVISIONAL — numerical verification only**. Passing M02.2 is not experimental
+validation, calibration, a microscopic-mechanism inference, or permission to
+start M03B. M03B remains blocked.
