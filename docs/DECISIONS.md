@@ -311,3 +311,46 @@ concentrations, velocities, and the phenomenological first-order wall law remain
 **PROVISIONAL — numerical verification only**. Passing M02.2 is not experimental
 validation, calibration, a microscopic-mechanism inference, or permission to
 start M03B. M03B remains blocked.
+
+## D0013 — M03A.2 synthetic EIS and calibration-input verification
+
+Decision: preserve every M00–M03A.1 and M02.2 file as a frozen baseline and add
+an independent Windows PowerShell 5.1 verification layer for synthetic EIS/HFR
+and calibration inputs. M03A.2 creates no COMSOL physics and does not modify an
+MPH file.
+
+EIS policy:
+- imported numeric fields use InvariantCulture and explicit frequency and
+  impedance units;
+- rows are normalized to descending frequency while retaining their original
+  CSV line number and stable order for equal frequencies;
+- duplicate frequencies, inductive high-frequency points, and replicate
+  disagreement are retained and reported rather than deleted;
+- blank, illegal, NaN, or infinite numeric values block that case;
+- the first high-frequency point is reported only as
+  `FIRST_POINT_DIAGNOSTIC` with method class `LAB_SCREENING_HEURISTIC`; it is
+  never promoted automatically to HFR;
+- accepted HFR values come from `HIGH_FREQUENCY_INTERCEPT` or a complete
+  `USER_DEFINED_EQUIVALENT_CIRCUIT` fit-result contract. The latter reads the
+  declared circuit, software, fit file, finite positive `Rs`, standard error,
+  fit quality, source, status, and notes; it never substitutes the first point.
+- high-frequency coverage jointly checks candidate count and span, proximity to
+  the real axis, crossing or fit support, inductive and duplicate artifacts,
+  residual quality, and complete-semicircle model dependence.
+
+Calibration-input policy: total HFR remains distinct from electrolyte
+resistance. Every fixture, contact, membrane, and other series term must be
+present before de-embedding; a nonpositive de-embedded value blocks the path and
+is never clipped. Direct and HFR-derived conductivity remain independent, with
+differences above 10% classified `CALIBRATION_CONFLICT`. Area-basis mismatch and
+more than 1% nonphysical Monte Carlo inputs are blocking findings.
+
+State and limitation: generated fixtures are fixed-definition `SYNTHETIC`
+data. C023 is an incomplete `EXPERIMENTAL` manifest regression and has no
+fabricated file. The CPE case is method-dependent and does not demonstrate
+experimental CPE identifiability. Passing M03A.2 means verification of import,
+estimation, bookkeeping, analytical and fixed-seed Monte Carlo uncertainty,
+and readiness gates only. It is not experimental calibration, does not select
+a conductivity truth, and does not authorize M03B. The enforced terminal state is `RUN_STATE =
+SYNTHETIC_SMOKE_TEST`, `CALIBRATION_MODE = PROVISIONAL`, and `M03B_READY =
+FALSE`.

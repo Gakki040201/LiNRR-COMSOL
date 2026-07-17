@@ -1,0 +1,3 @@
+"sample_id","method","replicate_count","valid_replicate_count","mean_HFR_ohm","median_HFR_ohm","standard_deviation_ohm","coefficient_of_variation","minimum_HFR_ohm","maximum_HFR_ohm","relative_range","consensus_status","failure_reason"
+"S_AGREE","HIGH_FREQUENCY_INTERCEPT","2","2","2.0100000000000002","2.0100000000000002","0.014142135623735673","0.007035888370017747","1.9999999999999969","2.0200000000000036","0.0099502487562222273","PASS",""
+"S_DISAGREE","HIGH_FREQUENCY_INTERCEPT","3","3","2.366666666666664","2.0999999999999996","0.5507570547286087","0.23271424847687716","1.9999999999999969","2.9999999999999956","0.42253521126760551","REPLICATE_DISAGREEMENT","relative range exceeds declared 0.10 threshold; no replicate removed"
