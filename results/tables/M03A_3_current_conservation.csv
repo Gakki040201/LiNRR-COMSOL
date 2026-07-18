@@ -1,0 +1,4 @@
+"case","mesh","signed_anode_current_A","signed_cathode_current_A","positive_cathodic_current_A","left_current_A","right_current_A","current_conservation_relative_error","sign_status"
+"coupled_low_conversion","coarse","-0.000302500000000","0.000302500000000","0.000302500000000","5.07413010829e-22","1.52532314691e-19","1.28615325137e-15","PASS"
+"coupled_low_conversion","medium","-0.000302500000000","0.000302500000000","0.000302500000000","-5.94965101153e-22","-1.56285825539e-19","3.02751177316e-15","PASS"
+"coupled_low_conversion","fine","-0.000302500000000","0.000302500000000","0.000302500000000","-3.90610544682e-22","-5.62104425023e-20","4.65147728862e-15","PASS"

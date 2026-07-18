@@ -354,3 +354,28 @@ and readiness gates only. It is not experimental calibration, does not select
 a conductivity truth, and does not authorize M03B. The enforced terminal state is `RUN_STATE =
 SYNTHETIC_SMOKE_TEST`, `CALIBRATION_MODE = PROVISIONAL`, and `M03B_READY =
 FALSE`.
+
+## D0014 — M03A.3 prescribed-current stoichiometric coupling verification
+
+Decision: preserve every M00–M03A.2 file as a frozen baseline, except for this
+append-only decision, and add an independent M03A.3 numerical verification MPH.
+The model uses the verified COMSOL 6.4 Primary Current Distribution interface
+and a prescribed-current, one-way Faradaic stoichiometric mapping from positive
+cathodic-current magnitude to N2 consumption and NH3 generation.
+
+Scope and interpretation:
+- the current distribution is pure ohmic Primary Current Distribution;
+- the current-to-species coupling is prescribed and one-way;
+- the model contains no reaction kinetics or electrode-reaction feature;
+- `FE_prescribed` is a prescribed synthetic input, not a predicted FE;
+- synthetic conductivity and current inputs are not experimental properties or
+  predicted operating current;
+- no experimental calibration is performed;
+- passing M03A.3 does not authorize M03B.
+
+Integrity policy: raw signed current and the sign-audited positive cathodic
+magnitude are both retained, and no `abs()` is used to conceal direction.
+Negative concentrations are not clipped. Every failed, warning, or
+outside-applicability sweep point is retained with its original classification
+and reason. `Theta > 1` is only the prescribed-current supply-capacity boundary,
+not a physical reaction-performance limit.
