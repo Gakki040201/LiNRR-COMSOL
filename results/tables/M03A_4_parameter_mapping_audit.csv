@@ -1,0 +1,6 @@
+"source_quantity","target_model_parameter","conversion_formula","source_unit","target_unit","uncertainty_method","required_status","source_reference","status","failure_reason"
+"conductivity","kappa_dry_run","kappa_dry_run=conductivity","S/m","S/m","FIRST_ORDER_AND_FIXED_SEED_MONTE_CARLO","SYNTHETIC_DEFINED","M03A.4 resolved-input chain","PASS",""
+"electrode_spacing","Hcell_dry_run","Hcell_dry_run=electrode_spacing","m","m","DIRECT_TRANSFER","SYNTHETIC_DEFINED","config/M03A_4_area_measurements.csv","PASS",""
+"out_of_plane_thickness","depth_dry_run","depth_dry_run=out_of_plane_thickness","m","m","DIRECT_TRANSFER","SYNTHETIC_DEFINED","config/M03A_4_area_measurements.csv","PASS",""
+"EIS_area","A_EIS_dry_run","A_EIS_dry_run=EIS_area","m^2","m^2","DIRECT_TRANSFER","SYNTHETIC_DEFINED","config/M03A_4_area_measurements.csv","PASS",""
+"current_density_reporting_area","A_j_report_dry_run","A_j_report_dry_run=current_density_reporting_area","m^2","m^2","DIRECT_TRANSFER","SYNTHETIC_DEFINED","config/M03A_4_area_measurements.csv","PASS",""

@@ -1,0 +1,2 @@
+"sample_id","method","replicate_count","valid_replicate_count","mean_HFR_ohm","median_HFR_ohm","standard_deviation_ohm","coefficient_of_variation","minimum_HFR_ohm","maximum_HFR_ohm","relative_range","consensus_status","failure_reason"
+"SYN_DRY_001","HIGH_FREQUENCY_INTERCEPT","2","2","3.0448140495850002","3.0448140495850002","0.00026297359882209722","8.6367704082927427E-05","3.0446280991700001","3.0450000000000004","0.00012214237846510211","PASS",""

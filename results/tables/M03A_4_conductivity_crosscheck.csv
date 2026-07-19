@@ -1,0 +1,2 @@
+"sample_id","direct_conductivity_S_m","direct_uncertainty_S_m","HFR_conductivity_S_m","HFR_uncertainty_S_m","relative_difference","threshold","status","selection","failure_reason"
+"SYN_DRY_001","0.505","0.01","0.49996484622208581","0.0027356717499353485","0.010020557031109285","0.10000000000000001","PASS","NONE_AUTOMATIC",""

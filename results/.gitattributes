@@ -1,0 +1,2 @@
+# M03A.4 compatibility tables are SHA-256 byte-governed.
+tables/M03A_4_*.csv -text

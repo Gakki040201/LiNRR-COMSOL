@@ -1,0 +1,1062 @@
+# M03A.4 build log
+
+## comsolcompile stdout
+
+## comsolcompile stderr
+
+## COMSOL batch stdout
+M03A4_PROGRESS|TDS_ACCURATE_BOUNDARY_FLUX|PASS|smoothing=off
+M03A4_PROGRESS|IDENTITY_REFERENCE|GEOMETRY_REBUILT|PASS
+M03A4_PROGRESS|IDENTITY_REFERENCE|NAMED_SELECTION_AUDIT|PASS
+M03A4_PROGRESS|MESH_REBUILT|PASS|nx=48|ny=18
+M03A4_PROGRESS|OLD_SOLUTION_CLEARED|PASS
+M03A4_CASE|case_id|kappa_S_m|Hcell_m|depth_m|EIS_area_m2|report_area_m2|geometry_height_m|geometry_rebuilt|named_selections_pass|mesh_rebuilt|old_solution_cleared|spf_active|tds_active|cd_active|fresh_full_solve|analytical_current_A|COMSOL_current_A|current_relative_error|analytical_resistance_ohm|COMSOL_resistance_ohm|resistance_relative_error|reported_current_density_A_m2|status
+M03A4_CASE|IDENTITY_REFERENCE|0.49996484622208590|0.0040000000000000000|0.055000000000000000|0.0030250000000000000|0.0027500000000000000|0.0039999999999999190|1.0000000000000000|1.0000000000000000|1.0000000000000000|1.0000000000000000|1.0000000000000000|1.0000000000000000|1.0000000000000000|1.0000000000000000|3.0247873196436120e-05|3.0247873196435575e-05|1.8033969346844534e-14|2.6448140495850000|2.6448140495850480|1.8134218045057496e-14|0.010999226616885665|PASS
+M03A4_TRANSFER|case_id|source_quantity|source_value|source_unit|target_parameter|applied_value|applied_unit|consumer|expected_response|observed_response|relative_error|status|failure_reason
+M03A4_TRANSFER|IDENTITY_REFERENCE|conductivity|0.49996484622208590|S/m|kappa_dry_run|0.49996484622208590|S/m|cd/ice1 conductivity via kappa_M033|3.0247873196436120e-05|3.0247873196435575e-05|1.8033969346844534e-14|PASS|
+M03A4_TRANSFER|IDENTITY_REFERENCE|electrode_spacing|0.0040000000000000000|m|Hcell_dry_run|0.0040000000000000000|m|geom1 actual inlet height|0.0040000000000000000|0.0039999999999999190|2.0166160408230382e-14|PASS|
+M03A4_TRANSFER|IDENTITY_REFERENCE|out_of_plane_thickness|0.055000000000000000|m|depth_dry_run|0.055000000000000000|m|all 2D-to-3D Wcell integrations|0.055000000000000000|0.055000000000000000|0.0000000000000000|PASS|
+M03A4_TRANSFER|IDENTITY_REFERENCE|EIS_area|0.0030250000000000000|m^2|A_EIS_dry_run|0.0030250000000000000|m^2|HFR conductivity inversion only|0.49996484622208590|0.49996484622208580|2.2206021743616593e-16|PASS|
+M03A4_TRANSFER|IDENTITY_REFERENCE|current_density_reporting_area|0.0027500000000000000|m^2|A_j_report_dry_run|0.0027500000000000000|m^2|j_reported equals current-run I_total divided by A_j_report|0.010999226616885665|0.010999226616885665|0.0000000000000000|PASS|
+M03A4_PROGRESS|KAPPA_PERTURBATION|GEOMETRY_REBUILT|PASS
+M03A4_PROGRESS|KAPPA_PERTURBATION|NAMED_SELECTION_AUDIT|PASS
+M03A4_PROGRESS|MESH_REBUILT|PASS|nx=48|ny=18
+M03A4_PROGRESS|OLD_SOLUTION_CLEARED|PASS
+M03A4_CASE|case_id|kappa_S_m|Hcell_m|depth_m|EIS_area_m2|report_area_m2|geometry_height_m|geometry_rebuilt|named_selections_pass|mesh_rebuilt|old_solution_cleared|spf_active|tds_active|cd_active|fresh_full_solve|analytical_current_A|COMSOL_current_A|current_relative_error|analytical_resistance_ohm|COMSOL_resistance_ohm|resistance_relative_error|reported_current_density_A_m2|status
+M03A4_CASE|KAPPA_PERTURBATION|0.62495605777760740|0.0040000000000000000|0.055000000000000000|0.0030250000000000000|0.0027500000000000000|0.0039999999999999190|1.0000000000000000|1.0000000000000000|1.0000000000000000|1.0000000000000000|1.0000000000000000|1.0000000000000000|1.0000000000000000|1.0000000000000000|3.7809841495545160e-05|3.7809841495544510e-05|1.7205078830281492e-14|2.1158512396680000|2.1158512396680362|1.7210716200170325e-14|0.013749033271107094|PASS
+M03A4_TRANSFER|case_id|source_quantity|source_value|source_unit|target_parameter|applied_value|applied_unit|consumer|expected_response|observed_response|relative_error|status|failure_reason
+M03A4_TRANSFER|KAPPA_PERTURBATION|conductivity|0.62495605777760740|S/m|kappa_dry_run|0.62495605777760740|S/m|cd/ice1 conductivity via kappa_M033|3.7809841495545160e-05|3.7809841495544510e-05|1.7205078830281492e-14|PASS|
+M03A4_TRANSFER|KAPPA_PERTURBATION|electrode_spacing|0.0040000000000000000|m|Hcell_dry_run|0.0040000000000000000|m|geom1 actual inlet height|0.0040000000000000000|0.0039999999999999190|2.0166160408230382e-14|PASS|
+M03A4_TRANSFER|KAPPA_PERTURBATION|out_of_plane_thickness|0.055000000000000000|m|depth_dry_run|0.055000000000000000|m|all 2D-to-3D Wcell integrations|0.055000000000000000|0.055000000000000000|0.0000000000000000|PASS|
+M03A4_TRANSFER|KAPPA_PERTURBATION|EIS_area|0.0030250000000000000|m^2|A_EIS_dry_run|0.0030250000000000000|m^2|HFR conductivity inversion only|0.62495605777760740|0.62495605777760740|0.0000000000000000|PASS|
+M03A4_TRANSFER|KAPPA_PERTURBATION|current_density_reporting_area|0.0027500000000000000|m^2|A_j_report_dry_run|0.0027500000000000000|m^2|j_reported equals current-run I_total divided by A_j_report|0.013749033271107094|0.013749033271107094|0.0000000000000000|PASS|
+M03A4_PROGRESS|HCELL_PERTURBATION|GEOMETRY_REBUILT|PASS
+M03A4_PROGRESS|HCELL_PERTURBATION|NAMED_SELECTION_AUDIT|PASS
+M03A4_PROGRESS|MESH_REBUILT|PASS|nx=48|ny=18
+M03A4_PROGRESS|OLD_SOLUTION_CLEARED|PASS
+M03A4_CASE|case_id|kappa_S_m|Hcell_m|depth_m|EIS_area_m2|report_area_m2|geometry_height_m|geometry_rebuilt|named_selections_pass|mesh_rebuilt|old_solution_cleared|spf_active|tds_active|cd_active|fresh_full_solve|analytical_current_A|COMSOL_current_A|current_relative_error|analytical_resistance_ohm|COMSOL_resistance_ohm|resistance_relative_error|reported_current_density_A_m2|status
+M03A4_CASE|HCELL_PERTURBATION|0.49996484622208590|0.0050000000000000000|0.055000000000000000|0.0030250000000000000|0.0027500000000000000|0.0049999999999999010|1.0000000000000000|1.0000000000000000|1.0000000000000000|1.0000000000000000|1.0000000000000000|1.0000000000000000|1.0000000000000000|1.0000000000000000|2.4198298557148897e-05|2.4198298557148500e-05|1.6381788925316852e-14|3.3060175619812500|3.3060175619813044|1.6387960011089022e-14|0.0087993812935085460|PASS
+M03A4_TRANSFER|case_id|source_quantity|source_value|source_unit|target_parameter|applied_value|applied_unit|consumer|expected_response|observed_response|relative_error|status|failure_reason
+M03A4_TRANSFER|HCELL_PERTURBATION|conductivity|0.49996484622208590|S/m|kappa_dry_run|0.49996484622208590|S/m|cd/ice1 conductivity via kappa_M033|2.4198298557148897e-05|2.4198298557148500e-05|1.6381788925316852e-14|PASS|
+M03A4_TRANSFER|HCELL_PERTURBATION|electrode_spacing|0.0050000000000000000|m|Hcell_dry_run|0.0050000000000000000|m|geom1 actual inlet height|0.0050000000000000000|0.0049999999999999010|1.9775847626135600e-14|PASS|
+M03A4_TRANSFER|HCELL_PERTURBATION|out_of_plane_thickness|0.055000000000000000|m|depth_dry_run|0.055000000000000000|m|all 2D-to-3D Wcell integrations|0.055000000000000000|0.055000000000000000|0.0000000000000000|PASS|
+M03A4_TRANSFER|HCELL_PERTURBATION|EIS_area|0.0030250000000000000|m^2|A_EIS_dry_run|0.0030250000000000000|m^2|HFR conductivity inversion only|0.49996484622208590|0.49996484622208590|0.0000000000000000|PASS|
+M03A4_TRANSFER|HCELL_PERTURBATION|current_density_reporting_area|0.0027500000000000000|m^2|A_j_report_dry_run|0.0027500000000000000|m^2|j_reported equals current-run I_total divided by A_j_report|0.0087993812935085460|0.0087993812935085460|0.0000000000000000|PASS|
+M03A4_PROGRESS|DEPTH_PERTURBATION|GEOMETRY_REBUILT|PASS
+M03A4_PROGRESS|DEPTH_PERTURBATION|NAMED_SELECTION_AUDIT|PASS
+M03A4_PROGRESS|MESH_REBUILT|PASS|nx=48|ny=18
+M03A4_PROGRESS|OLD_SOLUTION_CLEARED|PASS
+M03A4_CASE|case_id|kappa_S_m|Hcell_m|depth_m|EIS_area_m2|report_area_m2|geometry_height_m|geometry_rebuilt|named_selections_pass|mesh_rebuilt|old_solution_cleared|spf_active|tds_active|cd_active|fresh_full_solve|analytical_current_A|COMSOL_current_A|current_relative_error|analytical_resistance_ohm|COMSOL_resistance_ohm|resistance_relative_error|reported_current_density_A_m2|status
+M03A4_CASE|DEPTH_PERTURBATION|0.49996484622208590|0.0040000000000000000|0.044000000000000000|0.0030250000000000000|0.0027500000000000000|0.0039999999999999190|1.0000000000000000|1.0000000000000000|1.0000000000000000|1.0000000000000000|1.0000000000000000|1.0000000000000000|1.0000000000000000|1.0000000000000000|2.4198298557148887e-05|2.4198298557148497e-05|1.6101758345396910e-14|3.3060175619812500|3.3060175619813030|1.5984977387865530e-14|0.0087993812935085460|PASS
+M03A4_TRANSFER|case_id|source_quantity|source_value|source_unit|target_parameter|applied_value|applied_unit|consumer|expected_response|observed_response|relative_error|status|failure_reason
+M03A4_TRANSFER|DEPTH_PERTURBATION|conductivity|0.49996484622208590|S/m|kappa_dry_run|0.49996484622208590|S/m|cd/ice1 conductivity via kappa_M033|2.4198298557148887e-05|2.4198298557148497e-05|1.6101758345396910e-14|PASS|
+M03A4_TRANSFER|DEPTH_PERTURBATION|electrode_spacing|0.0040000000000000000|m|Hcell_dry_run|0.0040000000000000000|m|geom1 actual inlet height|0.0040000000000000000|0.0039999999999999190|2.0166160408230382e-14|PASS|
+M03A4_TRANSFER|DEPTH_PERTURBATION|out_of_plane_thickness|0.044000000000000000|m|depth_dry_run|0.044000000000000000|m|all 2D-to-3D Wcell integrations|0.044000000000000000|0.044000000000000000|0.0000000000000000|PASS|
+M03A4_TRANSFER|DEPTH_PERTURBATION|EIS_area|0.0030250000000000000|m^2|A_EIS_dry_run|0.0030250000000000000|m^2|HFR conductivity inversion only|0.49996484622208590|0.49996484622208590|0.0000000000000000|PASS|
+M03A4_TRANSFER|DEPTH_PERTURBATION|current_density_reporting_area|0.0027500000000000000|m^2|A_j_report_dry_run|0.0027500000000000000|m^2|j_reported equals current-run I_total divided by A_j_report|0.0087993812935085460|0.0087993812935085460|0.0000000000000000|PASS|
+M03A4_PROGRESS|EIS_AREA_PERTURBATION|GEOMETRY_REBUILT|PASS
+M03A4_PROGRESS|EIS_AREA_PERTURBATION|NAMED_SELECTION_AUDIT|PASS
+M03A4_PROGRESS|MESH_REBUILT|PASS|nx=48|ny=18
+M03A4_PROGRESS|OLD_SOLUTION_CLEARED|PASS
+M03A4_CASE|case_id|kappa_S_m|Hcell_m|depth_m|EIS_area_m2|report_area_m2|geometry_height_m|geometry_rebuilt|named_selections_pass|mesh_rebuilt|old_solution_cleared|spf_active|tds_active|cd_active|fresh_full_solve|analytical_current_A|COMSOL_current_A|current_relative_error|analytical_resistance_ohm|COMSOL_resistance_ohm|resistance_relative_error|reported_current_density_A_m2|status
+M03A4_CASE|EIS_AREA_PERTURBATION|0.41663737185173827|0.0040000000000000000|0.055000000000000000|0.0036300000000000000|0.0027500000000000000|0.0039999999999999190|1.0000000000000000|1.0000000000000000|1.0000000000000000|1.0000000000000000|1.0000000000000000|1.0000000000000000|1.0000000000000000|1.0000000000000000|2.5206560997030103e-05|2.5206560997029670e-05|1.7205078830281492e-14|3.1737768595020004|3.1737768595020546|1.7070791678217720e-14|0.0091660221807380630|PASS
+M03A4_TRANSFER|case_id|source_quantity|source_value|source_unit|target_parameter|applied_value|applied_unit|consumer|expected_response|observed_response|relative_error|status|failure_reason
+M03A4_TRANSFER|EIS_AREA_PERTURBATION|conductivity|0.41663737185173827|S/m|kappa_dry_run|0.41663737185173827|S/m|cd/ice1 conductivity via kappa_M033|2.5206560997030103e-05|2.5206560997029670e-05|1.7205078830281492e-14|PASS|
+M03A4_TRANSFER|EIS_AREA_PERTURBATION|electrode_spacing|0.0040000000000000000|m|Hcell_dry_run|0.0040000000000000000|m|geom1 actual inlet height|0.0040000000000000000|0.0039999999999999190|2.0166160408230382e-14|PASS|
+M03A4_TRANSFER|EIS_AREA_PERTURBATION|out_of_plane_thickness|0.055000000000000000|m|depth_dry_run|0.055000000000000000|m|all 2D-to-3D Wcell integrations|0.055000000000000000|0.055000000000000000|0.0000000000000000|PASS|
+M03A4_TRANSFER|EIS_AREA_PERTURBATION|EIS_area|0.0036300000000000000|m^2|A_EIS_dry_run|0.0036300000000000000|m^2|HFR conductivity inversion only|0.41663737185173827|0.41663737185173820|1.3323613046169956e-16|PASS|
+M03A4_TRANSFER|EIS_AREA_PERTURBATION|current_density_reporting_area|0.0027500000000000000|m^2|A_j_report_dry_run|0.0027500000000000000|m^2|j_reported equals current-run I_total divided by A_j_report|0.0091660221807380630|0.0091660221807380630|0.0000000000000000|PASS|
+M03A4_PROGRESS|REPORT_AREA_PERTURBATION|GEOMETRY_REBUILT|PASS
+M03A4_PROGRESS|REPORT_AREA_PERTURBATION|NAMED_SELECTION_AUDIT|PASS
+M03A4_PROGRESS|MESH_REBUILT|PASS|nx=48|ny=18
+M03A4_PROGRESS|OLD_SOLUTION_CLEARED|PASS
+M03A4_CASE|case_id|kappa_S_m|Hcell_m|depth_m|EIS_area_m2|report_area_m2|geometry_height_m|geometry_rebuilt|named_selections_pass|mesh_rebuilt|old_solution_cleared|spf_active|tds_active|cd_active|fresh_full_solve|analytical_current_A|COMSOL_current_A|current_relative_error|analytical_resistance_ohm|COMSOL_resistance_ohm|resistance_relative_error|reported_current_density_A_m2|status
+M03A4_CASE|REPORT_AREA_PERTURBATION|0.49996484622208590|0.0040000000000000000|0.055000000000000000|0.0030250000000000000|0.0034375000000000000|0.0039999999999999190|1.0000000000000000|1.0000000000000000|1.0000000000000000|1.0000000000000000|1.0000000000000000|1.0000000000000000|1.0000000000000000|1.0000000000000000|3.0247873196436120e-05|3.0247873196435575e-05|1.8033969346844534e-14|2.6448140495850000|2.6448140495850480|1.8134218045057496e-14|0.0087993812935085300|PASS
+M03A4_TRANSFER|case_id|source_quantity|source_value|source_unit|target_parameter|applied_value|applied_unit|consumer|expected_response|observed_response|relative_error|status|failure_reason
+M03A4_TRANSFER|REPORT_AREA_PERTURBATION|conductivity|0.49996484622208590|S/m|kappa_dry_run|0.49996484622208590|S/m|cd/ice1 conductivity via kappa_M033|3.0247873196436120e-05|3.0247873196435575e-05|1.8033969346844534e-14|PASS|
+M03A4_TRANSFER|REPORT_AREA_PERTURBATION|electrode_spacing|0.0040000000000000000|m|Hcell_dry_run|0.0040000000000000000|m|geom1 actual inlet height|0.0040000000000000000|0.0039999999999999190|2.0166160408230382e-14|PASS|
+M03A4_TRANSFER|REPORT_AREA_PERTURBATION|out_of_plane_thickness|0.055000000000000000|m|depth_dry_run|0.055000000000000000|m|all 2D-to-3D Wcell integrations|0.055000000000000000|0.055000000000000000|0.0000000000000000|PASS|
+M03A4_TRANSFER|REPORT_AREA_PERTURBATION|EIS_area|0.0030250000000000000|m^2|A_EIS_dry_run|0.0030250000000000000|m^2|HFR conductivity inversion only|0.49996484622208590|0.49996484622208590|0.0000000000000000|PASS|
+M03A4_TRANSFER|REPORT_AREA_PERTURBATION|current_density_reporting_area|0.0034375000000000000|m^2|A_j_report_dry_run|0.0034375000000000000|m^2|j_reported equals current-run I_total divided by A_j_report|0.0087993812935085300|0.0087993812935085300|0.0000000000000000|PASS|
+M03A4_PROGRESS|COMBINED_NONIDENTITY|GEOMETRY_REBUILT|PASS
+M03A4_PROGRESS|COMBINED_NONIDENTITY|NAMED_SELECTION_AUDIT|PASS
+M03A4_PROGRESS|MESH_REBUILT|PASS|nx=64|ny=24
+M03A4_PROGRESS|OLD_SOLUTION_CLEARED|PASS
+M03A4_CASE|case_id|kappa_S_m|Hcell_m|depth_m|EIS_area_m2|report_area_m2|geometry_height_m|geometry_rebuilt|named_selections_pass|mesh_rebuilt|old_solution_cleared|spf_active|tds_active|cd_active|fresh_full_solve|analytical_current_A|COMSOL_current_A|current_relative_error|analytical_resistance_ohm|COMSOL_resistance_ohm|resistance_relative_error|reported_current_density_A_m2|status
+M03A4_CASE|COMBINED_NONIDENTITY|0.54541619587863910|0.0048000000000000000|0.049500000000000000|0.0033275000000000000|0.0030250000000000000|0.0047999999999999040|1.0000000000000000|1.0000000000000000|1.0000000000000000|1.0000000000000000|1.0000000000000000|1.0000000000000000|1.0000000000000000|1.0000000000000000|2.4748259887993234e-05|2.4748259887992820e-05|1.6702268366780760e-14|3.2325505050483336|3.2325505050483874|1.6623033207969394e-14|0.0081812429381794460|PASS
+M03A4_TRANSFER|case_id|source_quantity|source_value|source_unit|target_parameter|applied_value|applied_unit|consumer|expected_response|observed_response|relative_error|status|failure_reason
+M03A4_TRANSFER|COMBINED_NONIDENTITY|conductivity|0.54541619587863910|S/m|kappa_dry_run|0.54541619587863910|S/m|cd/ice1 conductivity via kappa_M033|2.4748259887993234e-05|2.4748259887992820e-05|1.6702268366780760e-14|PASS|
+M03A4_TRANSFER|COMBINED_NONIDENTITY|electrode_spacing|0.0048000000000000000|m|Hcell_dry_run|0.0048000000000000000|m|geom1 actual inlet height|0.0048000000000000000|0.0047999999999999040|1.9877039828900916e-14|PASS|
+M03A4_TRANSFER|COMBINED_NONIDENTITY|out_of_plane_thickness|0.049500000000000000|m|depth_dry_run|0.049500000000000000|m|all 2D-to-3D Wcell integrations|0.049500000000000000|0.049500000000000000|0.0000000000000000|PASS|
+M03A4_TRANSFER|COMBINED_NONIDENTITY|EIS_area|0.0033275000000000000|m^2|A_EIS_dry_run|0.0033275000000000000|m^2|HFR conductivity inversion only|0.54541619587863910|0.54541619587863910|0.0000000000000000|PASS|
+M03A4_TRANSFER|COMBINED_NONIDENTITY|current_density_reporting_area|0.0030250000000000000|m^2|A_j_report_dry_run|0.0030250000000000000|m^2|j_reported equals current-run I_total divided by A_j_report|0.0081812429381794460|0.0081812429381794460|0.0000000000000000|PASS|
+M03A4_CLOSURE|case_id|current_expected_N2_mol_s|actual_TDS_N2_cath_mol_s|current_to_TDS_N2_relative_error|current_expected_NH3_mol_s|actual_TDS_NH3_cath_mol_s|current_to_TDS_NH3_relative_error|NH3_N2_ratio_error|N2_inlet_mol_s|N2_outlet_mol_s|NH3_inlet_mol_s|NH3_outlet_mol_s|N2_balance|NH3_balance|nitrogen_balance|current_conservation|algebraic_imposed_N2_mol_s|algebraic_imposed_NH3_mol_s|algebraic_classification|transport_classification|status
+M03A4_CLOSURE|COMBINED_NONIDENTITY|4.2749606501868950e-11|4.2749606501874194e-11|1.2274796051405094e-13|8.5499213003737900e-11|8.5499213003737750e-11|1.6628418296240470e-15|1.2445600106048005e-13|8.9999999999997810e-08|8.9957250393496330e-08|8.8448822569243050e-22|8.5499213003737670e-11|4.2750589678978610e-15|1.0345899529042725e-11|6.9829266120472130e-16|1.1708135850365946e-15|4.2749606501868895e-11|8.5499213003737790e-11|ALGEBRAIC_STOICHIOMETRIC_MAPPING|ACTUAL_TDS_AND_INLET_OUTLET_BALANCE|SYNTHETIC_PARAMETER_TRANSFER_PASS
+M03A4_PROGRESS|COMBINED_NONIDENTITY|FRESH_FULL_COUPLED_STUDY|PASS
+M03A4_PROGRESS|COMBINED_NONIDENTITY|SPF_ACTIVE|PASS
+M03A4_PROGRESS|COMBINED_NONIDENTITY|TDS_ACTIVE|PASS
+M03A4_PROGRESS|COMBINED_NONIDENTITY|CD_ACTIVE|PASS
+M03A4_PROGRESS|COMBINED_NONIDENTITY|CURRENT_SOLUTION_CURRENT_RUN|PASS
+M03A4_PROGRESS|COMBINED_NONIDENTITY|SPECIES_SOLUTION_CURRENT_RUN|PASS
+M03A4_RESPONSE|case_id|metric|expected_ratio|observed_ratio|relative_error|status|failure_reason
+M03A4_RESPONSE|KAPPA_PERTURBATION|current_vs_kappa|1.2500000000000000|1.2500000000000013|1.0658141036401490e-15|PASS|
+M03A4_RESPONSE|KAPPA_PERTURBATION|resistance_vs_inverse_kappa|0.79999999999999990|0.79999999999999930|8.3266726846886750e-16|PASS|
+M03A4_RESPONSE|HCELL_PERTURBATION|resistance_vs_Hcell|1.2500000000000000|1.2499999999999980|1.5987211554602255e-15|PASS|
+M03A4_RESPONSE|HCELL_PERTURBATION|current_vs_inverse_Hcell|0.80000000000000000|0.80000000000000140|1.6653345369377319e-15|PASS|
+M03A4_RESPONSE|DEPTH_PERTURBATION|current_vs_depth|0.79999999999999990|0.80000000000000130|1.6653345369377322e-15|PASS|
+M03A4_RESPONSE|DEPTH_PERTURBATION|resistance_vs_inverse_depth|1.2500000000000000|1.2499999999999973|2.1316282072803005e-15|PASS|
+M03A4_RESPONSE|EIS_AREA_PERTURBATION|kappa_vs_inverse_EIS_area|0.83333333333333330|0.83333333333333340|1.3322676295501878e-16|PASS|
+M03A4_RESPONSE|EIS_AREA_PERTURBATION|current_changes_only_via_transferred_kappa|0.83333333333333340|0.83333333333333410|9.3258734068513050e-16|PASS|
+M03A4_RESPONSE|REPORT_AREA_PERTURBATION|PDE_total_current_unchanged|1.0000000000000000|1.0000000000000000|0.0000000000000000|PASS|
+M03A4_RESPONSE|REPORT_AREA_PERTURBATION|PDE_resistance_unchanged|1.0000000000000000|1.0000000000000000|0.0000000000000000|PASS|
+M03A4_RESPONSE|REPORT_AREA_PERTURBATION|reported_j_vs_inverse_area|0.79999999999999990|0.79999999999999980|1.3877787807814457e-16|PASS|
+M03A4_RESPONSE|COMBINED_NONIDENTITY|current_vs_analytical|1.0000000000000000|0.99999999999998330|1.6653345369377348e-14|PASS|
+M03A4_RESPONSE|COMBINED_NONIDENTITY|resistance_vs_analytical|1.0000000000000000|1.0000000000000167|1.6653345369377070e-14|PASS|
+M03A4_PROGRESS|DERIVATIVE_MPH_SAVE|COMPLETE
+M03A4_PROGRESS|FULL_SYNTHETIC_COUPLED_TRANSFER|COMPLETE
+
+## COMSOL batch stderr
+
+## COMSOL batch log
+*******************************************
+***COMSOL 6.4.0.293 progress output file***
+*******************************************
+Sun Jul 19 11:43:38 CST 2026
+COMSOL Multiphysics 6.4 (开发版本: 293) 在批处理模式下启动
+正在运行: F:\LiNRR_COMSOL\worktrees\LiNRR_M03A_4\runs\20260719_114249_M03A_4\java_class_output\LiNRR_M03A_4_ParameterTransfer.class
+-          当前进度:  13 % - 映射
+Memory: 792/801 824/833
+顶点单元数：4
+边界单元数：132
+最小单元质量：1
+---------- 当前进度: 100 % - 正在定型网格
+Memory: 794/801 824/833
+           当前进度:   1 % - 生成方程
+Memory: 786/808 816/866
+           当前进度:   2 % - 生成方程
+Memory: 810/819 840/866
+           当前进度:   3 % - 生成方程
+Memory: 888/894 919/931
+<---- M02.1 stationary transport audit/解 1 (sol1) 中的“编译方程: 稳态” -----------------
+开始于 2026年7月19日 11:44:09。
+几何形函数: 线性拉格朗日单元
+在 AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD 上运行。
+在以下位置使用 1 个插槽： Pokemon 上（共 8 个内核）。
+可用内存：15.77 GB。
+           当前进度:   7 % - 编译方程: 稳态
+Memory: 902/908 936/939
+           当前进度:   7 % - 正在创建可视化网格
+Memory: 910/911 942/944
+时间：2。
+物理内存: 915 MB
+虚拟内存: 948 MB
+结束时间：2026年7月19日 11:44:11。
+----- M02.1 stationary transport audit/解 1 (sol1) 中的“编译方程: 稳态” ---------------->
+<---- M02.1 stationary transport audit/解 1 (sol1) 中的“因变量 1” --------------------
+开始于 2026年7月19日 11:44:11。
+           当前进度:   7 % - 因变量 1
+Memory: 885/916 921/951
+求解时间：1 s。
+物理内存: 916 MB
+虚拟内存: 951 MB
+结束时间：2026年7月19日 11:44:12。
+----- M02.1 stationary transport audit/解 1 (sol1) 中的“因变量 1” ------------------->
+<---- M02.1 stationary transport audit/解 1 (sol1) 中的“稳态求解器 1” ------------------
+开始于 2026年7月19日 11:44:12。
+-          当前进度:  12 % - 稳态求解器 1
+Memory: 902/916 940/951
+非线性求解器
+求解的自由度数：16220（加上 673 个内部自由度）。
+找到非对称矩阵。
+-          当前进度:  12 % - 
+Memory: 962/963 989/991
+缩放因变量：
+浓度 (comp1.cN2): 6e+03
+浓度 (comp1.cNH3): 8.7e+03
+压力 (comp1.p): 22
+电解质电位 (comp1.phil): 1
+速度场 (comp1.u): 1.1
+边界电解质电位 (comp1.cd.current_anode_M033.phil0): 1
+常微分方程助变量 (comp1.spf.inlet.Pinl): 1.1e+03
+已使用正交零空间函数。
+-          当前进度:  12 % - 矩阵分解
+Memory: 1004/1004 1039/1042
+Iter      SolEst      ResEst     Damping    Stepsize #Res #Jac #Sol   LinErr   LinRes
+   1     9.3e+24     5.3e+16   0.1000000     4.6e+12    8    1    8        -      0.2
+-          当前进度:  17 % - 组装稀疏模式
+Memory: 986/1047 1021/1100
+-          当前进度:  17 % - 矩阵分解
+Memory: 1062/1072 1121/1121
+   2          96     8.2e+02   0.1000000     1.2e+02    9    2   10  4.6e-14  2.6e-16
+--         当前进度:  29 % - 矩阵分解
+Memory: 1083/1138 1121/1185
+   3     2.5e-05        0.46   0.9999999         3.1   10    3   12  1.5e-14  3.2e-15
+--------   当前进度:  88 % - 矩阵分解
+Memory: 1015/1138 1069/1185
+   4         2.4     6.6e-05   1.0000000     2.2e+07   12    4   14    7e-15  1.3e-15
+   5       0.069     6.7e-05   1.0000000         2.4   13    5   16  1.4e-15  5.9e-15
+   6     0.00017     6.7e-05   1.0000000       0.094   14    6   18  1.8e-15    2e-16
+   7     0.00011     6.5e-05   1.0000000     0.00016   15    7   20  1.3e-15  2.4e-16
+   8     1.3e-05     6.2e-05   1.0000000      0.0001   16    8   22  9.8e-16    3e-16
+   9     5.1e-06     5.8e-05   1.0000000     1.3e-05   17    9   24  2.7e-15  4.4e-16
+  10     1.1e-06       6e-05   1.0000000     5.1e-06   18   10   26  2.1e-15  4.9e-16
+  11     5.2e-07     6.4e-05   1.0000000     1.1e-06   19   11   28  1.3e-15    3e-16
+  12     1.8e-07     6.3e-05   1.0000000     5.2e-07   20   12   30  1.6e-15  5.2e-16
+  13     8.7e-08     6.5e-05   1.0000000     1.8e-07   21   13   32  1.8e-15  3.4e-16
+  14       5e-08     6.5e-05   1.0000000     8.7e-08   22   14   34  2.4e-15  4.1e-16
+  15       3e-08     6.5e-05   1.0000000       5e-08   23   15   36  1.8e-15  3.8e-16
+  16     2.1e-08     6.6e-05   1.0000000       3e-08   24   16   38  1.5e-15  5.9e-16
+--------   当前进度:  88 % - 求解线性方程组
+Memory: 1074/1138 1117/1185
+  17     1.5e-08     6.3e-05   1.0000000     2.1e-08   25   17   40    2e-15    3e-16
+  18     1.2e-08     6.6e-05   1.0000000     1.5e-08   26   18   42  1.5e-15  4.2e-16
+  19     8.9e-09     6.2e-05   1.0000000     1.2e-08   27   19   44  2.3e-15  3.8e-16
+--------   当前进度:  88 % - 正在组装残差
+Memory: 1075/1138 1117/1185
+  20       7e-09     6.3e-05   1.0000000     8.9e-09   28   20   46  2.4e-15  5.2e-16
+  21     5.5e-09       6e-05   1.0000000       7e-09   29   21   48  1.8e-15  2.6e-16
+  22     4.3e-09     6.4e-05   1.0000000     5.5e-09   30   22   50  2.5e-15  2.2e-16
+--------   当前进度:  89 % - 矩阵分解
+Memory: 1007/1138 1031/1185
+  23     3.4e-09     6.2e-05   1.0000000     4.3e-09   31   23   52    2e-15  5.1e-16
+---------  当前进度:  90 % - 矩阵分解
+Memory: 1018/1138 1049/1185
+  24     2.7e-09     6.5e-05   1.0000000     3.4e-09   32   24   54  9.7e-16  3.9e-16
+  25     2.1e-09       6e-05   1.0000000     2.7e-09   33   25   56  1.4e-15  3.4e-16
+---------  当前进度:  91 % - 矩阵分解
+Memory: 1038/1138 1076/1185
+  26     1.6e-09     6.5e-05   1.0000000     2.1e-09   34   26   58  2.7e-15  5.3e-16
+  27     1.3e-09     6.1e-05   1.0000000     1.6e-09   35   27   60  3.6e-15  3.7e-16
+---------  当前进度:  92 % - 矩阵分解
+Memory: 1001/1138 1027/1185
+  28       1e-09     6.3e-05   1.0000000     1.3e-09   36   28   62  3.3e-15  2.1e-16
+---------  当前进度:  93 % - 矩阵分解
+Memory: 1019/1138 1042/1185
+  29       8e-10     6.4e-05   1.0000000       1e-09   37   29   64  1.8e-15  3.3e-16
+  30     6.3e-10     6.3e-05   1.0000000       8e-10   38   30   66  1.3e-15  5.7e-16
+---------  当前进度:  94 % - 矩阵分解
+Memory: 1010/1138 1050/1185
+  31       5e-10     6.1e-05   1.0000000     6.3e-10   39   31   68  9.2e-16  3.3e-16
+  32     3.9e-10     6.7e-05   1.0000000       5e-10   40   32   70  2.2e-15  7.5e-16
+---------  当前进度:  95 % - 求解线性方程组
+Memory: 1077/1138 1119/1185
+  33     3.1e-10     6.6e-05   1.0000000     3.9e-10   41   33   72  2.6e-15  5.6e-16
+  34     2.4e-10     6.3e-05   1.0000000     3.1e-10   42   34   74  4.4e-15  3.6e-16
+  35     1.9e-10     6.3e-05   1.0000000     2.4e-10   43   35   76  7.5e-15  2.4e-16
+---------  当前进度:  97 % - 求解线性方程组
+Memory: 1078/1138 1119/1185
+  36     1.5e-10     6.7e-05   1.0000000     1.9e-10   44   36   78  4.3e-15  2.3e-16
+  37     1.2e-10     6.5e-05   1.0000000     1.5e-10   45   37   80  5.3e-15  4.1e-16
+  38     9.2e-11     6.5e-05   1.0000000     1.2e-10   47   38   82  3.3e-15  2.8e-16
+---------- 当前进度: 100 % - 
+Memory: 1073/1138 1114/1185
+求解时间：9 s。
+物理内存: 1.14 GB
+虚拟内存: 1.18 GB
+结束时间：2026年7月19日 11:44:21。
+----- M02.1 stationary transport audit/解 1 (sol1) 中的“稳态求解器 1” ----------------->
+           当前进度:   1 % - 生成方程
+Memory: 1084/1138 1106/1185
+           当前进度:   2 % - 生成方程
+Memory: 1062/1138 1081/1185
+           当前进度:   3 % - 生成方程
+Memory: 1055/1138 1077/1185
+<---- M02.1 stationary transport audit/解 1 (sol1) 中的“编译方程: 稳态” -----------------
+开始于 2026年7月19日 11:44:25。
+几何形函数: 线性拉格朗日单元
+在 AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD 上运行。
+在以下位置使用 1 个插槽： Pokemon 上（共 8 个内核）。
+可用内存：15.77 GB。
+           当前进度:   7 % - 编译方程: 稳态
+Memory: 1065/1138 1085/1185
+           当前进度:   7 % - 正在创建可视化网格
+Memory: 1067/1138 1086/1185
+时间：1。
+物理内存: 1.07 GB
+虚拟内存: 1.09 GB
+结束时间：2026年7月19日 11:44:26。
+----- M02.1 stationary transport audit/解 1 (sol1) 中的“编译方程: 稳态” ---------------->
+<---- M02.1 stationary transport audit/解 1 (sol1) 中的“因变量 1” --------------------
+开始于 2026年7月19日 11:44:26。
+           当前进度:   7 % - 因变量 1
+Memory: 1070/1138 1090/1185
+求解时间：0 s。
+物理内存: 1.07 GB
+虚拟内存: 1.09 GB
+结束时间：2026年7月19日 11:44:26。
+----- M02.1 stationary transport audit/解 1 (sol1) 中的“因变量 1” ------------------->
+<---- M02.1 stationary transport audit/解 1 (sol1) 中的“稳态求解器 1” ------------------
+开始于 2026年7月19日 11:44:26。
+非线性求解器
+求解的自由度数：16220（加上 673 个内部自由度）。
+找到非对称矩阵。
+缩放因变量：
+浓度 (comp1.cN2): 6.9e+03
+浓度 (comp1.cNH3): 9.9e+03
+压力 (comp1.p): 25
+电解质电位 (comp1.phil): 1
+速度场 (comp1.u): 1.3
+边界电解质电位 (comp1.cd.current_anode_M033.phil0): 1
+常微分方程助变量 (comp1.spf.inlet.Pinl): 1.3e+03
+已使用正交零空间函数。
+-          当前进度:  12 % - 矩阵分解
+Memory: 1109/1138 1134/1185
+Iter      SolEst      ResEst     Damping    Stepsize #Res #Jac #Sol   LinErr   LinRes
+-          当前进度:  19 % - 求解线性方程组
+Memory: 1120/1151 1157/1187
+   1     1.6e+25     5.9e+16   0.1000000     7.1e+12    8    1    8        -     0.25
+-          当前进度:  19 % - 组装矩阵
+Memory: 1058/1151 1077/1187
+-          当前进度:  19 % - 矩阵分解
+Memory: 1130/1151 1199/1199
+   2          96     8.1e+02   0.0999999     1.2e+02    9    2   10  3.1e-14    4e-16
+--         当前进度:  29 % - 矩阵分解
+Memory: 1110/1171 1135/1213
+   3     0.00014         2.1   0.9999990         3.1   10    3   12  1.1e-14  3.9e-15
+--------   当前进度:  85 % - 矩阵分解
+Memory: 1121/1171 1170/1213
+   4          34     1.5e-05   1.0000000     4.1e+07   12    4   14  3.6e-15  1.4e-15
+   5       0.065     1.4e-05   1.0000000          67   13    5   16  2.1e-15  5.1e-15
+   6     0.00022     1.4e-05   1.0000000       0.077   14    6   18  8.5e-16  3.1e-16
+   7     1.9e-05     1.5e-05   1.0000000      0.0002   15    7   20  2.1e-15  4.7e-16
+   8     1.3e-05     1.5e-05   1.0000000       2e-05   16    8   22  1.4e-15  3.3e-16
+   9     2.8e-06     1.6e-05   1.0000000     1.3e-05   17    9   24  1.2e-15  3.9e-16
+  10     1.3e-06     1.4e-05   1.0000000     2.7e-06   18   10   26  1.1e-15  2.4e-16
+  11     5.4e-07     1.4e-05   1.0000000     1.3e-06   19   11   28  5.8e-16  1.8e-16
+  12     2.8e-07     1.4e-05   1.0000000     5.5e-07   20   12   30  2.4e-15  6.9e-16
+  13     1.4e-07     1.5e-05   1.0000000     2.9e-07   21   13   32  1.7e-15  2.5e-16
+  14     7.3e-08     1.3e-05   1.0000000     1.4e-07   22   14   34  8.7e-16  3.6e-16
+  15       4e-08     1.5e-05   1.0000000     7.5e-08   23   15   36  1.6e-15  4.6e-16
+--------   当前进度:  87 % - 矩阵分解
+Memory: 1074/1171 1158/1213
+  16     2.2e-08     1.5e-05   1.0000000       4e-08   24   16   38  1.2e-15  3.2e-16
+--------   当前进度:  88 % - 矩阵分解
+Memory: 1043/1171 1108/1213
+  17     1.3e-08     1.6e-05   1.0000000     2.3e-08   25   17   40  3.5e-15  6.5e-16
+--------   当前进度:  89 % - 矩阵分解
+Memory: 1049/1171 1114/1213
+  18       9e-09     1.4e-05   1.0000000     1.4e-08   26   18   42  2.3e-15  5.4e-16
+  19     6.5e-09     1.4e-05   1.0000000     9.2e-09   27   19   44  9.7e-16  4.4e-16
+  20       5e-09     1.4e-05   1.0000000     6.6e-09   28   20   46  9.2e-16  2.9e-16
+  21     3.9e-09     1.5e-05   1.0000000     5.1e-09   29   21   48  2.9e-15  4.5e-16
+  22     3.1e-09     1.4e-05   1.0000000       4e-09   30   22   50  2.5e-15  3.2e-16
+  23     2.5e-09     1.5e-05   1.0000000     3.2e-09   31   23   52  5.5e-16  2.8e-16
+---------  当前进度:  90 % - 矩阵分解
+Memory: 1072/1171 1151/1213
+  24       2e-09     1.4e-05   1.0000000     2.5e-09   32   24   54  2.2e-15    9e-16
+  25     1.6e-09     1.5e-05   1.0000000       2e-09   33   25   56  1.2e-15  2.5e-16
+---------  当前进度:  91 % - 矩阵分解
+Memory: 1064/1171 1137/1213
+  26     1.3e-09     1.5e-05   1.0000000     1.6e-09   34   26   58  2.8e-15  4.8e-16
+---------  当前进度:  92 % - 矩阵分解
+Memory: 1052/1171 1124/1213
+  27       1e-09     1.4e-05   1.0000000     1.3e-09   35   27   60  3.5e-15    4e-16
+  28     8.1e-10     1.5e-05   1.0000000       1e-09   36   28   62  2.4e-15    6e-16
+---------  当前进度:  93 % - 矩阵分解
+Memory: 1061/1171 1156/1213
+  29     6.5e-10     1.3e-05   1.0000000     8.3e-10   37   29   64  1.4e-15  2.6e-16
+  30     5.2e-10     1.4e-05   1.0000000     6.6e-10   38   30   66  1.4e-15  2.6e-16
+---------  当前进度:  94 % - 矩阵分解
+Memory: 1066/1171 1156/1213
+  31     4.1e-10     1.5e-05   1.0000000     5.3e-10   39   31   68  6.8e-15  1.3e-15
+---------  当前进度:  95 % - 矩阵分解
+Memory: 1066/1171 1157/1213
+  32     3.3e-10     1.4e-05   1.0000000     4.2e-10   40   32   70  1.9e-15  3.8e-16
+  33     2.6e-10     1.4e-05   1.0000000     3.3e-10   41   33   72    3e-15  2.4e-16
+---------  当前进度:  96 % - 矩阵分解
+Memory: 1064/1171 1156/1213
+  34     2.1e-10     1.4e-05   1.0000000     2.7e-10   42   34   74  2.1e-15  4.6e-16
+---------  当前进度:  97 % - 矩阵分解
+Memory: 1065/1171 1156/1213
+  35     1.7e-10     1.3e-05   1.0000000     2.1e-10   43   35   76  2.7e-15  2.1e-16
+  36     1.3e-10     1.3e-05   1.0000000     1.7e-10   44   36   78  4.8e-15  4.9e-16
+---------  当前进度:  98 % - 矩阵分解
+Memory: 1067/1171 1158/1213
+  37     1.1e-10     1.5e-05   1.0000000     1.3e-10   45   37   80  6.7e-15  3.2e-16
+  38     1.1e-10     1.4e-05   1.0000000     1.4e-10   47   38   82  4.1e-15  5.5e-16
+  39     8.5e-11     1.4e-05   1.0000000     1.1e-10   49   39   84    4e-15  2.4e-16
+---------- 当前进度: 100 % - 
+Memory: 1029/1171 1094/1213
+求解时间：10 s。
+物理内存: 1.17 GB
+虚拟内存: 1.21 GB
+结束时间：2026年7月19日 11:44:37。
+----- M02.1 stationary transport audit/解 1 (sol1) 中的“稳态求解器 1” ----------------->
+---------- 当前进度: 100 % - 正在创建可视化网格
+Memory: 1061/1171 1125/1213
+           当前进度:   0 % - 矩形
+Memory: 1063/1171 1127/1213
+           当前进度:   9 % - 形成联合体
+Memory: 1064/1171 1127/1213
+----       当前进度:  42 % - 解析域和空区域
+---------- 当前进度: 100 % - 正在更新选择
+Memory: 1061/1171 1124/1213
+---------- 当前进度: 100 % - 正在创建可视化网格
+Memory: 1062/1171 1125/1213
+           当前进度:   0 % - 映射
+Memory: 1066/1171 1128/1213
+顶点单元数：4
+边界单元数：132
+最小单元质量：1
+---------- 当前进度: 100 % - 正在定型网格
+           当前进度:   1 % - 生成方程
+Memory: 1064/1171 1130/1213
+           当前进度:   2 % - 生成方程
+Memory: 1065/1171 1130/1213
+           当前进度:   3 % - 生成方程
+Memory: 1013/1171 1079/1213
+<---- M02.1 stationary transport audit/解 1 (sol1) 中的“编译方程: 稳态” -----------------
+开始于 2026年7月19日 11:44:40。
+几何形函数: 线性拉格朗日单元
+在 AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD 上运行。
+在以下位置使用 1 个插槽： Pokemon 上（共 8 个内核）。
+可用内存：15.77 GB。
+           当前进度:   7 % - 编译方程: 稳态
+Memory: 1046/1171 1110/1213
+           当前进度:   7 % - 正在创建可视化网格
+Memory: 1048/1171 1112/1213
+时间：1。
+物理内存: 1.05 GB
+虚拟内存: 1.11 GB
+结束时间：2026年7月19日 11:44:41。
+----- M02.1 stationary transport audit/解 1 (sol1) 中的“编译方程: 稳态” ---------------->
+<---- M02.1 stationary transport audit/解 1 (sol1) 中的“因变量 1” --------------------
+开始于 2026年7月19日 11:44:41。
+           当前进度:   7 % - 因变量 1
+求解时间：0 s。
+物理内存: 1.05 GB
+虚拟内存: 1.11 GB
+结束时间：2026年7月19日 11:44:41。
+----- M02.1 stationary transport audit/解 1 (sol1) 中的“因变量 1” ------------------->
+<---- M02.1 stationary transport audit/解 1 (sol1) 中的“稳态求解器 1” ------------------
+开始于 2026年7月19日 11:44:41。
+非线性求解器
+求解的自由度数：16220（加上 673 个内部自由度）。
+找到非对称矩阵。
+缩放因变量：
+浓度 (comp1.cN2): 5.8e+03
+浓度 (comp1.cNH3): 8.6e+03
+压力 (comp1.p): 18
+电解质电位 (comp1.phil): 1
+速度场 (comp1.u): 1
+边界电解质电位 (comp1.cd.current_anode_M033.phil0): 1
+常微分方程助变量 (comp1.spf.inlet.Pinl): 7.2e+02
+已使用正交零空间函数。
+-          当前进度:  12 % - 矩阵分解
+Memory: 1102/1171 1178/1213
+Iter      SolEst      ResEst     Damping    Stepsize #Res #Jac #Sol   LinErr   LinRes
+-          当前进度:  17 % - 求解线性方程组
+Memory: 1092/1171 1168/1213
+   1     3.4e+26     9.8e+16   0.1000000     2.3e+13    8    1    8        -      1.5
+-          当前进度:  17 % - 矩阵分解
+Memory: 1096/1171 1166/1213
+   2          96     9.1e+02   0.1000003     1.2e+02    9    2   10  1.3e-14  2.9e-16
+--         当前进度:  29 % - 矩阵分解
+Memory: 1098/1171 1167/1233
+   3     0.00022         3.1   1.0000000         3.1   10    3   12  1.7e-14  3.7e-15
+--------   当前进度:  84 % - 矩阵分解
+Memory: 1100/1171 1163/1234
+   4       2e-13     8.3e-06   1.0000000     4.6e-05   11    4   14  7.3e-15    2e-15
+---------- 当前进度: 100 % - 矩阵分解
+Memory: 1107/1171 1193/1235
+   5       0.042       8e-06   1.0000000         7.9   13    5   16  1.8e-15  2.3e-15
+   6     0.00027       8e-06   1.0000000       0.045   14    6   18  1.3e-15  2.4e-16
+---------- 当前进度: 100 % - 求解线性方程组
+Memory: 1152/1171 1231/1264
+   7     5.5e-05     7.8e-06   1.0000000      0.0003   15    7   20  9.9e-16  1.4e-16
+   8     1.5e-05     7.5e-06   1.0000000     5.5e-05   16    8   22  1.7e-15  2.4e-16
+---------- 当前进度: 100 % - 组装矩阵
+Memory: 1148/1171 1226/1264
+   9     3.6e-06     7.6e-06   1.0000000     1.5e-05   17    9   24  6.1e-16  2.5e-16
+  10     1.1e-06     7.4e-06   1.0000000     3.6e-06   18   10   26  1.1e-15  7.8e-16
+---------- 当前进度: 100 % - 矩阵分解
+Memory: 1121/1171 1193/1264
+  11     3.6e-07     7.7e-06   1.0000000     1.2e-06   19   11   28  1.3e-15  3.4e-16
+  12     1.5e-07     6.8e-06   1.0000000     3.6e-07   20   12   30  1.6e-15  4.4e-16
+  13       1e-07     6.7e-06   1.0000000     1.5e-07   21   13   32  1.5e-15  5.5e-16
+  14     7.4e-08     7.4e-06   1.0000000       1e-07   22   14   34  9.6e-16    3e-16
+  15     5.5e-08     6.9e-06   1.0000000     7.3e-08   23   15   36  1.6e-15  3.6e-16
+  16     4.2e-08       8e-06   1.0000000     5.5e-08   24   16   38  1.2e-15  2.6e-16
+  17     3.1e-08     7.4e-06   1.0000000     4.1e-08   25   17   40  2.9e-15  5.4e-16
+  18     2.3e-08     7.5e-06   1.0000000     3.1e-08   26   18   42  6.9e-16  3.8e-16
+  19     1.8e-08     7.5e-06   1.0000000     2.3e-08   27   19   44  8.4e-16  3.9e-16
+  20     1.3e-08     7.3e-06   1.0000000     1.8e-08   28   20   46  1.5e-15  2.2e-16
+  21     9.9e-09     7.5e-06   1.0000000     1.3e-08   29   21   48  2.5e-15  3.6e-16
+---------- 当前进度: 100 % - 组装矩阵
+Memory: 1149/1171 1222/1264
+  22     7.4e-09     7.9e-06   1.0000000     9.9e-09   30   22   50  4.9e-16  2.6e-16
+  23     5.6e-09     7.4e-06   1.0000000     7.4e-09   31   23   52  2.2e-15    4e-16
+  24     4.2e-09     6.8e-06   1.0000000     5.6e-09   32   24   54  9.1e-16  4.6e-16
+---------- 当前进度: 100 % - 
+  25     3.1e-09       8e-06   1.0000000     4.2e-09   33   25   56  1.8e-15  2.4e-16
+  26     2.4e-09     7.1e-06   1.0000000     3.1e-09   34   26   58  1.6e-15  4.4e-16
+  27     1.8e-09     7.2e-06   1.0000000     2.4e-09   35   27   60  4.6e-15  5.5e-16
+  28     1.3e-09     7.3e-06   1.0000000     1.8e-09   36   28   62  2.2e-15  3.9e-16
+---------- 当前进度: 100 % - 组装矩阵
+  29     9.9e-10     7.2e-06   1.0000000     1.3e-09   37   29   64  1.1e-15  4.9e-16
+---------- 当前进度: 100 % - 约束处理
+Memory: 1159/1171 1233/1264
+  30     7.4e-10     7.4e-06   1.0000000     9.9e-10   38   30   66  2.8e-15  3.2e-16
+---------- 当前进度: 100 % - 矩阵分解
+Memory: 1125/1171 1194/1264
+  31     5.6e-10     7.3e-06   1.0000000     7.4e-10   39   31   68  1.7e-15  4.2e-16
+  32     4.2e-10     7.8e-06   1.0000000     5.6e-10   40   32   70  1.2e-15  4.4e-16
+  33     3.1e-10     7.8e-06   1.0000000     4.2e-10   41   33   72  2.8e-15  3.2e-16
+  34     2.4e-10       8e-06   1.0000000     3.1e-10   42   34   74  1.4e-15  3.2e-16
+  35     1.8e-10     7.1e-06   1.0000000     2.4e-10   43   35   76  2.7e-15  4.6e-16
+  36     1.3e-10     7.3e-06   1.0000000     1.8e-10   44   36   78  5.1e-15  2.8e-16
+  37       1e-10     7.8e-06   1.0000000     1.3e-10   46   37   80  6.6e-15  3.4e-16
+---------- 当前进度: 100 % - 
+Memory: 1072/1171 1126/1264
+求解时间：8 s。
+物理内存: 1.16 GB
+虚拟内存: 1.26 GB
+结束时间：2026年7月19日 11:44:49。
+----- M02.1 stationary transport audit/解 1 (sol1) 中的“稳态求解器 1” ----------------->
+---------- 当前进度: 100 % - 正在创建可视化网格
+Memory: 1075/1171 1129/1264
+           当前进度:   0 % - 矩形
+Memory: 1073/1171 1127/1264
+           当前进度:   9 % - 形成联合体
+----       当前进度:  42 % - 解析域和空区域
+---------- 当前进度: 100 % - 正在更新选择
+---------- 当前进度: 100 % - 正在创建可视化网格
+           当前进度:   0 % - 映射
+Memory: 1075/1171 1129/1264
+顶点单元数：4
+边界单元数：132
+最小单元质量：1
+---------- 当前进度: 100 % - 正在定型网格
+           当前进度:   1 % - 生成方程
+Memory: 1101/1171 1155/1264
+           当前进度:   2 % - 生成方程
+Memory: 1107/1171 1161/1264
+           当前进度:   3 % - 生成方程
+Memory: 1113/1171 1166/1264
+<---- M02.1 stationary transport audit/解 1 (sol1) 中的“编译方程: 稳态” -----------------
+开始于 2026年7月19日 11:44:51。
+几何形函数: 线性拉格朗日单元
+在 AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD 上运行。
+在以下位置使用 1 个插槽： Pokemon 上（共 8 个内核）。
+可用内存：15.77 GB。
+           当前进度:   7 % - 编译方程: 稳态
+Memory: 1130/1171 1183/1264
+           当前进度:   7 % - 正在创建可视化网格
+Memory: 1132/1171 1185/1264
+时间：1。
+物理内存: 1.13 GB
+虚拟内存: 1.18 GB
+结束时间：2026年7月19日 11:44:52。
+----- M02.1 stationary transport audit/解 1 (sol1) 中的“编译方程: 稳态” ---------------->
+<---- M02.1 stationary transport audit/解 1 (sol1) 中的“因变量 1” --------------------
+开始于 2026年7月19日 11:44:52。
+           当前进度:   7 % - 因变量 1
+求解时间：0 s。
+物理内存: 1.13 GB
+虚拟内存: 1.18 GB
+结束时间：2026年7月19日 11:44:52。
+----- M02.1 stationary transport audit/解 1 (sol1) 中的“因变量 1” ------------------->
+<---- M02.1 stationary transport audit/解 1 (sol1) 中的“稳态求解器 1” ------------------
+开始于 2026年7月19日 11:44:52。
+非线性求解器
+求解的自由度数：16220（加上 673 个内部自由度）。
+找到非对称矩阵。
+缩放因变量：
+浓度 (comp1.cN2): 6e+03
+浓度 (comp1.cNH3): 8.7e+03
+压力 (comp1.p): 22
+电解质电位 (comp1.phil): 1
+速度场 (comp1.u): 1.1
+边界电解质电位 (comp1.cd.current_anode_M033.phil0): 1
+常微分方程助变量 (comp1.spf.inlet.Pinl): 1.1e+03
+已使用正交零空间函数。
+-          当前进度:  12 % - 矩阵分解
+Memory: 1177/1177 1237/1264
+Iter      SolEst      ResEst     Damping    Stepsize #Res #Jac #Sol   LinErr   LinRes
+-          当前进度:  18 % - 正在组装残差
+Memory: 1179/1219 1249/1290
+   1       9e+24     6.5e+16   0.1000000     4.7e+12    8    1    8        -      0.2
+-          当前进度:  18 % - 矩阵分解
+Memory: 1187/1219 1260/1290
+   2          96       8e+02   0.1000001     1.2e+02    9    2   10  3.2e-14  2.9e-16
+--         当前进度:  29 % - 矩阵分解
+Memory: 1171/1239 1235/1314
+   3      0.0004         6.7   1.0000000         3.1   10    3   12  1.2e-14  4.8e-15
+--------   当前进度:  84 % - 矩阵分解
+Memory: 1194/1239 1266/1314
+   4     3.8e-13     6.6e-06   1.0000000     8.6e-05   11    4   14  1.5e-14  2.7e-15
+---------- 当前进度: 100 % - 矩阵分解
+Memory: 1186/1239 1256/1314
+   5       0.028     6.7e-06   1.0000000         2.4   13    5   16  1.6e-15    2e-15
+   6     0.00064     6.7e-06   1.0000000       0.031   14    6   18  1.8e-15    6e-16
+---------- 当前进度: 100 % - 正在组装残差
+Memory: 1235/1240 1307/1340
+   7     5.1e-05       7e-06   1.0000000     0.00056   15    7   20  2.3e-15  3.9e-16
+   8     3.3e-05     6.6e-06   1.0000000       5e-05   16    8   22    4e-16  3.7e-16
+   9     7.1e-06     6.5e-06   1.0000000     3.4e-05   17    9   24  1.5e-15  2.3e-16
+---------- 当前进度: 100 % - 求解线性方程组
+Memory: 1237/1242 1308/1340
+  10       3e-06     6.3e-06   1.0000000     6.7e-06   18   10   26  1.9e-15    3e-16
+---------- 当前进度: 100 % - 正在组装残差
+Memory: 1233/1242 1303/1340
+  11     1.3e-06     6.6e-06   1.0000000     3.1e-06   19   11   28  4.2e-15  2.8e-16
+---------- 当前进度: 100 % - 求解线性方程组
+Memory: 1238/1243 1309/1340
+  12     6.6e-07     6.8e-06   1.0000000     1.3e-06   20   12   30  1.4e-15  4.7e-16
+  13     3.2e-07     6.5e-06   1.0000000     6.7e-07   21   13   32  4.4e-15  8.2e-16
+---------- 当前进度: 100 % - 矩阵分解
+  14     1.6e-07     6.6e-06   1.0000000     3.2e-07   22   14   34  3.6e-15  8.9e-16
+  15     8.3e-08     6.9e-06   1.0000000     1.6e-07   23   15   36  2.6e-15    6e-16
+  16     4.4e-08     6.7e-06   1.0000000     8.3e-08   24   16   38  1.1e-15  4.4e-16
+  17     2.5e-08     6.8e-06   1.0000000     4.4e-08   25   17   40  2.6e-15  5.5e-16
+  18     1.6e-08     6.8e-06   1.0000000     2.5e-08   26   18   42  7.8e-16  3.8e-16
+  19     1.1e-08     7.2e-06   1.0000000     1.6e-08   27   19   44  1.5e-15  4.5e-16
+  20     7.8e-09     6.5e-06   1.0000000     1.1e-08   28   20   46  1.9e-15  3.7e-16
+  21     5.9e-09     6.7e-06   1.0000000     7.7e-09   29   21   48  7.9e-16  4.4e-16
+  22     4.6e-09     6.7e-06   1.0000000     5.9e-09   30   22   50  3.6e-15  5.1e-16
+  23     3.6e-09     7.1e-06   1.0000000     4.6e-09   31   23   52  1.3e-15  5.2e-16
+  24     2.8e-09     6.5e-06   1.0000000     3.6e-09   32   24   54  6.5e-16    4e-16
+  25     2.2e-09     6.3e-06   1.0000000     2.8e-09   33   25   56  5.2e-15  3.3e-16
+  26     1.7e-09     6.8e-06   1.0000000     2.2e-09   34   26   58  1.3e-15    4e-16
+  27     1.4e-09     6.8e-06   1.0000000     1.7e-09   35   27   60  3.5e-15  7.7e-16
+  28     1.1e-09       7e-06   1.0000000     1.4e-09   36   28   62  2.7e-15  5.6e-16
+  29     8.4e-10     6.4e-06   1.0000000     1.1e-09   37   29   64  3.3e-15  3.6e-16
+  30     6.6e-10     6.5e-06   1.0000000     8.4e-10   38   30   66  2.8e-15    4e-16
+  31     5.2e-10     6.5e-06   1.0000000     6.6e-10   39   31   68  1.5e-15  3.5e-16
+  32     4.1e-10     6.7e-06   1.0000000     5.2e-10   40   32   70  2.5e-15    4e-16
+  33     3.2e-10     6.6e-06   1.0000000     4.1e-10   41   33   72    3e-15  4.5e-16
+  34     2.5e-10     6.9e-06   1.0000000     3.2e-10   42   34   74    2e-15  4.3e-16
+  35       2e-10     6.3e-06   1.0000000     2.5e-10   43   35   76    4e-15  6.9e-16
+---------- 当前进度: 100 % - 组装矩阵
+Memory: 1233/1243 1300/1340
+  36     1.6e-10     6.7e-06   1.0000000       2e-10   44   36   78  3.4e-15  3.4e-16
+  37     1.2e-10     6.6e-06   1.0000000     1.6e-10   45   37   80  5.5e-15  3.5e-16
+  38     9.7e-11     6.4e-06   1.0000000     1.2e-10   47   38   82  3.6e-15  2.7e-16
+---------- 当前进度: 100 % - 组装稀疏模式
+---------- 当前进度: 100 % - 
+Memory: 1156/1243 1203/1340
+求解时间：9 s。
+物理内存: 1.24 GB
+虚拟内存: 1.34 GB
+结束时间：2026年7月19日 11:45:01。
+----- M02.1 stationary transport audit/解 1 (sol1) 中的“稳态求解器 1” ----------------->
+           当前进度:   1 % - 生成方程
+Memory: 1157/1243 1204/1340
+           当前进度:   2 % - 生成方程
+Memory: 1159/1243 1207/1340
+           当前进度:   3 % - 生成方程
+<---- M02.1 stationary transport audit/解 1 (sol1) 中的“编译方程: 稳态” -----------------
+开始于 2026年7月19日 11:45:03。
+几何形函数: 线性拉格朗日单元
+在 AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD 上运行。
+在以下位置使用 1 个插槽： Pokemon 上（共 8 个内核）。
+可用内存：15.77 GB。
+           当前进度:   7 % - 编译方程: 稳态
+Memory: 1159/1243 1206/1340
+           当前进度:   7 % - 正在创建可视化网格
+时间：1。
+物理内存: 1.16 GB
+虚拟内存: 1.21 GB
+结束时间：2026年7月19日 11:45:04。
+----- M02.1 stationary transport audit/解 1 (sol1) 中的“编译方程: 稳态” ---------------->
+<---- M02.1 stationary transport audit/解 1 (sol1) 中的“因变量 1” --------------------
+开始于 2026年7月19日 11:45:04。
+           当前进度:   7 % - 因变量 1
+求解时间：0 s。
+物理内存: 1.16 GB
+虚拟内存: 1.21 GB
+结束时间：2026年7月19日 11:45:04。
+----- M02.1 stationary transport audit/解 1 (sol1) 中的“因变量 1” ------------------->
+<---- M02.1 stationary transport audit/解 1 (sol1) 中的“稳态求解器 1” ------------------
+开始于 2026年7月19日 11:45:04。
+非线性求解器
+求解的自由度数：16220（加上 673 个内部自由度）。
+找到非对称矩阵。
+缩放因变量：
+浓度 (comp1.cN2): 5.4e+03
+浓度 (comp1.cNH3): 7.8e+03
+压力 (comp1.p): 20
+电解质电位 (comp1.phil): 1
+速度场 (comp1.u): 0.98
+边界电解质电位 (comp1.cd.current_anode_M033.phil0): 1
+常微分方程助变量 (comp1.spf.inlet.Pinl): 9.7e+02
+已使用正交零空间函数。
+-          当前进度:  12 % - 矩阵分解
+Memory: 1140/1243 1207/1340
+Iter      SolEst      ResEst     Damping    Stepsize #Res #Jac #Sol   LinErr   LinRes
+-          当前进度:  18 % - 正在组装残差
+Memory: 1141/1243 1211/1340
+   1     1.2e+25     3.8e+16   0.1000000     4.8e+12    8    1    8        -     0.28
+-          当前进度:  18 % - 矩阵分解
+Memory: 1126/1243 1191/1340
+   2          96     8.4e+02   0.1000000     1.2e+02    9    2   10  1.3e-14    3e-16
+--         当前进度:  29 % - 约束处理
+Memory: 1199/1243 1279/1340
+   3     3.8e-05        0.81   1.0000000         3.1   10    3   12  1.7e-14  3.7e-15
+--------   当前进度:  87 % - 约束处理
+Memory: 1202/1243 1277/1340
+   4         0.2     4.7e-05   1.0000000     5.7e+07   12    4   14  7.2e-15  7.2e-15
+--------   当前进度:  87 % - 组装矩阵
+Memory: 1203/1243 1274/1340
+   5      0.0027     4.7e-05   1.0000000        0.21   13    5   16  2.1e-15  1.4e-15
+   6     7.5e-05     4.8e-05   1.0000000      0.0029   14    6   18  1.3e-15  5.7e-16
+   7     2.8e-05     4.2e-05   1.0000000     8.5e-05   15    7   20  1.3e-15  5.6e-16
+--------   当前进度:  87 % - 矩阵分解
+Memory: 1156/1243 1234/1340
+   8     6.1e-06     4.8e-05   1.0000000     2.9e-05   16    8   22  8.2e-16  2.9e-16
+   9     2.2e-06     4.4e-05   1.0000000     6.1e-06   17    9   24  7.2e-16  3.3e-16
+  10     7.1e-07     4.4e-05   1.0000000     2.2e-06   18   10   26  2.8e-15  1.1e-15
+--------   当前进度:  87 % - 求解线性方程组
+Memory: 1205/1243 1275/1340
+  11     3.7e-07     4.6e-05   1.0000000       7e-07   19   11   28    8e-16  4.2e-16
+  12     1.7e-07     4.6e-05   1.0000000     3.7e-07   20   12   30  8.5e-16  2.6e-16
+--------   当前进度:  87 % - 
+Memory: 1200/1243 1270/1340
+  13     8.5e-08     4.4e-05   1.0000000     1.7e-07   21   13   32  1.7e-15  2.7e-16
+--------   当前进度:  87 % - 组装矩阵
+  14     4.4e-08     4.3e-05   1.0000000     8.5e-08   22   14   34  8.2e-16  2.6e-16
+--------   当前进度:  87 % - 矩阵分解
+Memory: 1145/1243 1198/1340
+  15     2.4e-08     4.2e-05   1.0000000     4.4e-08   23   15   36  1.9e-15  3.4e-16
+--------   当前进度:  88 % - 正在组装残差
+Memory: 1202/1243 1271/1340
+  16     1.3e-08     4.6e-05   1.0000000     2.4e-08   24   16   38  9.3e-16  4.3e-16
+  17     8.1e-09     4.6e-05   1.0000000     1.3e-08   25   17   40  6.8e-16  3.3e-16
+--------   当前进度:  89 % - 组装矩阵
+Memory: 1201/1243 1271/1340
+  18     5.4e-09     4.8e-05   1.0000000     8.1e-09   26   18   42    3e-15  4.3e-16
+--------   当前进度:  89 % - 约束处理
+Memory: 1212/1243 1282/1340
+  19     3.9e-09     4.4e-05   1.0000000     5.4e-09   27   19   44  2.8e-15  2.4e-16
+--------   当前进度:  89 % - 矩阵分解
+Memory: 1144/1243 1195/1340
+  20       3e-09     4.4e-05   1.0000000     3.9e-09   28   20   46  7.3e-16  1.8e-16
+  21     2.3e-09     4.8e-05   1.0000000       3e-09   29   21   48  2.3e-15  7.6e-16
+---------  当前进度:  90 % - 矩阵分解
+Memory: 1173/1243 1240/1340
+  22     1.8e-09     4.6e-05   1.0000000     2.3e-09   30   22   50  1.7e-15  2.7e-16
+  23     1.4e-09     4.8e-05   1.0000000     1.8e-09   31   23   52  1.3e-15    5e-16
+  24     1.1e-09     4.4e-05   1.0000000     1.4e-09   32   24   54  2.4e-15  4.8e-16
+---------  当前进度:  91 % - 矩阵分解
+Memory: 1149/1243 1201/1340
+  25     8.7e-10     4.3e-05   1.0000000     1.1e-09   33   25   56  1.8e-15  2.2e-16
+---------  当前进度:  92 % - 矩阵分解
+Memory: 1151/1243 1201/1340
+  26     6.8e-10     4.2e-05   1.0000000     8.7e-10   34   26   58    3e-15  4.3e-16
+---------  当前进度:  93 % - 矩阵分解
+Memory: 1163/1243 1225/1340
+  27     5.4e-10     4.6e-05   1.0000000     6.8e-10   35   27   60  4.7e-15  3.9e-16
+  28     4.2e-10     4.5e-05   1.0000000     5.4e-10   36   28   62  3.2e-15  2.8e-16
+---------  当前进度:  94 % - 矩阵分解
+Memory: 1163/1243 1222/1340
+  29     3.3e-10     4.9e-05   1.0000000     4.2e-10   37   29   64  1.5e-15  2.9e-16
+---------  当前进度:  95 % - 矩阵分解
+Memory: 1162/1243 1242/1340
+  30     2.6e-10     4.7e-05   1.0000000     3.3e-10   38   30   66  2.6e-15  3.4e-16
+  31     2.1e-10     4.5e-05   1.0000000     2.6e-10   39   31   68  2.9e-15  6.7e-16
+---------  当前进度:  96 % - 矩阵分解
+Memory: 1167/1243 1233/1340
+  32     1.6e-10     4.5e-05   1.0000000     2.1e-10   40   32   70  1.5e-14  8.3e-16
+---------  当前进度:  97 % - 矩阵分解
+Memory: 1175/1243 1233/1340
+  33     1.3e-10     4.6e-05   1.0000000     1.6e-10   41   33   72  3.9e-15  7.9e-16
+---------  当前进度:  98 % - 矩阵分解
+Memory: 1164/1243 1218/1340
+  34       1e-10     4.7e-05   1.0000000     1.3e-10   43   34   74  2.1e-14  4.2e-16
+---------- 当前进度: 100 % - 
+Memory: 1128/1243 1173/1340
+求解时间：9 s。
+物理内存: 1.21 GB
+虚拟内存: 1.28 GB
+结束时间：2026年7月19日 11:45:13。
+----- M02.1 stationary transport audit/解 1 (sol1) 中的“稳态求解器 1” ----------------->
+           当前进度:   1 % - 生成方程
+Memory: 1094/1243 1140/1340
+           当前进度:   2 % - 生成方程
+Memory: 1117/1243 1163/1340
+           当前进度:   3 % - 生成方程
+Memory: 1134/1243 1178/1340
+<---- M02.1 stationary transport audit/解 1 (sol1) 中的“编译方程: 稳态” -----------------
+开始于 2026年7月19日 11:45:15。
+几何形函数: 线性拉格朗日单元
+在 AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD 上运行。
+在以下位置使用 1 个插槽： Pokemon 上（共 8 个内核）。
+可用内存：15.77 GB。
+           当前进度:   7 % - 编译方程: 稳态
+Memory: 1140/1243 1184/1340
+           当前进度:   7 % - 正在创建可视化网格
+时间：1。
+物理内存: 1.14 GB
+虚拟内存: 1.18 GB
+结束时间：2026年7月19日 11:45:16。
+----- M02.1 stationary transport audit/解 1 (sol1) 中的“编译方程: 稳态” ---------------->
+<---- M02.1 stationary transport audit/解 1 (sol1) 中的“因变量 1” --------------------
+开始于 2026年7月19日 11:45:16。
+           当前进度:   7 % - 因变量 1
+求解时间：0 s。
+物理内存: 1.14 GB
+虚拟内存: 1.18 GB
+结束时间：2026年7月19日 11:45:16。
+----- M02.1 stationary transport audit/解 1 (sol1) 中的“因变量 1” ------------------->
+<---- M02.1 stationary transport audit/解 1 (sol1) 中的“稳态求解器 1” ------------------
+开始于 2026年7月19日 11:45:16。
+非线性求解器
+求解的自由度数：16220（加上 673 个内部自由度）。
+找到非对称矩阵。
+缩放因变量：
+浓度 (comp1.cN2): 6e+03
+浓度 (comp1.cNH3): 8.7e+03
+压力 (comp1.p): 22
+电解质电位 (comp1.phil): 1
+速度场 (comp1.u): 1.1
+边界电解质电位 (comp1.cd.current_anode_M033.phil0): 1
+常微分方程助变量 (comp1.spf.inlet.Pinl): 1.1e+03
+已使用正交零空间函数。
+-          当前进度:  12 % - 矩阵分解
+Memory: 1192/1243 1249/1340
+Iter      SolEst      ResEst     Damping    Stepsize #Res #Jac #Sol   LinErr   LinRes
+-          当前进度:  17 % - 求解线性方程组
+Memory: 1187/1243 1248/1340
+   1       9e+24     5.5e+16   0.1000000     4.6e+12    8    1    8        -     0.21
+-          当前进度:  17 % - 矩阵分解
+Memory: 1195/1243 1244/1340
+   2          96     8.1e+02   0.1000001     1.2e+02    9    2   10  1.8e-14  2.8e-16
+--         当前进度:  29 % - 矩阵分解
+Memory: 1175/1246 1227/1340
+   3     0.00021         3.9   1.0000000         3.1   10    3   12  1.3e-14  3.6e-15
+--------   当前进度:  85 % - 矩阵分解
+Memory: 1194/1246 1264/1340
+   4     2.6e-13     9.4e-06   1.0000000     4.5e-05   11    4   14  1.1e-14  2.6e-15
+---------- 当前进度: 100 % - 矩阵分解
+Memory: 1196/1246 1264/1340
+   5       0.024     8.5e-06   1.0000000         1.3   13    5   16  9.8e-16  2.2e-15
+   6       9e-05     8.5e-06   1.0000000       0.026   14    6   18  1.7e-15  3.7e-16
+---------- 当前进度: 100 % - 求解线性方程组
+Memory: 1234/1246 1296/1340
+   7     3.9e-05     8.5e-06   1.0000000     9.6e-05   15    7   20  1.7e-15  5.3e-16
+   8     5.7e-06       9e-06   1.0000000     3.8e-05   16    8   22  2.9e-15  3.1e-16
+---------- 当前进度: 100 % - 组装矩阵
+---------- 当前进度: 100 % - 求解线性方程组
+Memory: 1234/1246 1297/1340
+   9     3.5e-06     9.1e-06   1.0000000     5.5e-06   17    9   24    1e-15  3.7e-16
+  10     7.6e-07     8.7e-06   1.0000000     3.5e-06   18   10   26  2.6e-15  6.8e-16
+---------- 当前进度: 100 % - 组装矩阵
+  11     4.3e-07     8.2e-06   1.0000000     7.7e-07   19   11   28  2.5e-15  4.7e-16
+---------- 当前进度: 100 % - 矩阵分解
+Memory: 1167/1246 1210/1340
+  12     1.9e-07     8.7e-06   1.0000000     4.3e-07   20   12   30  3.8e-15  7.1e-16
+---------- 当前进度: 100 % - 正在组装残差
+Memory: 1234/1246 1297/1340
+  13     1.1e-07       9e-06   1.0000000     1.9e-07   21   13   32  2.1e-15  4.6e-16
+  14     5.2e-08     8.8e-06   1.0000000     1.1e-07   22   14   34  3.1e-15  9.2e-16
+---------- 当前进度: 100 % - 矩阵分解
+Memory: 1195/1246 1265/1340
+  15     2.9e-08     8.9e-06   1.0000000     5.2e-08   23   15   36  2.6e-15  1.6e-15
+  16     1.7e-08     9.3e-06   1.0000000     2.9e-08   24   16   38    3e-15  5.4e-16
+  17     1.1e-08     8.8e-06   1.0000000     1.7e-08   25   17   40  4.4e-15  1.2e-15
+---------- 当前进度: 100 % - 求解线性方程组
+Memory: 1239/1246 1302/1340
+  18     7.8e-09     9.1e-06   1.0000000     1.1e-08   26   18   42  1.5e-15  5.3e-16
+  19     5.8e-09     8.6e-06   1.0000000     7.8e-09   27   19   44  2.5e-15  6.9e-16
+---------- 当前进度: 100 % - 组装矩阵
+Memory: 1235/1246 1297/1340
+  20     4.5e-09     8.3e-06   1.0000000     5.8e-09   28   20   46  3.8e-15  6.5e-16
+---------- 当前进度: 100 % - 约束处理
+Memory: 1245/1246 1307/1340
+  21     3.5e-09     8.9e-06   1.0000000     4.5e-09   29   21   48  1.5e-15  3.4e-16
+---------- 当前进度: 100 % - 矩阵分解
+Memory: 1173/1246 1225/1340
+  22     2.7e-09     8.9e-06   1.0000000     3.5e-09   30   22   50    3e-15    3e-16
+  23     2.1e-09     8.9e-06   1.0000000     2.7e-09   31   23   52  1.6e-15    6e-16
+  24     1.7e-09     8.8e-06   1.0000000     2.1e-09   32   24   54  1.6e-15  5.9e-16
+  25     1.3e-09     8.3e-06   1.0000000     1.7e-09   33   25   56  1.1e-15    3e-16
+---------- 当前进度: 100 % - 组装矩阵
+Memory: 1235/1246 1297/1340
+  26       1e-09     8.6e-06   1.0000000     1.3e-09   34   26   58  1.3e-15    7e-16
+---------- 当前进度: 100 % - 矩阵分解
+Memory: 1240/1246 1302/1340
+  27     8.2e-10     8.5e-06   1.0000000       1e-09   35   27   60  8.6e-16  3.1e-16
+  28     6.4e-10     9.1e-06   1.0000000     8.2e-10   36   28   62    2e-15  2.8e-16
+  29       5e-10     8.6e-06   1.0000000     6.4e-10   37   29   64  3.6e-15  3.7e-16
+  30       4e-10     8.4e-06   1.0000000       5e-10   38   30   66  1.8e-15  4.3e-16
+  31     3.1e-10     8.6e-06   1.0000000       4e-10   39   31   68  2.8e-15  2.6e-16
+  32     2.5e-10     9.3e-06   1.0000000     3.1e-10   40   32   70  2.7e-15  4.1e-16
+---------- 当前进度: 100 % - 求解线性方程组
+Memory: 1198/1246 1263/1340
+  33     1.9e-10     8.3e-06   1.0000000     2.5e-10   41   33   72  3.6e-15  5.5e-16
+  34     1.5e-10     9.3e-06   1.0000000     1.9e-10   42   34   74  4.5e-15  3.9e-16
+---------- 当前进度: 100 % - 组装矩阵
+Memory: 1199/1246 1264/1340
+  35     1.2e-10     9.2e-06   1.0000000     1.5e-10   43   35   76  3.8e-15  5.7e-16
+---------- 当前进度: 100 % - 约束处理
+Memory: 1205/1246 1274/1340
+  36     9.4e-11     8.5e-06   1.0000000     1.2e-10   45   36   78  4.7e-15  3.3e-16
+---------- 当前进度: 100 % - 
+Memory: 1122/1246 1168/1340
+求解时间：8 s。
+物理内存: 1.25 GB
+虚拟内存: 1.31 GB
+结束时间：2026年7月19日 11:45:24。
+----- M02.1 stationary transport audit/解 1 (sol1) 中的“稳态求解器 1” ----------------->
+---------- 当前进度: 100 % - 正在创建可视化网格
+Memory: 1128/1246 1173/1340
+           当前进度:   0 % - 矩形
+Memory: 1131/1246 1176/1340
+           当前进度:   9 % - 形成联合体
+----       当前进度:  42 % - 解析域和空区域
+---------- 当前进度: 100 % - 正在更新选择
+---------- 当前进度: 100 % - 正在创建可视化网格
+           当前进度:   0 % - 映射
+Memory: 1131/1246 1177/1340
+顶点单元数：4
+边界单元数：176
+最小单元质量：1
+---------- 当前进度: 100 % - 正在定型网格
+Memory: 1132/1246 1177/1340
+           当前进度:   1 % - 生成方程
+Memory: 1137/1246 1184/1340
+           当前进度:   3 % - 生成方程
+Memory: 1140/1246 1186/1340
+<---- M02.1 stationary transport audit/解 1 (sol1) 中的“编译方程: 稳态” -----------------
+开始于 2026年7月19日 11:45:26。
+几何形函数: 线性拉格朗日单元
+在 AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD 上运行。
+在以下位置使用 1 个插槽： Pokemon 上（共 8 个内核）。
+可用内存：15.77 GB。
+           当前进度:   7 % - 编译方程: 稳态
+Memory: 1144/1246 1190/1340
+           当前进度:   7 % - 正在创建可视化网格
+Memory: 1146/1246 1191/1340
+时间：1。
+物理内存: 1.15 GB
+虚拟内存: 1.19 GB
+结束时间：2026年7月19日 11:45:27。
+----- M02.1 stationary transport audit/解 1 (sol1) 中的“编译方程: 稳态” ---------------->
+<---- M02.1 stationary transport audit/解 1 (sol1) 中的“因变量 1” --------------------
+开始于 2026年7月19日 11:45:27。
+           当前进度:   7 % - 因变量 1
+求解时间：0 s。
+物理内存: 1.15 GB
+虚拟内存: 1.19 GB
+结束时间：2026年7月19日 11:45:27。
+----- M02.1 stationary transport audit/解 1 (sol1) 中的“因变量 1” ------------------->
+<---- M02.1 stationary transport audit/解 1 (sol1) 中的“稳态求解器 1” ------------------
+开始于 2026年7月19日 11:45:27。
+非线性求解器
+求解的自由度数：28536（加上 893 个内部自由度）。
+-          当前进度:  12 % - 组装矩阵
+Memory: 1156/1246 1201/1340
+找到非对称矩阵。
+缩放因变量：
+浓度 (comp1.cN2): 6.5e+03
+浓度 (comp1.cNH3): 9.2e+03
+压力 (comp1.p): 26
+电解质电位 (comp1.phil): 1
+速度场 (comp1.u): 1.2
+边界电解质电位 (comp1.cd.current_anode_M033.phil0): 1
+常微分方程助变量 (comp1.spf.inlet.Pinl): 1.1e+03
+已使用正交零空间函数。
+-          当前进度:  12 % - 矩阵分解
+Memory: 1179/1246 1228/1340
+Iter      SolEst      ResEst     Damping    Stepsize #Res #Jac #Sol   LinErr   LinRes
+-          当前进度:  17 % - 正在组装残差
+Memory: 1235/1246 1302/1340
+   1     3.1e+24       2e+16   0.1000000     2.4e+12    8    1    8        -     0.23
+-          当前进度:  17 % - 组装矩阵
+Memory: 1171/1246 1210/1340
+-          当前进度:  17 % - 矩阵分解
+Memory: 1251/1268 1338/1340
+   2          96     9.5e+02   0.1000003     1.2e+02    9    2   10  2.3e-14  3.1e-16
+--         当前进度:  29 % - 约束处理
+Memory: 1334/1334 1408/1408
+--         当前进度:  29 % - 矩阵分解
+Memory: 1253/1334 1339/1408
+   3     0.00061         9.7   1.0000000         3.1   10    3   12  1.8e-14  5.3e-15
+--------   当前进度:  83 % - 矩阵分解
+Memory: 1216/1336 1292/1409
+   4     2.1e-12     2.9e-06   1.0000000     0.00013   11    4   14  9.9e-15  4.1e-15
+---------- 当前进度: 100 % - 矩阵分解
+Memory: 1251/1336 1321/1409
+---------- 当前进度: 100 % - 求解线性方程组
+Memory: 1298/1336 1370/1409
+   5       0.028     2.8e-06   1.0000000         8.1   13    5   16  2.3e-15  3.1e-15
+---------- 当前进度: 100 % - 矩阵分解
+Memory: 1244/1336 1299/1409
+   6     0.00054     2.8e-06   1.0000000        0.03   14    6   18  1.4e-15  2.4e-16
+---------- 当前进度: 100 % - 
+Memory: 1305/1336 1377/1409
+---------- 当前进度: 100 % - 矩阵分解
+Memory: 1241/1336 1327/1409
+   7     5.9e-05     2.9e-06   1.0000000      0.0006   15    7   20  4.9e-16  2.3e-16
+   8     9.9e-06     2.8e-06   1.0000000     5.7e-05   16    8   22  7.2e-16  2.4e-16
+---------- 当前进度: 100 % - 正在组装残差
+Memory: 1297/1336 1368/1409
+   9     1.4e-06     2.8e-06   1.0000000       1e-05   17    9   24  1.4e-15    3e-16
+---------- 当前进度: 100 % - 矩阵分解
+Memory: 1256/1336 1312/1409
+  10     4.1e-07     2.8e-06   1.0000000     1.4e-06   18   10   26  1.3e-15  3.8e-16
+---------- 当前进度: 100 % - 组装矩阵
+Memory: 1303/1336 1375/1409
+---------- 当前进度: 100 % - 矩阵分解
+Memory: 1220/1336 1273/1409
+  11     1.2e-07     2.8e-06   1.0000000     4.1e-07   19   11   28  2.7e-15  2.8e-16
+---------- 当前进度: 100 % - 约束处理
+Memory: 1312/1336 1384/1409
+---------- 当前进度: 100 % - 矩阵分解
+Memory: 1246/1336 1332/1409
+  12     5.3e-08     2.8e-06   1.0000000     1.2e-07   20   12   30  1.5e-15    3e-16
+  13     2.2e-08     2.6e-06   1.0000000     5.3e-08   21   13   32  1.9e-15  2.5e-16
+  14       1e-08     2.7e-06   1.0000000     2.2e-08   22   14   34  3.4e-15  3.7e-16
+---------- 当前进度: 100 % - 
+Memory: 1300/1336 1372/1409
+---------- 当前进度: 100 % - 矩阵分解
+Memory: 1224/1336 1276/1409
+  15     4.3e-09     2.8e-06   1.0000000       1e-08   23   15   36  2.6e-15  2.5e-16
+  16     1.9e-09     2.6e-06   1.0000000     4.3e-09   24   16   38  2.5e-15  2.5e-16
+---------- 当前进度: 100 % - 求解线性方程组
+Memory: 1310/1336 1378/1409
+  17     8.4e-10     2.6e-06   1.0000000     1.9e-09   25   17   40    3e-15  2.5e-16
+---------- 当前进度: 100 % - 矩阵分解
+Memory: 1237/1336 1292/1409
+  18     3.6e-10     2.7e-06   1.0000000     8.4e-10   26   18   42  2.4e-15  2.5e-16
+  19     1.6e-10     2.8e-06   1.0000000     3.6e-10   27   19   44  2.4e-15  3.1e-16
+  20     6.6e-11     2.7e-06   1.0000000     1.6e-10   29   20   46  3.3e-15    2e-16
+---------- 当前进度: 100 % - 
+Memory: 1159/1336 1193/1409
+求解时间：10 s。
+物理内存: 1.34 GB
+虚拟内存: 1.41 GB
+结束时间：2026年7月19日 11:45:37。
+----- M02.1 stationary transport audit/解 1 (sol1) 中的“稳态求解器 1” ----------------->
+类运行时: 121 s.
+正在保存模型: F:\LiNRR_COMSOL\worktrees\LiNRR_M03A_4\runs\20260719_114249_M03A_4\java_class_output\LiNRR_M03A_4_ParameterTransfer_M034SyntheticTransfer.mph
+保存时间: 0 s.
+总时间: 121 s.
+
+## reload stdout
+M03A4_RELOAD_PARAM|expected_target_parameter|stored_target_parameter|expected_value|stored_value|actual_value|expected_unit|stored_unit|expected_origin|stored_origin|expected_source_sha256|stored_source_sha256|expected_resolved_sha256|stored_resolved_sha256|expected_case_id|stored_case_id|expected_quantity_name|stored_quantity_name|status|failure_reason
+M03A4_RELOAD_PARAM|kappa_dry_run|kappa_dry_run|0.5454161958786391|0.5454161958786391|0.54541619587863910|S/m|S/m|SYNTHETIC|SYNTHETIC|a24d1727419c1f2a8fbb9b364859bbb2a4ef4fbc62c4669244cd19b1b79d4379|a24d1727419c1f2a8fbb9b364859bbb2a4ef4fbc62c4669244cd19b1b79d4379|c76b81c8d375653c6713e5c39ece809c575af6a660cce9154e98ef0af475f538|c76b81c8d375653c6713e5c39ece809c575af6a660cce9154e98ef0af475f538|COMBINED_NONIDENTITY|COMBINED_NONIDENTITY|conductivity|conductivity|PASS|
+M03A4_RELOAD_PARAM|Hcell_dry_run|Hcell_dry_run|0.0047999999999999996|0.0047999999999999996|0.0048000000000000000|m|m|SYNTHETIC|SYNTHETIC|a24d1727419c1f2a8fbb9b364859bbb2a4ef4fbc62c4669244cd19b1b79d4379|a24d1727419c1f2a8fbb9b364859bbb2a4ef4fbc62c4669244cd19b1b79d4379|c76b81c8d375653c6713e5c39ece809c575af6a660cce9154e98ef0af475f538|c76b81c8d375653c6713e5c39ece809c575af6a660cce9154e98ef0af475f538|COMBINED_NONIDENTITY|COMBINED_NONIDENTITY|electrode_spacing|electrode_spacing|PASS|
+M03A4_RELOAD_PARAM|depth_dry_run|depth_dry_run|0.049500000000000002|0.049500000000000002|0.049500000000000000|m|m|SYNTHETIC|SYNTHETIC|a24d1727419c1f2a8fbb9b364859bbb2a4ef4fbc62c4669244cd19b1b79d4379|a24d1727419c1f2a8fbb9b364859bbb2a4ef4fbc62c4669244cd19b1b79d4379|c76b81c8d375653c6713e5c39ece809c575af6a660cce9154e98ef0af475f538|c76b81c8d375653c6713e5c39ece809c575af6a660cce9154e98ef0af475f538|COMBINED_NONIDENTITY|COMBINED_NONIDENTITY|out_of_plane_thickness|out_of_plane_thickness|PASS|
+M03A4_RELOAD_PARAM|A_EIS_dry_run|A_EIS_dry_run|0.0033275000000000002|0.0033275000000000002|0.0033275000000000000|m^2|m^2|SYNTHETIC|SYNTHETIC|a24d1727419c1f2a8fbb9b364859bbb2a4ef4fbc62c4669244cd19b1b79d4379|a24d1727419c1f2a8fbb9b364859bbb2a4ef4fbc62c4669244cd19b1b79d4379|c76b81c8d375653c6713e5c39ece809c575af6a660cce9154e98ef0af475f538|c76b81c8d375653c6713e5c39ece809c575af6a660cce9154e98ef0af475f538|COMBINED_NONIDENTITY|COMBINED_NONIDENTITY|EIS_area|EIS_area|PASS|
+M03A4_RELOAD_PARAM|A_j_report_dry_run|A_j_report_dry_run|0.0030249999999999999|0.0030249999999999999|0.0030250000000000000|m^2|m^2|SYNTHETIC|SYNTHETIC|a24d1727419c1f2a8fbb9b364859bbb2a4ef4fbc62c4669244cd19b1b79d4379|a24d1727419c1f2a8fbb9b364859bbb2a4ef4fbc62c4669244cd19b1b79d4379|c76b81c8d375653c6713e5c39ece809c575af6a660cce9154e98ef0af475f538|c76b81c8d375653c6713e5c39ece809c575af6a660cce9154e98ef0af475f538|COMBINED_NONIDENTITY|COMBINED_NONIDENTITY|current_density_reporting_area|current_density_reporting_area|PASS|
+M03A4_RELOAD_CONSUMER|conductivity_feature|PASS
+M03A4_RELOAD_CONSUMER|actual_geometry_height|PASS
+M03A4_RELOAD_CONSUMER|integration_depth|PASS
+M03A4_RELOAD_CONSUMER|conductivity_inversion_area|PASS
+M03A4_RELOAD_CONSUMER|reported_current_density|PASS
+M03A4_RELOAD|PASS|exact canonical values units origins targets source hashes and five actual consumers verified in independent process
+
+## reload stderr
+
+## reload log
+*******************************************
+***COMSOL 6.4.0.293 progress output file***
+*******************************************
+Sun Jul 19 11:45:45 CST 2026
+COMSOL Multiphysics 6.4 (开发版本: 293) 在批处理模式下启动
+正在运行: F:\LiNRR_COMSOL\worktrees\LiNRR_M03A_4\runs\20260719_114249_M03A_4\java_class_output\LiNRR_M03A_4_LoadCheck.class
+类运行时: 23 s.
+正在保存模型: F:\LiNRR_COMSOL\worktrees\LiNRR_M03A_4\runs\20260719_114249_M03A_4\java_class_output\LiNRR_M03A_4_LoadCheck_M034ReloadAudit.mph
+保存时间: 2 s.
+总时间: 25 s.

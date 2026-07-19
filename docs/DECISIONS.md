@@ -379,3 +379,50 @@ Negative concentrations are not clipped. Every failed, warning, or
 outside-applicability sweep point is retained with its original classification
 and reason. `Theta > 1` is only the prescribed-current supply-capacity boundary,
 not a physical reaction-performance limit.
+
+## D0015 — M03A.4 calibration intake framework and synthetic parameter-transfer dry-run
+
+Decision: add an independent experimental-input contract and a synthetic-only
+parameter-transfer dry-run while preserving every M00–M03A.3 file. No
+experimental data are fabricated: the formal experimental template remains
+incomplete, no substitute EIS file is generated, and the experimental
+completeness gate remains false.
+
+The dry-run parameters are explicitly `SYNTHETIC`. The M03A.3 MPH is loaded
+read-only and its physics tree is audited before and after transfer. A new
+derived M03A.4 MPH is saved without overwriting the M03A.3 source. Direct and
+HFR-derived conductivity remain independent, missing series terms never default
+to zero, area definitions are not assumed equal, and nonphysical Monte Carlo
+samples are rejected without clipping or repair.
+
+Scope limitation: the derivative retains Primary Current Distribution and the
+prescribed one-way Faraday mapping. It contains no electrode kinetics,
+Butler–Volmer law, Secondary or Tertiary Current Distribution, or
+ElectrodeReaction. A passing synthetic dry-run is not experimental calibration
+and does not authorize M03B.
+
+The formal transfer evidence is a combined nonidentity, current-run full solve:
+geometry and named selections are rebuilt and audited, the mesh is rebuilt, old
+solution data are cleared, and `spf`, `tds`, and `cd` are activated together.
+Formal Faraday closure uses actual TDS cathode and inlet/outlet fluxes;
+`m033_n2_imposed_cath` and `m033_nh3_imposed_cath` remain separately labeled
+`ALGEBRAIC_STOICHIOMETRIC_MAPPING`. All downstream consumers use the hashed
+canonical resolved-input artifact, and publication occurs only after independent
+reload and threshold acceptance.
+
+Derived conductivity provenance is a deterministic seven-parent contract:
+accepted replicate-consensus HFR, fixture, contact, membrane, other-series
+resistance, electrode spacing, and EIS area. Values, uncertainties, units,
+origins, acceptance states, and full source hashes are canonically serialized;
+their SHA-256 digest is the conductivity source identity. Analytical
+uncertainty is resolved before the conductivity row is emitted, and both the
+analytical and fixed-seed Monte Carlo artifacts are bound to the final resolved
+artifact hash.
+
+Formal publication is a two-phase release. A timestamped immutable bundle and
+full file manifest pass independent COMSOL reload and integration audits before
+one same-volume atomic active-release pointer is changed. Compatibility paths
+are secondary copies with retained backups and rollback; they are not release
+identity. The MPH stores the complete per-parameter value, unit, origin, source
+SHA-256, resolved-artifact SHA-256, case, quantity, and target metadata, all of
+which are compared after reload.

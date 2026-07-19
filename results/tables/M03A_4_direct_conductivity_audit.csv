@@ -1,0 +1,2 @@
+"sample_id","conductivity_S_m","uncertainty_S_m","unit","temperature_K","data_origin","status","measurement_method","source_reference","failure_reason"
+"SYN_DRY_001","0.505","0.01","S/m","298.14999999999998","SYNTHETIC","PASS","SYNTHETIC_FIXED_DEFINITION","M03A.4 synthetic conductivity contract",""
