@@ -1,0 +1,2 @@
+sample_id,conductivity_S_m,uncertainty_S_m,unit,temperature_K,method,cell_constant,cell_constant_unit,calibration_standard,instrument,raw_evidence_path,raw_evidence_size_bytes,raw_evidence_sha256,source_reference,data_origin,status,notes
+EXP_TEMPLATE_001,,,,,,,,,,,,,,EXPERIMENTAL,MISSING,

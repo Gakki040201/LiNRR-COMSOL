@@ -1,0 +1,6 @@
+sample_id,quantity_name,value_SI,uncertainty_SI,unit,measurement_method,source_reference,raw_evidence_path,raw_evidence_size_bytes,raw_evidence_sha256,data_origin,status,definition,notes
+EXP_TEMPLATE_001,electrode_spacing,,,,,,,,,EXPERIMENTAL,MISSING,,
+EXP_TEMPLATE_001,out_of_plane_depth,,,,,,,,,EXPERIMENTAL,MISSING,,
+EXP_TEMPLATE_001,geometric_electrode_area,,,,,,,,,EXPERIMENTAL,MISSING,,
+EXP_TEMPLATE_001,EIS_area,,,,,,,,,EXPERIMENTAL,MISSING,,
+EXP_TEMPLATE_001,current_density_reporting_area,,,,,,,,,EXPERIMENTAL,MISSING,,

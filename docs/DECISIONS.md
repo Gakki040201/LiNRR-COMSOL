@@ -426,3 +426,28 @@ are secondary copies with retained backups and rollback; they are not release
 identity. The MPH stores the complete per-parameter value, unit, origin, source
 SHA-256, resolved-artifact SHA-256, case, quantity, and target metadata, all of
 which are compared after reload.
+
+## D0016 — M03A.5 experimental calibration acquisition and intake readiness
+
+Decision: establish the real experimental-data acquisition, provenance,
+normalization, uncertainty, and readiness contract before any experimental
+calibration or parameter transfer is attempted. The canonical intake package
+records raw and normalized EIS evidence, replicate metadata, all required series
+resistances, independently defined geometry and areas, and direct conductivity.
+
+No real experimental file is available in this stage. All formal experimental
+rows therefore remain `data_origin=EXPERIMENTAL` and `status=MISSING`, with
+numeric values blank. Missing resistance is never interpreted as zero, areas
+are not assumed equal, and direct versus HFR-derived conductivity is never
+selected automatically.
+
+Synthetic fixtures under `tests/fixtures/M03A_5/` are used only for negative
+and structural regression. They are not substitute experimental data and cannot
+satisfy the experimental completeness, parameter-transfer, or M03B gates.
+
+Scope limitation: completing the framework audit is not experimental
+calibration. M03A.5 runs no COMSOL model, creates no calibrated MPH, performs no
+parameter transfer, and does not authorize M03B. The enforced initial state is
+`RUN_STATE=EXPERIMENTAL_INPUT_WAIT`, `CALIBRATION_MODE=PROVISIONAL`,
+`EXPERIMENTAL_INPUT_COMPLETE=FALSE`, `PARAMETER_TRANSFER_MODE=NOT_RUN`,
+`M03B_CANDIDATE=FALSE`, and `M03B_READY=FALSE`.
