@@ -1,0 +1,8 @@
+"item","value","status","detail"
+"RUN_STATE","EXPERIMENTAL_INPUT_WAIT","WAIT","no real experimental evidence received"
+"ACQUISITION_PACKAGE_READY","TRUE","PASS","external acquisition framework and tools are available"
+"EXPERIMENTAL_EVIDENCE_RECEIVED","FALSE","WAIT","no real experimental files supplied"
+"EXPERIMENTAL_INPUT_COMPLETE","FALSE","WAIT","only the published M03A.5 validator may determine completeness"
+"PARAMETER_TRANSFER_MODE","NOT_RUN","WAIT","parameter transfer is outside M03A.6 scope"
+"M03B_CANDIDATE","FALSE","BLOCKED_BY_STAGE_SCOPE","M03A.6 does not nominate M03B candidates"
+"M03B_READY","FALSE","BLOCKED_BY_STAGE_SCOPE","M03A.6 does not authorize M03B"

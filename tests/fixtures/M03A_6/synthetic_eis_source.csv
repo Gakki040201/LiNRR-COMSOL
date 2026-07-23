@@ -1,0 +1,5 @@
+freq_source,zr_source,zi_source,data_origin
+100000,4.1,0.2,SYNTHETIC
+100000,4.2,-0.1,SYNTHETIC
+10000,4.8,-0.6,SYNTHETIC
+1000,6.3,-1.2,SYNTHETIC
