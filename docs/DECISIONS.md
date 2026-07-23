@@ -451,3 +451,21 @@ parameter transfer, and does not authorize M03B. The enforced initial state is
 `RUN_STATE=EXPERIMENTAL_INPUT_WAIT`, `CALIBRATION_MODE=PROVISIONAL`,
 `EXPERIMENTAL_INPUT_COMPLETE=FALSE`, `PARAMETER_TRANSFER_MODE=NOT_RUN`,
 `M03B_CANDIDATE=FALSE`, and `M03B_READY=FALSE`.
+
+## D0017 — M03A.6 real experimental evidence acquisition execution
+
+Decision: M03A.6 establishes an external real-experiment acquisition package
+and controlled intake path for the unchanged, published M03A.5 validator. The
+package initializer, row-preserving normalized-EIS conversion contract, exact
+`Int64` byte-size and SHA-256 ledger, and pre-intake checks operate outside the
+Git repository and do not modify raw evidence.
+
+Synthetic fixtures under `tests/fixtures/M03A_6/` are used only for software
+regression. They are not experimental observations, cannot substitute for real
+files, and cannot satisfy an experimental, parameter-transfer, or M03B gate.
+
+No real experimental result is currently available. Completing the acquisition
+framework is not experimental calibration. Parameter transfer remains not run,
+and M03B is not authorized. M03A.6 may report only package readiness, evidence
+receipt, or a blocked pre-intake state; only the formal M03A.5 validator can
+determine `EXPERIMENTAL_INPUT_COMPLETE`.
