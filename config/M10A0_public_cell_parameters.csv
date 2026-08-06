@@ -1,0 +1,25 @@
+parameter,value,status,role,source_or_basis,notes
+Lcell,107 mm,PUBLIC_HARD,assembly,Nature 2024 SI Fig. 1; WO2024052575A2 Example 1,overall cell dimension
+Wcell,107 mm,PUBLIC_HARD,assembly,Nature 2024 SI Fig. 1; WO2024052575A2 Example 1,overall cell dimension
+Hcell,51 mm,PUBLIC_HARD,assembly,Nature 2024 SI Fig. 1; WO2024052575A2 Example 1,assembled thickness
+Aactive,25 cm^2,PUBLIC_HARD,active zone,Nature 2024 SI Fig. 1; WO2024052575A2 Example 1,effective working-electrode / flow-field area
+Lactive,50 mm,GEOMETRY_INFERENCE,active zone,sqrt(25 cm^2) under square-active-area assumption,replace when exact CAD/opening is measured
+Wactive,50 mm,GEOMETRY_INFERENCE,active zone,sqrt(25 cm^2) under square-active-area assumption,replace when exact CAD/opening is measured
+h_electrolyte,4 mm,PUBLIC_HARD,electrolyte chamber,Li et al. methods / preprint; patent preferred 2 or 4 mm,baseline public geometry
+d_gas_public,1 mm,PUBLIC_HARD,gas flow field,WO2024052575A2 Example 1; Li et al. methods,reported as gas flow channel size
+w_gas_ch,1 mm,GEOMETRY_INTERPRETATION,gas flow field,maps reported 1 mm size to channel width,not claimed as exact CAD
+h_gas_ch,1 mm,GEOMETRY_INTERPRETATION,gas flow field,maps reported 1 mm size to channel depth,not claimed as exact CAD
+w_gas_rib,1 mm,PROVISIONAL,gas flow field,numerical default,sweep later
+gas_channel_count,25 per side,GEOMETRY_INFERENCE,gas flow field,50 mm active width / (1 mm channel + 1 mm rib),"parallel-channel surrogate, not exact published topology"
+spacer_count,4,PUBLIC_CONFIGURATION,electrolyte chamber,WO2024052575A2 Fig. 4 / Example 5,baseline tested chamber
+w_spacer,1 mm,PROVISIONAL,electrolyte chamber,numerical default,patent does not report exact bar width
+t_gde,0.03 mm,PUBLIC_SAME_PLATFORM,electrode,"Fu et al., Nat Commun 2024 same DTU 25 cm^2 platform",confirm exact long-term-cell hardware when available
+L_header,10 mm,PROVISIONAL_NUMERICAL,active zone,numerical inlet/outlet extension,not physical CAD claim
+t_flow_plate,10 mm,PROVISIONAL_VISUAL,assembly,visualization-only,not used as a calibrated physics parameter
+t_outer_plate,derived to close 51 mm,PROVISIONAL_VISUAL,assembly,overall thickness closure,not used as a calibrated physics parameter
+bolt_count,8,PUBLIC_VISUAL_OBSERVATION,assembly,Nature SI assembled-cell photo,coordinates/radius are provisional
+r_bolt,3 mm,PROVISIONAL_VISUAL,assembly,visualization-only,not exact hardware
+N2_flow_public,75 sccm,PUBLIC_OPERATING_POINT,future R1/R2,Li et al. methods; patent Example 1,not used in R0 geometry
+H2_flow_public,75 sccm,PUBLIC_OPERATING_POINT,future R1/R2,Li et al. methods; patent Example 1,not used in R0 geometry
+electrolyte_flow_public,1.0 mL/min,PUBLIC_OPERATING_POINT,future R1,Li et al. methods,not used in R0 geometry
+gas_pressure_drop_public,15 mbar,PUBLIC_OPERATING_POINT,future R1/R6,Li et al. methods,not used in R0 geometry
