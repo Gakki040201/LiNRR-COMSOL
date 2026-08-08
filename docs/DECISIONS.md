@@ -469,3 +469,33 @@ framework is not experimental calibration. Parameter transfer remains not run,
 and M03B is not authorized. M03A.6 may report only package readiness, evidence
 receipt, or a blocked pre-intake state; only the formal M03A.5 validator can
 determine `EXPERIMENTAL_INPUT_COMPLETE`.
+
+## D0018 — M10A2 real-geometry SSC, external tubing, wetting, and N2-transfer baseline
+
+Decision: preserve the passed M10A1 flow solution as an immutable application
+baseline, repair only its GUI wall-shear result expressions using COMSOL-native
+total-traction variables proven by Equation View, and add new named, GUI-editable
+components for the mirrored H2 channel, physical SSC/PtAuSSC sheets, gasket mask,
+external Pipe Flow networks, homogenized Darcy SSC, porous phase transport, and
+phenomenological dissolved-N2 transport.
+
+The Manual-backed gas operating point is 50 mL/min per side. The Manual contains
+no reliably recoverable structured RPM-to-liquid-flow table, so liquid flow stays
+`CALIBRATION_REQUIRED`; the saved 1 cm3/min case is only a sensitivity point.
+PFA IDs are hydraulic diameters, PEEK is limited to fittings, undocumented routing
+is schematic, and unknown gas-inlet/latex lengths are excluded rather than set to
+invented values.
+
+The 60 mm square SSC cut is distinct from the real-CAD flow-field footprint and
+open-channel area. The 30 um thickness is `LITERATURE_SAME_PLATFORM`, while
+permeability, wetting/capillary properties, fluid properties, Henry equilibrium,
+and electrolyte transport remain provisional or calibration-required. The broad
+permeability sweep is a sensitivity envelope; its high-velocity end is outside a
+credible predictive Darcy regime and is retained to expose that limitation.
+
+Rejected alternatives: tetrahedral meshing of all external narrow tubing;
+resolving individual 500-mesh pores; inferring permeability from nominal pore
+size; unsupported gasket compression thickness; treating 15 mbar or the liquid
+sweep as laboratory measurements; relabeling literature/model inputs as
+experimental; and adding lithium plating, Li-NRR kinetics, SEI, or electrochemical
+coupling before the M03A.5/M03A.6 experimental calibration gate.
