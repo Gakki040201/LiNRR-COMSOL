@@ -1,0 +1,11 @@
+component,physics_tag,physics_type,label,features
+comp_electrolyte_flow,spf_liq,LaminarFlow,Liquid Stationary Laminar Flow | NUMERICAL_TEST_ONLY,fp1;init1;wallbc1;grav1;rtfr1;dcont1;inlet_liq;outlet_liq;walls_liq;gde_wall_liq_1;gde_wall_liq_2
+comp_n2_flow,spf_n2,LaminarFlow,N2 Stationary Laminar Flow | NUMERICAL_TEST_ONLY,fp1;init1;wallbc1;grav1;rtfr1;dcont1;inlet_n2;outlet_n2;walls_n2;gde_wall_n2_1
+comp_h2_flow,spf_h2,LaminarFlow,层流 2,fp1;init1;wallbc1;grav1;rtfr1;dcont1;in_h2;out_h2;wall_h2;ssc_wall_h2
+comp_pipe_n2,pfl_n2,PipeFlow,管道流 2,fp1;phf1;pipe1;pr1;init1;dcont1;inlet;outlet
+comp_pipe_h2,pfl_h2,PipeFlow,管道流 2a,fp1;phf1;pipe1;pr1;init1;dcont1;inlet;outlet
+comp_pipe_liq,pfl_liq,PipeFlow,管道流,fp1;phf1;pipe1;pr1;init1;dcont1;pipe_large;inlet;outlet
+comp_ssc_darcy,dl_ssc,PorousMediaFlowDarcy,达西定律,porous1;nf1;gr1;init1;dcont1;p_liq;p_gas
+comp_ssc_wetting,phtr_ssc,PhaseTransportPorous,多孔介质相传递,porous1;init1;nf1;gr1;dcont1;liq_in
+comp_ssc_wetting,dl_wet,PorousMediaFlowDarcy,达西定律 2,porous1;nf1;gr1;init1;dcont1;p_liq;p_gas
+comp_n2_transfer,tds_n2,DilutedSpecies,稀物质传递 2,sp1;cdm1;nflx1;init1;dcont1;gas_eq;bulk_sink

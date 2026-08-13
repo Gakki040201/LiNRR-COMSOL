@@ -1,0 +1,6 @@
+M10A2_SSC_AREA|flowfield_footprint_mm2=2474.04981995|open_channel_area_mm2=1278.22088213|total_cut_area_mm2=3600.00000000|bbox_mm=[-24.990402221679688, 24.990402221679688, -24.75, 24.75, 5.0, 5.0]
+M10A2_RESUME_AFTER_REAL_FLOW=TRUE
+M10A2_DATASET|study=std_h2|solution=sol5|component=comp_h2_flow|dataset=dset_std_h2
+M10A2_H2_REAL_CAD_MIRROR|dp_Pa=31.4624814583|dataset=dset_std_h2|speed=spf3.U|pressure=pH2|status=PASS
+M10A2_H2_CHECKPOINT_SAVE=PASS
+M10A2_DATASET|study=std_pipe_n2|solution=sol6|component=comp_pipe_n2|dataset=dset_std_pipe_n2

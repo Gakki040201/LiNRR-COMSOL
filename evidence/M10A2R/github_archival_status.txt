@@ -1,0 +1,8 @@
+GITHUB_REPOSITORY=Gakki040201/LiNRR-COMSOL
+GITHUB_REPOSITORY_PRIVATE=TRUE
+GIT_LFS_VERSION=git-lfs/3.7.1
+GIT_LFS_PATTERNS=*.mph;*.docx;*.pdf;*.xlsx;*.zip
+STEP_STORAGE=ORDINARY_GIT_UNCHANGED
+MANUAL_BINARY_ARCHIVE=BYTE_IDENTICAL
+RAW_EXPERIMENTAL_ARCHIVE=NOT_FOUND_AT_DOCUMENTED_M03A6_PATH
+FILES_EXCLUDED_FOR_SECURITY=credentials;tokens;SSH_private_keys;.env_credentials;COMSOL_license_files;Windows_credentials;browser_cookies;unauthorized_third_party_material;isolated_COMSOL_preferences

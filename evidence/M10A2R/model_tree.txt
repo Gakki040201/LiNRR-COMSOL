@@ -1,0 +1,113 @@
+MODEL LiNRR_M10A2R_manual_reconciled
+COMPONENT comp_cc_raw | REAL / PHYSICAL | Raw real CAD - current collector
+  GEOMETRY geom_cc_raw
+    FEATURE imp_cc | Import
+    FEATURE fin | Finalize
+COMPONENT comp_chamber_raw | REAL / PHYSICAL | Raw real CAD - chamber
+  GEOMETRY geom_chamber_raw
+    FEATURE imp_chamber | Import
+    FEATURE fin | Finalize
+COMPONENT comp_cc_rotated | Current collector rotated about global X - M10A0.3b
+  GEOMETRY geom_cc_rotated
+    FEATURE imp_cc_rotate | Import
+    FEATURE rot_cc_top | Rotate
+    FEATURE mov_cc_top | Move
+    FEATURE mir_cc_bottom | Mirror
+    FEATURE fin | Finalize
+COMPONENT comp_registered | REAL / PHYSICAL | Registered physical cell
+  GEOMETRY geom_registered
+    FEATURE imp_chamber_registered | Import
+    FEATURE imp_cc_registered | Import
+    FEATURE rot_cc_top | Rotate
+    FEATURE mov_cc_top | Move
+    FEATURE mir_cc_bottom | Mirror
+    FEATURE fin | Finalize
+COMPONENT comp_electrolyte_flow | REAL / PHYSICAL | Electrolyte fluid - real CAD
+  GEOMETRY geom_electrolyte_fluid
+    FEATURE imp_chamber_fluid_source | Import
+    FEATURE blk_liq_window | Block
+    FEATURE cyl_liq_port_in | Cylinder
+    FEATURE cyl_liq_port_out | Cylinder
+    FEATURE uni_liq_closure | Union
+    FEATURE dif_liq_exact | Difference
+    FEATURE fin | Finalize
+COMPONENT comp_n2_flow | REAL / PHYSICAL | N2 channel - real CAD | 50 cm^3/min
+  GEOMETRY geom_n2_channel_fluid
+    FEATURE imp_cc_channel_source | Import
+    FEATURE rot_cc_channel | Rotate
+    FEATURE mov_cc_channel | Move
+    FEATURE blk_n2_closure | Block
+    FEATURE dif_n2_exact | Difference
+    FEATURE fin | Finalize
+COMPONENT comp_ssc_hardware | REAL / PHYSICAL | Physical SSC / gasket assembly
+  GEOMETRY geom_ssc_hardware
+    FEATURE blk_cathode_ssc | Block
+    FEATURE blk_anode_ssc | Block
+    FEATURE wp_gasket | WorkPlane
+    FEATURE fin | Finalize
+COMPONENT comp_h2_flow | REAL / PHYSICAL | H2 channel - mirrored real CAD | 50 cm^3/min
+  GEOMETRY geom_h2_channel_fluid
+    FEATURE imp_cc_h2_source | Import
+    FEATURE rot_cc_h2 | Rotate
+    FEATURE mov_cc_h2_top | Move
+    FEATURE mir_cc_h2_bottom | Mirror
+    FEATURE blk_h2_closure | Block
+    FEATURE dif_h2_exact | Difference
+    FEATURE fin | Finalize
+COMPONENT comp_pipe_n2 | REDUCED ENGINEERING MODELS | N2 External Hydraulic Network [1D REDUCED MODEL - NOT PHYSICAL ROUTING]
+  GEOMETRY geom_pipe_n2
+    FEATURE route | Polygon
+    FEATURE fin | Finalize
+COMPONENT comp_pipe_h2 | REDUCED ENGINEERING MODELS | H2 External Hydraulic Network [1D REDUCED MODEL - NOT PHYSICAL ROUTING]
+  GEOMETRY geom_pipe_h2
+    FEATURE route | Polygon
+    FEATURE fin | Finalize
+COMPONENT comp_pipe_liq | REDUCED ENGINEERING MODELS | Liquid External Hydraulic Network [1D REDUCED MODEL - NOT PHYSICAL ROUTING]
+  GEOMETRY geom_pipe_liq
+    FEATURE route | Polygon
+    FEATURE fin | Finalize
+COMPONENT comp_ssc_darcy | Cathode SSC Darcy [REDUCED THROUGH-PLANE MODEL]
+  GEOMETRY geom_ssc_darcy
+    FEATURE rect | Rectangle
+    FEATURE fin | Finalize
+COMPONENT comp_ssc_wetting | Cathode SSC Wetting [REDUCED THROUGH-PLANE MODEL]
+  GEOMETRY geom_ssc_wetting
+    FEATURE rect | Rectangle
+    FEATURE fin | Finalize
+COMPONENT comp_n2_transfer | N2 Transfer [REDUCED / PHENOMENOLOGICAL MODEL]
+  GEOMETRY geom_n2_transfer
+    FEATURE ssc | Rectangle
+    FEATURE liq | Rectangle
+    FEATURE fin | Finalize
+COMPONENT comp_cell_physical | REAL / PHYSICAL | Physical Cell 3D
+  GEOMETRY geom_cell_physical
+    FEATURE imp_chamber_physical | Import
+    FEATURE imp_cc_physical | Import
+    FEATURE rot_cc_physical | Rotate
+    FEATURE mov_cc_negative | Move
+    FEATURE mir_cc_positive | Mirror
+    FEATURE blk_cathode_ssc_true | Block
+    FEATURE blk_anode_ssc_true | Block
+    FEATURE gasket_negative_visual_outer | Block
+    FEATURE gasket_negative_visual_inner | Block
+    FEATURE gasket_negative_visual | Difference
+    FEATURE gasket_positive_visual_outer | Block
+    FEATURE gasket_positive_visual_inner | Block
+    FEATURE gasket_positive_visual | Difference
+    FEATURE cyl_n2_in_pfa_outer | Cylinder
+    FEATURE cyl_n2_in_bore_tool | Cylinder
+    FEATURE dif_n2_in_pfa_wall | Difference
+    FEATURE cyl_n2_in_fluid_bore | Cylinder
+    FEATURE cyl_n2_out_pfa_outer | Cylinder
+    FEATURE cyl_n2_out_bore_tool | Cylinder
+    FEATURE dif_n2_out_pfa_wall | Difference
+    FEATURE cyl_n2_out_fluid_bore | Cylinder
+    FEATURE cyl_h2_in_pfa_outer | Cylinder
+    FEATURE cyl_h2_in_bore_tool | Cylinder
+    FEATURE dif_h2_in_pfa_wall | Difference
+    FEATURE cyl_h2_in_fluid_bore | Cylinder
+    FEATURE cyl_h2_out_pfa_outer | Cylinder
+    FEATURE cyl_h2_out_bore_tool | Cylinder
+    FEATURE dif_h2_out_pfa_wall | Difference
+    FEATURE cyl_h2_out_fluid_bore | Cylinder
+    FEATURE fin | Finalize

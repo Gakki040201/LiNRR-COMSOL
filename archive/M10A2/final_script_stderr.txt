@@ -1,0 +1,7 @@
+M10A2_PASS_MARKER_MISSING: M10A2A_HYDRAULIC_NETWORK=PASS
+ËùÔÚÎ»ÖÃ F:\LiNRR_COMSOL\worktrees\LiNRR_M10A2\scripts\windows\30_build_M10A2_ssc_pipe_wetting.ps1:80 ×Ö·û: 82
++ ... Match $Marker -Quiet)) { throw "M10A2_PASS_MARKER_MISSING: $Marker" }
++                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (M10A2_PASS_MARK...IC_NETWORK=PASS:String) [], RuntimeException
+    + FullyQualifiedErrorId : M10A2_PASS_MARKER_MISSING: M10A2A_HYDRAULIC_NETWORK=PASS
+ 

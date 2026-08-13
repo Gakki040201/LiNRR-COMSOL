@@ -1,0 +1,10 @@
+study_tag,label,features,solver_sequences
+std_liq_stationary,Liquid Stationary Flow | NUMERICAL_TEST_ONLY,stat,sol1;sol3
+std_n2_stationary,N2 Stationary Flow | NUMERICAL_TEST_ONLY,stat,sol2;sol4
+std_h2,研究 2,stat,sol5
+std_pipe_n2,研究 2a,stat,sol6
+std_pipe_h2,研究 2b,stat,sol7
+std_pipe_liq,研究,stat,sol8
+std_ssc_darcy,研究 3,stat,sol9
+std_ssc_wetting,研究 4,time,sol10
+std_n2_transfer,研究 5,stat,sol11

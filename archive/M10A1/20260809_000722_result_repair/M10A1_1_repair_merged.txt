@@ -1,0 +1,14 @@
+COMSOL_CAPTURE_METADATA_BEGIN
+EXECUTABLE=F:\COMSOL64\Multiphysics\bin\win64\comsolbatch.exe
+ARGUMENTS=-classpathadd F:\LiNRR_COMSOL\worktrees\LiNRR_M10A2\runs\M10A1_1\20260809_000722_result_repair -inputfile F:\LiNRR_COMSOL\worktrees\LiNRR_M10A2\src\java\LiNRR_M10A1_1_ResultRepair.class -outputfile F:\LiNRR_COMSOL\worktrees\LiNRR_M10A2\models\generated\LiNRR_M10A1_1_real_cad_flow_repaired.mph -batchlog F:\LiNRR_COMSOL\worktrees\LiNRR_M10A2\runs\M10A1_1\20260809_000722_result_repair\M10A1_1_repair.log
+STARTED_UTC=2026-08-08T16:08:12.0844683Z
+FINISHED_UTC=2026-08-08T16:08:47.5293376Z
+EXIT_CODE=0
+COMSOL_CAPTURE_METADATA_END
+COMSOL_STDOUT_BEGIN
+M10A1_1_NATIVE_TRACTION_DISCOVERED|physics=spf_liq|variables=spf.T_stressx,spf.T_stressy,spf.T_stressz
+
+COMSOL_STDOUT_END
+COMSOL_STDERR_BEGIN
+
+COMSOL_STDERR_END

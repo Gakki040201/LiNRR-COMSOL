@@ -1,0 +1,84 @@
+component,geometry,feature_tag,feature_type,source_class,created_by,physical_meaning,keep_or_remove,reason
+comp_cc_raw,geom_cc_raw,imp_cc,Import,REAL_CAD,Java source / inherited MPH,original STEP B-rep,KEEP,unchanged strict import
+comp_cc_raw,geom_cc_raw,fin,Finalize,M10A2R_OTHER,Java source / inherited MPH,geometry construction,KEEP,stable existing feature
+comp_chamber_raw,geom_chamber_raw,imp_chamber,Import,REAL_CAD,Java source / inherited MPH,original STEP B-rep,KEEP,unchanged strict import
+comp_chamber_raw,geom_chamber_raw,fin,Finalize,M10A2R_OTHER,Java source / inherited MPH,geometry construction,KEEP,stable existing feature
+comp_cc_rotated,geom_cc_rotated,imp_cc_rotate,Import,REAL_CAD,Java source / inherited MPH,original STEP B-rep,KEEP,unchanged strict import
+comp_cc_rotated,geom_cc_rotated,rot_cc_top,Rotate,M10A2R_OTHER,Java source / inherited MPH,geometry construction,KEEP,stable existing feature
+comp_cc_rotated,geom_cc_rotated,mov_cc_top,Move,M10A2R_OTHER,Java source / inherited MPH,geometry construction,KEEP,stable existing feature
+comp_cc_rotated,geom_cc_rotated,mir_cc_bottom,Mirror,M10A2R_OTHER,Java source / inherited MPH,geometry construction,KEEP,stable existing feature
+comp_cc_rotated,geom_cc_rotated,fin,Finalize,M10A2R_OTHER,Java source / inherited MPH,geometry construction,KEEP,stable existing feature
+comp_registered,geom_registered,imp_chamber_registered,Import,REAL_CAD,Java source / inherited MPH,original STEP B-rep,KEEP,unchanged strict import
+comp_registered,geom_registered,imp_cc_registered,Import,REAL_CAD,Java source / inherited MPH,original STEP B-rep,KEEP,unchanged strict import
+comp_registered,geom_registered,rot_cc_top,Rotate,M10A2R_OTHER,Java source / inherited MPH,geometry construction,KEEP,stable existing feature
+comp_registered,geom_registered,mov_cc_top,Move,M10A2R_OTHER,Java source / inherited MPH,geometry construction,KEEP,stable existing feature
+comp_registered,geom_registered,mir_cc_bottom,Mirror,M10A2R_OTHER,Java source / inherited MPH,geometry construction,KEEP,stable existing feature
+comp_registered,geom_registered,fin,Finalize,M10A2R_OTHER,Java source / inherited MPH,geometry construction,KEEP,stable existing feature
+comp_electrolyte_flow,geom_electrolyte_fluid,imp_chamber_fluid_source,Import,REAL_CAD,Java source / inherited MPH,original STEP B-rep,KEEP,unchanged strict import
+comp_electrolyte_flow,geom_electrolyte_fluid,blk_liq_window,Block,M10A2R_OTHER,Java source / inherited MPH,geometry construction,KEEP,stable existing feature
+comp_electrolyte_flow,geom_electrolyte_fluid,cyl_liq_port_in,Cylinder,M10A2R_OTHER,Java source / inherited MPH,geometry construction,KEEP,stable existing feature
+comp_electrolyte_flow,geom_electrolyte_fluid,cyl_liq_port_out,Cylinder,M10A2R_OTHER,Java source / inherited MPH,geometry construction,KEEP,stable existing feature
+comp_electrolyte_flow,geom_electrolyte_fluid,uni_liq_closure,Union,M10A0_4_FLUID_DOMAIN_EXTRACTION,Java source / inherited MPH,numerical closure minus REAL_CAD solid,KEEP,validated real-CAD fluid domain; port bore matches real STEP
+comp_electrolyte_flow,geom_electrolyte_fluid,dif_liq_exact,Difference,M10A0_4_FLUID_DOMAIN_EXTRACTION,Java source / inherited MPH,numerical closure minus REAL_CAD solid,KEEP,validated real-CAD fluid domain; port bore matches real STEP
+comp_electrolyte_flow,geom_electrolyte_fluid,fin,Finalize,M10A2R_OTHER,Java source / inherited MPH,geometry construction,KEEP,stable existing feature
+comp_n2_flow,geom_n2_channel_fluid,imp_cc_channel_source,Import,REAL_CAD,Java source / inherited MPH,original STEP B-rep,KEEP,unchanged strict import
+comp_n2_flow,geom_n2_channel_fluid,rot_cc_channel,Rotate,M10A2R_OTHER,Java source / inherited MPH,geometry construction,KEEP,stable existing feature
+comp_n2_flow,geom_n2_channel_fluid,mov_cc_channel,Move,M10A2R_OTHER,Java source / inherited MPH,geometry construction,KEEP,stable existing feature
+comp_n2_flow,geom_n2_channel_fluid,blk_n2_closure,Block,M10A0_4_FLUID_DOMAIN_EXTRACTION,Java source / inherited MPH,numerical closure minus REAL_CAD solid,KEEP,validated real-CAD fluid domain; port bore matches real STEP
+comp_n2_flow,geom_n2_channel_fluid,dif_n2_exact,Difference,M10A0_4_FLUID_DOMAIN_EXTRACTION,Java source / inherited MPH,numerical closure minus REAL_CAD solid,KEEP,validated real-CAD fluid domain; port bore matches real STEP
+comp_n2_flow,geom_n2_channel_fluid,fin,Finalize,M10A2R_OTHER,Java source / inherited MPH,geometry construction,KEEP,stable existing feature
+comp_ssc_hardware,geom_ssc_hardware,blk_cathode_ssc,Block,M10A2_PHYSICAL_HARDWARE,Java source / inherited MPH,physical SSC/gasket reference,KEEP,retain validated mathematical result with explicit label
+comp_ssc_hardware,geom_ssc_hardware,blk_anode_ssc,Block,M10A2_PHYSICAL_HARDWARE,Java source / inherited MPH,physical SSC/gasket reference,KEEP,retain validated mathematical result with explicit label
+comp_ssc_hardware,geom_ssc_hardware,wp_gasket,WorkPlane,M10A2_PHYSICAL_HARDWARE,Java source / inherited MPH,physical SSC/gasket reference,KEEP,retain validated mathematical result with explicit label
+comp_ssc_hardware,geom_ssc_hardware,fin,Finalize,M10A2_PHYSICAL_HARDWARE,Java source / inherited MPH,physical SSC/gasket reference,KEEP,retain validated mathematical result with explicit label
+comp_h2_flow,geom_h2_channel_fluid,imp_cc_h2_source,Import,REAL_CAD,Java source / inherited MPH,original STEP B-rep,KEEP,unchanged strict import
+comp_h2_flow,geom_h2_channel_fluid,rot_cc_h2,Rotate,M10A2R_OTHER,Java source / inherited MPH,geometry construction,KEEP,stable existing feature
+comp_h2_flow,geom_h2_channel_fluid,mov_cc_h2_top,Move,M10A2R_OTHER,Java source / inherited MPH,geometry construction,KEEP,stable existing feature
+comp_h2_flow,geom_h2_channel_fluid,mir_cc_h2_bottom,Mirror,M10A2R_OTHER,Java source / inherited MPH,geometry construction,KEEP,stable existing feature
+comp_h2_flow,geom_h2_channel_fluid,blk_h2_closure,Block,M10A0_4_FLUID_DOMAIN_EXTRACTION,Java source / inherited MPH,numerical closure minus REAL_CAD solid,KEEP,validated real-CAD fluid domain; port bore matches real STEP
+comp_h2_flow,geom_h2_channel_fluid,dif_h2_exact,Difference,M10A0_4_FLUID_DOMAIN_EXTRACTION,Java source / inherited MPH,numerical closure minus REAL_CAD solid,KEEP,validated real-CAD fluid domain; port bore matches real STEP
+comp_h2_flow,geom_h2_channel_fluid,fin,Finalize,M10A2R_OTHER,Java source / inherited MPH,geometry construction,KEEP,stable existing feature
+comp_pipe_n2,geom_pipe_n2,route,Polygon,REDUCED_1D_HYDRAULIC_NETWORK,Java source / inherited MPH,external hydraulic resistance network,KEEP,keep only in schematic reduced-model view
+comp_pipe_n2,geom_pipe_n2,fin,Finalize,REDUCED_1D_HYDRAULIC_NETWORK,Java source / inherited MPH,external hydraulic resistance network,KEEP,keep only in schematic reduced-model view
+comp_pipe_h2,geom_pipe_h2,route,Polygon,REDUCED_1D_HYDRAULIC_NETWORK,Java source / inherited MPH,external hydraulic resistance network,KEEP,keep only in schematic reduced-model view
+comp_pipe_h2,geom_pipe_h2,fin,Finalize,REDUCED_1D_HYDRAULIC_NETWORK,Java source / inherited MPH,external hydraulic resistance network,KEEP,keep only in schematic reduced-model view
+comp_pipe_liq,geom_pipe_liq,route,Polygon,REDUCED_1D_HYDRAULIC_NETWORK,Java source / inherited MPH,external hydraulic resistance network,KEEP,keep only in schematic reduced-model view
+comp_pipe_liq,geom_pipe_liq,fin,Finalize,REDUCED_1D_HYDRAULIC_NETWORK,Java source / inherited MPH,external hydraulic resistance network,KEEP,keep only in schematic reduced-model view
+comp_ssc_darcy,geom_ssc_darcy,rect,Rectangle,REDUCED_ENGINEERING_MODEL,Java source / inherited MPH,reduced through-plane or transfer surrogate,KEEP,retain validated mathematical result with explicit label
+comp_ssc_darcy,geom_ssc_darcy,fin,Finalize,REDUCED_ENGINEERING_MODEL,Java source / inherited MPH,reduced through-plane or transfer surrogate,KEEP,retain validated mathematical result with explicit label
+comp_ssc_wetting,geom_ssc_wetting,rect,Rectangle,REDUCED_ENGINEERING_MODEL,Java source / inherited MPH,reduced through-plane or transfer surrogate,KEEP,retain validated mathematical result with explicit label
+comp_ssc_wetting,geom_ssc_wetting,fin,Finalize,REDUCED_ENGINEERING_MODEL,Java source / inherited MPH,reduced through-plane or transfer surrogate,KEEP,retain validated mathematical result with explicit label
+comp_n2_transfer,geom_n2_transfer,ssc,Rectangle,REDUCED_ENGINEERING_MODEL,Java source / inherited MPH,reduced through-plane or transfer surrogate,KEEP,retain validated mathematical result with explicit label
+comp_n2_transfer,geom_n2_transfer,liq,Rectangle,REDUCED_ENGINEERING_MODEL,Java source / inherited MPH,reduced through-plane or transfer surrogate,KEEP,retain validated mathematical result with explicit label
+comp_n2_transfer,geom_n2_transfer,fin,Finalize,REDUCED_ENGINEERING_MODEL,Java source / inherited MPH,reduced through-plane or transfer surrogate,KEEP,retain validated mathematical result with explicit label
+comp_cell_physical,geom_cell_physical,imp_chamber_physical,Import,REAL_CAD,Java source / inherited MPH,original STEP B-rep,KEEP,unchanged strict import
+comp_cell_physical,geom_cell_physical,imp_cc_physical,Import,REAL_CAD,Java source / inherited MPH,original STEP B-rep,KEEP,unchanged strict import
+comp_cell_physical,geom_cell_physical,rot_cc_physical,Rotate,M10A2R_OTHER,Java source / inherited MPH,geometry construction,KEEP,stable existing feature
+comp_cell_physical,geom_cell_physical,mov_cc_negative,Move,M10A2R_OTHER,Java source / inherited MPH,geometry construction,KEEP,stable existing feature
+comp_cell_physical,geom_cell_physical,mir_cc_positive,Mirror,M10A2R_OTHER,Java source / inherited MPH,geometry construction,KEEP,stable existing feature
+comp_cell_physical,geom_cell_physical,blk_cathode_ssc_true,Block,M10A2R_OTHER,Java source / inherited MPH,geometry construction,KEEP,stable existing feature
+comp_cell_physical,geom_cell_physical,blk_anode_ssc_true,Block,M10A2R_OTHER,Java source / inherited MPH,geometry construction,KEEP,stable existing feature
+comp_cell_physical,geom_cell_physical,gasket_negative_visual_outer,Block,M10A2R_SCHEMATIC_VISUAL_ONLY,Java source / inherited MPH,gasket display frame,KEEP,display thickness is not a measured compressed thickness
+comp_cell_physical,geom_cell_physical,gasket_negative_visual_inner,Block,M10A2R_SCHEMATIC_VISUAL_ONLY,Java source / inherited MPH,gasket display frame,KEEP,display thickness is not a measured compressed thickness
+comp_cell_physical,geom_cell_physical,gasket_negative_visual,Difference,M10A2R_SCHEMATIC_VISUAL_ONLY,Java source / inherited MPH,gasket display frame,KEEP,display thickness is not a measured compressed thickness
+comp_cell_physical,geom_cell_physical,gasket_positive_visual_outer,Block,M10A2R_SCHEMATIC_VISUAL_ONLY,Java source / inherited MPH,gasket display frame,KEEP,display thickness is not a measured compressed thickness
+comp_cell_physical,geom_cell_physical,gasket_positive_visual_inner,Block,M10A2R_SCHEMATIC_VISUAL_ONLY,Java source / inherited MPH,gasket display frame,KEEP,display thickness is not a measured compressed thickness
+comp_cell_physical,geom_cell_physical,gasket_positive_visual,Difference,M10A2R_SCHEMATIC_VISUAL_ONLY,Java source / inherited MPH,gasket display frame,KEEP,display thickness is not a measured compressed thickness
+comp_cell_physical,geom_cell_physical,cyl_n2_in_pfa_outer,Cylinder,M10A2R_SCHEMATIC_VISUAL_ONLY,Java source / inherited MPH,short PFA wall or 2 mm gas bore,KEEP,visual connection only; no hydraulic role
+comp_cell_physical,geom_cell_physical,cyl_n2_in_bore_tool,Cylinder,M10A2R_OTHER,Java source / inherited MPH,geometry construction,KEEP,stable existing feature
+comp_cell_physical,geom_cell_physical,dif_n2_in_pfa_wall,Difference,M10A2R_SCHEMATIC_VISUAL_ONLY,Java source / inherited MPH,short PFA wall or 2 mm gas bore,KEEP,visual connection only; no hydraulic role
+comp_cell_physical,geom_cell_physical,cyl_n2_in_fluid_bore,Cylinder,M10A2R_OTHER,Java source / inherited MPH,geometry construction,KEEP,stable existing feature
+comp_cell_physical,geom_cell_physical,cyl_n2_out_pfa_outer,Cylinder,M10A2R_SCHEMATIC_VISUAL_ONLY,Java source / inherited MPH,short PFA wall or 2 mm gas bore,KEEP,visual connection only; no hydraulic role
+comp_cell_physical,geom_cell_physical,cyl_n2_out_bore_tool,Cylinder,M10A2R_OTHER,Java source / inherited MPH,geometry construction,KEEP,stable existing feature
+comp_cell_physical,geom_cell_physical,dif_n2_out_pfa_wall,Difference,M10A2R_SCHEMATIC_VISUAL_ONLY,Java source / inherited MPH,short PFA wall or 2 mm gas bore,KEEP,visual connection only; no hydraulic role
+comp_cell_physical,geom_cell_physical,cyl_n2_out_fluid_bore,Cylinder,M10A2R_OTHER,Java source / inherited MPH,geometry construction,KEEP,stable existing feature
+comp_cell_physical,geom_cell_physical,cyl_h2_in_pfa_outer,Cylinder,M10A2R_SCHEMATIC_VISUAL_ONLY,Java source / inherited MPH,short PFA wall or 2 mm gas bore,KEEP,visual connection only; no hydraulic role
+comp_cell_physical,geom_cell_physical,cyl_h2_in_bore_tool,Cylinder,M10A2R_OTHER,Java source / inherited MPH,geometry construction,KEEP,stable existing feature
+comp_cell_physical,geom_cell_physical,dif_h2_in_pfa_wall,Difference,M10A2R_SCHEMATIC_VISUAL_ONLY,Java source / inherited MPH,short PFA wall or 2 mm gas bore,KEEP,visual connection only; no hydraulic role
+comp_cell_physical,geom_cell_physical,cyl_h2_in_fluid_bore,Cylinder,M10A2R_OTHER,Java source / inherited MPH,geometry construction,KEEP,stable existing feature
+comp_cell_physical,geom_cell_physical,cyl_h2_out_pfa_outer,Cylinder,M10A2R_SCHEMATIC_VISUAL_ONLY,Java source / inherited MPH,short PFA wall or 2 mm gas bore,KEEP,visual connection only; no hydraulic role
+comp_cell_physical,geom_cell_physical,cyl_h2_out_bore_tool,Cylinder,M10A2R_OTHER,Java source / inherited MPH,geometry construction,KEEP,stable existing feature
+comp_cell_physical,geom_cell_physical,dif_h2_out_pfa_wall,Difference,M10A2R_SCHEMATIC_VISUAL_ONLY,Java source / inherited MPH,short PFA wall or 2 mm gas bore,KEEP,visual connection only; no hydraulic role
+comp_cell_physical,geom_cell_physical,cyl_h2_out_fluid_bore,Cylinder,M10A2R_OTHER,Java source / inherited MPH,geometry construction,KEEP,stable existing feature
+comp_cell_physical,geom_cell_physical,fin,Finalize,M10A2R_OTHER,Java source / inherited MPH,geometry construction,KEEP,stable existing feature
+comp_n2_flow,geom_n2_channel_fluid,REAL_CAD_INTERNAL_PORT_PROFILE,B-rep face profile,REAL_CAD,original collector STEP -> M10A0.4 Difference,visible conical/flared gas-port profile,KEEP,not a PEEK fitting; no synthetic Cone/Revolve/Sweep exists

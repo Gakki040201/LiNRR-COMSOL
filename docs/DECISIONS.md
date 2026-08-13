@@ -499,3 +499,35 @@ size; unsupported gasket compression thickness; treating 15 mbar or the liquid
 sweep as laboratory measurements; relabeling literature/model inputs as
 experimental; and adding lithium plating, Li-NRR kinetics, SEI, or electrochemical
 coupling before the M03A.5/M03A.6 experimental calibration gate.
+
+## D0019 — M10A2R physical/reduced geometry truth and private GitHub archival
+
+Decision: reconcile M10A2 against the byte-verified laboratory Manual before any
+M10A3 work. The new physical visualization uses unchanged real STEP solids, true-scale
+60 mm × 60 mm SSC sheets, and hollow PFA gas stubs with 3 mm OD and 2 mm ID. The
+short stub length is `SCHEMATIC_VISUAL_ONLY`, `VISUALIZATION ONLY`, and has
+`NO HYDRAULIC ROLE`. Existing 20 cm Pipe Flow edges remain external 1D hydraulic
+networks and are explicitly not physical routing. Darcy, wetting, and N2 transfer
+remain reduced models and are labeled accordingly.
+
+Geometry provenance: no `Cone`, `Revolve`, or `Sweep` feature created the visible
+flared gas-port profile. It is present in the original current-collector STEP B-rep
+and exposed by the M10A0.4 closure-minus-CAD fluid extraction. It is retained as
+`REAL_CAD` and must not be interpreted as a PEEK reverse-cone fitting. The Manual
+does not provide PEEK cone angle, cone length, thread pitch, internal bore geometry,
+or compression deformation, so PEEK internal geometry is not modeled.
+
+Private GitHub project archival policy: D0017/M03A.6 used a repository-external raw
+evidence boundary. From M10A2R onward, the user explicitly requires unified project
+archival in the confirmed PRIVATE repository `Gakki040201/LiNRR-COMSOL`, supported
+by Git LFS for MPH, DOCX, PDF, XLSX, ZIP, and other necessary large project-owned
+binaries. GitHub-readable text inventories, manifests, model-tree exports, numerical
+metrics, scientific provenance, and PNGs remain the primary review interface because
+an LFS-hosted MPH may not be directly parseable by ChatGPT.
+
+The private-repository policy never authorizes uploading passwords, API tokens,
+GitHub tokens, SSH private keys, `.env` credentials, COMSOL license files, Windows
+credentials, browser cookies, personal information not required and authorized for
+the project, or third-party confidential material not owned or authorized by the
+user. Raw files remain byte-preserved. Any experimental evidence whose ownership or
+upload authority cannot be established is excluded and marked `REVIEW_REQUIRED`.

@@ -1,0 +1,94 @@
+parameter,expression,description
+T_test,298.15[K],NUMERICAL_TEST_ONLY temperature
+Q_liq_test,Q_liq_sweep,M10A2 CALIBRATION_REQUIRED sweep; legacy tag retained for field compatibility
+rho_liq_test,rho_liq,PROVISIONAL property; legacy tag retained
+mu_liq_test,mu_liq,PROVISIONAL property; legacy tag retained
+Q_n2_test,Q_N2_lab,M10A2 LAB_MANUAL operating point; legacy tag retained for field compatibility
+rho_n2_test,rho_N2,PROVISIONAL property; legacy tag retained
+mu_n2_test,mu_N2,PROVISIONAL property; legacy tag retained
+p_out_test,0[Pa],NUMERICAL_TEST_ONLY gauge outlet pressure
+A_liq_in_test,31.5391404487[mm^2],NUMERICAL_TEST_ONLY measured CAD inlet area
+A_n2_in_test,31.5391329804[mm^2],NUMERICAL_TEST_ONLY measured CAD inlet area
+D_liq_in_test,2*sqrt(A_liq_in_test/pi),NUMERICAL_TEST_ONLY equivalent inlet diameter
+D_n2_in_test,2*sqrt(A_n2_in_test/pi),NUMERICAL_TEST_ONLY equivalent inlet diameter
+flow_scale_liq_test,1,NUMERICAL_TEST_ONLY continuation factor
+flow_scale_n2_test,1,NUMERICAL_TEST_ONLY continuation factor
+Q_N2_lab,50[cm^3/min],LAB_MANUAL formal N2 baseline; mL/min represented as cm^3/min
+Q_H2_lab,50[cm^3/min],LAB_MANUAL formal H2 baseline; mL/min represented as cm^3/min
+Q_gas_startup,20[cm^3/min],LAB_MANUAL optional 20 min preflow case
+t_gas_startup,20[min],LAB_MANUAL startup duration
+Q_liq_sweep,1[cm^3/min],CALIBRATION_REQUIRED liquid flow sweep variable; not a lab baseline
+gas_pfa_id,2.0[mm],LAB_MANUAL PFA ID used for hydraulics
+gas_pfa_od,3.0[mm],"LAB_MANUAL PFA OD, visualization only"
+liq_pfa_id,1.5[mm],LAB_MANUAL liquid PFA ID used for hydraulics
+liq_pfa_id_large,2.0[mm],LAB_MANUAL 10 cm liquid PFA segment ID
+latex_id,1.6[mm],LAB_MANUAL 14# latex ID; length remains CALIBRATION_REQUIRED
+L_gas_out,0.20[m],LAB_MANUAL approximate gas outlet length per side
+L_liq_20,0.20[m],LAB_MANUAL liquid PFA segment
+L_liq_15,0.15[m],LAB_MANUAL liquid PFA segment; two segments
+L_liq_10,0.10[m],LAB_MANUAL liquid PFA segment
+L_latex_included,0[m],CALIBRATION_REQUIRED latex length; zero explicitly excludes unknown resistance
+ssc_cut,60[mm],LAB_MANUAL 316L SSC square cut width
+gasket_outer,75[mm],LAB_MANUAL gasket outer square
+gasket_inner,55[mm],LAB_MANUAL gasket inner opening
+t_ssc,30[um],LITERATURE_SAME_PLATFORM provisional SSC thickness; not measured
+t_gasket_visual,0[mm],CALIBRATION_REQUIRED compression thickness; zero-thickness mask only
+eps_ssc,0.5,"PROVISIONAL_SENSITIVITY; sweep 0.3, 0.5, 0.7"
+K_ssc,1e-11[m^2],PROVISIONAL_SENSITIVITY; not inferred from pore size
+theta_ssc,90[deg],PROVISIONAL_SENSITIVITY contact angle
+pc_ssc,1500[Pa],PROVISIONAL_SENSITIVITY entry pressure; not tuned
+tau_ssc,2,PROVISIONAL_SENSITIVITY tortuosity
+dp_ssc,1500[Pa],Pressure-difference sweep parameter; 15 mbar is literature comparison only
+p_smooth,1[Pa],Numerical smoothing scale for positive pressure drive
+Sl_initial,0.01,PROVISIONAL initially dry liquid saturation
+Sl_transport,0.5,PROVISIONAL wetting-to-transport sensitivity value
+Sl_breakthrough,0.5,PROVISIONAL diagnostic threshold for liquid breakthrough and flooding front
+rho_N2,1.145[kg/m^3],PROVISIONAL gas property at nominal condition
+mu_N2,1.76e-5[Pa*s],PROVISIONAL gas viscosity
+rho_H2,0.082[kg/m^3],PROVISIONAL gas density; calibration conditions required
+mu_H2,8.9e-6[Pa*s],PROVISIONAL gas viscosity
+rho_liq,889[kg/m^3],PROVISIONAL electrolyte density inherited from numerical layer
+mu_liq,0.46[mPa*s],PROVISIONAL electrolyte viscosity inherited from numerical layer
+p_out,0[Pa],Gauge outlet reference
+A_ssc_active,2474.04981995[mm^2],DERIVED from real-CAD N2/SSC interface bounding footprint
+A_ssc_cut,ssc_cut^2,DERIVED Manual cut area; not all active
+R_N2_out,128*mu_N2*L_gas_out/(pi*gas_pfa_id^4),Hagen-Poiseuille audit of documented N2 outlet PFA
+R_H2_out,128*mu_H2*L_gas_out/(pi*gas_pfa_id^4),Hagen-Poiseuille audit of documented H2 outlet PFA
+R_liq_known,128*mu_liq*(L_liq_20+2*L_liq_15)/(pi*liq_pfa_id^4)+128*mu_liq*L_liq_10/(pi*liq_pfa_id_large^4),Known PFA liquid-loop resistance; latex excluded
+dp_N2_pipe,R_N2_out*Q_N2_lab,Documented N2 outlet tube pressure drop
+dp_H2_pipe,R_H2_out*Q_H2_lab,Documented H2 outlet tube pressure drop
+dp_liq_pipe,R_liq_known*Q_liq_sweep,Known PFA liquid pressure drop at sweep value
+u_ssc_darcy,K_ssc*dp_ssc/(mu_liq*t_ssc),Darcy superficial velocity audit
+u_ssc_transport,K_ssc*Sl_transport^2*dp_ssc/(mu_liq*t_ssc),PROVISIONAL transport velocity including declared k_r=Sl^2
+u_wet_in,"K_wet*Sl_initial^2/(mu_liq*t_ssc)*if(dp_ssc>pc_ssc,dp_ssc-pc_ssc,0[Pa])",Pressure-entry wetting drive including the declared initial liquid relative permeability k_r=Sl_initial^2
+T_model,298.15[K],PROVISIONAL transport temperature
+p_N2_abs,1[atm],PROVISIONAL gas equilibrium pressure
+H_N2_sens,1e-5[mol/(m^3*Pa)],PROVISIONAL_SENSITIVITY; electrolyte Henry coefficient is CALIBRATION_REQUIRED
+c_N2_gas,p_N2_abs/(R_const*T_model),Distinct gas-phase ideal-gas N2 concentration
+c_N2_eq,H_N2_sens*p_N2_abs,Phenomenological Henry-equilibrium dissolved concentration
+D_N2_liq,2e-9[m^2/s],PROVISIONAL numerical/literature estimate from M02.2
+D_N2_ssc_eff,D_N2_liq*eps_ssc*Sl_transport/tau_ssc,Explicit effective diffusivity sensitivity law
+L_electrolyte_transfer,5[mm],REAL_CAD half-chamber through-plane distance for baseline transfer slab
+W_transfer,50[mm],DERIVED real-CAD flow-field footprint width
+c_N2_bulk,0[mol/m^3],PROVISIONAL well-mixed far-field sink; no reaction kinetics
+dp_liq_cell_audit,3.42685384837[Pa],Computed real-CAD liquid-cell pressure drop at saved sensitivity case
+dp_N2_cell_audit,96.1940176856[Pa],Computed real-CAD N2-cell pressure drop at LAB_MANUAL flow
+dp_H2_cell_audit,31.4624814583[Pa],Computed real-CAD H2-cell pressure drop at LAB_MANUAL flow
+dp_N2_total_known,dp_N2_cell_audit+dp_N2_pipe,Known N2 pressure budget: real cell plus documented outlet PFA
+dp_H2_total_known,dp_H2_cell_audit+dp_H2_pipe,Known H2 pressure budget: real cell plus documented outlet PFA
+dp_liq_total_known,dp_liq_cell_audit+dp_liq_pipe,Known liquid pressure budget: real cell plus documented PFA; latex excluded
+K_wet,1e-13[m^2],PROVISIONAL_SENSITIVITY wetting case at primary Darcy sweep lower edge
+wet_Sl_min_audit,0.00911690533193,Computed minimum over 0-30 mbar wetting sweep
+wet_Sl_max_audit,0.0284430344568,Computed maximum over 0-30 mbar wetting sweep
+wet_breakthrough_Sl_audit,0.0119016705370,Gas-side liquid saturation at 30 mbar and 5 ms
+n2_transfer_rate_audit,9.66841603031e-10[mol/s],Computed phenomenological N2 transfer rate
+n2_interface_c_audit,0.966841603054[mol/m^3],Computed future cathodic-interface concentration
+n2_residual_mol_s_audit,-2.23411143693e-20[mol/s],N atom balance: inlet minus outlet minus zero stationary accumulation
+n2_residual_audit,2.31073159230e-11,N atom conservation relative residual
+n2_Pe_audit,32608.6956522,Computed SSC Peclet sensitivity including k_r=Sl^2
+n2_keff_audit,3.85682804593e-07[m/s],Computed effective mass-transfer coefficient
+L_gas_stub_visual,15[mm],SCHEMATIC_VISUAL_ONLY | VISUALIZATION ONLY | NO HYDRAULIC ROLE | not a Manual dimension
+gas_pfa_id_visual,2[mm],LAB_MANUAL gas PFA bore; hydraulic diameter remains 2 mm
+gas_pfa_od_visual,3[mm],LAB_MANUAL gas PFA outer diameter; visualization only
+t_gasket_display,0.5[mm],SCHEMATIC_VISUAL_ONLY display thickness; true compressed gasket thickness remains CALIBRATION_REQUIRED
+ssc_exploded_offset,12[mm],DISPLAY SCALE ONLY | no physical or hydraulic role
