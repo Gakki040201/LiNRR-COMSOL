@@ -531,3 +531,78 @@ credentials, browser cookies, personal information not required and authorized f
 the project, or third-party confidential material not owned or authorized by the
 user. Raw files remain byte-preserved. Any experimental evidence whose ownership or
 upload authority cannot be established is excluded and marked `REVIEW_REQUIRED`.
+
+## D0020 - M10A3 real gas and neutral-species transport
+
+Decision: retain every real CAD feature but assign flow and species physics only
+after named-selection membership and connected-component audits. Unused hollow CAD
+domains remain visible and are classified `INERT_REAL_CAD_FEATURE`; they are not
+deleted or automatically treated as fluid. The mirrored N2 and H2 channels use one
+parameterized gas transport builder and the same topology, discretization, ledger,
+and result pattern. Equal volumetric flow through equal geometry gives equal bulk
+mean velocity; density and viscosity control the Reynolds-number and pressure-drop
+differences.
+
+N2 gas and dissolved N2 are distinct dependent variables. Their cross-component
+transfer uses solved-dataset coupling and an explicit homogenized SSC resistance,
+not coordinate guessing and not a claim of pore-scale 3D wetting. H2 is limited to
+gas-channel and PtAuSSC-interface availability because electrolyte-specific H2
+solubility is unavailable. The donor remains generic `proton_donor` because the
+project evidence does not uniquely establish its chemical identity.
+
+NH3 generation is `NUMERICAL_VERIFICATION_ONLY`; it verifies cell and downstream
+transport but cannot predict rate, yield, or Faradaic efficiency. The downstream
+PFA line is an explicit reduced 1D control volume connected by molar flow. The real
+liquid-domain tracer calculation uses `Q_liq_sweep=PROVISIONAL_SENSITIVITY` and is
+therefore a numerical RTD, not an experimental RTD.
+
+No concentration clipping is allowed. Raw field minima are retained and reported;
+values below `-1e-8 mol/m^3` are the documented significant-negativity gate, while
+smaller undershoots are numerical zero relative to the order-one concentration
+scale. Conservation must be at most `1e-6`, and any coarse/medium key difference
+above 10% blocks acceptance. Electrochemistry, Li plating, Li-NRR, HER, and HOR
+kinetics remain prohibited until later stages.
+
+The accepted real-liquid formulation represents N2 and NH3 concentrations as
+`c_transport_zero_feed*exp(z)` in conservative transient weak equations, using a
+reported `1e-4 mol/m^3` numerical trace feed. This is a positivity-preserving solved
+variable transformation, not concentration clipping. A fixed first-order-upwind-
+equivalent mesh-Peclet diffusion coefficient of 0.5 and a source startup time of
+`tau_species_nom/100` are `NUMERICAL_VERIFICATION_ONLY`; neither was fitted to a
+target concentration. The final source amplitude is unchanged, all numerical
+inputs remain visible in the ledger, and coarse/medium acceptance is applied to
+the resulting fields and molar flows.
+
+## D0021 - M10A3 RTD final conservation closure
+
+Decision: preserve every successful medium RTD solution before evaluating hard
+conservation gates. The transient workflow now writes
+`checkpoint_07_rtd_medium_pre_audit.mph` immediately after the medium solve and
+prints `M10A3_CHECKPOINT_07_RTD_MEDIUM_PRE_AUDIT=PASS`; only then may the tracer
+audit throw. A passing solution is additionally saved as
+`checkpoint_07_rtd_medium_accepted.mph`.
+
+The prior cumulative residual of `3.406701906534549e-6` was not dominated by PDE
+temporal error or outlet-sample trapezoidal error. Piecewise Simpson changed the
+existing outlet integral by only `5.22e-9` relative. Doubling post-pulse output
+density from `tau_nom/300` to `tau_nom/600` changed outlet mass by only
+`8.94012494475816e-9`, while the adaptive internal solver, spatial mesh, physics,
+flow, diffusivity, numerical diffusion, geometry, pulse amplitude, and pulse
+duration remained fixed.
+
+The failed ledger normalized prescribed input with nominal `Q_liq_sweep`. The
+formal Flux Danckwerts input is instead the temporal integral of the imposed
+boundary flux based on solved boundary-normal velocity. For the accepted medium
+mesh, the numerical formal input (`5.00001314010052e-7 mol`) agrees with the
+analytical sin-squared pulse using actual solved inlet flow
+(`5.00001314010053e-7 mol`) to `1.48230376217094e-15` relative. Using this physical
+ledger gives cumulative residual `7.87929544513639e-7`, instantaneous residual
+`1.09961115379377e-8`, and raw minimum `9.67239532760858e-29 mol/m^3`; all pass
+the unchanged `1e-6`, `1e-6`, and `-1e-8 mol/m^3` gates.
+
+Rejected alternatives: relaxing the conservation threshold, lowering solver
+relative tolerance before output convergence, changing the scientific model, or
+fitting any transport parameter. Accepted RTD E(t) and F(t) are embedded in the
+final editable MPH as native Results tables because post-solve integration
+coupling operators added after solution did not remain callable in independently
+reloaded Global plot expressions.

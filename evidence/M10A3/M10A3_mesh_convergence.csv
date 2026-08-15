@@ -1,0 +1,5 @@
+metric_group,comparison,max_key_difference,status
+n2,coarse_to_medium,0.00000000000000,PASS
+h2,coarse_to_medium,3.38199408948059e-15,PASS
+liq,coarse_to_medium,0.0289718464418930,PASS
+rtd_tau_mean,coarse_to_medium,0.00828680513910211,PASS

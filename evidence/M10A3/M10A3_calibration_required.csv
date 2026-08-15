@@ -1,0 +1,6 @@
+item,status,reason
+H_N2,CALIBRATION_REQUIRED,Electrolyte-specific N2 partition data absent
+H2_bulk_liquid_dissolution,CALIBRATION_REQUIRED,No reliable electrolyte-specific H2 solubility; prediction intentionally absent
+proton_donor_identity,CALIBRATION_REQUIRED,Manual/project schema does not uniquely identify donor
+Q_liq_sweep,PROVISIONAL_SENSITIVITY,"RTD is numerical sensitivity, not experimental RTD"
+latex_downstream_length,CALIBRATION_REQUIRED,Unknown latex length excluded from explicit PFA equivalent network
