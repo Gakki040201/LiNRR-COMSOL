@@ -1,0 +1,1 @@
+M10A1_1_NATIVE_TRACTION_DISCOVERED|physics=spf_liq|variables=spf.T_stressx,spf.T_stressy,spf.T_stressz

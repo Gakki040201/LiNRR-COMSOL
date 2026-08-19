@@ -1,0 +1,51 @@
+COMSOL_CAPTURE_METADATA_BEGIN
+EXECUTABLE=F:\COMSOL64\Multiphysics\bin\win64\comsolbatch.exe
+ARGUMENTS=-classpathadd F:\LiNRR_COMSOL\worktrees\LiNRR_M10A2\runs\M10A1_1\20260809_000929_result_repair -inputfile F:\LiNRR_COMSOL\worktrees\LiNRR_M10A2\src\java\LiNRR_M10A1_1_VariableProbe.class -batchlog F:\LiNRR_COMSOL\worktrees\LiNRR_M10A2\runs\M10A1_1\20260809_000929_result_repair\M10A1_1_probe.log
+STARTED_UTC=2026-08-08T16:09:46.9173446Z
+FINISHED_UTC=2026-08-08T16:10:21.1621836Z
+EXIT_CODE=0
+COMSOL_CAPTURE_METADATA_END
+COMSOL_STDOUT_BEGIN
+M10A1_1_PROBE_INPUT=F:\LiNRR_COMSOL\worktrees\LiNRR_M10A2\models\generated\LiNRR_M10A1_real_cad_flow_solved.mph
+M10A1_1_PROBE_MODEL_USED_PRODUCTS=COMSOL Multiphysics;CFD ģ��;���ģ��;CAD ����ģ��
+M10A1_1_LICENSE|product=PIPEFLOW|available=true
+M10A1_1_LICENSE|product=POROUSMEDIAFLOW|available=true
+M10A1_1_LICENSE|product=CFD|available=true
+M10A1_1_LICENSE|product=CHEM|available=true
+M10A1_1_LICENSE|product=MICROFLUIDICS|available=true
+M10A1_1_LICENSE|product=SUBSURFACEFLOW|available=true
+M10A1_1_EQUATION_VIEW|component=comp_electrolyte_flow|physics=spf_liq|row=null	spf.T_stressx	spf.T_stress_tensorxx*spf.nxmesh+spf.T_stress_tensorxy*spf.nymesh+spf.T_stress_tensorxz*spf.nzmesh	N/m^2	��ǣ�������ⲿ�߽磬x ����	�߽� 1�C89		0	/spf_liq/AuxiliaryVar/root.comp_electrolyte_flow.spf.T_stress/	/Liquid Stationary Laminar Flow / NUMERICAL_TEST_ONLY/��������/��ǣ�������ⲿ�߽�/	����ģ��	/PhysicsList/spf_liq/PhysicsPropList/PhysicalModelProperty	comp_electrolyte_flow
+M10A1_1_EQUATION_VIEW|component=comp_electrolyte_flow|physics=spf_liq|row=null	spf.T_stressy	spf.T_stress_tensoryx*spf.nxmesh+spf.T_stress_tensoryy*spf.nymesh+spf.T_stress_tensoryz*spf.nzmesh	N/m^2	��ǣ�������ⲿ�߽磬y ����	�߽� 1�C89		0	/spf_liq/AuxiliaryVar/root.comp_electrolyte_flow.spf.T_stress/	/Liquid Stationary Laminar Flow / NUMERICAL_TEST_ONLY/��������/��ǣ�������ⲿ�߽�/	����ģ��	/PhysicsList/spf_liq/PhysicsPropList/PhysicalModelProperty	comp_electrolyte_flow
+M10A1_1_EQUATION_VIEW|component=comp_electrolyte_flow|physics=spf_liq|row=null	spf.T_stressz	spf.T_stress_tensorzx*spf.nxmesh+spf.T_stress_tensorzy*spf.nymesh+spf.T_stress_tensorzz*spf.nzmesh	N/m^2	��ǣ�������ⲿ�߽磬z ����	�߽� 1�C89		0	/spf_liq/AuxiliaryVar/root.comp_electrolyte_flow.spf.T_stress/	/Liquid Stationary Laminar Flow / NUMERICAL_TEST_ONLY/��������/��ǣ�������ⲿ�߽�/	����ģ��	/PhysicsList/spf_liq/PhysicsPropList/PhysicalModelProperty	comp_electrolyte_flow
+M10A1_1_EQUATION_VIEW|component=comp_electrolyte_flow|physics=spf_liq|row=null	spf.T_stress_dx	down(spf.T_stress_tensorxx)*spf.dnxmesh+down(spf.T_stress_tensorxy)*spf.dnymesh+down(spf.T_stress_tensorxz)*spf.dnzmesh	N/m^2	��ǣ�������ڲ��߽磬�²࣬x ����	�߽� 1�C89		0	/spf_liq/AuxiliaryVar/root.comp_electrolyte_flow.spf.T_stress_d/	/Liquid Stationary Laminar Flow / NUMERICAL_TEST_ONLY/��������/��ǣ�������ڲ��߽磬�²�/	����ģ��	/PhysicsList/spf_liq/PhysicsPropList/PhysicalModelProperty	comp_electrolyte_flow
+M10A1_1_EQUATION_VIEW|component=comp_electrolyte_flow|physics=spf_liq|row=null	spf.T_tracx	spf.T_stressx	N/m^2	�����ǣ�������ⲿ�߽磬x ����	�߽� 1�C89		0	/spf_liq/AuxiliaryVar/root.comp_electrolyte_flow.spf.T_trac/	/Liquid Stationary Laminar Flow / NUMERICAL_TEST_ONLY/��������/�����ǣ�������ⲿ�߽�/	����ģ��	/PhysicsList/spf_liq/PhysicsPropList/PhysicalModelProperty	comp_electrolyte_flow
+M10A1_1_EQUATION_VIEW|component=comp_electrolyte_flow|physics=spf_liq|row=null	spf.T_tracy	spf.T_stressy	N/m^2	�����ǣ�������ⲿ�߽磬y ����	�߽� 1�C89		0	/spf_liq/AuxiliaryVar/root.comp_electrolyte_flow.spf.T_trac/	/Liquid Stationary Laminar Flow / NUMERICAL_TEST_ONLY/��������/�����ǣ�������ⲿ�߽�/	����ģ��	/PhysicsList/spf_liq/PhysicsPropList/PhysicalModelProperty	comp_electrolyte_flow
+M10A1_1_EQUATION_VIEW|component=comp_electrolyte_flow|physics=spf_liq|row=null	spf.T_tracz	spf.T_stressz	N/m^2	�����ǣ�������ⲿ�߽磬z ����	�߽� 1�C89		0	/spf_liq/AuxiliaryVar/root.comp_electrolyte_flow.spf.T_trac/	/Liquid Stationary Laminar Flow / NUMERICAL_TEST_ONLY/��������/�����ǣ�������ⲿ�߽�/	����ģ��	/PhysicsList/spf_liq/PhysicsPropList/PhysicalModelProperty	comp_electrolyte_flow
+M10A1_1_EQUATION_VIEW|component=comp_electrolyte_flow|physics=spf_liq|row=null	spf.T_stress_tensorxx	spf.K_stress_tensorxx-p	N/m^2	��Ӧ��������xx ����	�� 1	��+������	0			�������� 1	/PhysicsList/spf_liq/PhysicsFeatureList/fp1	comp_electrolyte_flow
+M10A1_1_NATIVE_VARIABLE_AVAILABLE|component=comp_electrolyte_flow|physics=spf_liq|expression=spf.T_stressx|max_value_Pa=3.64530896911
+M10A1_1_NATIVE_VARIABLE_AVAILABLE|component=comp_electrolyte_flow|physics=spf_liq|expression=spf.T_stressy|max_value_Pa=3.59051817375
+M10A1_1_NATIVE_VARIABLE_AVAILABLE|component=comp_electrolyte_flow|physics=spf_liq|expression=spf.T_stressz|max_value_Pa=3.59693892877
+M10A1_1_NATIVE_VARIABLE_AVAILABLE|component=comp_electrolyte_flow|physics=spf_liq|expression=sqrt((spf.T_stressx-(((spf.T_stressx)*nx+(spf.T_stressy)*ny+(spf.T_stressz)*nz))*nx)^2+(spf.T_stressy-(((spf.T_stressx)*nx+(spf.T_stressy)*ny+(spf.T_stressz)*nz))*ny)^2+(spf.T_stressz-(((spf.T_stressx)*nx+(spf.T_stressy)*ny+(spf.T_stressz)*nz))*nz)^2)|max_value_Pa=1.92857642589
+M10A1_1_NATIVE_WALL_SHEAR_EXPRESSION|physics=spf_liq|expression=sqrt((spf.T_stressx-(((spf.T_stressx)*nx+(spf.T_stressy)*ny+(spf.T_stressz)*nz))*nx)^2+(spf.T_stressy-(((spf.T_stressx)*nx+(spf.T_stressy)*ny+(spf.T_stressz)*nz))*ny)^2+(spf.T_stressz-(((spf.T_stressx)*nx+(spf.T_stressy)*ny+(spf.T_stressz)*nz))*nz)^2)
+M10A1_1_EQUATION_VIEW|component=comp_n2_flow|physics=spf_n2|row=null	spf2.T_stressx	spf2.T_stress_tensorxx*spf2.nxmesh+spf2.T_stress_tensorxy*spf2.nymesh+spf2.T_stress_tensorxz*spf2.nzmesh	N/m^2	��ǣ�������ⲿ�߽磬x ����	�߽� 30�C87, 112�C133		0	/spf_n2/AuxiliaryVar/root.comp_n2_flow.spf2.T_stress/	/N2 Stationary Laminar Flow / NUMERICAL_TEST_ONLY/��������/��ǣ�������ⲿ�߽�/	����ģ��	/PhysicsList/spf_n2/PhysicsPropList/PhysicalModelProperty	comp_n2_flow
+M10A1_1_EQUATION_VIEW|component=comp_n2_flow|physics=spf_n2|row=null	spf2.T_stressy	spf2.T_stress_tensoryx*spf2.nxmesh+spf2.T_stress_tensoryy*spf2.nymesh+spf2.T_stress_tensoryz*spf2.nzmesh	N/m^2	��ǣ�������ⲿ�߽磬y ����	�߽� 30�C87, 112�C133		0	/spf_n2/AuxiliaryVar/root.comp_n2_flow.spf2.T_stress/	/N2 Stationary Laminar Flow / NUMERICAL_TEST_ONLY/��������/��ǣ�������ⲿ�߽�/	����ģ��	/PhysicsList/spf_n2/PhysicsPropList/PhysicalModelProperty	comp_n2_flow
+M10A1_1_EQUATION_VIEW|component=comp_n2_flow|physics=spf_n2|row=null	spf2.T_stressz	spf2.T_stress_tensorzx*spf2.nxmesh+spf2.T_stress_tensorzy*spf2.nymesh+spf2.T_stress_tensorzz*spf2.nzmesh	N/m^2	��ǣ�������ⲿ�߽磬z ����	�߽� 30�C87, 112�C133		0	/spf_n2/AuxiliaryVar/root.comp_n2_flow.spf2.T_stress/	/N2 Stationary Laminar Flow / NUMERICAL_TEST_ONLY/��������/��ǣ�������ⲿ�߽�/	����ģ��	/PhysicsList/spf_n2/PhysicsPropList/PhysicalModelProperty	comp_n2_flow
+M10A1_1_EQUATION_VIEW|component=comp_n2_flow|physics=spf_n2|row=null	spf2.T_stress_dx	down(spf2.T_stress_tensorxx)*spf2.dnxmesh+down(spf2.T_stress_tensorxy)*spf2.dnymesh+down(spf2.T_stress_tensorxz)*spf2.dnzmesh	N/m^2	��ǣ�������ڲ��߽磬�²࣬x ����	�߽� 30�C87, 112�C133		0	/spf_n2/AuxiliaryVar/root.comp_n2_flow.spf2.T_stress_d/	/N2 Stationary Laminar Flow / NUMERICAL_TEST_ONLY/��������/��ǣ�������ڲ��߽磬�²�/	����ģ��	/PhysicsList/spf_n2/PhysicsPropList/PhysicalModelProperty	comp_n2_flow
+M10A1_1_EQUATION_VIEW|component=comp_n2_flow|physics=spf_n2|row=null	spf2.T_tracx	spf2.T_stressx	N/m^2	�����ǣ�������ⲿ�߽磬x ����	�߽� 30�C87, 112�C133		0	/spf_n2/AuxiliaryVar/root.comp_n2_flow.spf2.T_trac/	/N2 Stationary Laminar Flow / NUMERICAL_TEST_ONLY/��������/�����ǣ�������ⲿ�߽�/	����ģ��	/PhysicsList/spf_n2/PhysicsPropList/PhysicalModelProperty	comp_n2_flow
+M10A1_1_EQUATION_VIEW|component=comp_n2_flow|physics=spf_n2|row=null	spf2.T_tracy	spf2.T_stressy	N/m^2	�����ǣ�������ⲿ�߽磬y ����	�߽� 30�C87, 112�C133		0	/spf_n2/AuxiliaryVar/root.comp_n2_flow.spf2.T_trac/	/N2 Stationary Laminar Flow / NUMERICAL_TEST_ONLY/��������/�����ǣ�������ⲿ�߽�/	����ģ��	/PhysicsList/spf_n2/PhysicsPropList/PhysicalModelProperty	comp_n2_flow
+M10A1_1_EQUATION_VIEW|component=comp_n2_flow|physics=spf_n2|row=null	spf2.T_tracz	spf2.T_stressz	N/m^2	�����ǣ�������ⲿ�߽磬z ����	�߽� 30�C87, 112�C133		0	/spf_n2/AuxiliaryVar/root.comp_n2_flow.spf2.T_trac/	/N2 Stationary Laminar Flow / NUMERICAL_TEST_ONLY/��������/�����ǣ�������ⲿ�߽�/	����ģ��	/PhysicsList/spf_n2/PhysicsPropList/PhysicalModelProperty	comp_n2_flow
+M10A1_1_EQUATION_VIEW|component=comp_n2_flow|physics=spf_n2|row=null	spf2.T_stress_tensorxx	spf2.K_stress_tensorxx-p2	N/m^2	��Ӧ��������xx ����	�� 3	��+������	0			�������� 1	/PhysicsList/spf_n2/PhysicsFeatureList/fp1	comp_n2_flow
+M10A1_1_NATIVE_VARIABLE_AVAILABLE|component=comp_n2_flow|physics=spf_n2|expression=spf2.T_stressx|max_value_Pa=15.9892641364
+M10A1_1_NATIVE_VARIABLE_AVAILABLE|component=comp_n2_flow|physics=spf_n2|expression=spf2.T_stressy|max_value_Pa=15.8330184267
+M10A1_1_NATIVE_VARIABLE_AVAILABLE|component=comp_n2_flow|physics=spf_n2|expression=spf2.T_stressz|max_value_Pa=16.0179919591
+M10A1_1_NATIVE_VARIABLE_AVAILABLE|component=comp_n2_flow|physics=spf_n2|expression=sqrt((spf2.T_stressx-(((spf2.T_stressx)*nx+(spf2.T_stressy)*ny+(spf2.T_stressz)*nz))*nx)^2+(spf2.T_stressy-(((spf2.T_stressx)*nx+(spf2.T_stressy)*ny+(spf2.T_stressz)*nz))*ny)^2+(spf2.T_stressz-(((spf2.T_stressx)*nx+(spf2.T_stressy)*ny+(spf2.T_stressz)*nz))*nz)^2)|max_value_Pa=12.4127473601
+M10A1_1_NATIVE_WALL_SHEAR_EXPRESSION|physics=spf_n2|expression=sqrt((spf2.T_stressx-(((spf2.T_stressx)*nx+(spf2.T_stressy)*ny+(spf2.T_stressz)*nz))*nx)^2+(spf2.T_stressy-(((spf2.T_stressx)*nx+(spf2.T_stressy)*ny+(spf2.T_stressz)*nz))*ny)^2+(spf2.T_stressz-(((spf2.T_stressx)*nx+(spf2.T_stressy)*ny+(spf2.T_stressz)*nz))*nz)^2)
+M10A1_1_INTERFACE_AREA|component=comp_electrolyte_flow|selection=sel_bnd_electrolyte_gde_top|entity_count=1|area_mm2=3844.00000000
+M10A1_1_INTERFACE_AREA|component=comp_electrolyte_flow|selection=sel_bnd_electrolyte_gde_bottom|entity_count=1|area_mm2=3844.00000000
+M10A1_1_INTERFACE_AREA|component=comp_n2_flow|selection=sel_bnd_n2_gde_interface|entity_count=1|area_mm2=1278.22088213
+M10A1_1_READ_ONLY_VARIABLE_PROBE=PASS
+
+COMSOL_STDOUT_END
+COMSOL_STDERR_BEGIN
+
+COMSOL_STDERR_END

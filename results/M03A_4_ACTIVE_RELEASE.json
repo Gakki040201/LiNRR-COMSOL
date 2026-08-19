@@ -1,0 +1,9 @@
+{
+    "run_id":  "20260719_114249",
+    "release_manifest_path":  "runs/20260719_114249_M03A_4/release_bundle/manifest/M03A_4_RELEASE_MANIFEST.csv",
+    "release_manifest_sha256":  "bec2b44337840f11717094606811e5a694a0e719342479fb2271cbbbfb9dbc80",
+    "resolved_inputs_sha256":  "c76b81c8d375653c6713e5c39ece809c575af6a660cce9154e98ef0af475f538",
+    "derived_mph_sha256":  "556e6b3af11c225c67668cd99a3a92c2be3dcd10f5e5a0488efb548d359793b7",
+    "activation_timestamp":  "2026-07-19T11:46:25.2138210+08:00",
+    "status":  "ACTIVE"
+}

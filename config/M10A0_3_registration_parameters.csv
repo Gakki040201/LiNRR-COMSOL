@@ -1,0 +1,12 @@
+﻿parameter,value,unit,classification,description
+cc_center_x,54,mm,LANDMARK_DERIVED_EXACT,Collector eight-hole pattern center in source x
+cc_center_z,-54,mm,LANDMARK_DERIVED_EXACT,Collector eight-hole pattern center in source z
+top_rotation_x,-90,deg,LANDMARK_DERIVED_EXACT,Maps collector source x-z plane to chamber global x-y plane
+top_move_x,-54,mm,LANDMARK_DERIVED_EXACT,Centers collector bolt pattern in chamber frame
+top_move_y,54,mm,LANDMARK_DERIVED_EXACT,Centers collector bolt pattern in chamber frame
+top_move_z,28,mm,GEOMETRY_DERIVED_HYPOTHESIS,Maps source y=23 face to chamber z=+5
+mirror_plane_z,0,mm,ASSEMBLY_INFERENCE,Creates opposite collector
+chamber_outer_top,5,mm,CAD_SOURCE,Chamber source outer plane
+chamber_outer_bottom,-5,mm,CAD_SOURCE,Chamber source outer plane
+collector_candidate_mating_y,23,mm,GEOMETRY_DERIVED_HYPOTHESIS,Candidate flow-field/mating face
+physical_gde_gap,0,mm,NOT_MODELED,No GDE or gasket spacing inserted in M10A0.3

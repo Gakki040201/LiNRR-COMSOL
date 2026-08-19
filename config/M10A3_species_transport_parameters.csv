@@ -1,0 +1,30 @@
+parameter,value,unit,source_class,source_reference,model_role,notes
+T_species,298.15,K,PROVISIONAL_SENSITIVITY,M10A2R T_model,all_species,Operating temperature requires experiment-specific confirmation
+p_gas_abs,1,atm,PROVISIONAL_SENSITIVITY,M10A2R p_N2_abs,gas_feed,Absolute feed pressure sensitivity
+MW_N2,28.0134,g/mol,LITERATURE_REPORTED,NIST molecular weight identity,comparison,Species identity only
+MW_H2,2.01588,g/mol,LITERATURE_REPORTED,NIST molecular weight identity,comparison,Species identity only
+rho_N2,1.145,kg/m^3,PROVISIONAL_SENSITIVITY,M10A2R inherited numerical gas property,n2_hydrodynamics,Not experimentally calibrated
+mu_N2,1.76e-5,Pa*s,PROVISIONAL_SENSITIVITY,M10A2R inherited numerical gas property,n2_hydrodynamics,Not experimentally calibrated
+rho_H2,0.082,kg/m^3,PROVISIONAL_SENSITIVITY,M10A2R inherited numerical gas property,h2_hydrodynamics,Not experimentally calibrated
+mu_H2,8.9e-6,Pa*s,PROVISIONAL_SENSITIVITY,M10A2R inherited numerical gas property,h2_hydrodynamics,Not experimentally calibrated
+D_N2_gas,2.0e-5,m^2/s,PROVISIONAL_SENSITIVITY,M10A2 laboratory hardware parameter ledger,n2_gas_transport,Carrier-gas definition and operating conditions require calibration
+D_H2_gas,6.1e-5,m^2/s,LITERATURE_ESTIMATE,Order-of-magnitude binary gas diffusion estimate,h2_gas_transport,Not an electrolyte solubility prediction
+H_N2,1.0e-5,mol/(m^3*Pa),PROVISIONAL_SENSITIVITY,M10A2 phenomenological sensitivity,n2_gas_liquid_partition,Electrolyte-specific Henry coefficient remains calibration required
+D_N2_liq,2.0e-9,m^2/s,PROVISIONAL_SENSITIVITY,M02.2 numerical transport verification,n2_liquid_transport,Not experimentally calibrated
+eps_ssc,0.5,1,PROVISIONAL_SENSITIVITY,M10A2 porous sensitivity,ssc_transport,Sweep parameter
+tau_ssc,2.0,1,PROVISIONAL_SENSITIVITY,M10A2 porous sensitivity,ssc_transport,Sweep parameter
+Sl_ssc,0.5,1,PROVISIONAL_SENSITIVITY,M10A2 reduced wetting transport value,ssc_transport,MAPPED COUPLED FROM REDUCED WETTING MODEL as scalar support only
+proton_donor_identity,proton_donor,1,CALIBRATION_REQUIRED,Manual and project search found no unique feed donor identity,donor_transport,Do not substitute ethanol cleaning solvent as feed identity
+c_proton_donor_in,1.0,mol/m^3,PROVISIONAL_SENSITIVITY,Numerical transport verification input,donor_transport,No reaction consumption in M10A3
+D_proton_donor,1.0e-9,m^2/s,PROVISIONAL_SENSITIVITY,Numerical transport verification input,donor_transport,Actual donor and electrolyte required
+D_NH3_liq,1.5e-9,m^2/s,PROVISIONAL_SENSITIVITY,Numerical transport verification input,nh3_transport,No yield or FE interpretation
+J_NH3_source,1.0e-7,mol/(m^2*s),NUMERICAL_VERIFICATION_ONLY,M10A3 prescribed interface source,nh3_transport,PRESCRIBED_NUMERICAL_NH3_SOURCE
+D_tracer,1.0e-9,m^2/s,PROVISIONAL_SENSITIVITY,Numerical RTD sensitivity,rtd_transport,Nonreactive tracer
+c_tracer_pulse,1.0,mol/m^3,NUMERICAL_VERIFICATION_ONLY,M10A3 pulse definition,rtd_transport,Arbitrary normalized tracer amplitude
+t_tracer_pulse,60,s,NUMERICAL_VERIFICATION_ONLY,M10A3 pulse definition,rtd_transport,Finite inlet pulse for numerical RTD
+Q_liq,1.0,cm^3/min,PROVISIONAL_SENSITIVITY,M10A2 liquid sweep saved case,liquid_transport,Not an experimental RTD flow
+c_transport_zero_feed,1.0e-4,mol/m^3,NUMERICAL_VERIFICATION_ONLY,M10A3 positivity-preserving formulation,liquid_species,Trace inlet/reference retained in fields and ledgers; not postprocessing clipping
+beta_species_numdiff,0.5,1,NUMERICAL_VERIFICATION_ONLY,M10A3 fixed conservative discretization,liquid_species,First-order-upwind-equivalent mesh-Peclet diffusion; fixed before accepted solve and not fitted to concentration
+t_species_ramp,tau_species_nom/100,s,NUMERICAL_VERIFICATION_ONLY,M10A3 source startup,liquid_species,Smooth startup only; final prescribed source amplitude is unchanged
+L_liq_external_equivalent,0.60,m,DERIVED,M10A2R documented PFA segments,nh3_downstream,Sum of 0.20 m plus two 0.15 m plus 0.10 m authorized PFA segments
+V_liq_external_equivalent,1.1977e-6,m^3,DERIVED,M10A2R documented PFA IDs and lengths,nh3_downstream,Equivalent 1D PFA volume; latex length excluded

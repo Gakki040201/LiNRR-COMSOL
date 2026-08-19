@@ -1,0 +1,6 @@
+"tag","entity_dimension","entity_count","measure_m_or_m2","expected_measure_m_or_m2","status","definition"
+"sel_electrolyte","2","1","0.000220000000000","0.000220000000000","PASS","2D electrolyte domain; 3D equivalent area is Lcell*Wcell"
+"sel_inlet","1","1","0.00400000000000","0.00400000000000","PASS","named coordinate selection; no durable raw boundary number"
+"sel_outlet","1","1","0.00400000000000","0.00400000000000","PASS","named coordinate selection; no durable raw boundary number"
+"sel_anode_wall","1","1","0.0550000000000","0.0550000000000","PASS","named coordinate selection; no durable raw boundary number"
+"sel_cathode_wall","1","1","0.0550000000000","0.0550000000000","PASS","named coordinate selection; no durable raw boundary number"

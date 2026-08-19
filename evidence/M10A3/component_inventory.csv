@@ -1,0 +1,20 @@
+tag,label,dimension,classification
+comp_cc_raw,REAL / PHYSICAL | Raw real CAD - current collector,3,REAL_PHYSICAL
+comp_chamber_raw,REAL / PHYSICAL | Raw real CAD - chamber,3,REAL_PHYSICAL
+comp_cc_rotated,Current collector rotated about global X - M10A0.3b,3,SUPPORT
+comp_registered,REAL / PHYSICAL | Registered physical cell,3,REAL_PHYSICAL
+comp_electrolyte_flow,REAL / PHYSICAL | Electrolyte fluid - real CAD,3,REAL_PHYSICAL
+comp_n2_flow,REAL / PHYSICAL | N2 channel - real CAD | 50 cm^3/min,3,REAL_PHYSICAL
+comp_ssc_hardware,REAL / PHYSICAL | Physical SSC / gasket assembly,3,REAL_PHYSICAL
+comp_h2_flow,REAL / PHYSICAL | H2 channel - mirrored real CAD | 50 cm^3/min,3,REAL_PHYSICAL
+comp_pipe_n2,REDUCED ENGINEERING MODELS | N2 External Hydraulic Network [1D REDUCED MODEL - NOT PHYSICAL ROUTING],2,REDUCED
+comp_pipe_h2,REDUCED ENGINEERING MODELS | H2 External Hydraulic Network [1D REDUCED MODEL - NOT PHYSICAL ROUTING],2,REDUCED
+comp_pipe_liq,REDUCED ENGINEERING MODELS | Liquid External Hydraulic Network [1D REDUCED MODEL - NOT PHYSICAL ROUTING],2,REDUCED
+comp_ssc_darcy,Cathode SSC Darcy [REDUCED THROUGH-PLANE MODEL],2,REDUCED
+comp_ssc_wetting,Cathode SSC Wetting [REDUCED THROUGH-PLANE MODEL],2,REDUCED
+comp_n2_transfer,N2 Transfer [REDUCED / PHENOMENOLOGICAL MODEL],2,REDUCED
+comp_cell_physical,REAL / PHYSICAL | Physical Cell 3D,3,REAL_PHYSICAL
+comp_species_n2_real,REAL / PHYSICAL N2 species transport on copied exact CAD channel,3,REAL_PHYSICAL
+comp_species_h2_real,REAL / PHYSICAL H2 species transport on copied exact CAD channel,3,REAL_PHYSICAL
+comp_species_liq_real,REAL / PHYSICAL electrolyte flow plus collocated neutral-species transport,3,REAL_PHYSICAL
+comp_nh3_downstream,REDUCED | explicit equivalent 1D downstream liquid network,1,REDUCED

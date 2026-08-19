@@ -1,0 +1,27 @@
+result_tag,result_type,label,features
+pg00_physical_cell,PlotGroup3D,00 Physical Cell - Full 3D,dset_physical_mesh
+pg01_physical_exploded,PlotGroup3D,01 Physical Cell - Exploded SSC/Gasket | DISPLAY SCALE ONLY,dset_physical_mesh
+pg02_gas_connections,PlotGroup3D,02 Gas Port Connections - PFA 3x2 mm | NO PEEK INTERNAL GEOMETRY,dset_physical_mesh
+pg03_n2_channel,PlotGroup3D,03 Real N2 Channel,surf
+pg04_h2_channel,PlotGroup3D,04 Real H2 Channel,surf
+pg05_electrolyte,PlotGroup3D,05 Electrolyte Chamber,surf
+pg06_ssc_true_scale,PlotGroup3D,Physical SSC - true scale | t=30 um LITERATURE_SAME_PLATFORM,dset_physical_mesh
+pg_liq_velocity,PlotGroup3D,REAL FLOW RESULTS | Electrolyte Velocity,surf;slice
+pg_liq_pressure,PlotGroup3D,REAL FLOW RESULTS | Electrolyte Pressure,surf;slice
+pg_liq_streamlines,PlotGroup3D,Liquid Streamlines,str
+pg_liq_wall_shear,PlotGroup3D,REAL FLOW RESULTS | Electrolyte Wall Shear,surf
+pg_n2_velocity,PlotGroup3D,REAL FLOW RESULTS | N2 Velocity,surf;slice
+pg_n2_pressure,PlotGroup3D,REAL FLOW RESULTS | N2 Pressure,surf;slice
+pg_n2_streamlines,PlotGroup3D,N2 Streamlines,str
+pg_n2_wall_shear,PlotGroup3D,REAL FLOW RESULTS | N2 Wall Shear,surf
+pg_h2_velocity,PlotGroup3D,REAL FLOW RESULTS | H2 Velocity,surf
+pg_h2_pressure,PlotGroup3D,REAL FLOW RESULTS | H2 Pressure,surf
+pg_pipe_dp,PlotGroup1D,REDUCED MODEL RESULTS | External Pipe Pressure [REDUCED MODEL],line
+pg_ssc_dp,PlotGroup2D,REDUCED MODEL RESULTS | SSC Darcy Pressure [REDUCED MODEL],surf
+pg_ssc_velocity,PlotGroup2D,REDUCED MODEL RESULTS | SSC Darcy Velocity [REDUCED MODEL],surf
+pg_ssc_sl,PlotGroup2D,REDUCED MODEL RESULTS | SSC Liquid Saturation [REDUCED MODEL],surf
+pg_ssc_sg,PlotGroup2D,REDUCED MODEL RESULTS | SSC Gas Saturation [REDUCED MODEL],surf
+pg_penetration,PlotGroup2D,REDUCED MODEL RESULTS | Liquid Penetration [REDUCED MODEL],surf
+pg_flood_front,PlotGroup2D,REDUCED MODEL RESULTS | Flooding Front [REDUCED MODEL],cont
+pg_n2_conc,PlotGroup2D,REDUCED MODEL RESULTS | N2 Transfer Concentration [REDUCED / PHENOMENOLOGICAL MODEL],surf
+pg_n2_flux,PlotGroup2D,REDUCED MODEL RESULTS | N2 Transfer Flux [REDUCED / PHENOMENOLOGICAL MODEL],surf

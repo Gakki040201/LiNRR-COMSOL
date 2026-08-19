@@ -1,0 +1,1 @@
+SYNTHETIC instrument export; sample=SYN_BASE; replicate=R3; not experimental

@@ -1,0 +1,5 @@
+sample_id,component_name,value_ohm,uncertainty_ohm,unit,method,replicate_count,temperature_K,source_reference,raw_evidence_path,raw_evidence_size_bytes,raw_evidence_sha256,data_origin,status,notes
+EXP_TEMPLATE_001,fixture,,,,,,,,,,,EXPERIMENTAL,MISSING,
+EXP_TEMPLATE_001,contact,,,,,,,,,,,EXPERIMENTAL,MISSING,
+EXP_TEMPLATE_001,membrane,,,,,,,,,,,EXPERIMENTAL,MISSING,
+EXP_TEMPLATE_001,other_series,,,,,,,,,,,EXPERIMENTAL,MISSING,

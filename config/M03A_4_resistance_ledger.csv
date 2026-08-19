@@ -1,0 +1,11 @@
+sample_id,component_name,value_ohm,uncertainty_ohm,status,measurement_method,source_type,source_reference,temperature_K,notes
+SYN_DRY_001,EIS_HFR_total,3.0448140495850002,0.00018595041500013562,SYNTHETIC_CONSENSUS_ACCEPTED,HIGH_FREQUENCY_INTERCEPT,SYNTHETIC,tests/fixtures/M03A_4/S001_complete_rep1.csv;tests/fixtures/M03A_4/S001_complete_rep2.csv,298.15,accepted arithmetic-mean replicate consensus with standard uncertainty of mean
+SYN_DRY_001,fixture,0.10,0.001,SYNTHETIC_DEFINED,SYNTHETIC_FIXED_DEFINITION,SYNTHETIC,M03A.4 synthetic resistance contract,298.15,not experimental
+SYN_DRY_001,contact,0.05,0.001,SYNTHETIC_DEFINED,SYNTHETIC_FIXED_DEFINITION,SYNTHETIC,M03A.4 synthetic resistance contract,298.15,not experimental
+SYN_DRY_001,membrane,0.20,0.002,SYNTHETIC_DEFINED,SYNTHETIC_FIXED_DEFINITION,SYNTHETIC,M03A.4 synthetic resistance contract,298.15,not experimental
+SYN_DRY_001,other_series,0.05,0.001,SYNTHETIC_DEFINED,SYNTHETIC_FIXED_DEFINITION,SYNTHETIC,M03A.4 synthetic resistance contract,298.15,not experimental
+EXP_TEMPLATE_001,EIS_HFR_total,,,MISSING,,EXPERIMENTAL,,,required experimental input absent
+EXP_TEMPLATE_001,fixture,,,MISSING,,EXPERIMENTAL,,,required experimental input absent
+EXP_TEMPLATE_001,contact,,,MISSING,,EXPERIMENTAL,,,required experimental input absent
+EXP_TEMPLATE_001,membrane,,,MISSING,,EXPERIMENTAL,,,required experimental input absent
+EXP_TEMPLATE_001,other_series,,,MISSING,,EXPERIMENTAL,,,required experimental input absent

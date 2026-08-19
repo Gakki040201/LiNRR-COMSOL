@@ -1,0 +1,19 @@
+sample_id,case_id,area_name,value_m2,uncertainty_m2,status,source_type,source_reference,definition,measurement_method,mapping_reference,notes,mapping_formula,mapping_uncertainty_m2
+AREA_OK,C001,geometric_electrode_area,0.003025,0.00003025,PROVISIONAL,SYNTHETIC,M03A2_AREA_FIXTURE,nominal electrode footprint,fixed synthetic definition,,independent definition,,
+AREA_OK,C001,actual_wetted_area,0.00295,0.00004,PROVISIONAL,SYNTHETIC,M03A2_AREA_FIXTURE,liquid-wetted electrode surface,fixed synthetic definition,,not assumed equal to geometric area,,
+AREA_OK,C001,catalytic_layer_projected_area,0.00285,0.00005,PROVISIONAL,SYNTHETIC,M03A2_AREA_FIXTURE,projected catalytic-layer coverage,fixed synthetic definition,,not assumed equal to wetted area,,
+AREA_OK,C001,GDE_exposed_area,0.00310,0.00004,PROVISIONAL,SYNTHETIC,M03A2_AREA_FIXTURE,gas-diffusion electrode exposed area,fixed synthetic definition,,independent definition,,
+AREA_OK,C001,EIS_area,0.003025,0.00003025,PROVISIONAL,SYNTHETIC,M03A2_AREA_FIXTURE,area used to normalize EIS,fixed synthetic definition,MAP_AREA_OK_EIS_CD,source area for declared mapping,EIS_area = current_density_reporting_area,0.00004278
+AREA_OK,C001,current_density_reporting_area,0.003025,0.00003025,PROVISIONAL,SYNTHETIC,M03A2_AREA_FIXTURE,area used for current-density reporting,fixed synthetic definition,MAP_AREA_OK_EIS_CD,complete synthetic mapping,current_density_reporting_area = EIS_area,0.00004278
+AREA_CONFLICT,C019,geometric_electrode_area,0.003025,0.00003025,PROVISIONAL,SYNTHETIC,M03A2_AREA_CONFLICT,nominal electrode footprint,fixed synthetic definition,,independent definition,,
+AREA_CONFLICT,C019,actual_wetted_area,0.00290,0.00004,PROVISIONAL,SYNTHETIC,M03A2_AREA_CONFLICT,liquid-wetted electrode surface,fixed synthetic definition,,independent definition,,
+AREA_CONFLICT,C019,catalytic_layer_projected_area,0.00280,0.00005,PROVISIONAL,SYNTHETIC,M03A2_AREA_CONFLICT,projected catalytic-layer coverage,fixed synthetic definition,,independent definition,,
+AREA_CONFLICT,C019,GDE_exposed_area,0.00310,0.00004,PROVISIONAL,SYNTHETIC,M03A2_AREA_CONFLICT,gas-diffusion electrode exposed area,fixed synthetic definition,,independent definition,,
+AREA_CONFLICT,C019,EIS_area,0.00250,0.00003,PROVISIONAL,SYNTHETIC,M03A2_AREA_CONFLICT,area used to normalize EIS,fixed synthetic definition,,mapping deliberately absent,,
+AREA_CONFLICT,C019,current_density_reporting_area,0.003025,0.00003025,PROVISIONAL,SYNTHETIC,M03A2_AREA_CONFLICT,area used for current-density reporting,fixed synthetic definition,,different basis without mapping,,
+AREA_INCOMPLETE,C023,geometric_electrode_area,,,MISSING,UNKNOWN,,nominal electrode footprint,,,experimental input missing,,
+AREA_INCOMPLETE,C023,actual_wetted_area,,,MISSING,UNKNOWN,,liquid-wetted electrode surface,,,experimental input missing,,
+AREA_INCOMPLETE,C023,catalytic_layer_projected_area,,,MISSING,UNKNOWN,,projected catalytic-layer coverage,,,experimental input missing,,
+AREA_INCOMPLETE,C023,GDE_exposed_area,,,MISSING,UNKNOWN,,gas-diffusion electrode exposed area,,,experimental input missing,,
+AREA_INCOMPLETE,C023,EIS_area,,,MISSING,UNKNOWN,,area used to normalize EIS,,,experimental input missing,,
+AREA_INCOMPLETE,C023,current_density_reporting_area,,,MISSING,UNKNOWN,,area used for current-density reporting,,,experimental input missing,,

@@ -1,0 +1,17 @@
+﻿check,status,value,evidence
+M00_2,PASS,PASS,scripts/windows/12_verify_M00_2_geometry.ps1 regression
+M01_2,PASS,PASS,scripts/windows/13_verify_M01_2_flow.ps1 regression
+M02_2,PASS,PASS,scripts/windows/14_verify_M02_2_transport.ps1 regression
+M03A_2,PASS,PASS,tests/powershell/Test_M03A_2_EIS.ps1;89 assertions
+M03A_3,PASS,PASS,M03A_3 run 20260717_200926_M03A_3 marker SUCCESS
+M03A_4_SYNTHETIC,PASS,PASS,tests/powershell/Test_M03A_4_Calibration.ps1;40 cases
+M03A_5_TOOL,PASS,PASS,tests/powershell/Test_M03A_5_ExperimentalIntake.ps1;69 cases
+M03A_6_TOOL,PASS,PASS,tests/powershell/Test_M03A_6_Acquisition.ps1;91 cases
+M10A3_RELOAD,PASS,PASS,tests/java/LiNRR_M10A3_ReloadCheck.java;16 plots;3703 RTD points
+PARAMETER_CONTAMINATION,PASS,PASS,results/tables/M10_preA4_parameter_provenance_audit.csv
+GEOMETRY_AUTHORITY,PASS,PASS,results/tables/M10_preA4_geometry_authority.csv
+A3_SHA_UNCHANGED,TRUE,03612FDB08D993595ABDA41D5873CBBCAA97580DB432ADCD2FBCD2CA06260C00,verify_M10_preA4_integration.ps1 -Fast
+STEP_SHA_UNCHANGED,TRUE,TRUE,collector and chamber STEP SHA256 checked
+EXPERIMENTALLY_CALIBRATED,FALSE,FALSE,no real experimental calibration evidence
+NEW_A4_PHYSICS_CREATED,FALSE,FALSE,integration artifacts only
+M10_PREA4_INTEGRATION,PASS,PASS,pre-A4 acceptance checks all passed

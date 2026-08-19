@@ -1,0 +1,5 @@
+"item","value","status","reason"
+"RUN_STATE","SYNTHETIC_SMOKE_TEST","PASS","numerical verification only"
+"CALIBRATION_MODE","PROVISIONAL","PASS","no experimental calibration"
+"COUPLING_MODE","PRESCRIBED_CURRENT_ONE_WAY","PASS","no feedback from species to current"
+"M03B_READY","FALSE","PASS","M03A.3 does not authorize M03B"

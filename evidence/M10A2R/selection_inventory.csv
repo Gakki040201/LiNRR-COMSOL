@@ -1,0 +1,88 @@
+component,selection,dimension,count,label
+comp_cc_raw,geom_cc_raw_imp_cc_pnt,0,245,Strict source STEP import
+comp_cc_raw,geom_cc_raw_imp_cc_edg,1,372,Strict source STEP import
+comp_cc_raw,geom_cc_raw_imp_cc_bnd,2,135,Strict source STEP import
+comp_cc_raw,geom_cc_raw_imp_cc_dom,3,1,Strict source STEP import
+comp_chamber_raw,geom_chamber_raw_imp_chamber_pnt,0,172,Strict source STEP import
+comp_chamber_raw,geom_chamber_raw_imp_chamber_edg,1,260,Strict source STEP import
+comp_chamber_raw,geom_chamber_raw_imp_chamber_bnd,2,93,Strict source STEP import
+comp_chamber_raw,geom_chamber_raw_imp_chamber_dom,3,1,Strict source STEP import
+comp_registered,sel_dom_chamber_solid,3,1,sel_dom_chamber_solid
+comp_registered,sel_dom_cc_top_solid,3,1,sel_dom_cc_top_solid
+comp_registered,sel_dom_cc_bottom_solid,3,1,sel_dom_cc_bottom_solid
+comp_registered,sel_bnd_chamber_top_opening,2,69,sel_bnd_chamber_top_opening
+comp_registered,sel_bnd_chamber_bottom_opening,2,69,sel_bnd_chamber_bottom_opening
+comp_registered,sel_bnd_cc_top_flow_face,2,77,sel_bnd_cc_top_flow_face
+comp_registered,sel_bnd_cc_bottom_flow_face,2,77,sel_bnd_cc_bottom_flow_face
+comp_registered,sel_bnd_chamber_liquid_ports,2,11,sel_bnd_chamber_liquid_ports
+comp_registered,sel_bnd_cc_top_gas_ports_in,2,3,sel_bnd_cc_top_gas_ports_in
+comp_registered,sel_bnd_cc_top_gas_ports_out,2,3,sel_bnd_cc_top_gas_ports_out
+comp_registered,sel_bnd_cc_top_gas_ports,2,5,sel_bnd_cc_top_gas_ports
+comp_registered,sel_bnd_cc_bottom_gas_ports_in,2,3,sel_bnd_cc_bottom_gas_ports_in
+comp_registered,sel_bnd_cc_bottom_gas_ports_out,2,3,sel_bnd_cc_bottom_gas_ports_out
+comp_registered,sel_bnd_cc_bottom_gas_ports,2,5,sel_bnd_cc_bottom_gas_ports
+comp_registered,sel_bnd_candidate_top_interface,2,82,sel_bnd_candidate_top_interface
+comp_registered,sel_bnd_candidate_bottom_interface,2,82,sel_bnd_candidate_bottom_interface
+comp_electrolyte_flow,sel_dom_electrolyte_fluid,3,1,sel_dom_electrolyte_fluid
+comp_electrolyte_flow,sel_bnd_electrolyte_inlet,2,1,sel_bnd_electrolyte_inlet
+comp_electrolyte_flow,sel_bnd_electrolyte_outlet,2,1,sel_bnd_electrolyte_outlet
+comp_electrolyte_flow,sel_bnd_electrolyte_gde_top,2,1,sel_bnd_electrolyte_gde_top
+comp_electrolyte_flow,sel_bnd_electrolyte_gde_bottom,2,1,sel_bnd_electrolyte_gde_bottom
+comp_electrolyte_flow,sel_bnd_electrolyte_all,2,89,相邻
+comp_electrolyte_flow,sel_bnd_electrolyte_walls,2,85,差集
+comp_n2_flow,sel_dom_n2_channel,3,1,sel_dom_n2_channel
+comp_n2_flow,sel_bnd_n2_all,2,80,相邻 2
+comp_n2_flow,sel_bnd_n2_inlet_raw,2,1,sel_bnd_n2_inlet_raw
+comp_n2_flow,sel_bnd_n2_inlet,2,1,交集
+comp_n2_flow,sel_bnd_n2_outlet_raw,2,1,sel_bnd_n2_outlet_raw
+comp_n2_flow,sel_bnd_n2_outlet,2,1,交集 2
+comp_n2_flow,sel_bnd_n2_gde_interface_raw,2,1,sel_bnd_n2_gde_interface_raw
+comp_n2_flow,sel_bnd_n2_gde_interface,2,1,交集 3
+comp_n2_flow,sel_bnd_n2_walls,2,77,差集 2
+comp_ssc_hardware,sel_dom_cathode_ssc,3,1,框
+comp_ssc_hardware,sel_dom_anode_ssc,3,1,框 2
+comp_h2_flow,sel_dom_h2_channel,3,1,框 3
+comp_h2_flow,sel_bnd_h2_all,2,80,相邻 3
+comp_h2_flow,sel_bnd_h2_inlet_raw,2,3,框 4
+comp_h2_flow,sel_bnd_h2_inlet,2,3,交集 4
+comp_h2_flow,sel_bnd_h2_outlet_raw,2,3,框 5
+comp_h2_flow,sel_bnd_h2_outlet,2,3,交集 5
+comp_h2_flow,sel_bnd_h2_ssc_raw,2,69,框 6
+comp_h2_flow,sel_bnd_h2_ssc,2,69,交集 6
+comp_h2_flow,sel_bnd_h2_walls,2,5,差集 3
+comp_pipe_n2,sel_pfl_n2_edges,1,1,框 7
+comp_pipe_n2,sel_pfl_n2_in,0,1,框 8
+comp_pipe_n2,sel_pfl_n2_out,0,1,框 9
+comp_pipe_h2,sel_pfl_h2_edges,1,1,框 10
+comp_pipe_h2,sel_pfl_h2_in,0,1,框 11
+comp_pipe_h2,sel_pfl_h2_out,0,1,框 12
+comp_pipe_liq,sel_pfl_liq_edges,1,4,框 13
+comp_pipe_liq,sel_pfl_liq_in,0,1,框 14
+comp_pipe_liq,sel_pfl_liq_out,0,1,框 15
+comp_pipe_liq,sel_pfl_liq_large,1,1,框 16
+comp_ssc_darcy,sel_darcy_domain,2,1,框 17
+comp_ssc_darcy,sel_darcy_left,1,1,框 18
+comp_ssc_darcy,sel_darcy_right,1,1,框 19
+comp_ssc_darcy,sel_darcy_bottom,1,1,框 20
+comp_ssc_wetting,sel_wet_domain,2,1,框 21
+comp_ssc_wetting,sel_wet_left,1,1,框 22
+comp_ssc_wetting,sel_wet_right,1,1,框 23
+comp_ssc_wetting,sel_wet_bottom,1,1,框 24
+comp_n2_transfer,sel_n2_all,2,2,框 25
+comp_n2_transfer,sel_n2_ssc,-1,-1,框 26
+comp_n2_transfer,sel_n2_liq,-1,-1,框 27
+comp_n2_transfer,sel_n2_gas,1,1,框 28
+comp_n2_transfer,sel_n2_interface,1,1,框 29
+comp_n2_transfer,sel_n2_bulk,1,1,框 30
+comp_n2_transfer,sel_n2_bottom,1,2,框 31
+comp_cell_physical,sel_dom_physical_all,3,15,框 32
+comp_cell_physical,sel_dom_cathode_ssc_true,3,3,框 33
+comp_cell_physical,sel_dom_anode_ssc_true,3,3,框 34
+comp_cell_physical,sel_dom_pfa_gas_stubs_top,3,4,框 35
+comp_cell_physical,sel_dom_pfa_gas_stubs_bottom,3,4,框 36
+comp_cell_physical,sel_bnd_cathode_ssc_true,2,80,框 37
+comp_cell_physical,sel_bnd_pfa_gas_stubs_top,2,28,框 38
+comp_cell_physical,sel_bnd_pfa_gas_stubs_bottom,2,28,框 39
+comp_cell_physical,sel_dom_pfa_gas_stubs,3,8,并集
+comp_cell_physical,sel_bnd_pfa_gas_stubs,2,56,并集 2
+comp_cell_physical,sel_dom_nonssc_visual_mesh,3,9,差集 4

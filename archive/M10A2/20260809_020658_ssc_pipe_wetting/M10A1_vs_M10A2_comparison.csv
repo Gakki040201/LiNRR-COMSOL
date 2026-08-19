@@ -1,0 +1,3 @@
+model,assumption,n2_flow_cm3_min,n2_cell_dp_Pa,liquid_cell_dp_Pa,external_n2_pipe_dp_Pa,ssc_penetration,n2_availability
+M10A1,impermeable/no-crossflow single-phase limit,10,15.9303788618,3.42685382263,0,none,not solved
+M10A2,SSC+tubing+pressure+wetting,50,96.1940176856,3.42685384837,7.46967199578,gas_side_Sl_30mbar_0.0119016705370,interface_c_0.966841603054_mol_m3

@@ -1,0 +1,314 @@
+*******************************************
+***COMSOL 6.4.0.293 progress output file***
+*******************************************
+Thu Aug 13 07:56:21 CST 2026
+COMSOL Multiphysics 6.4 (开发版本: 293) 在批处理模式下启动
+正在运行: F:\LiNRR_COMSOL\worktrees\LiNRR_M10A2\src\java\LiNRR_M10A2R_ManualReconciliation.class
+---------- 当前进度: 100 % - 正在更新选择
+Memory: 1015/1016 1062/1098
+           当前进度:   0 % - 导入
+Memory: 1028/1028 1075/1098
+           当前进度:   0 % - 正在导入“STEP”
+Memory: 1030/1034 1077/1098
+Header : Author::Unknown
+Header : Authorization::Unknown
+Header : Description::STEP AP203
+Header : File Name::electrolyteChamber_rectangularMask_v02.2.2_20210521_STEP-AP203.STEP
+Header : Implementation Level::1
+Header : Organization::Unknown
+Header : Originating System::SolidWorks 2020
+Header : Preprocessor Version::SwSTEP 2.0
+Header : Schema::CONFIG_CONTROL_DESIGN
+Header : Time Stamp::2021-06-09T13:01:45
+Begin CAD File Read 'F:/LiNRR_COMSOL/worktrees/LiNRR_M10A2/cad/raw/M10A0_2/electrolyteChamber_rectangularMask_v02.2.2_20210521_STEP-AP203.STEP'
+  
+      Summary of STEP Entities
+  
+Entity Type                                                   Count
+-----------                                                   ------
+advanced_brep_shape_representation .......................:   1
+advanced_face ............................................:   93
+application_context ......................................:   2
+application_protocol_definition ..........................:   2
+applied_approval_assignment ..............................:   3
+applied_date_and_time_assignment .........................:   2
+applied_person_and_organization_assignment ...............:   5
+applied_security_classification_assignment ...............:   1
+approval .................................................:   3
+approval_date_time .......................................:   3
+approval_person_organization .............................:   3
+approval_role ............................................:   3
+approval_status ..........................................:   3
+axis2_placement_3d .......................................:   196
+b_spline_curve_with_knots ................................:   2
+b_spline_curve_with_knots_and_rational_b_spline_curve ....:   12
+b_spline_surface_with_knots_and_rational_b_spline_surface :   2
+calendar_date ............................................:   5
+cartesian_point ..........................................:   1034
+circle ...................................................:   104
+closed_shell .............................................:   1
+coordinated_universal_time_offset ........................:   5
+cylindrical_surface ......................................:   56
+date_and_time ............................................:   5
+date_time_role ...........................................:   2
+direction ................................................:   534
+edge_curve ...............................................:   260
+edge_loop ................................................:   120
+face_bound ...............................................:   27
+face_outer_bound .........................................:   93
+geometric_representation_context_and_global_uncertainty_a :   1
+length_unit_and_si_unit ..................................:   1
+line .....................................................:   142
+local_time ...............................................:   5
+manifold_solid_brep ......................................:   1
+organization .............................................:   1
+oriented_edge ............................................:   520
+person ...................................................:   1
+person_and_organization ..................................:   8
+person_and_organization_role .............................:   5
+plane ....................................................:   35
+plane_angle_unit_and_si_unit .............................:   1
+product ..................................................:   1
+product_context ..........................................:   1
+product_definition .......................................:   1
+product_definition_context ...............................:   1
+product_definition_formation_with_specified_source .......:   1
+product_definition_shape .................................:   1
+product_related_product_category .........................:   1
+security_classification ..................................:   1
+security_classification_level ............................:   1
+shape_definition_representation ..........................:   1
+si_unit_and_solid_angle_time_role ........................
+-----      当前进度:  50 % - 正在导入“STEP”
+Memory: 1036/1042 1083/1098
+...................:   2
+direction ................................................:   534
+edge_curve ...............................................:   260
+edge_loop ................................................:   120
+face_bound ...............................................:   27
+face_outer_bound .........................................:   93
+geometric_representation_context_and_global_uncertainty_a :   1
+length_unit_and_si_unit ..................................:   1
+line .....................................................:   142
+local_time ...............................................:   5
+manifold_solid_brep ......................................:   1
+organization .............................................:   1
+oriented_edge ............................................:   520
+person ...................................................:   1
+person_and_organization ..................................:   8
+person_and_organization_role .............................:   5
+plane ....................................................:   35
+plane_angle_unit_and_si_unit .............................:   1
+product ..................................................:   1
+product_context ..........................................:   1
+product_definition .......................................:   1
+product_definition_context ...............................:   1
+product_definition_formation_with_specified_source .......:   1
+product_definition_shape .................................:   1
+product_related_product_category .........................:   1
+security_classification ..................................:   1
+security_classification_level ............................:   1
+shape_definition_representation ..........................:   1
+si_unit_and_solid_angle_unit .............................:   1
+uncertainty_measure_with_unit ............................:   1
+vector ...................................................:   142
+vertex_point .............................................:   172
+                                                             -------
+Total                                                         3629
+-----      当前进度:  57 % - 正在应用变换
+Memory: 993/1042 1038/1098
+--------   当前进度:  83 % - 正在应用变换
+Memory: 999/1042 1040/1098
+           当前进度:   0 % - 导入 2
+Memory: 1009/1042 1048/1098
+           当前进度:   0 % - 正在导入“STEP”
+Memory: 1021/1042 1061/1098
+Header : Author::Unknown
+Header : Authorization::Unknown
+Header : Description::STEP AP203
+Header : File Name::block_currentCollector_flowField_v03.2.1_20210525_STEP-AP203.STEP
+Header : Implementation Level::1
+Header : Organization::Unknown
+Header : Originating System::SolidWorks 2022
+Header : Preprocessor Version::SwSTEP 2.0
+Header : Schema::CONFIG_CONTROL_DESIGN
+Header : Time Stamp::2023-09-28T11:10:23
+Begin CAD File Read 'F:/LiNRR_COMSOL/worktrees/LiNRR_M10A2/cad/raw/M10A0_2/block_currentCollector_flowField_v03.2.1_20210525_STEP-AP203.STEP'
+  
+      Summary of STEP Entities
+  
+Entity Type                                                   Count
+-----------                                                   ------
+advanced_brep_shape_representation .......................:   1
+advanced_face ............................................:   135
+application_context ......................................:   2
+application_protocol_definition ..........................:   2
+applied_approval_assignment ..............................:   3
+applied_date_and_time_assignment .........................:   2
+applied_person_and_organization_assignment ...............:   5
+applied_security_classification_assignment ...............:   1
+approval .................................................:   3
+approval_date_time .......................................:   3
+approval_person_organization .............................:   3
+approval_role ............................................:   3
+approval_status ..........................................:   3
+axis2_placement_3d .......................................:   296
+calendar_date ............................................:   5
+cartesian_point ..........................................:   753
+circle ...................................................:   160
+closed_shell .............................................:   1
+conical_surface ..........................................:   6
+coordinated_universal_time_offset ........................:   5
+cylindrical_surface ......................................:   78
+date_and_time ............................................:   5
+date_time_role ...........................................:   2
+direction ................................................:   804
+edge_curve ...............................................:   372
+edge_loop ................................................:   167
+face_bound ...............................................:   32
+face_outer_bound .........................................:   135
+geometric_representation_context_and_global_uncertainty_a :   1
+length_unit_and_si_unit ..................................:   1
+line .....................................................:   212
+local_time ...............................................:   5
+manifold_solid_brep ......................................:   1
+organization .............................................:   1
+oriented_edge ............................................:   744
+person ...................................................:   1
+person_and_organization ..................................:   8
+person_and_organization_role .............................:   5
+plane ....................................................:   51
+plane_angle_unit_and_si_unit .............................:   1
+product ..................................................:   1
+product_context ..........................................:   1
+product_definition .......................................:   1
+product_definition_context ...............................:   1
+product_definition_formation_with_specified_source .......:   1
+product_definition_shape .................................:   1
+product_related_product_category .........................:   1
+security_classification ..................................:   1
+security_classification_level ............................:   1
+shape_definition_representation ..........................:   1
+si_unit_and_solid_angle_unit .............................:   1
+uncertainty_measure_with_unit ............................:   1
+vector ...................................................:   ................:   372
+edge_loop ................................................:   167
+face_bound ...............................................:   32
+face_outer_bound .........................................:   135
+geometric_representation_context_and_global_uncertainty_a :   1
+length_unit_and_si_unit ..................................:   1
+line .....................................................:   212
+local_time ...............................................:   5
+manifold_solid_brep ......................................:   1
+organization .............................................:   1
+oriented_edge ............................................:   744
+person ...................................................:   1
+person_and_organization ..................................:   8
+person_and_organization_role .............................:   5
+plane ....................................................:   51
+plane_angle_unit_and_si_unit .............................:   1
+product ..................................................:   1
+product_context ..........................................:   1
+product_definition .......................................:   1
+product_definition_context ...............................:   1
+product_definition_formation_with_specified_source .......:   1
+product_definition_shape .................................:   1
+product_related_product_category .........................:   1
+security_classification ..................................:   1
+security_classification_level ............................:   1
+shape_definition_representation ..........................:   1
+si_unit_and_solid_angle_unit .............................:   1
+uncertainty_measure_with_unit ............................:   1
+vector ...................................................:   212
+vertex_point .............................................:   245
+                                                             -------
+Total                                                         4487
+-----      当前进度:  50 % - 正在导入“STEP”
+Memory: 1021/1042 1060/1098
+--------   当前进度:  83 % - 正在应用变换
+           当前进度:   0 % - 旋转
+Memory: 1028/1042 1066/1098
+           当前进度:   9 % - 移动
+Memory: 1029/1042 1067/1098
+-          当前进度:  18 % - 镜像
+Memory: 1032/1042 1069/1098
+--         当前进度:  27 % - Cathode SSC | 316L | 500 mesh source identity | 60x60 mm | t=30 um LITERATURE_SAME_PLATFORM
+Memory: 1033/1042 1070/1098
+--         当前进度:  27 % - Anode PtAu/316L SSC | 500 mesh source identity | 60x60 mm | t=30 um LITERATURE_SAME_PLATFORM
+--         当前进度:  28 % - 长方体
+Memory: 1038/1042 1074/1098
+--         当前进度:  29 % - 长方体 2
+Memory: 1014/1042 1050/1098
+---        当前进度:  30 % - Negative-side gasket | SCHEMATIC_VISUAL_ONLY | thickness not verified
+Memory: 995/1042 1034/1098
+---        当前进度:  30 % - 执行布尔操作
+Memory: 969/1042 1020/1098
+---        当前进度:  39 % - 长方体 3
+----       当前进度:  40 % - 长方体 4
+Memory: 971/1042 1022/1098
+----       当前进度:  41 % - Positive-side gasket | SCHEMATIC_VISUAL_ONLY | thickness not verified
+----       当前进度:  41 % - 执行布尔操作
+-----      当前进度:  50 % - N2_IN PFA wall | OD 3 mm | SCHEMATIC_VISUAL_ONLY
+Memory: 970/1042 1021/1098
+-----      当前进度:  50 % - N2_IN gas bore | ID 2 mm | no PEEK cone
+Memory: 973/1042 1023/1098
+-----      当前进度:  51 % - N2_IN hollow PFA tube wall | VISUALIZATION ONLY | NO HYDRAULIC ROLE
+Memory: 971/1042 1021/1098
+-----      当前进度:  51 % - 执行布尔操作
+Memory: 953/1042 988/1098
+------     当前进度:  60 % - N2_IN distinct gas bore | ID 2 mm | VISUALIZATION ONLY | NO HYDRAULIC ROLE
+------     当前进度:  61 % - N2_OUT PFA wall | OD 3 mm | SCHEMATIC_VISUAL_ONLY
+Memory: 954/1042 989/1098
+------     当前进度:  62 % - N2_OUT gas bore | ID 2 mm | no PEEK cone
+Memory: 955/1042 990/1098
+------     当前进度:  63 % - N2_OUT hollow PFA tube wall | VISUALIZATION ONLY | NO HYDRAULIC ROLE
+Memory: 956/1042 991/1098
+------     当前进度:  63 % - 执行布尔操作
+-------    当前进度:  72 % - N2_OUT distinct gas bore | ID 2 mm | VISUALIZATION ONLY | NO HYDRAULIC ROLE
+Memory: 957/1042 992/1098
+-------    当前进度:  73 % - H2_IN PFA wall | OD 3 mm | SCHEMATIC_VISUAL_ONLY
+Memory: 958/1042 993/1098
+-------    当前进度:  73 % - H2_IN gas bore | ID 2 mm | no PEEK cone
+-------    当前进度:  74 % - H2_IN hollow PFA tube wall | VISUALIZATION ONLY | NO HYDRAULIC ROLE
+-------    当前进度:  74 % - 执行布尔操作
+Memory: 959/1042 993/1098
+--------   当前进度:  83 % - H2_IN distinct gas bore | ID 2 mm | VISUALIZATION ONLY | NO HYDRAULIC ROLE
+--------   当前进度:  84 % - H2_OUT PFA wall | OD 3 mm | SCHEMATIC_VISUAL_ONLY
+Memory: 959/1042 994/1098
+--------   当前进度:  85 % - H2_OUT gas bore | ID 2 mm | no PEEK cone
+Memory: 960/1042 995/1098
+--------   当前进度:  86 % - H2_OUT hollow PFA tube wall | VISUALIZATION ONLY | NO HYDRAULIC ROLE
+Memory: 961/1042 995/1098
+--------   当前进度:  86 % - 执行布尔操作
+Memory: 962/1042 997/1098
+---------  当前进度:  95 % - H2_OUT distinct gas bore | ID 2 mm | VISUALIZATION ONLY | NO HYDRAULIC ROLE
+---------  当前进度:  96 % - 形成装配
+Memory: 963/1042 998/1098
+---------  当前进度:  96 % - 正在初始化
+Memory: 980/1042 1015/1098
+---------- 当前进度: 100 % - 正在更新选择
+Memory: 989/1042 1035/1098
+---------- 当前进度: 100 % - 正在创建可视化网格
+Memory: 1034/1042 1086/1098
+           当前进度:   0 % - 自由三角形网格
+Memory: 1037/1042 1088/1098
+顶点单元数：806
+--         当前进度:  28 % - 正在创建边界网格
+Memory: 1069/1069 1125/1125
+---        当前进度:  30 % - 正在创建边界网格
+Memory: 1084/1084 1125/1125
+边单元数：7812
+边界单元数：35682
+---------- 当前进度: 100 % - 正在创建边界网格
+Memory: 1094/1094 1137/1137
+
+/***************/
+/*****错误********/
+/***************/
+运行 Java 类时出错。
+实体没有选择。
+ - 类型: Mesh / Mesh
+ - 标记: mesh
+实体没有选择。
+ - 类: LiNRR_M10A2R_ManualReconciliation
+总时间: 43 s.

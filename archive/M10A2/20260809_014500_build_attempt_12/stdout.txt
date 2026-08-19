@@ -1,0 +1,25 @@
+M10A2_SSC_AREA|flowfield_footprint_mm2=2474.04981995|open_channel_area_mm2=1278.22088213|total_cut_area_mm2=3600.00000000|bbox_mm=[-24.990402221679688, 24.990402221679688, -24.75, 24.75, 5.0, 5.0]
+M10A2_RESUME_AFTER_REAL_FLOW=TRUE
+M10A2_RESUME_AFTER_H2=TRUE
+M10A2_DATASET|study=std_pipe_n2|solution=sol6|component=comp_pipe_n2|dataset=dset_std_pipe_n2
+M10A2_PIPE_SOLVE|component=comp_pipe_n2|dataset=dset_std_pipe_n2|pressure=p_pfl_n2|dp_Pa=7.46967199578|status=PASS
+M10A2_DATASET|study=std_pipe_h2|solution=sol7|component=comp_pipe_h2|dataset=dset_std_pipe_h2
+M10A2_PIPE_SOLVE|component=comp_pipe_h2|dataset=dset_std_pipe_h2|pressure=p_pfl_h2|dp_Pa=3.77727731605|status=PASS
+M10A2_DATASET|study=std_pipe_liq|solution=sol8|component=comp_pipe_liq|dataset=dset_std_pipe_liq
+M10A2_PIPE_SOLVE|component=comp_pipe_liq|dataset=dset_std_pipe_liq|pressure=p_pfl_liq|dp_Pa=32.8034711678|status=PASS
+M10A2_ANALYTIC_AUDIT|name=N2_PIPE_HP|solved=7.46967199578|analytic=7.46967199578|relative=7.13427647320e-16
+M10A2_ANALYTIC_AUDIT|name=H2_PIPE_HP|solved=3.77727731605|analytic=3.77727731605|relative=3.52705803169e-16
+M10A2_ANALYTIC_AUDIT|name=LIQ_PIPE_HP|solved=32.8034711678|analytic=32.8034711678|relative=1.08302979908e-15
+M10A2_PIPE_NETWORK|n2_dp_Pa=7.46967199578|h2_dp_Pa=3.77727731605|liquid_known_dp_Pa=32.8034711678|latex_length=CALIBRATION_REQUIRED|inlet_gas_lengths=CALIBRATION_REQUIRED
+M10A2_DATASET|study=std_ssc_darcy|solution=sol9|component=comp_ssc_darcy|dataset=dset_std_ssc_darcy
+M10A2_POROUS_SWEEP|K_m2=1.00000000000e-13|dp_Pa=1500.00000000|u_m_s=0.0108695652174
+M10A2_POROUS_SWEEP|K_m2=1.00000000000e-12|dp_Pa=1500.00000000|u_m_s=0.108695652174
+M10A2_POROUS_SWEEP|K_m2=1.00000000000e-11|dp_Pa=1500.00000000|u_m_s=1.08695652174
+M10A2_POROUS_SWEEP|K_m2=1.00000000000e-10|dp_Pa=1500.00000000|u_m_s=10.8695652174
+M10A2_POROUS_SWEEP|K_m2=1.00000000000e-09|dp_Pa=1500.00000000|u_m_s=108.695652174
+M10A2B_POROUS_SSC_SWEEP=PASS
+M10A2_POROUS_CHECKPOINT_SAVE=PASS
+M10A2_DATASET|study=std_ssc_wetting|solution=sol10|component=comp_ssc_wetting|dataset=dset_std_ssc_wetting
+M10A2_WETTING_SWEEP|dp_mbar=0.00000000000|Sl_min=0.0100000082110|Sl_max=0.0180435403136|gas_side_Sl=0.0100000082110
+M10A2_WETTING_SWEEP|dp_mbar=5.00000000000|Sl_min=0.00624905399279|Sl_max=0.102090738731|gas_side_Sl=0.102090738663
+M10A2_WETTING_SWEEP|dp_mbar=10.0000000000|Sl_min=0.00396585510821|Sl_max=0.175995737075|gas_side_Sl=0.175995737074

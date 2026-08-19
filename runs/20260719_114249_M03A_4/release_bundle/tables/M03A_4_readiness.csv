@@ -1,0 +1,6 @@
+"run_id","item","value","status","reason"
+"20260719_114249","RUN_STATE","SYNTHETIC_SMOKE_TEST","PASS","numerical verification only"
+"20260719_114249","CALIBRATION_MODE","PROVISIONAL","PASS","experimental calibration incomplete"
+"20260719_114249","PARAMETER_TRANSFER_MODE","SYNTHETIC_DRY_RUN","PASS","synthetic fixture only"
+"20260719_114249","EXPERIMENTAL_INPUT_COMPLETE","FALSE","PASS","no real experimental file supplied"
+"20260719_114249","M03B_READY","FALSE","PASS","M03A.4 does not authorize M03B"

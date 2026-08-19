@@ -1,0 +1,13 @@
+COMSOL_CAPTURE_METADATA_BEGIN
+EXECUTABLE=F:\COMSOL64\Multiphysics\bin\win64\comsolbatch.exe
+ARGUMENTS=-prefsdir F:\LiNRR_COMSOL\worktrees\LiNRR_M10A2\runs\M10A2R\20260813_074755_manual_reconciliation\isolated_comsol_preferences -classpathadd F:\LiNRR_COMSOL\worktrees\LiNRR_M10A2\runs\M10A2R\20260813_074755_manual_reconciliation -inputfile F:\LiNRR_COMSOL\worktrees\LiNRR_M10A2\src\java\LiNRR_M10A2R_ManualReconciliation.class -batchlog F:\LiNRR_COMSOL\worktrees\LiNRR_M10A2\runs\M10A2R\20260813_074755_manual_reconciliation\M10A2R.log
+STARTED_UTC=2026-08-12T23:48:11.5040083Z
+FINISHED_UTC=2026-08-12T23:48:20.2324411Z
+EXIT_CODE=0
+COMSOL_CAPTURE_METADATA_END
+COMSOL_STDOUT_BEGIN
+
+COMSOL_STDOUT_END
+COMSOL_STDERR_BEGIN
+
+COMSOL_STDERR_END

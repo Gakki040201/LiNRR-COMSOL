@@ -1,0 +1,180 @@
+parameter,expression,source_class,description
+T_test,298.15[K],PROVISIONAL_SENSITIVITY,NUMERICAL_TEST_ONLY temperature
+Q_liq_test,Q_liq_sweep,CALIBRATION_REQUIRED,M10A2 CALIBRATION_REQUIRED sweep; legacy tag retained for field compatibility
+rho_liq_test,rho_liq,PROVISIONAL_SENSITIVITY,PROVISIONAL property; legacy tag retained
+mu_liq_test,mu_liq,PROVISIONAL_SENSITIVITY,PROVISIONAL property; legacy tag retained
+Q_n2_test,Q_N2_lab,LAB_MANUAL,M10A2 LAB_MANUAL operating point; legacy tag retained for field compatibility
+rho_n2_test,rho_N2,PROVISIONAL_SENSITIVITY,PROVISIONAL property; legacy tag retained
+mu_n2_test,mu_N2,PROVISIONAL_SENSITIVITY,PROVISIONAL property; legacy tag retained
+p_out_test,0[Pa],PROVISIONAL_SENSITIVITY,NUMERICAL_TEST_ONLY gauge outlet pressure
+A_liq_in_test,31.5391404487[mm^2],PROVISIONAL_SENSITIVITY,NUMERICAL_TEST_ONLY measured CAD inlet area
+A_n2_in_test,31.5391329804[mm^2],PROVISIONAL_SENSITIVITY,NUMERICAL_TEST_ONLY measured CAD inlet area
+D_liq_in_test,2*sqrt(A_liq_in_test/pi),PROVISIONAL_SENSITIVITY,NUMERICAL_TEST_ONLY equivalent inlet diameter
+D_n2_in_test,2*sqrt(A_n2_in_test/pi),PROVISIONAL_SENSITIVITY,NUMERICAL_TEST_ONLY equivalent inlet diameter
+flow_scale_liq_test,1,PROVISIONAL_SENSITIVITY,NUMERICAL_TEST_ONLY continuation factor
+flow_scale_n2_test,1,PROVISIONAL_SENSITIVITY,NUMERICAL_TEST_ONLY continuation factor
+Q_N2_lab,50[cm^3/min],LAB_MANUAL,LAB_MANUAL formal N2 baseline; mL/min represented as cm^3/min
+Q_H2_lab,50[cm^3/min],LAB_MANUAL,LAB_MANUAL formal H2 baseline; mL/min represented as cm^3/min
+Q_gas_startup,20[cm^3/min],LAB_MANUAL,LAB_MANUAL optional 20 min preflow case
+t_gas_startup,20[min],LAB_MANUAL,LAB_MANUAL startup duration
+Q_liq_sweep,1[cm^3/min],CALIBRATION_REQUIRED,CALIBRATION_REQUIRED liquid flow sweep variable; not a lab baseline
+gas_pfa_id,2.0[mm],LAB_MANUAL,LAB_MANUAL PFA ID used for hydraulics
+gas_pfa_od,3.0[mm],LAB_MANUAL,"LAB_MANUAL PFA OD, visualization only"
+liq_pfa_id,1.5[mm],LAB_MANUAL,LAB_MANUAL liquid PFA ID used for hydraulics
+liq_pfa_id_large,2.0[mm],LAB_MANUAL,LAB_MANUAL 10 cm liquid PFA segment ID
+latex_id,1.6[mm],LAB_MANUAL,LAB_MANUAL 14# latex ID; length remains CALIBRATION_REQUIRED
+L_gas_out,0.20[m],LAB_MANUAL,LAB_MANUAL approximate gas outlet length per side
+L_liq_20,0.20[m],LAB_MANUAL,LAB_MANUAL liquid PFA segment
+L_liq_15,0.15[m],LAB_MANUAL,LAB_MANUAL liquid PFA segment; two segments
+L_liq_10,0.10[m],LAB_MANUAL,LAB_MANUAL liquid PFA segment
+L_latex_included,0[m],CALIBRATION_REQUIRED,CALIBRATION_REQUIRED latex length; zero explicitly excludes unknown resistance
+ssc_cut,60[mm],LAB_MANUAL,LAB_MANUAL 316L SSC square cut width
+gasket_outer,75[mm],LAB_MANUAL,LAB_MANUAL gasket outer square
+gasket_inner,55[mm],LAB_MANUAL,LAB_MANUAL gasket inner opening
+t_ssc,30[um],LITERATURE_SAME_PLATFORM,LITERATURE_SAME_PLATFORM provisional SSC thickness; not measured
+t_gasket_visual,0[mm],CALIBRATION_REQUIRED,CALIBRATION_REQUIRED compression thickness; zero-thickness mask only
+eps_ssc,0.5,PROVISIONAL_SENSITIVITY,"PROVISIONAL_SENSITIVITY; sweep 0.3, 0.5, 0.7"
+K_ssc,1e-11[m^2],PROVISIONAL_SENSITIVITY,PROVISIONAL_SENSITIVITY; not inferred from pore size
+theta_ssc,90[deg],PROVISIONAL_SENSITIVITY,PROVISIONAL_SENSITIVITY contact angle
+pc_ssc,1500[Pa],PROVISIONAL_SENSITIVITY,PROVISIONAL_SENSITIVITY entry pressure; not tuned
+tau_ssc,2,PROVISIONAL_SENSITIVITY,PROVISIONAL_SENSITIVITY tortuosity
+dp_ssc,1500[Pa],PROVISIONAL_SENSITIVITY,Pressure-difference sweep parameter; 15 mbar is literature comparison only
+p_smooth,1[Pa],PROVISIONAL_SENSITIVITY,Numerical smoothing scale for positive pressure drive
+Sl_initial,0.01,PROVISIONAL_SENSITIVITY,PROVISIONAL initially dry liquid saturation
+Sl_transport,0.5,PROVISIONAL_SENSITIVITY,PROVISIONAL wetting-to-transport sensitivity value
+Sl_breakthrough,0.5,PROVISIONAL_SENSITIVITY,PROVISIONAL diagnostic threshold for liquid breakthrough and flooding front
+rho_N2,1.145[kg/m^3],PROVISIONAL_SENSITIVITY,PROVISIONAL gas property at nominal condition
+mu_N2,1.76e-5[Pa*s],PROVISIONAL_SENSITIVITY,PROVISIONAL gas viscosity
+rho_H2,0.082[kg/m^3],CALIBRATION_REQUIRED,PROVISIONAL gas density; calibration conditions required
+mu_H2,8.9e-6[Pa*s],PROVISIONAL_SENSITIVITY,PROVISIONAL gas viscosity
+rho_liq,889[kg/m^3],PROVISIONAL_SENSITIVITY,PROVISIONAL electrolyte density inherited from numerical layer
+mu_liq,0.46[mPa*s],PROVISIONAL_SENSITIVITY,PROVISIONAL electrolyte viscosity inherited from numerical layer
+p_out,0[Pa],PROVISIONAL_SENSITIVITY,Gauge outlet reference
+A_ssc_active,2474.04981995[mm^2],DERIVED,DERIVED from real-CAD N2/SSC interface bounding footprint
+A_ssc_cut,ssc_cut^2,DERIVED,DERIVED Manual cut area; not all active
+R_N2_out,128*mu_N2*L_gas_out/(pi*gas_pfa_id^4),PROVISIONAL_SENSITIVITY,Hagen-Poiseuille audit of documented N2 outlet PFA
+R_H2_out,128*mu_H2*L_gas_out/(pi*gas_pfa_id^4),PROVISIONAL_SENSITIVITY,Hagen-Poiseuille audit of documented H2 outlet PFA
+R_liq_known,128*mu_liq*(L_liq_20+2*L_liq_15)/(pi*liq_pfa_id^4)+128*mu_liq*L_liq_10/(pi*liq_pfa_id_large^4),PROVISIONAL_SENSITIVITY,Known PFA liquid-loop resistance; latex excluded
+dp_N2_pipe,R_N2_out*Q_N2_lab,PROVISIONAL_SENSITIVITY,Documented N2 outlet tube pressure drop
+dp_H2_pipe,R_H2_out*Q_H2_lab,PROVISIONAL_SENSITIVITY,Documented H2 outlet tube pressure drop
+dp_liq_pipe,R_liq_known*Q_liq_sweep,PROVISIONAL_SENSITIVITY,Known PFA liquid pressure drop at sweep value
+u_ssc_darcy,K_ssc*dp_ssc/(mu_liq*t_ssc),PROVISIONAL_SENSITIVITY,Darcy superficial velocity audit
+u_ssc_transport,K_ssc*Sl_transport^2*dp_ssc/(mu_liq*t_ssc),PROVISIONAL_SENSITIVITY,PROVISIONAL transport velocity including declared k_r=Sl^2
+u_wet_in,"K_wet*Sl_initial^2/(mu_liq*t_ssc)*if(dp_ssc>pc_ssc,dp_ssc-pc_ssc,0[Pa])",PROVISIONAL_SENSITIVITY,Pressure-entry wetting drive including the declared initial liquid relative permeability k_r=Sl_initial^2
+T_model,298.15[K],PROVISIONAL_SENSITIVITY,PROVISIONAL transport temperature
+p_N2_abs,1[atm],PROVISIONAL_SENSITIVITY,PROVISIONAL gas equilibrium pressure
+H_N2_sens,1e-5[mol/(m^3*Pa)],PROVISIONAL_SENSITIVITY,PROVISIONAL_SENSITIVITY; electrolyte Henry coefficient is CALIBRATION_REQUIRED
+c_N2_gas,p_N2_abs/(R_const*T_model),PROVISIONAL_SENSITIVITY,Distinct gas-phase ideal-gas N2 concentration
+c_N2_eq,H_N2_sens*p_N2_abs,PROVISIONAL_SENSITIVITY,Phenomenological Henry-equilibrium dissolved concentration
+D_N2_liq,2e-9[m^2/s],PROVISIONAL_SENSITIVITY,PROVISIONAL numerical/literature estimate from M02.2
+D_N2_ssc_eff,D_N2_liq*eps_ssc*Sl_transport/tau_ssc,PROVISIONAL_SENSITIVITY,Explicit effective diffusivity sensitivity law
+L_electrolyte_transfer,5[mm],REAL_CAD,REAL_CAD half-chamber through-plane distance for baseline transfer slab
+W_transfer,50[mm],DERIVED,DERIVED real-CAD flow-field footprint width
+c_N2_bulk,0[mol/m^3],PROVISIONAL_SENSITIVITY,PROVISIONAL well-mixed far-field sink; no reaction kinetics
+dp_liq_cell_audit,3.42685384837[Pa],DERIVED,Computed real-CAD liquid-cell pressure drop at saved sensitivity case
+dp_N2_cell_audit,96.1940176856[Pa],LAB_MANUAL,Computed real-CAD N2-cell pressure drop at LAB_MANUAL flow
+dp_H2_cell_audit,31.4624814583[Pa],LAB_MANUAL,Computed real-CAD H2-cell pressure drop at LAB_MANUAL flow
+dp_N2_total_known,dp_N2_cell_audit+dp_N2_pipe,PROVISIONAL_SENSITIVITY,Known N2 pressure budget: real cell plus documented outlet PFA
+dp_H2_total_known,dp_H2_cell_audit+dp_H2_pipe,PROVISIONAL_SENSITIVITY,Known H2 pressure budget: real cell plus documented outlet PFA
+dp_liq_total_known,dp_liq_cell_audit+dp_liq_pipe,PROVISIONAL_SENSITIVITY,Known liquid pressure budget: real cell plus documented PFA; latex excluded
+K_wet,1e-13[m^2],PROVISIONAL_SENSITIVITY,PROVISIONAL_SENSITIVITY wetting case at primary Darcy sweep lower edge
+wet_Sl_min_audit,0.00911690533193,DERIVED,Computed minimum over 0-30 mbar wetting sweep
+wet_Sl_max_audit,0.0284430344568,DERIVED,Computed maximum over 0-30 mbar wetting sweep
+wet_breakthrough_Sl_audit,0.0119016705370,PROVISIONAL_SENSITIVITY,Gas-side liquid saturation at 30 mbar and 5 ms
+n2_transfer_rate_audit,9.66841603031e-10[mol/s],DERIVED,Computed phenomenological N2 transfer rate
+n2_interface_c_audit,0.966841603054[mol/m^3],DERIVED,Computed future cathodic-interface concentration
+n2_residual_mol_s_audit,-2.23411143693e-20[mol/s],PROVISIONAL_SENSITIVITY,N atom balance: inlet minus outlet minus zero stationary accumulation
+n2_residual_audit,2.31073159230e-11,PROVISIONAL_SENSITIVITY,N atom conservation relative residual
+n2_Pe_audit,32608.6956522,DERIVED,Computed SSC Peclet sensitivity including k_r=Sl^2
+n2_keff_audit,3.85682804593e-07[m/s],DERIVED,Computed effective mass-transfer coefficient
+L_gas_stub_visual,15[mm],LAB_MANUAL,SCHEMATIC_VISUAL_ONLY | VISUALIZATION ONLY | NO HYDRAULIC ROLE | not a Manual dimension
+gas_pfa_id_visual,2[mm],LAB_MANUAL,LAB_MANUAL gas PFA bore; hydraulic diameter remains 2 mm
+gas_pfa_od_visual,3[mm],LAB_MANUAL,LAB_MANUAL gas PFA outer diameter; visualization only
+t_gasket_display,0.5[mm],CALIBRATION_REQUIRED,SCHEMATIC_VISUAL_ONLY display thickness; true compressed gasket thickness remains CALIBRATION_REQUIRED
+ssc_exploded_offset,12[mm],PROVISIONAL_SENSITIVITY,DISPLAY SCALE ONLY | no physical or hydraulic role
+T_species,298.15[K],PROVISIONAL_SENSITIVITY,PROVISIONAL_SENSITIVITY transport temperature
+p_gas_abs,1[atm],PROVISIONAL_SENSITIVITY,PROVISIONAL_SENSITIVITY absolute feed pressure
+MW_N2,28.0134[g/mol],LITERATURE_REPORTED,LITERATURE_REPORTED molecular identity
+MW_H2,2.01588[g/mol],LITERATURE_REPORTED,LITERATURE_REPORTED molecular identity
+D_N2_gas,2e-5[m^2/s],PROVISIONAL_SENSITIVITY,PROVISIONAL_SENSITIVITY inherited gas diffusion estimate
+D_H2_gas,6.1e-5[m^2/s],LITERATURE_ESTIMATE,LITERATURE_ESTIMATE gas diffusion sensitivity
+c_N2_gas_feed,p_gas_abs/(R_const*T_species),DERIVED,DERIVED ideal-gas N2 feed concentration
+c_H2_gas_feed,p_gas_abs/(R_const*T_species),DERIVED,DERIVED ideal-gas H2 feed concentration
+A_n2_interface,1278.22088212902[mm^2],REAL_CAD,REAL_CAD cathode open-channel interface area
+A_h2_interface,1278.22088256298[mm^2],REAL_CAD,REAL_CAD mirrored PtAuSSC interface area
+D_N2_gas_sink,0[mol/s],NUMERICAL_VERIFICATION_ONLY,NUMERICAL_VERIFICATION_ONLY deprecated zero alias
+J_N2_gas_sink,1.55389980743735e-08[mol/s],DERIVED,DERIVED strict molar-flow transfer from conservatively re-solved real liquid/SSC boundary
+J_H2_gas_sink,0[mol/s],DERIVED,DERIVED zero sink: H2 availability scaffold only
+D_N2_liq_M10A3,2e-9[m^2/s],PROVISIONAL_SENSITIVITY,PROVISIONAL_SENSITIVITY inherited M02.2 value
+H_N2,1e-5[mol/(m^3*Pa)],PROVISIONAL_SENSITIVITY,PROVISIONAL_SENSITIVITY Henry-type partition coefficient; calibration required
+Sl_ssc_mapped,Sl_transport,PROVISIONAL_SENSITIVITY,PROVISIONAL_SENSITIVITY scalar mapped/coupled from reduced wetting support model
+D_N2_ssc_M10A3,D_N2_liq_M10A3*eps_ssc/tau_ssc*Sl_ssc_mapped,PROVISIONAL_SENSITIVITY,PROVISIONAL_SENSITIVITY explicit effective porous diffusion law
+k_N2_ssc,D_N2_ssc_M10A3/t_ssc,DERIVED,DERIVED homogenized thin-layer SSC transfer coefficient
+c_N2_gas_interface_audit,66.8719478890728[mol/m^3],DERIVED,DERIVED restored from checkpoint_03 dataset
+c_N2_eq_mapped,H_N2*R_const*T_species*c_N2_gas_interface_audit,DERIVED,DERIVED Henry-type equilibrium from restored checkpoint
+c_proton_donor_in,1[mol/m^3],PROVISIONAL_SENSITIVITY,PROVISIONAL_SENSITIVITY generic proton_donor; identity calibration required
+D_proton_donor,1e-9[m^2/s],PROVISIONAL_SENSITIVITY,PROVISIONAL_SENSITIVITY generic donor diffusivity
+D_NH3_liq,1.5e-9[m^2/s],PROVISIONAL_SENSITIVITY,PROVISIONAL_SENSITIVITY NH3 transport diffusivity
+J_NH3_source,1e-7[mol/(m^2*s)],NUMERICAL_VERIFICATION_ONLY,NUMERICAL_VERIFICATION_ONLY PRESCRIBED_NUMERICAL_NH3_SOURCE
+D_tracer,1e-9[m^2/s],PROVISIONAL_SENSITIVITY,PROVISIONAL_SENSITIVITY nonreactive tracer diffusivity
+c_tracer_pulse,1[mol/m^3],NUMERICAL_VERIFICATION_ONLY,NUMERICAL_VERIFICATION_ONLY normalized tracer amplitude
+negative_concentration_hits,0,DERIVED,DERIVED significant unclipped hits below -1e-8 mol/m^3; raw minima retained
+mesh_max_key_difference,0.0289718464418930,DERIVED,DERIVED maximum coarse-medium difference before RTD
+mesh_diff_n2,0,DERIVED,DERIVED constant-field invariant on synchronized coarse/medium meshes before coupled sink correction
+mesh_diff_h2,3.38199408948059e-15,DERIVED,DERIVED coarse-medium gas transport key difference
+c_H2_interface_audit,40.8740445235766[mol/m^3],DERIVED,DERIVED no-source incompressible constant-field availability from checkpoint dataset
+mesh_diff_liq,0.0289718464418930,DERIVED,DERIVED collocated coarse-medium liquid species maximum key difference
+n2_reaction_mean,1.17263846343126[mol/m^3],DERIVED,DERIVED real cathode reaction-plane mean
+positivity_audit_tolerance,1.00000000000000e-08[mol/m^3],DERIVED,DERIVED numerical-zero tolerance for unclipped FEM minima
+n2_reaction_min,0.489599368624745[mol/m^3],DERIVED,DERIVED
+n2_reaction_max,1.42535148901971[mol/m^3],DERIVED,DERIVED
+n2_reaction_cv,0.146852434963701,DERIVED,DERIVED
+n2_transfer_rate,1.55389980743735e-08[mol/s],DERIVED,DERIVED
+donor_reaction_mean,1.00000000000000[mol/m^3],DERIVED,DERIVED
+nh3_outlet_rate,3.83459436174709e-10[mol/s],DERIVED,DERIVED numerical verification only
+c_transport_zero_feed,1e-4[mol/m^3],NUMERICAL_VERIFICATION_ONLY,NUMERICAL_VERIFICATION_ONLY trace-positive inlet reference for a strictly positive exponential dependent-variable formulation; reported ledgers retain this inlet and do not clip results
+beta_species_numdiff,0.5,NUMERICAL_VERIFICATION_ONLY,NUMERICAL_VERIFICATION_ONLY fixed first-order-upwind-equivalent conservative numerical diffusion coefficient; not calibrated to concentration results
+lambda_transport,1,DERIVED,DERIVED continuation parameter; final required solution equals one
+c_positive_floor,1e-12[mol/m^3],NUMERICAL_VERIFICATION_ONLY,"NUMERICAL_VERIFICATION_ONLY deprecated zero alias retained for audit compatibility; positivity is provided by c=c_transport_zero_feed*exp(z), not clipping"
+u_liq_species_ref,Q_liq_sweep/A_liq_in_test,DERIVED,DERIVED liquid inlet bulk velocity used only to scale conservative mesh-Peclet stabilization
+V_liq_real_M10A3,34572.4531413745[mm^3],REAL_CAD,REAL_CAD inactive-cavity-audited real electrolyte fluid volume
+tau_species_nom,V_liq_real_M10A3/Q_liq_sweep,DERIVED,DERIVED real liquid V over provisional Q
+t_species_end,6*tau_species_nom,NUMERICAL_VERIFICATION_ONLY,NUMERICAL_VERIFICATION_ONLY six nominal residence times for positive transient relaxation
+dt_species_output,tau_species_nom/50,DERIVED,DERIVED output interval; solver retains adaptive internal time stepping
+t_species_ramp,tau_species_nom/100,NUMERICAL_VERIFICATION_ONLY,NUMERICAL_VERIFICATION_ONLY smooth prescribed-source startup time; final source amplitude unchanged
+m10a3_strict_liquid_rtol_complete,1,DERIVED,DERIVED conservative transient solutions rerun with relative tolerance 1e-8
+t_tracer_pulse,60[s],NUMERICAL_VERIFICATION_ONLY,NUMERICAL_VERIFICATION_ONLY finite normalized tracer pulse
+L_pipe_equiv,0.60[m],DERIVED,DERIVED documented PFA segment total; latex length excluded
+V_pipe_equiv,pi*(liq_pfa_id/2)^2*(L_liq_20+2*L_liq_15)+pi*(liq_pfa_id_large/2)^2*L_liq_10,DERIVED,DERIVED documented PFA volume; equivalent 1D network
+t_downstream_ramp,(V_pipe_equiv/Q_liq_sweep)/10,NUMERICAL_VERIFICATION_ONLY,NUMERICAL_VERIFICATION_ONLY smooth startup over 0.1 reduced-network residence time; final prescribed molar-flow amplitude unchanged
+A_pipe_equiv,V_pipe_equiv/L_pipe_equiv,DERIVED,DERIVED volume-preserving equivalent 1D area
+u_pipe_equiv,Q_liq_sweep/A_pipe_equiv,DERIVED,DERIVED equivalent 1D advection speed
+c_NH3_cell_outlet_transfer,nh3_outlet_rate/Q_liq_sweep,DERIVED,DERIVED strict 3D cell outlet molar-flow transfer to explicit 1D network
+nh3_downstream_outlet_rate,3.83459436174618e-10[mol/s],DERIVED,DERIVED explicit equivalent 1D network response
+nh3_downstream_relative_residual,5.99801752840884e-07,DERIVED,DERIVED maximum instantaneous/cumulative conservative balance
+nh3_retained_inventory,2.75569028271759e-08[mol],DERIVED,DERIVED explicit reduced-network retained inventory
+nh3_generated_inventory,1.62515320981759e-07[mol],DERIVED,DERIVED time-integrated prescribed numerical source entering downstream network
+nh3_discharged_inventory,1.34958515631558e-07[mol],DERIVED,DERIVED time-integrated downstream outlet
+V_liq_real,3.45724531413745e-05[m^3],REAL_CAD,REAL_CAD selected real electrolyte fluid volume
+tau_rtd_nom,2074.34718848247[s],REAL_CAD,DERIVED V_REAL_CAD/Q_PROVISIONAL
+t_rtd_end,12446.0831308948[s],NUMERICAL_VERIFICATION_ONLY,NUMERICAL_VERIFICATION_ONLY six nominal residence times
+rtd_coarse_tau_mean,2846.14336988651[s],DERIVED,DERIVED coarse real-CAD RTD mean
+rtd_coarse_elements,17028,DERIVED,DERIVED coarse RTD mesh elements
+dt_rtd_output,3.45724531413745[s],NUMERICAL_VERIFICATION_ONLY,NUMERICAL_VERIFICATION_ONLY post-pulse output spacing; adaptive internal solver unchanged
+mesh_diff_rtd,0.00828680513910211,DERIVED,DERIVED coarse-medium RTD mean difference
+rtd_tau_mean,2869.92588647136[s],DERIVED,DERIVED real-CAD numerical RTD
+rtd_variance,4946249.80645125[s^2],DERIVED,DERIVED
+rtd_std,2224.01659311509[s],DERIVED,DERIVED
+rtd_t10,732.825475219163[s],DERIVED,DERIVED
+rtd_t50,2209.34970261211[s],DERIVED,DERIVED
+rtd_t90,6000.82769586463[s],DERIVED,DERIVED
+rtd_tau_mean_over_nom,1.38353208296385,DERIVED,DERIVED
+rtd_outlet_mass,4.96171819977018e-07[mol],DERIVED,DERIVED recovered tracer mass used to normalize E(t)
+rtd_recovered_fraction,0.992341032061855,DERIVED,DERIVED outlet mass divided by formally integrated Danckwerts inlet flux
+rtd_injected_mass_numerical,5.00001314010052e-07[mol],DERIVED,DERIVED temporal integration of formally imposed Danckwerts inlet flux
+rtd_injected_mass_analytical,5.00001314010053e-07[mol],DERIVED,DERIVED prescribed sin-squared pulse using actual solved inlet volumetric flow
+rtd_injected_mass_relative_difference,1.48230376217094e-15,DERIVED,DERIVED numerical versus analytical prescribed input
+rtd_final_inventory,3.82988799884106e-09[mol],DERIVED,DERIVED final tracer inventory
+tracer_conservation_relative,7.87929544513639e-07,DERIVED,DERIVED maximum instantaneous/cumulative PDE balance
+rtd_audit_output_points,3703,DERIVED,DERIVED accepted medium RTD ledger rows retained in native tables
+rtd_archived_solution_points,272,DERIVED,DERIVED accepted medium field snapshots stored in final MPH; full ledger retained in tables

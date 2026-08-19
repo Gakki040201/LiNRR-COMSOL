@@ -1,0 +1,4 @@
+﻿"filename","bytes","sha256","source_path","archive_path","storage"
+"LiNRR_M10A1_real_cad_flow_solved.mph","40577417","535F90E93B42B6D69A31A635C429B01B0B36D3EA8FE39B5645352FCBDF3D43C5","models/generated/LiNRR_M10A1_real_cad_flow_solved.mph","models/archive/LiNRR_M10A1_real_cad_flow_solved.mph","GIT_LFS"
+"LiNRR_M10A2_ssc_pipe_wetting.mph","550871672","EC58BAEDC13FFCAA7594FE75567D330BA4458D07A77060A2E751EA3AECDBD5C1","models/generated/LiNRR_M10A2_ssc_pipe_wetting.mph","models/archive/LiNRR_M10A2_ssc_pipe_wetting.mph","GIT_LFS"
+"LiNRR_M10A2R_manual_reconciled.mph","559714034","B105EBEAF85582E63389427DFAD7320187FA4A472043E207B5363E258E94CEA7","models/generated/LiNRR_M10A2R_manual_reconciled.mph","models/archive/LiNRR_M10A2R_manual_reconciled.mph","GIT_LFS"

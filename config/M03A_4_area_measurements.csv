@@ -1,0 +1,17 @@
+sample_id,quantity_name,value_SI,uncertainty_SI,unit,data_origin,status,measurement_method,source_reference,definition,mapping_formula,mapping_reference,mapping_uncertainty_relative,notes
+SYN_DRY_001,electrode_spacing,0.004,0.00002,m,SYNTHETIC,SYNTHETIC_DEFINED,SYNTHETIC_FIXED_DEFINITION,M03A.4 synthetic geometry contract,normal separation between full parallel electrode boundaries,Hcell_dry_run=electrode_spacing,M03A.4 synthetic parameter mapping,0,not experimental
+SYN_DRY_001,out_of_plane_thickness,0.055,0.0001,m,SYNTHETIC,SYNTHETIC_DEFINED,SYNTHETIC_FIXED_DEFINITION,M03A.4 synthetic geometry contract,2D extrusion depth,depth_dry_run=out_of_plane_thickness,M03A.4 synthetic parameter mapping,0,not experimental
+SYN_DRY_001,geometric_electrode_area,0.003025,0.000006,m^2,SYNTHETIC,SYNTHETIC_DEFINED,SYNTHETIC_FIXED_DEFINITION,M03A.4 synthetic area contract,Lcell times out-of-plane thickness,A_geometric=Lcell*depth_dry_run,M03A.4 synthetic area mapping,0.002,not experimental
+SYN_DRY_001,actual_wetted_area,0.00290,0.00002,m^2,SYNTHETIC,SYNTHETIC_DEFINED,SYNTHETIC_FIXED_DEFINITION,M03A.4 synthetic area contract,synthetic wetted area independently defined,NONE,M03A.4 synthetic area mapping,0.01,not assumed equal
+SYN_DRY_001,catalytic_layer_projected_area,0.00280,0.00002,m^2,SYNTHETIC,SYNTHETIC_DEFINED,SYNTHETIC_FIXED_DEFINITION,M03A.4 synthetic area contract,synthetic catalytic projected area independently defined,NONE,M03A.4 synthetic area mapping,0.01,not assumed equal
+SYN_DRY_001,GDE_exposed_area,0.00285,0.00002,m^2,SYNTHETIC,SYNTHETIC_DEFINED,SYNTHETIC_FIXED_DEFINITION,M03A.4 synthetic area contract,synthetic exposed GDE area independently defined,NONE,M03A.4 synthetic area mapping,0.01,not assumed equal
+SYN_DRY_001,EIS_area,0.003025,0.000006,m^2,SYNTHETIC,SYNTHETIC_DEFINED,SYNTHETIC_FIXED_DEFINITION,M03A.4 synthetic area contract,synthetic EIS area with explicit mapping,A_EIS_dry_run=EIS_area,M03A.4 synthetic parameter mapping,0.002,equality to geometric area is explicit synthetic evidence not a default
+SYN_DRY_001,current_density_reporting_area,0.00275,0.00002,m^2,SYNTHETIC,SYNTHETIC_DEFINED,SYNTHETIC_FIXED_DEFINITION,M03A.4 synthetic area contract,synthetic reporting area independently defined,A_j_report_dry_run=current_density_reporting_area,M03A.4 synthetic parameter mapping,0.01,not equal to EIS area
+EXP_TEMPLATE_001,electrode_spacing,,,m,EXPERIMENTAL,MISSING,,,,,,,,experimental value absent
+EXP_TEMPLATE_001,out_of_plane_thickness,,,m,EXPERIMENTAL,MISSING,,,,,,,,experimental value absent
+EXP_TEMPLATE_001,geometric_electrode_area,,,m^2,EXPERIMENTAL,MISSING,,,,,,,,experimental value absent
+EXP_TEMPLATE_001,actual_wetted_area,,,m^2,EXPERIMENTAL,MISSING,,,,,,,,experimental value absent
+EXP_TEMPLATE_001,catalytic_layer_projected_area,,,m^2,EXPERIMENTAL,MISSING,,,,,,,,experimental value absent
+EXP_TEMPLATE_001,GDE_exposed_area,,,m^2,EXPERIMENTAL,MISSING,,,,,,,,experimental value absent
+EXP_TEMPLATE_001,EIS_area,,,m^2,EXPERIMENTAL,MISSING,,,,,,,,experimental value absent
+EXP_TEMPLATE_001,current_density_reporting_area,,,m^2,EXPERIMENTAL,MISSING,,,,,,,,experimental value absent

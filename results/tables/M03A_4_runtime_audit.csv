@@ -1,0 +1,2 @@
+"run_id","process_exit_status","completion_marker","reload_exit_status","reload_marker","solver_status","java_exception_marker","fatal_count","reload_fatal_count","warning_count","expected_outputs_present","status","warning_classification"
+"20260719_114249","0","True","0","True","SOLVED","False","0","0","0","True","PASS","NONE"

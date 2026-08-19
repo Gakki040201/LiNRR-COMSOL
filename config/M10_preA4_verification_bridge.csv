@@ -1,0 +1,8 @@
+"source_stage","target_stage","transfer","do_not_transfer"
+"M00.2","M10A0","geometry automation logic; selection audit methodology; serialization/reload logic","old simplified geometry"
+"M01.2","M10A1/A2/A3/A4","Laminar Flow implementation; mass conservation; pressure-drop audit; wall-shear methodology; mesh methodology","old 2D geometry; rho=900; mu=3 mPa*s; Q=1 cm3/min as experimental truth"
+"M02.2","M10A3/A4","conservative species transport; Danckwerts inlet; flux sign convention; individual species conservation; positivity audit; mesh methodology","old rectangular geometry; DN2 numerical values; DNH3 numerical values; old reaction law"
+"M03A/M03A3","M10A4","Primary Current Distribution; current sign convention; charge conservation; R=L/(kappa*A); Faraday current-to-flux ledger","old geometry; kappa=0.5 S/m; I=100 mA"
+"M03A2","experimental calibration","EIS/HFR parser; HFR distinction; deembedding logic","synthetic parameter values"
+"M03A4","experimental calibration","parameter provenance; parameter-transfer contract; uncertainty; reload audit","synthetic/provisional values"
+"M03A5/A6","evidence gate","experimental intake; raw-evidence preservation; hash/provenance; missing-data gates","manufactured evidence"

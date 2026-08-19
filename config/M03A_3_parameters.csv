@@ -1,0 +1,17 @@
+name,expression,unit,description,provenance,status
+Lcell,55,mm,electrolyte channel length,frozen M00-M02.2 geometry,PROVISIONAL
+Hcell,4,mm,electrode spacing,frozen M00-M02.2 geometry,PROVISIONAL
+Wcell,55,mm,2D out-of-plane thickness and active width,frozen M00-M02.2 geometry,PROVISIONAL
+rho_el,900,kg/m^3,electrolyte density,frozen M01.2 numerical input,PROVISIONAL
+mu_el,0.003,Pa*s,electrolyte dynamic viscosity,frozen M01.2 numerical input,PROVISIONAL
+DN2,2e-9,m^2/s,N2 diffusivity,frozen M02.2 numerical input,PROVISIONAL
+DNH3,2e-9,m^2/s,NH3 diffusivity,frozen M02.2 numerical input,PROVISIONAL
+cN2_in,5,mol/m^3,N2 inlet concentration,frozen M02.2 numerical input,PROVISIONAL
+cNH3_in,0,mol/m^3,NH3 inlet concentration,frozen M02.2 numerical input,PROVISIONAL
+kappa_M033,0.5,S/m,synthetic electrolyte conductivity,assumed synthetic smoke-test input,PROVISIONAL
+DeltaPhi_M033,8e-4,V,synthetic low-current potential difference,assumed synthetic smoke-test input,PROVISIONAL
+FE_prescribed,1,1,prescribed synthetic Faradaic mapping input,assumed synthetic smoke-test input,NOT_A_PREDICTION
+F_const_M033,96485.33212,C/mol,Faraday constant,physical constant,REFERENCE
+Aeq_M033,Lcell*Wcell,m^2,3D equivalent current-carrying area,derived from frozen geometry,DERIVED
+j_app_M033,kappa_M033*DeltaPhi_M033/Hcell,A/m^2,prescribed positive current-density magnitude,derived synthetic input,DERIVED
+Umean_base,1e-4,m/s,low-conversion coupling benchmark flow,assumed synthetic smoke-test input,PROVISIONAL

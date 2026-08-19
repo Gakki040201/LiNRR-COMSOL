@@ -1,0 +1,12 @@
+file_name,data_origin,regression_purpose
+S001_complete_rep1.csv,SYNTHETIC,complete synthetic EIS and replicate agreement
+S001_complete_rep2.csv,SYNTHETIC,replicate agreement
+S002_duplicate.csv,SYNTHETIC,duplicate frequency retention
+S003_shuffled.csv,SYNTHETIC,descending normalization and original row retention
+S004_nan.csv,SYNTHETIC,NaN rejection
+S005_inf.csv,SYNTHETIC,infinite value rejection
+S006_blank.csv,SYNTHETIC,blank rejection
+S007_string.csv,SYNTHETIC,string rejection
+S008_insufficient_hf.csv,SYNTHETIC,high-frequency coverage rejection
+S009_inductive.csv,SYNTHETIC,inductive artifact retention
+S010_replicate_disagree.csv,SYNTHETIC,replicate disagreement retention

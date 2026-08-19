@@ -6,12 +6,16 @@
 *.recovery
 *.class
 *.log
+!archive/**/*.log
 
 # comsolcompile-generated model artifacts beside Java sources
 src/java/*_Model.mph
 
 # Keep only selected MPH files manually
 models/generated/*.mph
+!models/generated/LiNRR_M10A2R_manual_reconciled.mph
+!models/generated/LiNRR_M10A2_1_matched_flow_control.mph
+!models/generated/LiNRR_M10A3_real_species_transport.mph
 runs/**
 
 # Raw data is protected; do not commit accidental working copies

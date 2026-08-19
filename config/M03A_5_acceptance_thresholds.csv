@@ -1,0 +1,24 @@
+threshold_name,value,unit,comparison,description
+minimum_accepted_eis_replicates,3,count,GE,minimum accepted independent EIS replicates
+direct_vs_hfr_relative_difference_limit,0.10,fraction,LE,maximum symmetric relative conductivity difference
+monte_carlo_minimum_samples,20000,count,GE,minimum fixed Monte Carlo draw count
+monte_carlo_nonphysical_rejection_limit,0.01,fraction,LE,maximum rejected fraction without repair or resampling
+electrolyte_resistance_minimum_exclusive,0,ohm,GT,de-embedded electrolyte resistance must be positive
+series_resistance_minimum_inclusive,0,ohm,GE,each measured series component must be nonnegative
+hfr_resistance_minimum_exclusive,0,ohm,GT,each accepted HFR must be positive
+electrode_spacing_minimum_exclusive,0,m,GT,electrode spacing must be positive
+out_of_plane_depth_minimum_exclusive,0,m,GT,out-of-plane depth must be positive
+required_area_minimum_exclusive,0,m^2,GT,every required area must be positive
+conductivity_minimum_exclusive,0,S/m,GT,conductivity must be positive
+source_sha256_required,1,boolean,EQ,every required evidence file needs SHA-256
+experimental_metadata_completeness_required,1,boolean,EQ,all required experimental metadata must be complete
+replicate_temperature_tolerance_K,0.5,K,LE,maximum replicate temperature range
+replicate_numeric_relative_tolerance,1e-9,fraction,LE,maximum relative difference for compatible replicate numeric metadata
+hfr_replicate_relative_range_limit,0.10,fraction,LE,maximum relative HFR range across accepted replicates
+minimum_normalized_eis_rows,8,count,GE,minimum retained numeric EIS rows
+minimum_high_frequency_span_ratio,5,ratio,GE,minimum span in declared high-frequency subset
+high_frequency_window_ratio,10,ratio,GE,ratio defining the retained high-frequency audit window from actual maximum frequency
+frequency_metadata_relative_tolerance,1e-9,fraction,LE,maximum relative mismatch between manifest and normalized frequency extrema
+points_per_decade_minimum_fraction,1.0,fraction,GE,minimum actual average sampling density relative to declared points per decade
+area_consistency_relative_tolerance,1e-9,fraction,LE,maximum relative mismatch between manifest EIS area and measured EIS area
+direct_temperature_tolerance_K,0.5,K,LE,maximum direct-conductivity versus mean-EIS temperature difference
