@@ -19,7 +19,7 @@
 "A018","synthetic origin isolation","PASS","PASS","PASS",""
 "A019","M03B always false","PASS","PASS","PASS",""
 "A020","BOM and LF rejected","PASS","PASS","PASS",""
-"A021","baseline 282 paths frozen","PASS","PASS","PASS",""
+"A021","M03A6 framework paths frozen against M03A6 commit","PASS","PASS","PASS",""
 "A022","D0017 append-only with resources disposed","PASS","PASS","PASS",""
 "A023","all CLI entry points","PASS","PASS","PASS",""
 "A024","repository destination junction ancestor blocked","PASS","PASS","PASS",""

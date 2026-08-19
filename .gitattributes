@@ -9,6 +9,13 @@
 *.xlsx filter=lfs diff=lfs merge=lfs -text
 *.zip filter=lfs diff=lfs merge=lfs -text
 
+
+
+# M03A.6 fixture is byte-exact synthetic evidence for RFC-4180 CRLF regression.
+
+tests/fixtures/M03A_6/synthetic_eis_source.csv -text whitespace=cr-at-eol
+
+
 # Byte-exact project archival. LFS filter attributes above still apply to
 # matching binaries; this rule prevents line-ending normalization of run evidence.
 archive/** binary

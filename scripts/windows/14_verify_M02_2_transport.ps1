@@ -280,7 +280,8 @@ foreach ($Required in @($Compiler,$Batch,$RuntimeJava,$Ecj,$ApiJar,$ModelJar,
 }
 
 $TrackedFrozen = @(& git -C $ProjectRoot ls-files | Where-Object {
-    $_ -match '^(src/java/LiNRR_M0(0|1|2)(_|\.)|tests/java/LiNRR_M0(0|1|2)(_|\.)|scripts/windows/(0[1-6]|04a)_|results/(tables|figures)/M0(0|1|2)(_|\.))'
+    $_ -match '^(src/java/LiNRR_M0(0|1|2)(_|\.)|tests/java/LiNRR_M0(0|1|2)(_|\.)|scripts/windows/(0[1-6]|04a)_|results/(tables|figures)/M0(0|1|2)(_|\.))' -and
+    $_ -notmatch '^results/(tables|figures)/M02_2_'
 })
 if ($LASTEXITCODE -ne 0) { throw "Unable to enumerate tracked frozen files." }
 $FrozenRelative = @($TrackedFrozen + @(

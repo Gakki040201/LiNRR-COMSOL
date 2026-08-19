@@ -723,7 +723,7 @@ public final class LiNRR_M02_2_TransportVerification {
         try {
             Class<?> inputs=Class.forName("LiNRR_M02_2_RunInputs");
             Object value=inputs.getMethod("get",String.class).invoke(null,name);
-            if(value!=null&&!value.toString().trim().isEmpty())return value.toString();
+            if(value!=null)return value.toString();
         } catch (Throwable ignored) {
             // Fall through to the ordinary-JVM environment path.
         }

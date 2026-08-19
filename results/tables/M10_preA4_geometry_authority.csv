@@ -1,0 +1,7 @@
+"authority_level","geometry_source","stage","hash_or_registry","role","is_authority_for_M10","reason"
+"PRIMARY","cad/raw/M10A0_2/block_currentCollector_flowField_v03.2.1_20210525_STEP-AP203.STEP","M10A0","0091777D10ECA620E08780381438F3522B3BE31FEE307F9DDCF074A1FACDDFE9","collector flow-field raw STEP","TRUE","Hash-gated raw CAD source"
+"PRIMARY","cad/raw/M10A0_2/electrolyteChamber_rectangularMask_v02.2.2_20210521_STEP-AP203.STEP","M10A0","AE350E006228A10EEC4476F79CAFCE6D63F18F10F58F0A8B3559EED0C37FF12C","electrolyte chamber raw STEP","TRUE","Hash-gated raw CAD source"
+"DERIVED","config/M10A0_public_cell_parameters.csv and M10A0 registration contracts","M10A0","explicit registration landmarks","registered assembly and physical fluid domains","TRUE","Derived physical domains from audited registration"
+"DERIVED","M10 model named selections","M10A0/M10A1/M10A2R/M10A3","stable internal selection tags","audited named selections","TRUE","Durable code uses named selections, not raw entity numbers"
+"VERIFICATION_ONLY","M00-M03 simplified rectangular 2D geometry","M00/M01/M02/M03A","not applicable","numerical operator verification geometry","FALSE","M00-M03 rectangular geometry is not geometry authority for M10 real cell"
+"VERIFICATION_ONLY","M10A3 real-cell model","M10A3","03612FDB08D993595ABDA41D5873CBBCAA97580DB432ADCD2FBCD2CA06260C00","accepted real-cell neutral species transport MPH","TRUE","Accepted M10A3 MPH must remain hash-fixed"

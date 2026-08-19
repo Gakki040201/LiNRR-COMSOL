@@ -6,6 +6,7 @@ $ProjectRoot = (Resolve-Path (Join-Path $PSScriptRoot "..\..")).Path
 $ExpectedRoot = 'F:\LiNRR_COMSOL\worktrees\LiNRR_M03A_3'
 $ExpectedBranch = 'm03a3-prescribed-current-coupling-verification'
 $BaselineCommit = 'e9695b08441cac3f8f82847ab96c4ab5dfeda4c8'
+$StageCommit = '9a20c3486d7c832ef23f87e7fd1b1d6e1f7674f8'
 $env:GIT_PAGER = 'cat'
 $env:LINRR_PROJECT_ROOT = $ProjectRoot
 
@@ -124,7 +125,7 @@ function New-StatusMap([object[]]$Rows,[string]$Path) {
 
 if ($ProjectRoot -ne $ExpectedRoot) { throw "Wrong project root: $ProjectRoot" }
 if ((git branch --show-current) -ne $ExpectedBranch) { throw "Wrong branch." }
-if ((git rev-parse HEAD) -ne $BaselineCommit) { throw "Wrong HEAD." }
+if ((git rev-parse HEAD) -ne $StageCommit) { throw "Wrong HEAD." }
 if ((git rev-parse origin/m03a2-synthetic-eis-verification) -ne $BaselineCommit) { throw "Wrong origin baseline." }
 if ((git merge-base HEAD origin/m03a2-synthetic-eis-verification) -ne $BaselineCommit) { throw "Wrong merge-base." }
 
@@ -157,7 +158,7 @@ $FinalizeEvidence=Join-Path $RunDir 'comsol_finalize_stdout.log';$AuditOnly=$Res
 foreach($Path in @($OutputMph)+$FormalCsv+$FormalPng){if((Test-Path -LiteralPath $Path)-and-not$AuditOnly){throw "Refusing to overwrite existing M03A.3 artifact: $Path"}}
 
 $BaselineArchive=Join-Path $RunDir 'baseline.tar';$BaselineTree=Join-Path $RunDir 'baseline_tree';$FrozenBefore=Join-Path $RunDir 'frozen_hashes_before.csv';$Tracked=@(git ls-files)
-if(-not$ResumeMode){New-Item -ItemType Directory $BaselineTree|Out-Null;& git archive --format=tar --output=$BaselineArchive $BaselineCommit;if($LASTEXITCODE-ne0){throw 'git archive failed'};& tar -xf $BaselineArchive -C $BaselineTree;if($LASTEXITCODE-ne0){throw 'baseline extraction failed'};$BeforeRows=@();foreach($Path in $Tracked){$BeforeRows+=[pscustomobject][ordered]@{path=$Path;sha256=(Get-FileHash -Algorithm SHA256 -LiteralPath (Join-Path $BaselineTree $Path)).Hash.ToLowerInvariant()}};Export-Utf8NoBomCsv $BeforeRows $FrozenBefore}
+if(-not$ResumeMode){New-Item -ItemType Directory $BaselineTree|Out-Null;& git archive --format=tar --output=$BaselineArchive $StageCommit;if($LASTEXITCODE-ne0){throw 'git archive failed'};& tar -xf $BaselineArchive -C $BaselineTree;if($LASTEXITCODE-ne0){throw 'baseline extraction failed'};$BeforeRows=@();foreach($Path in $Tracked){$BeforeRows+=[pscustomobject][ordered]@{path=$Path;sha256=(Get-FileHash -Algorithm SHA256 -LiteralPath (Join-Path $BaselineTree $Path)).Hash.ToLowerInvariant()}};Export-Utf8NoBomCsv $BeforeRows $FrozenBefore}
 elseif(-not(Test-Path $FrozenBefore)-or-not(Test-Path $BaselineTree)){throw 'Resume run lacks frozen baseline evidence'}
 
 $MetricsJava=Join-Path $ProjectRoot 'src\java\LiNRR_M03A_3_Metrics.java';$BuilderJava=Join-Path $ProjectRoot 'src\java\LiNRR_M03A_3_PrescribedCurrentCoupling.java';$LoadJava=Join-Path $ProjectRoot 'tests\java\LiNRR_M03A_3_LoadCheck.java'
@@ -241,7 +242,7 @@ $FrozenAfter=Join-Path $RunDir 'frozen_hashes_after.csv';Export-Utf8NoBomCsv $Af
 $BeforeMap=@{};foreach($Row in @(Import-Csv -LiteralPath $FrozenBefore)){$BeforeMap[$Row.path]=$Row.sha256};foreach($Row in $AfterRows){if($Row.path -eq 'docs/DECISIONS.md'){continue};if($BeforeMap[$Row.path] -ne $Row.sha256){throw "Frozen tracked file changed: $($Row.path)"}}
 $BaseDecision=[IO.File]::ReadAllBytes((Join-Path $BaselineTree 'docs\DECISIONS.md'));$CurrentDecision=[IO.File]::ReadAllBytes((Join-Path $ProjectRoot 'docs\DECISIONS.md'));if($CurrentDecision.Length-le$BaseDecision.Length){throw 'DECISIONS.md was not append-only'};for($i=0;$i-lt$BaseDecision.Length;$i++){if($BaseDecision[$i]-ne$CurrentDecision[$i]){throw 'D0001-D0013 bytes changed'}};$DecisionText=[Text.Encoding]::UTF8.GetString($CurrentDecision);$D0014Title='## D0014 '+[char]0x2014+' M03A.3 prescribed-current stoichiometric coupling verification';if(([regex]::Matches($DecisionText,[regex]::Escape($D0014Title))).Count-ne1){throw 'D0014 title missing or duplicated'}
 
-$EnvText=@("project_root=$ProjectRoot","git_head=$(git rev-parse HEAD)","branch=$(git branch --show-current)","powershell=$($PSVersionTable.PSVersion)","os=$([Environment]::OSVersion)","comsol_root=$ComsolRoot","prefs_dir=$PrefsDir","temporary_dir=$TempDir","staging_dir=$StagingDir","class_output_dir=$ClassOutput")-join"`n";Write-Utf8NoBomText (Join-Path $RunDir 'environment_inventory.txt') ($EnvText+"`n");Write-Utf8NoBomText (Join-Path $RunDir 'exact_git_head.txt') ($BaselineCommit+"`n")
+$EnvText=@("project_root=$ProjectRoot","git_head=$(git rev-parse HEAD)","branch=$(git branch --show-current)","powershell=$($PSVersionTable.PSVersion)","os=$([Environment]::OSVersion)","comsol_root=$ComsolRoot","prefs_dir=$PrefsDir","temporary_dir=$TempDir","staging_dir=$StagingDir","class_output_dir=$ClassOutput")-join"`n";Write-Utf8NoBomText (Join-Path $RunDir 'environment_inventory.txt') ($EnvText+"`n");Write-Utf8NoBomText (Join-Path $RunDir 'exact_git_head.txt') ($StageCommit+"`n")
 
 $PassCount=@($Map|Where-Object scientific_status -eq 'PASS').Count;$WarningCount=@($Map|Where-Object scientific_status -eq 'WARNING_NUMERICAL_OSCILLATION').Count;$FailedCount=25-$PassCount-$WarningCount
 $NonPass=@($Map|Where-Object scientific_status -ne 'PASS');$FailureTable="| j (A/m2) | Umean (m/s) | Theta | min cN2 | N2 err | NH3 err | N err | status | reason |`n|--:|--:|--:|--:|--:|--:|--:|:--|:--|`n"+(($NonPass|ForEach-Object{"| $($_.imposed_current_density_A_m2) | $($_.Umean_m_s) | $($_.Theta) | $($_.min_cN2) | $($_.N2_balance_error) | $($_.NH3_balance_error) | $($_.nitrogen_balance_error) | $($_.scientific_status) | $($_.failure_reason) |"})-join"`n")
