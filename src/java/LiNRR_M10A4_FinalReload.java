@@ -1,0 +1,19 @@
+import com.comsol.model.Model;
+import com.comsol.model.util.ModelUtil;
+import java.util.Locale;
+
+/** Fresh-process final result-dependency reload. Never runs a study. */
+public final class LiNRR_M10A4_FinalReload {
+ private static final String MPH="F:\\LiNRR_COMSOL\\worktrees\\LiNRR_M10A4_INTEGRATED\\models\\generated\\LiNRR_M10A4_ionic_current_li_plating.mph",COMP="comp_species_liq_real",GEOM="geom_electrolyte_fluid1",DOM="m10a3_sel_dom_electrolyte_fluid",CATH="m10a3_sel_bnd_electrolyte_gde_top",AN="m10a3_sel_bnd_electrolyte_gde_bottom",DA="dset_a4a_ohmic",DB="dset_a4b_ionic_en";private static int n=0;
+ public static void main(String[]a)throws Exception{Model m=ModelUtil.load("M10A4Reload",MPH);try{
+  String[]plots={"pg00_physical_cell","pg_a4a_electrolyte_potential","pg_a4b_li_conc","pg_a4b_bf4_conc","pg_a4b_ionic_current_mag","pg_a4c_cathode_current","pg_a4c_anode_current","pg_a4d_h9","pg_a4d_h45","pg_a4d_h54","pg_a4d_h99","pg_a4d_h297","pg_a4e_n2_current","pg_a4e_donor_current","pg_a4e_colim","pg_a4loss_joule"};
+  for(String p:plots){if(!m.result().hasTag(p))throw new IllegalStateException("RELOAD_RESULT_MISSING "+p);m.result(p).run();System.out.println("RELOAD_RESULT|tag="+p+"|label="+m.result(p).label()+"|status=PASS");}
+  check(m,"Electrolyte Potential",DA,DOM,3,"cd.phil","V");check(m,"Li+ Concentration",DB,DOM,3,"cLi_a4b","mol/m^3");check(m,"BF4- Concentration",DB,DOM,3,"cBF4_a4b","mol/m^3");check(m,"Ionic Current Density",DB,DOM,3,"j_ion_a4b_mag","A/m^2");String sol=solver(m,"std_a4a_ohmic");check(m,"Cathode Current Density",DB,CATH,2,"withsol('"+sol+"',cd.nIl)","A/m^2");check(m,"Anode Current Density",DB,AN,2,"withsol('"+sol+"',cd.nIl)","A/m^2");
+  for(int q:new int[]{9,45,54,99,297})check(m,"Li-Equivalent Thickness | "+q+" C",DB,CATH,2,m.result("pg_a4d_h"+q).feature("surf").getString("expr"),"m");
+  check(m,"N2-Current Spatial Overlap",DB,CATH,2,m.result("pg_a4e_n2_current").feature("surf").getString("expr"),"1");check(m,"Donor-Current Spatial Overlap",DB,CATH,2,m.result("pg_a4e_donor_current").feature("surf").getString("expr"),"1");check(m,"Spatial Co-Limitation",DB,CATH,2,m.result("pg_a4e_colim").feature("surf").getString("expr"),"1");check(m,"Joule Heating Density",DA,DOM,3,"q_ohmic_a4a","W/m^3");
+  System.out.println("FINAL_RELOAD=PASS");System.out.println("FINAL_RELOAD_SOLVE_TRIGGERED=FALSE");
+ }finally{ModelUtil.remove("M10A4Reload");}}
+ private static void check(Model m,String name,String data,String sel,int dim,String expr,String unit){double lo=e(m,dim==3?"MinVolume":"MinSurface",data,sel,dim,expr,unit),hi=e(m,dim==3?"MaxVolume":"MaxSurface",data,sel,dim,expr,unit);if(!Double.isFinite(lo)||!Double.isFinite(hi))throw new IllegalStateException("NONFINITE_RELOAD "+name);System.out.println("RELOAD_FIELD|name="+name+"|min="+f(lo)+"|max="+f(hi)+"|unit="+unit+"|status=PASS");}
+ private static double e(Model m,String type,String data,String sel,int dim,String expr,String unit){String t="reload_ev_"+(++n);m.result().numerical().create(t,type);try{m.result().numerical(t).set("data",data);String[]levels=m.result().numerical(t).getStringArray("looplevelinput");for(int i=0;i<levels.length;i++)levels[i]="last";m.result().numerical(t).set("looplevelinput",levels);m.result().numerical(t).selection().geom(GEOM,dim);m.result().numerical(t).selection().set(m.component(COMP).selection(sel).entities(dim));m.result().numerical(t).set("expr",new String[]{expr});m.result().numerical(t).set("unit",new String[]{unit});double[][]v=m.result().numerical(t).getReal();if(v==null||v.length==0||v[0].length==0)throw new IllegalStateException("EMPTY_RELOAD "+expr);return v[0][v[0].length-1];}finally{m.result().numerical().remove(t);}}
+ private static String solver(Model m,String s){String[]x=m.study(s).getSolverSequences("SolverSequence");if(x.length==0)throw new IllegalStateException("NO_SOLVER "+s);return x[x.length-1];}private static String f(double x){return String.format(Locale.ROOT,"%.15g",x);}
+}

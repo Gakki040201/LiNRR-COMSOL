@@ -1,0 +1,4 @@
+role,selection,component,geometry,entity_ids,area_m2,area_mm2,area_cm2,source_class,status,notes
+cathode_reaction_plane,m10a3_sel_bnd_electrolyte_gde_top,comp_species_liq_real,geom_electrolyte_fluid1,8,0.00384400000000000,3844.00000000000,38.4400000000000,REAL_CAD,PASS,authoritative electrolyte/GDE interface
+anode_reaction_plane,m10a3_sel_bnd_electrolyte_gde_bottom,comp_species_liq_real,geom_electrolyte_fluid1,3,0.00384400000000000,,,REAL_CAD,PASS,paired real-CAD electrolyte/GDE interface
+reference_capillary_mapping,NOT_AVAILABLE,comp_cell_physical,NOT_MAPPED_TO_ELECTROLYTE_SURFACE,,,,,LAB_MANUAL_GEOMETRY_ONLY,NOT_CREATED_INSUFFICIENT_MAPPING_PROVENANCE,manual capillary dimensions exist but no authoritative reaction-plane mapping/selection exists

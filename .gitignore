@@ -16,6 +16,7 @@ models/generated/*.mph
 !models/generated/LiNRR_M10A2R_manual_reconciled.mph
 !models/generated/LiNRR_M10A2_1_matched_flow_control.mph
 !models/generated/LiNRR_M10A3_real_species_transport.mph
+!models/generated/LiNRR_M10A4_ionic_current_li_plating.mph
 runs/**
 
 # Raw data is protected; do not commit accidental working copies

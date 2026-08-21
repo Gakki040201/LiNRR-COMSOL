@@ -1,0 +1,8 @@
+resistance_component,value,unit,source_class,source,notes
+manual_normal_resistance_threshold,<=2.5,ohm,LAB_MANUAL,M10A4_electrochemical_program_audit.csv,Plausibility threshold only; not conductivity
+model_electrolyte_ohmic_resistance,11.0169921792010,ohm,DERIVED_DIAGNOSTIC,A4A accepted current field,Computed at kappa_M10A4_nominal=0.3 S/m; not fitted to Manual threshold
+model_fixture_contact_resistance,TBD,ohm,CALIBRATION_REQUIRED,not_deembedded,Separate series contribution cannot be isolated from available evidence
+model_other_series_resistance,TBD,ohm,CALIBRATION_REQUIRED,not_deembedded,Separate series contribution cannot be isolated from available evidence
+model_full_cell_resistance,TBD,ohm,CALIBRATION_REQUIRED,not_deembedded,Full-cell resistance requires experimental deembedding beyond A4A scope
+kappa_used_for_model,0.3,S/m,PROVISIONAL_SENSITIVITY,literature estimate,Not fitted to force R_model <= 2.5 ohm
+conductivity_sweep,"0.1,0.3,1.0",S/m,PROVISIONAL_SENSITIVITY,literature estimate,Used only for A4A sensitivity

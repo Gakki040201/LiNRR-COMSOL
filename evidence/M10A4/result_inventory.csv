@@ -1,0 +1,71 @@
+result_tag,result_type,label,features
+pg00_physical_cell,PlotGroup3D,00 | PHYSICAL CELL | Full 3D | REAL / PHYSICAL,dset_physical_mesh
+pg_n2_velocity,PlotGroup3D,REAL GAS FLOW | N2 Velocity,surf;slice
+pg_n2_pressure,PlotGroup3D,REAL GAS FLOW | N2 Pressure,surf;slice
+pg_h2_velocity,PlotGroup3D,REAL GAS FLOW | H2 Velocity,surf
+pg_h2_pressure,PlotGroup3D,REAL GAS FLOW | H2 Pressure,surf
+pg_n2_gas_conc,PlotGroup3D,REAL SPECIES TRANSPORT | N2 Gas Concentration - Real Geometry,vol
+pg_n2_dissolved_real,PlotGroup3D,REAL SPECIES TRANSPORT | Dissolved N2 - Real Geometry,vol
+pg_n2_availability,PlotGroup3D,REAL SPECIES TRANSPORT | N2 Availability at Cathode,surf
+pg_n2_flux_real,PlotGroup3D,N2 Flux Through Cathode SSC | HOMOGENIZED THIN-LAYER,surf
+pg_n2_transport_resistance,PlotGroup1D,N2 Transport Resistance | HOMOGENIZED SSC | PROVISIONAL_SENSITIVITY,glob
+pg_n2_reaction_uniformity,PlotGroup3D,N2 Reaction-Plane Uniformity | REAL INTERFACE,surf
+pg_h2_gas_conc,PlotGroup3D,REAL SPECIES TRANSPORT | H2 Gas Concentration - Real Geometry,vol
+pg_h2_availability,PlotGroup3D,REAL SPECIES TRANSPORT | H2 Availability at PtAuSSC,surf
+pg_h2_transport_resistance,PlotGroup1D,H2 Gas Transport Resistance | POROUS-INTERFACE SCAFFOLD,glob
+pg_donor_real,PlotGroup3D,REAL SPECIES TRANSPORT | Proton Donor - Real Geometry | CALIBRATION_REQUIRED identity,vol
+pg_nh3_real,PlotGroup3D,REAL SPECIES TRANSPORT | NH3 - Real Geometry | NUMERICAL_VERIFICATION_ONLY source,vol
+pg_tracer_real,PlotGroup3D,REAL SPECIES TRANSPORT | Tracer - Real Geometry | PROVISIONAL Q,surf
+pg_nh3_downstream,PlotGroup1D,TRANSIENT / ENGINEERING | NH3 Downstream Response | REDUCED equivalent PFA,line
+pg_nh3_breakthrough,PlotGroup1D,NH3 Outlet Breakthrough | REDUCED equivalent downstream,point
+pg_nh3_inventory,PlotGroup1D,NH3 Inventory Density Profile | REDUCED equivalent downstream,line
+pg01_physical_exploded,PlotGroup3D,01 Physical Cell - Exploded SSC/Gasket | DISPLAY SCALE ONLY,dset_physical_mesh
+pg02_gas_connections,PlotGroup3D,02 Gas Port Connections - PFA 3x2 mm | NO PEEK INTERNAL GEOMETRY,dset_physical_mesh
+pg03_n2_channel,PlotGroup3D,03 Real N2 Channel,surf
+pg04_h2_channel,PlotGroup3D,04 Real H2 Channel,surf
+pg05_electrolyte,PlotGroup3D,05 Electrolyte Chamber,surf
+pg06_ssc_true_scale,PlotGroup3D,Physical SSC - true scale | t=30 um LITERATURE_SAME_PLATFORM,dset_physical_mesh
+pg_liq_velocity,PlotGroup3D,REAL FLOW RESULTS | Electrolyte Velocity,surf;slice
+pg_liq_pressure,PlotGroup3D,REAL FLOW RESULTS | Electrolyte Pressure,surf;slice
+pg_liq_streamlines,PlotGroup3D,Liquid Streamlines,str
+pg_liq_wall_shear,PlotGroup3D,REAL FLOW RESULTS | Electrolyte Wall Shear,surf
+pg_n2_streamlines,PlotGroup3D,N2 Streamlines,str
+pg_n2_wall_shear,PlotGroup3D,REAL FLOW RESULTS | N2 Wall Shear,surf
+pg_pipe_dp,PlotGroup1D,REDUCED MODEL RESULTS | External Pipe Pressure [REDUCED MODEL],line
+pg_ssc_dp,PlotGroup2D,REDUCED MODEL RESULTS | SSC Darcy Pressure [REDUCED MODEL],surf
+pg_ssc_velocity,PlotGroup2D,REDUCED MODEL RESULTS | SSC Darcy Velocity [REDUCED MODEL],surf
+pg_ssc_sl,PlotGroup2D,REDUCED MODEL RESULTS | SSC Liquid Saturation [REDUCED MODEL],surf
+pg_ssc_sg,PlotGroup2D,REDUCED MODEL RESULTS | SSC Gas Saturation [REDUCED MODEL],surf
+pg_penetration,PlotGroup2D,REDUCED MODEL RESULTS | Liquid Penetration [REDUCED MODEL],surf
+pg_flood_front,PlotGroup2D,REDUCED MODEL RESULTS | Flooding Front [REDUCED MODEL],cont
+pg_n2_conc,PlotGroup2D,REDUCED MODEL RESULTS | N2 Transfer Concentration [REDUCED / PHENOMENOLOGICAL MODEL],surf
+pg_n2_flux,PlotGroup2D,REDUCED MODEL RESULTS | N2 Transfer Flux [REDUCED / PHENOMENOLOGICAL MODEL],surf
+pg_a4a_electrolyte_potential,PlotGroup3D,03 | IONICS | Electrolyte Potential | NOT FULL-CELL VOLTAGE,vol
+pg_a4a_ionic_current_mag,PlotGroup3D,A4A Ionic Current Magnitude | real electrolyte,vol
+pg_a4a_cathode_current,PlotGroup3D,A4A Cathode Local Current Density | real reaction plane,surf
+pg_a4a_anode_current,PlotGroup3D,A4A Anode Local Current Density | real reaction plane,surf
+pg_a4a_ohmic_heating,PlotGroup3D,A4A Derived Ohmic Heating | NO_THERMAL_FEEDBACK,vol
+pg_a4b_li_conc,PlotGroup3D,03 | IONICS | Li+ Concentration | PROVISIONAL SENSITIVITY,vol
+pg_a4b_bf4_conc,PlotGroup3D,03 | IONICS | BF4- Concentration | PROVISIONAL SENSITIVITY,vol
+pg_a4b_li_flux_mag,PlotGroup3D,A4B Li+ Flux Magnitude | reduced binary NP,vol
+pg_a4b_bf4_flux_mag,PlotGroup3D,A4B BF4- Flux Magnitude | reduced binary NP,vol
+pg_a4b_ionic_current_mag,PlotGroup3D,03 | IONICS | Ionic Current Density | SPECIES-FLUX IDENTITY,vol
+pg_a4b_cathode_current,PlotGroup3D,A4B Conservative Cathode Current | accepted A4A,surf
+pg_a4c_cathode_current,PlotGroup3D,04 | CURRENT DISTRIBUTION | Cathode Current Density | ELECTROLYTE OUTWARD,surf
+pg_a4c_anode_current,PlotGroup3D,04 | CURRENT DISTRIBUTION | Anode Current Density | ELECTROLYTE OUTWARD,surf
+pg_a4c_nonuniformity,PlotGroup3D,04 | CURRENT DISTRIBUTION | Current Nonuniformity | MAGNITUDE DIAGNOSTIC,surf
+pg_a4c_crowding,PlotGroup3D,04 | CURRENT DISTRIBUTION | Current-Crowding Diagnostic | SPATIAL ASSOCIATION,surf
+pg_a4d_rate,PlotGroup3D,05 | LI-EQUIVALENT DEPOSITION | Li-Equivalent Deposition Rate | NUMERICAL UPPER BOUND f=1,surf
+pg_a4d_h9,PlotGroup3D,05 | LI-EQUIVALENT DEPOSITION | Li-Equivalent Thickness | 9 C | NUMERICAL UPPER BOUND f=1,surf
+pg_a4d_h45,PlotGroup3D,05 | LI-EQUIVALENT DEPOSITION | Li-Equivalent Thickness | 45 C | NUMERICAL UPPER BOUND f=1,surf
+pg_a4d_h54,PlotGroup3D,05 | LI-EQUIVALENT DEPOSITION | Li-Equivalent Thickness | 54 C | NUMERICAL UPPER BOUND f=1,surf
+pg_a4d_h99,PlotGroup3D,05 | LI-EQUIVALENT DEPOSITION | Li-Equivalent Thickness | 99 C | NUMERICAL UPPER BOUND f=1,surf
+pg_a4d_h297,PlotGroup3D,05 | LI-EQUIVALENT DEPOSITION | Li-Equivalent Thickness | 297 C | NUMERICAL UPPER BOUND f=1,surf
+pg_a4e_n2_current,PlotGroup3D,06 | SPATIAL CO-LIMITATION | N2-Current Spatial Overlap | DIAGNOSTIC ONLY,surf
+pg_a4e_donor_current,PlotGroup3D,06 | SPATIAL CO-LIMITATION | Donor-Current Spatial Overlap | GENERIC DONOR | CALIBRATION REQUIRED,surf
+pg_a4e_colim,PlotGroup3D,06 | SPATIAL CO-LIMITATION | N2-Li+-Donor-Current Co-Limitation | DIAGNOSTIC ONLY,surf
+pg_a4e_robust,PlotGroup3D,06 | SPATIAL CO-LIMITATION | Classification Robustness | q=0.40/0.50/0.60,surf
+pg_a4loss_phi,PlotGroup3D,07 | ELECTRICAL LOSS | Electrolyte Ohmic Drop | NOT FULL-CELL VOLTAGE,vol
+pg_a4loss_joule,PlotGroup3D,07 | ELECTRICAL LOSS | Joule Heating Density | NO THERMAL FEEDBACK,vol
+tbl_rtd_e,Table,RTD E(t) | ACCEPTED MEDIUM | Q PROVISIONAL_SENSITIVITY,rows=3703
+tbl_rtd_f,Table,RTD F(t) | ACCEPTED MEDIUM | Q PROVISIONAL_SENSITIVITY,rows=3703

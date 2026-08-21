@@ -1,0 +1,15 @@
+quantity,value,unit,definition,status
+integrated_cathode_current,0.0384399999999977,A,outward normal electrolyte current integral over cathode,PASS
+integrated_anode_current,-0.0384399999999978,A,outward normal electrolyte current integral over anode,PASS
+charge_conservation_residual,3.61024656811011e-16,1,"abs(I_anode+I_cathode)/max(abs(I_anode),abs(I_cathode))",PASS
+electrolyte_ohmic_drop,0.423493179368461,V,"AvSurface(phi,anode)-AvSurface(phi,cathode)",PASS
+derived_ohmic_resistance,11.0169921792010,ohm,electrolyte_ohmic_drop/abs(integrated_cathode_current),PASS
+cathode_current_density_mean,9.99999999999939,A/m^2,AvSurface normal current density,PASS
+cathode_current_density_min,-10.2749181878447,A/m^2,MinSurface normal current density,PASS
+cathode_current_density_max,17.5829079149677,A/m^2,MaxSurface normal current density,PASS
+anode_current_density_mean,-9.99999999999941,A/m^2,AvSurface normal current density,PASS
+anode_current_density_min,-17.3122837647158,A/m^2,MinSurface normal current density,PASS
+anode_current_density_max,9.56410776103367,A/m^2,MaxSurface normal current density,PASS
+electrolyte_potential_min,0.00000000000000,V,MinVolume cd_a4a.phil,PASS
+electrolyte_potential_max,0.423493179368460,V,MaxVolume cd_a4a.phil,PASS
+integrated_ohmic_heating,0.0162790778149229,W,IntVolume j_a4a dot E_a4a,PASS
