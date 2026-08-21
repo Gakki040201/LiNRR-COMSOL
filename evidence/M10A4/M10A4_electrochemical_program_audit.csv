@@ -1,0 +1,13 @@
+﻿evidence_item,evidence_type,value_or_observation,classification,source_or_search,notes
+repository_mps_search,file_search,none_found,NOT_FOUND,"Searched F:\LiNRR_COMSOL, F:\LiNRR_Experimental_Data, F:\ for *.mps/*.mpr/*.mpt","No primary EC-Lab program files recovered"
+ocv_step,manual_program,OCV about 60 s,LAB_MANUAL,docs/manual/LiNRR_manual_extracted.md P200,"WE fluctuation should not exceed 0.3 V in 60 s"
+ci_then_eis,manual_program,CI followed by EIS,LAB_MANUAL,docs/manual/LiNRR_manual_extracted.md P202,"Second program is CI; third program is EIS"
+normal_resistance_threshold,manual_program,<=2.5 ohm,LAB_MANUAL_PLAUSIBILITY_THRESHOLD,docs/manual/LiNRR_manual_extracted.md P202,"Threshold only; not a deembedded conductivity value"
+cv_threshold,manual_program,WE around -3 V,LAB_MANUAL,docs/manual/LiNRR_manual_extracted.md P206,"Current magnitude increases strongly near WE ~ -3 V"
+ambiguous_current_text,manual_text,"当电流降到-110mV时",AMBIGUOUS_MANUAL_TEXT,docs/manual/LiNRR_manual_extracted.md P206,"Dimensionally inconsistent; not reinterpreted as -110 mA"
+charge_checkpoint_9C,manual_program,9 C,LAB_MANUAL,docs/manual/LiNRR_manual_extracted.md P213,"Each cycle about 9 C"
+charge_checkpoint_45C,manual_program,45 C,LAB_MANUAL,docs/manual/LiNRR_manual_extracted.md P216,"Sampling checkpoint"
+charge_checkpoint_54C,manual_program,54 C,LAB_MANUAL,docs/manual/LiNRR_manual_extracted.md P216,"Sampling checkpoint"
+charge_checkpoint_99C,manual_program,99 C,LAB_MANUAL,docs/manual/LiNRR_manual_extracted.md P216,"Two-sampling total interval 99 C"
+charge_checkpoint_297C,manual_program,297 C,LAB_MANUAL,docs/manual/LiNRR_manual_extracted.md P213,"Default program stop charge"
+applied_current_provenance,primary_recovery,not_recovered,CALIBRATION_REQUIRED,"No .mps or EC-Lab raw/export found in repository/project evidence","Use j_app_sensitivity for model sensitivity only"

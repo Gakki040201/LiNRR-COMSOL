@@ -1,0 +1,13 @@
+parameter,status,reason,allowed_sensitivity_representation,blocking_gate
+j_app_lab,CALIBRATION_REQUIRED,No .mps or EC-Lab primary raw program recovered,j_app_sensitivity with transparent A4A baseline,A4A only if sensitivity baseline is documented
+kappa_eff,CALIBRATION_REQUIRED,No direct or deembedded experimental conductivity recovered,kappa_M10A4_nominal plus sweep 0.1/0.3/1.0 S/m,A4A
+D_Li,CALIBRATION_REQUIRED,No validated concentrated-electrolyte Li+ diffusivity recovered,PROVISIONAL_SENSITIVITY or LITERATURE_ESTIMATE,A4B
+D_BF4,CALIBRATION_REQUIRED,No validated concentrated-electrolyte BF4- diffusivity recovered,PROVISIONAL_SENSITIVITY or LITERATURE_ESTIMATE,A4B
+u_Li,CALIBRATION_REQUIRED,No validated Li+ mobility recovered,PROVISIONAL_SENSITIVITY or LITERATURE_ESTIMATE,A4B
+u_BF4,CALIBRATION_REQUIRED,No validated BF4- mobility recovered,PROVISIONAL_SENSITIVITY or LITERATURE_ESTIMATE,A4B
+t_plus,CALIBRATION_REQUIRED,No validated transference number recovered,PROVISIONAL_SENSITIVITY or LITERATURE_ESTIMATE,A4B
+activity_correction,CALIBRATION_REQUIRED,Concentrated nonaqueous electrolyte not ideal dilute,PROVISIONAL_SENSITIVITY only,A4B
+kappa_c,CALIBRATION_REQUIRED,Concentration-dependent conductivity not established,PROVISIONAL_SENSITIVITY or LITERATURE_ESTIMATE,A4B
+thermodynamic_factor,CALIBRATION_REQUIRED,Not established for this electrolyte,PROVISIONAL_SENSITIVITY only,A4B
+absolute_reference_potential,FORBIDDEN,No experimental thermodynamic calibration,Local/internal electrolyte potential probe only,A4A-A4E
+proton_donor_identity,CALIBRATION_REQUIRED,Frozen M10A3 field is generic; current lab identity ethanol,Ethanol donor diagnostic only,A4E

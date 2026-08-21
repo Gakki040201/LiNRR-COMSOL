@@ -1,0 +1,7 @@
+﻿item,value,unit,classification,source_evidence,notes
+diglyme_volume,30,mL,LAB_MANUAL,docs/manual/LiNRR_manual_extracted.md P116,"Manual states take 30 mL DG"
+LiBF4_mass,2.81,g,LAB_MANUAL,docs/manual/LiNRR_manual_extracted.md P117,"Manual states weigh 2.81 g LiBF4"
+ethanol_volume,75,uL,LAB_MANUAL,docs/manual/LiNRR_manual_extracted.md P118,"Current Manual electrolyte recipe; proton-donor identity in current laboratory recipe is ethanol"
+ethanol_legacy_metadata,0.225,mL,HISTORICAL_PROVENANCE_CONFLICT,docs/manual/LiNRR_manual_extracted.md P198,"Legacy EC-Lab/folder metadata says 0p225 mL EtOH; do not overwrite frozen M10A3 generic donor field"
+LiBF4_concentration_nominal,1,mol/L,DERIVED_FROM_LAB_MANUAL,"2.81 g LiBF4 / 93.746 g/mol / ~0.030075 L","Calculated nominal concentration ~0.997 mol/L, rounded to approximately 1 M"
+proton_donor_identity,ethanol,1,LAB_MANUAL,docs/manual/LiNRR_manual_extracted.md P118,"Current laboratory recipe identity; frozen M10A3 generic donor field remains unchanged"

@@ -1,0 +1,29 @@
+quantity,value,unit,weighting,dataset,selection,source_class,scientific_status,notes
+actual_electrochemical_interface_area,0.00384400000000000,m^2,area integral,dset_a4b_ionic_en,m10a3_sel_bnd_electrolyte_gde_top,REAL_CAD,PASS,one named real-CAD boundary; entity=8
+area_weight_sum,0.00384400000000000,m^2,COMSOL surface quadrature,dset_a4b_ionic_en,m10a3_sel_bnd_electrolyte_gde_top,DERIVED_DIAGNOSTIC,PASS,positive weights; relative to A_echem_cathode=1.01538184728091e-15
+integrated_cathode_current,0.0384399999999978,A,surface integral,dset_a4b_ionic_en,m10a3_sel_bnd_electrolyte_gde_top,DERIVED_DIAGNOSTIC,PASS,electrolyte outward-normal sign retained
+integrated_anode_current,-0.0384399999999977,A,surface integral,dset_a4b_ionic_en,m10a3_sel_bnd_electrolyte_gde_bottom,DERIVED_DIAGNOSTIC,PASS,electrolyte outward-normal sign retained
+current_conservation_relative,1.80512328405505e-15,1,integral closure,dset_a4b_ionic_en,m10a3_sel_bnd_electrolyte_gde_top+m10a3_sel_bnd_electrolyte_gde_bottom,DERIVED_DIAGNOSTIC,PASS,abs(Ic+Ia)/max(abs(I))
+cathode_current_vs_A4A_relative,5.75834327613529e-14,1,accepted parameter regression,dset_a4b_ionic_en,m10a3_sel_bnd_electrolyte_gde_top,DERIVED_DIAGNOSTIC,PASS,reference I_A4A_sensitivity
+j_electrolyte_outward_mean,9.99999999999943,A/m^2,signed area weighted,dset_a4b_ionic_en,m10a3_sel_bnd_electrolyte_gde_top,DERIVED_DIAGNOSTIC,PASS,positive accepted electrolyte outward convention
+j_cathodic_conventional_mean,-9.99999999999943,A/m^2,signed area weighted,dset_a4b_ionic_en,m10a3_sel_bnd_electrolyte_gde_top,DERIVED_DIAGNOSTIC,PASS,explicit transform j_cathodic_conventional=-j_electrolyte_outward
+j_surface_magnitude_mean,10.0071933411891,A/m^2,area weighted,dset_a4b_ionic_en,m10a3_sel_bnd_electrolyte_gde_top,DERIVED_DIAGNOSTIC,PASS,explicit sqrt(j_outward^2) diagnostic after sign audit; not sign repair
+j_surface_magnitude_min,0.00837586786401057,A/m^2,surface extremum,dset_a4b_ionic_en,m10a3_sel_bnd_electrolyte_gde_top,DERIVED_DIAGNOSTIC,PASS,nonnegative magnitude diagnostic
+j_surface_magnitude_max,17.5829079149677,A/m^2,surface extremum,dset_a4b_ionic_en,m10a3_sel_bnd_electrolyte_gde_top,DERIVED_DIAGNOSTIC,PASS,nonnegative magnitude diagnostic
+j_surface_magnitude_P10,4.50506386681454,A/m^2,area-weighted indicator-CDF bisection,dset_a4b_ionic_en,m10a3_sel_bnd_electrolyte_gde_top,DERIVED_DIAGNOSTIC,PASS,"CDF=IntSurface(if(j<=J,1,0))/area"
+j_surface_magnitude_P50,11.2120309101249,A/m^2,area-weighted indicator-CDF bisection,dset_a4b_ionic_en,m10a3_sel_bnd_electrolyte_gde_top,DERIVED_DIAGNOSTIC,PASS,"CDF=IntSurface(if(j<=J,1,0))/area"
+j_surface_magnitude_P90,12.5648964707273,A/m^2,area-weighted indicator-CDF bisection,dset_a4b_ionic_en,m10a3_sel_bnd_electrolyte_gde_top,DERIVED_DIAGNOSTIC,PASS,"CDF=IntSurface(if(j<=J,1,0))/area"
+j_surface_magnitude_std,3.09576680867327,A/m^2,area weighted population std,dset_a4b_ionic_en,m10a3_sel_bnd_electrolyte_gde_top,DERIVED_DIAGNOSTIC,PASS,sqrt(Int((j-mean)^2)/area)
+j_surface_magnitude_CV,0.309354151871061,1,area weighted,dset_a4b_ionic_en,m10a3_sel_bnd_electrolyte_gde_top,DERIVED_DIAGNOSTIC,PASS,std/mean
+signed_negative_area_fraction,0.00243602844818040,1,area weighted sign audit,dset_a4b_ionic_en,m10a3_sel_bnd_electrolyte_gde_top,DIAGNOSTIC_ONLY,DIAGNOSTIC,not clipped; local sign-reversal fraction retained
+signed_nonnegative_area_fraction,0.997563971551820,1,area weighted sign audit,dset_a4b_ionic_en,m10a3_sel_bnd_electrolyte_gde_top,DIAGNOSTIC_ONLY,DIAGNOSTIC,partition closure with negative fraction
+edge_corner_band_area,0.00138391243339734,m^2,COMSOL indicator surface quadrature,dset_a4b_ionic_en,m10a3_sel_bnd_electrolyte_gde_top,REAL_CAD,DIAGNOSTIC_ONLY,outer 10% coordinate band; SPATIAL_ASSOCIATION
+edge_corner_band_j_magnitude_mean,6.91385314176956,A/m^2,area weighted regional mean,dset_a4b_ionic_en,m10a3_sel_bnd_electrolyte_gde_top,DERIVED_DIAGNOSTIC,SPATIAL_ASSOCIATION,outer 10% coordinate band; SPATIAL_ASSOCIATION; no causality claim
+inlet_nearest_region_area,0.00192226401693845,m^2,COMSOL indicator surface quadrature,dset_a4b_ionic_en,m10a3_sel_bnd_electrolyte_gde_top,REAL_CAD,DIAGNOSTIC_ONLY,nearest projected real inlet centroid; SPATIAL_ASSOCIATION
+inlet_nearest_region_j_magnitude_mean,10.0342200423739,A/m^2,area weighted regional mean,dset_a4b_ionic_en,m10a3_sel_bnd_electrolyte_gde_top,DERIVED_DIAGNOSTIC,SPATIAL_ASSOCIATION,nearest projected real inlet centroid; SPATIAL_ASSOCIATION; no causality claim
+outlet_nearest_region_area,0.00192173598306155,m^2,COMSOL indicator surface quadrature,dset_a4b_ionic_en,m10a3_sel_bnd_electrolyte_gde_top,REAL_CAD,DIAGNOSTIC_ONLY,nearest projected real outlet centroid; SPATIAL_ASSOCIATION
+outlet_nearest_region_j_magnitude_mean,9.98015921389886,A/m^2,area weighted regional mean,dset_a4b_ionic_en,m10a3_sel_bnd_electrolyte_gde_top,DERIVED_DIAGNOSTIC,SPATIAL_ASSOCIATION,nearest projected real outlet centroid; SPATIAL_ASSOCIATION; no causality claim
+Li_concentration_current_magnitude_correlation,-0.0175371311099131,1,area weighted Pearson,dset_a4b_ionic_en,m10a3_sel_bnd_electrolyte_gde_top,DIAGNOSTIC_ONLY,SPATIAL_ASSOCIATION,Li field is A4B provisional sensitivity; no causality claim
+electrolyte_path_length,0.0100000000000000,m,geometry diagnostic,dset_a4b_ionic_en,m10a3_sel_bnd_electrolyte_gde_top,REAL_CAD,DIAGNOSTIC_ONLY,constant top-to-bottom reaction-plane separation; no spatial association identifiable
+flow_field_footprint_area,0.00384400000000000,m^2,area weighted,dset_a4b_ionic_en,m10a3_sel_bnd_electrolyte_gde_top,REAL_CAD,DIAGNOSTIC_ONLY,authoritative electrolyte reaction-plane footprint
+reference_port_spatial_association,,1,not evaluated,dset_a4b_ionic_en,NOT_AVAILABLE,LAB_MANUAL_GEOMETRY_ONLY,NOT_CREATED_INSUFFICIENT_MAPPING_PROVENANCE,no authoritative reference-capillary reaction-plane selection or mapping

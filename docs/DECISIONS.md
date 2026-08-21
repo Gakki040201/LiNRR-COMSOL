@@ -606,3 +606,74 @@ fitting any transport parameter. Accepted RTD E(t) and F(t) are embedded in the
 final editable MPH as native Results tables because post-solve integration
 coupling operators added after solution did not remain callable in independently
 reloaded Global plot expressions.
+
+## D0022 - M10A4 A4B electroneutral effective binary-ion transport
+
+Decision: represent the A4B LiBF4 electrolyte with one strictly positive common
+salt concentration, `c_salt_bulk_a4b*exp(zSalt_a4b)`, and reconstruct the two
+species fluxes in reduced transference-number form:
+`N_Li= N_salt+t_plus*i_A4A/F` and
+`N_BF4=N_salt-(1-t_plus)*i_A4A/F`. This enforces `cLi=cBF4` and
+`F*(N_Li-N_BF4)=i_A4A` identically while retaining the accepted real liquid flow
+and the closed A4A current field. The electrode salt flux is
+`(1-t_plus)*i_A4A.n/F`, so the reconstructed Li+ electrode flux is the stated
+Faraday-equivalent upper bound and the BF4- electrode flux is zero. This is a
+phenomenological reduced electroneutral binary Nernst-Planck sensitivity model,
+not a microscopic plating model and not an experimentally calibrated transport
+prediction.
+
+The previous independent positive Li+/BF4- attempt used element-gradient boundary
+traces as if they were conservative numerical fluxes. Because its electrode flux
+was imposed weakly, those traces drifted from the imposed A4A current and produced
+the reported `1.3839109e-3` charge-ledger residual. Attempt 7 replaced that
+postprocessing with conservative imposed boundary fluxes and closed charge to
+`1.8051e-15`, but its default-tolerance transient common-salt ledger remained
+`2.8191e-4`. With the formulation and ledgers fixed, attempt 8 changed only the
+transient relative tolerance to `1e-8`, matching the strict M10A3 conservation
+practice. Li+ and BF4- residuals both became approximately `2.0304e-9`; raw
+concentration remained finite and positive, and electroneutrality was exact.
+
+`D_salt_a4b_eff=1e-8 m^2/s`, `t_plus_a4b=0.5`, and the mesh-Peclet diffusion are
+explicitly provisional/assumed sensitivity inputs requiring calibration. The
+concentration range from this run must not be presented as experimentally
+validated. No clipping, absolute-value replacement, Butler-Volmer law, Li-NRR,
+HER/HOR, SEI, FE, NH3 production kinetics, full-cell voltage, or thermal feedback
+is introduced.
+
+## D0023 - M10A4 diagnostic current, Li-equivalent, and co-limitation closure
+
+Decision: preserve A4A/A4B as immutable accepted numerical layers and implement
+A4C–A4E primarily as postprocessing on the authoritative real-CAD cathode plane
+`m10a3_sel_bnd_electrolyte_gde_top`. Its measured area is 3844 mm2; nominal SSC
+cut and gasket areas are retained only as provenance diagnostics. A4C statistics
+use surface quadrature and indicator-CDF weighted quantiles. The electrolyte-
+outward and conventional cathodic signs remain distinct, while nonuniformity uses
+an explicitly audited magnitude rather than an absolute-value sign repair.
+
+A4D is a Faraday Li-equivalent scaffold at the frozen 9/45/54/99/297 C states and
+0.25/0.50/0.75/1.00 current partitions. The unity case is a numerical upper bound
+and the others are sensitivities; none predicts retained metallic lithium. A4E
+collocates frozen N2 and generic-donor fields with accepted Li+ and current fields,
+uses area-weighted q=0.40/0.50/0.60 thresholds, and retains an explicit residual
+category. Its outputs are spatial diagnostics only, never NH3 rate, FE, selectivity,
+or mechanism.
+
+The separate 85,016-element coarse mesh has a maximum key-metric difference of
+0.0621400622644018 and is accepted as `PASS_WITH_LIMITATION` under the frozen
+5–10% rule. Its repeated localized inverted-high-order-element warning and one
+low-quality warning remain recorded. The warning-free accepted medium model stays
+immutable and is the final artifact; diagnostic coarse solutions are not promoted.
+Derived `i dot E` is retained without Heat Transfer or thermal feedback. A fresh
+process reload evaluated every required result without solving. The final model
+remains numerical verification with provisional conductivity, effective salt
+diffusivity, transference number, and current partition; it is not experimental
+validation and is not a Li-NRR kinetic model.
+
+GitHub rejected the initial 3.3 GB LFS object at its 2 GiB per-object limit. The
+immutable pre-audit checkpoint was therefore retained, while a new storage-only
+artifact kept full `sol15`, stationary `sol19`/`sol20`, and the final snapshot of
+`sol21`; other cached solutions are reproducible but not required by the formal
+M10A4 reload set. The resulting 807,839,751-byte MPH passed the complete reload
+twice—once at its attempt path and once after promotion to the official path—with
+identical required extrema, no solve, and zero fatal/warning hits. This is archive
+compaction only and does not alter physics, fields, result expressions, or gates.

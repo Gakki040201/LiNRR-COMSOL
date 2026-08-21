@@ -1,0 +1,23 @@
+parameter,symbol,value,unit,classification,source,notes
+active_cathode_area,A_echem_cathode,38.44,cm^2,REAL_CAD,M10A4_electrochemical_area_audit.csv,Authoritative reaction-plane electrolyte/GDE interface from stable real-CAD named selection
+active_anode_area,A_echem_anode,38.44,cm^2,REAL_CAD,M10A4_electrochemical_area_audit.csv,Geometrically equivalent to cathode area; relative difference 0
+electrolyte_conductivity,kappa_eff,CALIBRATION_REQUIRED,S/m,CALIBRATION_REQUIRED,Primary evidence search,No direct or deembedded experimental conductivity recovered
+electrolyte_conductivity_nominal,kappa_M10A4_nominal,0.3,S/m,PROVISIONAL_SENSITIVITY_LITERATURE_ESTIMATE,Literature range for liquid glyme/LiBF4 systems,Transparent sensitivity baseline only; not fitted to manual resistance threshold
+electrolyte_conductivity_sweep,kappa_sweep,"0.1,0.3,1.0",S/m,PROVISIONAL_SENSITIVITY_LITERATURE_ESTIMATE,Conductivity sensitivity program,No single fitted value
+lab_applied_current_density,j_app_lab,CALIBRATION_REQUIRED,A/m^2,CALIBRATION_REQUIRED,Electrochemical program audit,No .mps or EC-Lab primary raw program recovered
+lab_applied_current,I_lab,CALIBRATION_REQUIRED,A,CALIBRATION_REQUIRED,Electrochemical program audit,Exact applied current not recovered
+model_applied_current_density,j_app_sensitivity,10,A/m^2,PROVISIONAL_SENSITIVITY,Transparent A4A galvanostatic baseline,Equivalent to 1 mA/cm^2; not lab current
+model_total_current,I_A4A_sensitivity,j_app_sensitivity*A_echem_cathode,A,DERIVED_FROM_SENSITIVITY,Transparent A4A baseline,Approximately 0.03844 A for 38.44 cm^2 active area
+LiBF4_bulk_concentration,c_LiBF4_bulk,1,mol/L,DERIVED_FROM_LAB_MANUAL,M10A4_manual_electrochemistry_reconciliation.csv,Approximately 1 M from 2.81 g LiBF4 in 30 mL diglyme + 75 uL ethanol
+Li_molar_mass,M_Li,6.941e-3,kg/mol,LITERATURE_CONSTANT,CODATA/IUPAC atomic mass,Used only in Faraday equivalent ledger
+Li_density,rho_Li,534,kg/m^3,LITERATURE_CONSTANT,Standard solid lithium density,Used only in Li-equivalent geometric thickness; not predicted real morphology
+Faraday_constant,F_const,96485.33212331002,C/mol,LITERATURE_CONSTANT,CODATA 2022,Faraday ledger only
+Li_diffusivity,D_Li,CALIBRATION_REQUIRED,m^2/s,CALIBRATION_REQUIRED,No validated concentrated-electrolyte transport property recovered
+BF4_diffusivity,D_BF4,CALIBRATION_REQUIRED,m^2/s,CALIBRATION_REQUIRED,No validated concentrated-electrolyte transport property recovered
+Li_mobility,u_Li,CALIBRATION_REQUIRED,m^2/(V*s),CALIBRATION_REQUIRED,No validated concentrated-electrolyte transport property recovered
+BF4_mobility,u_BF4,CALIBRATION_REQUIRED,m^2/(V*s),CALIBRATION_REQUIRED,No validated concentrated-electrolyte transport property recovered
+cation_transference_number,t_plus,CALIBRATION_REQUIRED,1,CALIBRATION_REQUIRED,No validated transference number recovered
+activity_correction,activity_correction,CALIBRATION_REQUIRED,1,CALIBRATION_REQUIRED,Concentrated nonaqueous electrolyte; ideal dilute assumption not quantitative
+conductivity_model,kappa_c,CALIBRATION_REQUIRED,S/m,CALIBRATION_REQUIRED,Concentration-dependent conductivity not established
+thermodynamic_factor,thermodynamic_factor,CALIBRATION_REQUIRED,1,CALIBRATION_REQUIRED,Not established for concentrated nonaqueous electrolyte
+proton_donor_identity,proton_donor,ethanol,1,LAB_MANUAL,M10A4_manual_electrochemistry_reconciliation.csv,Frozen M10A3 generic donor field remains unchanged

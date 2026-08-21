@@ -1,0 +1,4 @@
+parameter,symbol,value,unit,classification,notes
+effective_salt_diffusivity,D_salt_a4b_eff,1.00000000000000e-08,m^2/s,PROVISIONAL_SENSITIVITY_CALIBRATION_REQUIRED,Not experimentally calibrated
+cation_transference_number,t_plus_a4b,0.500000000000000,1,ASSUMED_SENSITIVITY_CALIBRATION_REQUIRED,0.5 symmetry assumption; not experimentally calibrated
+electroneutral_binary_flux_form,N_i=N_salt+partition(i/F),ENFORCED,1,REDUCED_PHENOMENOLOGICAL_NERNST_PLANCK,Calibration range unavailable; do not use quantitatively

@@ -1,0 +1,20 @@
+study_tag,label,features,solver_sequences
+std_liq_stationary,Liquid Stationary Flow | NUMERICAL_TEST_ONLY,stat,
+std_n2_stationary,N2 Stationary Flow | NUMERICAL_TEST_ONLY,stat,
+std_h2,研究 2,stat,
+std_pipe_n2,研究 2a,stat,
+std_pipe_h2,研究 2b,stat,
+std_pipe_liq,研究,stat,
+std_ssc_darcy,研究 3,stat,
+std_ssc_wetting,研究 4,time,
+std_n2_transfer,研究 5,stat,
+std_species_n2_gas,std_species_n2_gas | M10A3,stat,
+std_species_h2_gas,std_species_h2_gas | M10A3,stat,
+std_species_liq_flow,std_species_liq_flow | M10A3,stat,
+std_species_liq_n2,std_species_liq_n2 | M10A3 strictly positive conservative transient relaxation,time,sol15
+std_species_liq_nh3,std_species_liq_nh3 | M10A3 strictly positive conservative transient relaxation,time,
+std_nh3_downstream,std_nh3_downstream | M10A3,time,
+std_rtd,std_rtd | M10A3,time,
+std_a4a_ohmic,A4A Ohmic Current Distribution,stat,sol19
+std_a4b_flow_repair,A4B Real Liquid Flow Support,stat,sol20
+std_a4b_ionic_en,A4B Ionic Transport,time,sol21

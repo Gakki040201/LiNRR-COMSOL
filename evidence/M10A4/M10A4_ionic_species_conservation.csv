@@ -1,0 +1,25 @@
+species,quantity,boundary,value,unit,definition,status
+Li+,inlet_flux,m10a3_sel_bnd_electrolyte_inlet,-1.66666666666666e-05,mol/s,conservative Danckwerts boundary flux,PASS
+Li+,outlet_flux,m10a3_sel_bnd_electrolyte_outlet,1.64737740215060e-05,mol/s,conservative advective boundary flux,PASS
+Li+,cathode_flux,m10a3_sel_bnd_electrolyte_gde_top,3.98402525586695e-07,mol/s,Faraday-equivalent A4A flux,PASS
+Li+,anode_flux,m10a3_sel_bnd_electrolyte_gde_bottom,-3.98402525586694e-07,mol/s,Faraday-equivalent A4A flux,PASS
+Li+,walls_flux,m10a3_sel_bnd_electrolyte_walls,0,mol/s,natural zero salt flux and A4A insulation,PASS
+Li+,accumulation,m10a3_sel_dom_electrolyte_fluid,1.92892611320586e-07,mol/s,"d(common salt concentration,t)",PASS
+Li+,net_residual,all_boundaries,-3.38400529441351e-14,mol/s,boundary fluxes plus accumulation,PASS
+Li+,relative_residual,all_boundaries,2.03040317664811e-09,1,abs(net)/max(abs(ledger terms)),PASS
+Li+,volume_min,m10a3_sel_dom_electrolyte_fluid,957.945310917445,mol/m^3,"raw c_bulk*exp(z), no clipping",PASS
+Li+,volume_max,m10a3_sel_dom_electrolyte_fluid,5622.11679840875,mol/m^3,"raw c_bulk*exp(z), no clipping",PASS
+BF4-,inlet_flux,m10a3_sel_bnd_electrolyte_inlet,-1.66666666666666e-05,mol/s,conservative Danckwerts boundary flux,PASS
+BF4-,outlet_flux,m10a3_sel_bnd_electrolyte_outlet,1.64737740215060e-05,mol/s,conservative advective boundary flux,PASS
+BF4-,cathode_flux,m10a3_sel_bnd_electrolyte_gde_top,0.00000000000000,mol/s,blocked anion zero flux,PASS
+BF4-,anode_flux,m10a3_sel_bnd_electrolyte_gde_bottom,0.00000000000000,mol/s,blocked anion zero flux,PASS
+BF4-,walls_flux,m10a3_sel_bnd_electrolyte_walls,0,mol/s,natural zero salt flux and A4A insulation,PASS
+BF4-,accumulation,m10a3_sel_dom_electrolyte_fluid,1.92892611320586e-07,mol/s,"d(common salt concentration,t)",PASS
+BF4-,net_residual,all_boundaries,-3.38400536633008e-14,mol/s,boundary fluxes plus accumulation,PASS
+BF4-,relative_residual,all_boundaries,2.03040321979805e-09,1,abs(net)/max(abs(ledger terms)),PASS
+BF4-,volume_min,m10a3_sel_dom_electrolyte_fluid,957.945310917445,mol/m^3,"raw c_bulk*exp(z), no clipping",PASS
+BF4-,volume_max,m10a3_sel_dom_electrolyte_fluid,5622.11679840875,mol/m^3,"raw c_bulk*exp(z), no clipping",PASS
+charge,ionic_cathode_current,m10a3_sel_bnd_electrolyte_gde_top,0.0384399999999978,A,conservative imposed A4A normal current,PASS
+charge,ionic_anode_current,m10a3_sel_bnd_electrolyte_gde_bottom,-0.0384399999999977,A,conservative imposed A4A normal current,PASS
+charge,current_residual,cathode+anode,1.80512328405505e-15,1,abs(I_anode+I_cathode)/max(abs(I)),PASS
+charge,electroneutrality_max_abs,m10a3_sel_dom_electrolyte_fluid,0.00000000000000,mol/m^3,max(abs(cLi-cBF4)); common concentration,PASS

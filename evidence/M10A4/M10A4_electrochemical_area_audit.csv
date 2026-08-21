@@ -1,0 +1,15 @@
+﻿surface,selection_tag,component,physical_definition,area_mm2,area_cm2,used_for_current_normalization,provenance,status,notes
+,sel_bnd_electrolyte_gde_top,comp_electrolyte_flow,cathode electrolyte/GDE interface (real-CAD electrolyte fluid face),3844.00000000000,38.4400000000000,YES,REAL_CAD,GATE,
+,sel_bnd_electrolyte_gde_bottom,comp_electrolyte_flow,anode electrolyte/GDE interface (real-CAD electrolyte fluid face),3844.00000000000,38.4400000000000,YES,REAL_CAD,GATE,
+,sel_bnd_electrolyte_inlet,comp_electrolyte_flow,electrolyte liquid inlet,31.5391404487241,0.315391404487241,no,REAL_CAD,AUDIT,
+,sel_bnd_electrolyte_outlet,comp_electrolyte_flow,electrolyte liquid outlet,31.5391401710679,0.315391401710679,no,REAL_CAD,AUDIT,
+,sel_dom_electrolyte_fluid,comp_electrolyte_flow,electrolyte fluid domain volume,,,no,REAL_CAD,AUDIT,
+,sel_bnd_electrolyte_all,comp_electrolyte_flow,all electrolyte fluid boundaries,14327.3271750287,143.273271750287,no,REAL_CAD,AUDIT,
+,sel_bnd_electrolyte_walls,comp_electrolyte_flow,electrolyte non-electrode walls,6576.24889440887,65.7624889440887,no,REAL_CAD,AUDIT,
+,sel_bnd_chamber_top_opening,comp_registered,registered chamber top opening (multi-boundary),5559.18490859007,55.5918490859007,no,REAL_CAD,REFERENCE,
+,sel_bnd_candidate_top_interface,comp_registered,registered top candidate interface (multi-boundary),11096.5123026151,110.965123026151,no,REAL_CAD,REFERENCE,
+,sel_bnd_candidate_bottom_interface,comp_registered,registered bottom candidate interface (multi-boundary),11096.5123350296,110.965123350296,no,REAL_CAD,REFERENCE,
+SSC physical cut,ssc_cut^2,parameter,60x60 mm SSC cut area,3600.00000000000,36.0000000000000,no,DERIVED_FROM_LAB_MANUAL,REFERENCE,not electrochemically active by itself
+gasket inner aperture,gasket_inner^2,parameter,55x55 mm gasket inner opening,3025.00000000000,30.2500000000000,no,DERIVED_FROM_LAB_MANUAL,REFERENCE,physical seal window; not the fluid-domain CAD face
+N2 open channel,A_n2_interface,parameter,cathode gas-open channel area,1278.22088212902,12.7822088212902,no,REAL_CAD,REFERENCE,gas-side area; do not use for electrolyte current normalization
+historical footprint,A_ssc_active,parameter,historical SSC flowfield footprint estimate,2474.04981995000,24.7404981995000,no,DERIVED,REFERENCE,not assumed as M10A4 active area

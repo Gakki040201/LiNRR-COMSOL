@@ -1,0 +1,6 @@
+quantity,value,unit,definition,dataset,selection,source_class,status,notes
+electrolyte_ohmic_drop,0.423493179368461,V,"AvSurface(phi,anode)-AvSurface(phi,cathode)",dset_a4a_ohmic,m10a3_sel_dom_electrolyte_fluid,DERIVED_DIAGNOSTIC,PASS,NOT_FULL_CELL_VOLTAGE
+model_electrolyte_ohmic_resistance,11.0169921792010,ohm,electrolyte_ohmic_drop/abs(I_cathode),dset_a4a_ohmic,m10a3_sel_dom_electrolyte_fluid,DERIVED_DIAGNOSTIC,PASS,kappa=0.3 S/m PROVISIONAL_SENSITIVITY; not fitted to Manual EIS threshold
+integrated_electrolyte_joule_source,0.0162790778149229,W,IntVolume(i dot E),dset_a4a_ohmic,m10a3_sel_dom_electrolyte_fluid,DERIVED_ELECTRICAL_SOURCE,PASS,NO_THERMAL_FEEDBACK
+joule_heating_density_min,0.00000000000000,W/m^3,MinVolume(i dot E),dset_a4a_ohmic,m10a3_sel_dom_electrolyte_fluid,DERIVED_ELECTRICAL_SOURCE,PASS,NO_THERMAL_FEEDBACK
+joule_heating_density_max,3268.97774123613,W/m^3,MaxVolume(i dot E),dset_a4a_ohmic,m10a3_sel_dom_electrolyte_fluid,DERIVED_ELECTRICAL_SOURCE,PASS,NO_THERMAL_FEEDBACK
