@@ -1,0 +1,5 @@
+"panel","title","source_path","interpretation"
+"a","Dissolved N2 availability","evidence/M10A3/n2_dissolved_real.png","M10A3 accepted field"
+"b","Li+ effective concentration","evidence/M10A4/li_concentration.png","M10A4B reduced electroneutral transport"
+"c","BF4- effective concentration","evidence/M10A4/li_concentration.png","cBF4 = cLi by accepted electroneutral reduction"
+"d","GENERIC DONOR availability","evidence/M10A3/proton_donor_real.png","Not a validated local ethanol field"

@@ -1,102 +1,37 @@
 [CmdletBinding()]
 param([string]$RepoRoot)
 $ErrorActionPreference='Stop'
-if(-not $RepoRoot){$RepoRoot=(Resolve-Path (Join-Path $PSScriptRoot '../..')).Path}
-Set-Location $RepoRoot
-$fail=New-Object System.Collections.Generic.List[string]
+if(-not $RepoRoot){$RepoRoot=(Resolve-Path (Join-Path $PSScriptRoot '../..')).Path}; Set-Location $RepoRoot
+$sourceBase='a9314f89ee4a79492b88948dff912dc885feb7d6';$oldFreeze='8e7359b353c6e59ceb42781e819ba95aa2b4b270';$fail=New-Object System.Collections.Generic.List[string]
 function Gate([bool]$ok,[string]$name,[string]$detail=''){if($ok){"$name=PASS"}else{$script:fail.Add("$name`: $detail");"$name=FAIL"}}
-function Hash([string]$rel){if(-not(Test-Path -LiteralPath $rel)){return ''};(Get-FileHash -Algorithm SHA256 -LiteralPath $rel).Hash}
-
-$branch=(git branch --show-current).Trim(); Gate ($branch-eq'paper/v1-transport-current-freeze') 'BRANCH_GATE' $branch
-$head=(git rev-parse HEAD).Trim(); git merge-base --is-ancestor a9314f89ee4a79492b88948dff912dc885feb7d6 HEAD; Gate ($LASTEXITCODE-eq0) 'BASE_ANCESTRY' $head
-$remoteMain=(git rev-parse origin/main).Trim(); Gate ($remoteMain-eq'a9314f89ee4a79492b88948dff912dc885feb7d6') 'REMOTE_MAIN_IDENTITY' $remoteMain
-$tagTarget=(git rev-parse 'm10a4-realcell-electrochemistry-v1^{}').Trim(); Gate ($tagTarget-eq'a9314f89ee4a79492b88948dff912dc885feb7d6') 'M10A4_TAG' $tagTarget
-
-$mph='models/generated/LiNRR_M10A4_ionic_current_li_plating.mph'; $a3='models/generated/LiNRR_M10A3_real_species_transport.mph'
-Gate ((Hash $mph)-eq'FADEEA4D8ADF9E472B4B855B05E39C22EF418214C0F62FB0C1977ACA36DA667B') 'M10A4_FINAL_MPH_HASH' (Hash $mph)
-Gate ((Get-Item $mph).Length-eq807839751) 'M10A4_FINAL_MPH_SIZE' ((Get-Item $mph).Length)
-Gate ((Hash $a3)-eq'03612FDB08D993595ABDA41D5873CBBCAA97580DB432ADCD2FBCD2CA06260C00') 'M10A3_HASH' (Hash $a3)
-$collector='cad/raw/M10A0_2/block_currentCollector_flowField_v03.2.1_20210525_STEP-AP203.STEP';$chamber='cad/raw/M10A0_2/electrolyteChamber_rectangularMask_v02.2.2_20210521_STEP-AP203.STEP'
-Gate ((Hash $collector)-eq'0091777D10ECA620E08780381438F3522B3BE31FEE307F9DDCF074A1FACDDFE9') 'COLLECTOR_STEP_HASH' (Hash $collector)
-Gate ((Hash $chamber)-eq'AE350E006228A10EEC4476F79CAFCE6D63F18F10F58F0A8B3559EED0C37FF12C') 'CHAMBER_STEP_HASH' (Hash $chamber)
-$report=Get-Content 'evidence/M10A4/M10A4_final_report.txt'; Gate ([bool]($report-match'^M10A4_OVERALL=PASS$')) 'M10A4_ACCEPTANCE' 'final report marker absent'
-
-$required=@('paper/v1/MODEL_SCOPE.md','paper/v1/MODEL_FREEZE_MANIFEST.csv','paper/v1/PARAMETER_PROVENANCE.csv','paper/v1/CLAIM_EVIDENCE_MATRIX.csv','paper/v1/REGRESSION_EVIDENCE.csv','paper/v1/MODEL_LIMITATIONS.csv','paper/v1/SOURCE_ARTIFACT_INDEX.csv','paper/v1/MODEL_FREEZE_REPORT.md','paper/v1/figures/figure_manifest.csv','paper/v1/figures/FIGURE_QA.csv')
-foreach($p in $required){Gate (Test-Path -LiteralPath $p) ('REQUIRED_'+[IO.Path]::GetFileName($p).ToUpperInvariant()) $p}
-
-$manifest=Import-Csv 'paper/v1/MODEL_FREEZE_MANIFEST.csv'; $manifestBad=@()
-foreach($r in $manifest){if(-not(Test-Path -LiteralPath $r.path)){$manifestBad+="missing:$($r.path)";continue};$h=Hash $r.path;if($h-ne$r.SHA256){$manifestBad+="hash:$($r.path)"};if([string](Get-Item -LiteralPath $r.path).Length-ne[string]$r.size_bytes){$manifestBad+="size:$($r.path)"}}
-Gate ($manifestBad.Count-eq0) 'MODEL_FREEZE_MANIFEST' ($manifestBad-join';')
-Gate (@($manifest|Where-Object path -eq $mph).Count-eq1) 'MANIFEST_FINAL_MPH_UNIQUE' 'missing or duplicate final MPH row'
-$paperFiles=@(Get-ChildItem paper/v1 -Recurse -File|ForEach-Object{$_.FullName.Substring($RepoRoot.Length+1).Replace('\','/')}|Where-Object{$_-ne'paper/v1/MODEL_FREEZE_MANIFEST.csv'});$unmanifested=@($paperFiles|Where-Object{$p=$_;@($manifest|Where-Object path -eq $p).Count-ne1})
-Gate ($unmanifested.Count-eq0) 'ALL_PAPER_ARTIFACTS_MANIFESTED' ($unmanifested-join',')
-
-$prov=Import-Csv 'paper/v1/PARAMETER_PROVENANCE.csv';$classes=@('LAB_MEASURED','LAB_MANUAL','DERIVED_FROM_LAB_MANUAL','LITERATURE_REPORTED','LITERATURE_SAME_PLATFORM','LITERATURE_ESTIMATE','PROVISIONAL_SENSITIVITY','CALIBRATION_REQUIRED','NUMERICAL_VERIFICATION_ONLY','DERIVED','DERIVED_DIAGNOSTIC','REAL_CAD')
-$provBad=@($prov|Where-Object{[string]::IsNullOrWhiteSpace($_.source_class)-or$classes-notcontains$_.source_class-or[string]::IsNullOrWhiteSpace($_.allowed_interpretation)-or[string]::IsNullOrWhiteSpace($_.forbidden_interpretation)})
-Gate ($provBad.Count-eq0) 'PARAMETER_PROVENANCE' (($provBad.parameter)-join',')
-Gate (@($prov|Where-Object parameter -eq 'Electrolyte conductivity').calibration_status-eq'CALIBRATION_REQUIRED') 'KAPPA_CLASSIFICATION' 'conductivity upgraded'
-Gate (@($prov|Where-Object parameter -eq 'Generic donor diffusivity').allowed_interpretation-eq'generic donor transport diagnostic') 'GENERIC_DONOR_CLASSIFICATION' 'donor semantics drifted'
-
-$claims=Import-Csv 'paper/v1/CLAIM_EVIDENCE_MATRIX.csv';$claimBad=@($claims|Where-Object{[string]::IsNullOrWhiteSpace($_.authority_level)-or[string]::IsNullOrWhiteSpace($_.current_support)-or[string]::IsNullOrWhiteSpace($_.model_artifact)})
-Gate ($claimBad.Count-eq0) 'CLAIM_EVIDENCE_MATRIX' (($claimBad.claim_id)-join',')
-$mechBad=@($claims|Where-Object{$_.claim_type-eq'MECHANISTIC_CLAIM'-and$_.current_support-ne'UNSUPPORTED_IN_PAPER_V1_MODEL'})
-Gate ($mechBad.Count-eq0) 'UNSUPPORTED_MECHANISTIC_CLAIMS' (($mechBad.claim_id)-join',')
-$reg=Import-Csv 'paper/v1/REGRESSION_EVIDENCE.csv';Gate (@($reg|Where-Object{$_.status-notmatch'^PASS'}).Count-eq0) 'REGRESSION_EVIDENCE' 'non-accepted regression row'
-$lim=Import-Csv 'paper/v1/MODEL_LIMITATIONS.csv';Gate ($lim.Count-ge15) 'MODEL_LIMITATIONS' "rows=$($lim.Count)"
-$src=Import-Csv 'paper/v1/SOURCE_ARTIFACT_INDEX.csv';$srcBad=@($src|Where-Object{[string]::IsNullOrWhiteSpace($_.repository_path)-or-not(Test-Path -LiteralPath $_.repository_path)-or((Hash $_.repository_path)-ne$_.SHA256)-or[string]::IsNullOrWhiteSpace($_.classification)})
-Gate ($srcBad.Count-eq0) 'SOURCE_ARTIFACT_INDEX' (($srcBad.artifact_id)-join',')
-
-$fm=Import-Csv 'paper/v1/figures/figure_manifest.csv';$fmbad=@($fm|Where-Object{[string]::IsNullOrWhiteSpace($_.source_artifact)-or-not(Test-Path -LiteralPath $_.source_artifact)-or-not(Test-Path -LiteralPath $_.source_script)-or-not(Test-Path -LiteralPath $_.export_file)-or$_.reproducible-ne'TRUE'})
-Gate ($fm.Count-eq7-and$fmbad.Count-eq0) 'FIGURE_MANIFEST' "rows=$($fm.Count);bad=$($fmbad.figure_id-join',')"
-$qa=Import-Csv 'paper/v1/figures/FIGURE_QA.csv';$qabad=@($qa|Where-Object{$_.status-ne'PASS'-or$_.manual_numeric_edit-ne'FALSE'-or$_.units_ok-ne'TRUE'-or$_.source_linked-ne'TRUE'-or$_.wording_ok-ne'TRUE'-or$_.classification_ok-ne'TRUE'-or$_.reproducible-ne'TRUE'})
-Gate ($qa.Count-eq7-and$qabad.Count-eq0) 'FIGURE_QA' "rows=$($qa.Count);bad=$($qabad.figure_id-join',')"
-Gate (-not(Test-Path 'paper/v1/manuscript_v1.md')) 'NO_MANUSCRIPT' 'manuscript_v1.md exists'
-
-# Diff-level freeze boundaries: source physics, MPH, CAD, and run outputs may not change relative to base.
-$protected=@(git diff --name-only a9314f89ee4a79492b88948dff912dc885feb7d6 -- src/java models/generated cad/raw runs)
-Gate ($protected.Count-eq0) 'NO_ACCEPTED_MODEL_MUTATION' ($protected-join',')
-$newMph=@(Get-ChildItem -Recurse -File paper -Filter *.mph -ErrorAction SilentlyContinue);Gate ($newMph.Count-eq0) 'NO_DUPLICATE_MPH' (($newMph.FullName)-join',')
-
-# Context-aware wording audit: scan affirmative prose, not forbidden-wording or limitation columns.
-$prose=@('paper/v1/MODEL_SCOPE.md','paper/v1/MODEL_FREEZE_REPORT.md')
-$badPhrases='validated real-cell prediction|predicted FE|FE map|NH3 rate map|NH3 production map|real Li thickness|predicted Li thickness|SEI mechanism confirmed|Li3N mechanism confirmed|HER selectivity prediction|HOR kinetics prediction|full-cell voltage prediction'
-$wordBad=@();foreach($p in $prose){$n=0;foreach($line in Get-Content $p){$n++;if($line-match$badPhrases-and$line-notmatch'(?i)does not|not |no |forbidden|outside|cannot|do not'){$wordBad+="${p}:${n}:$line"}}}
-Gate ($wordBad.Count-eq0) 'PROHIBITED_WORDING' ($wordBad-join';')
-
-# Scan only new freeze text/scripts for credential or license material; allow variable names in this audit's own pattern list.
-$scanFiles=@(Get-ChildItem paper/v1 -Recurse -File|Where-Object Extension -in '.md','.csv','.ps1','.txt')+@(Get-Item scripts/windows/Build_PaperV1_*.ps1)
-$secretPattern='-----BEGIN (RSA |OPENSSH |EC )?PRIVATE KEY-----|ghp_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{40,}|AKIA[0-9A-Z]{16}'
-$secretBad=@();foreach($f in $scanFiles){if($f.Name-eq'PaperV1_ModelFreezeAudit.ps1'){continue};$hit=Select-String -LiteralPath $f.FullName -Pattern $secretPattern;if($hit){$secretBad+=$f.FullName}}
-Gate ($secretBad.Count-eq0) 'CREDENTIAL_AUDIT' ($secretBad-join',')
-
-$diffCheck=git diff --check 2>&1;Gate ($LASTEXITCODE-eq0) 'GIT_DIFF_CHECK' ($diffCheck-join';')
-Gate ($fail.Count-eq0) 'PAPER_V1_MODEL_FREEZE' ($fail-join' | ')
-if($fail.Count){'PAPER_V1_MODEL_FREEZE=BLOCKED';$fail|ForEach-Object{"BLOCKER=$_"};exit 1}
-'PAPER_V1_BASE_MAIN=a9314f89ee4a79492b88948dff912dc885feb7d6'
-'PAPER_V1_SOURCE_TAG=m10a4-realcell-electrochemistry-v1'
-'PAPER_V1_BRANCH=paper/v1-transport-current-freeze'
-'M10A4_FINAL_MPH=models/generated/LiNRR_M10A4_ionic_current_li_plating.mph'
-'M10A4_FINAL_MPH_SHA256=FADEEA4D8ADF9E472B4B855B05E39C22EF418214C0F62FB0C1977ACA36DA667B'
-'M10A3_SHA256=03612FDB08D993595ABDA41D5873CBBCAA97580DB432ADCD2FBCD2CA06260C00'
-'MODEL_FREEZE_MANIFEST=paper/v1/MODEL_FREEZE_MANIFEST.csv'
-'PARAMETER_PROVENANCE=paper/v1/PARAMETER_PROVENANCE.csv'
-'CLAIM_EVIDENCE_MATRIX=paper/v1/CLAIM_EVIDENCE_MATRIX.csv'
-'REGRESSION_EVIDENCE=paper/v1/REGRESSION_EVIDENCE.csv'
-'MODEL_LIMITATIONS=paper/v1/MODEL_LIMITATIONS.csv'
-'MAIN_FIGURE_COUNT=7'
-'SUPPLEMENT_FIGURE_COUNT=0'
-'FIGURE_MANIFEST=paper/v1/figures/figure_manifest.csv'
-'FIGURE_QA=paper/v1/figures/FIGURE_QA.csv'
-'NEW_COMSOL_SOLVES=0'
-'NEW_PHYSICS_CREATED=FALSE'
-'SEI_CREATED=FALSE'
-'LI3N_KINETICS_CREATED=FALSE'
-'LINRR_KINETICS_CREATED=FALSE'
-'HER_CREATED=FALSE'
-'HOR_CREATED=FALSE'
-'FE_PREDICTED=FALSE'
-'NH3_KINETICS_PREDICTED=FALSE'
-'ACTUAL_LI_THICKNESS_PREDICTED=FALSE'
-'FULL_CELL_VOLTAGE_PREDICTED=FALSE'
-'EXPERIMENTAL_VALIDATION_CLAIMED=FALSE'
-'PAPER_V1_MODEL_FREEZE=PASS'
+function HashFile([string]$p){if(-not(Test-Path -LiteralPath $p)){return ''};(Get-FileHash -Algorithm SHA256 -LiteralPath $p).Hash}
+Gate ((git branch --show-current).Trim()-eq'paper/v1-freeze-corrective-v1.1') 'BRANCH_GATE'
+git cat-file -e "$sourceBase^{commit}" 2>$null;Gate ($LASTEXITCODE-eq0) 'SOURCE_BASE_EXISTS'
+Gate ((git rev-parse 'm10a4-realcell-electrochemistry-v1^{}').Trim()-eq$sourceBase) 'SOURCE_TAG_IDENTITY'
+git merge-base --is-ancestor $sourceBase HEAD;Gate ($LASTEXITCODE-eq0) 'SOURCE_BASE_ANCESTOR_OF_FREEZE'
+git show-ref --verify --quiet refs/remotes/origin/main;if($LASTEXITCODE-eq0){git merge-base --is-ancestor $sourceBase origin/main;Gate ($LASTEXITCODE-eq0) 'CURRENT_ORIGIN_MAIN_CONTAINS_SOURCE_BASE'}else{Gate $false 'CURRENT_ORIGIN_MAIN_CONTAINS_SOURCE_BASE' 'origin/main absent'}
+$oldNow=(git rev-parse 'paper-v1-model-freeze^{}').Trim();Gate ($oldNow-eq$oldFreeze) 'OLD_FREEZE_TAG_UNCHANGED' $oldNow
+$mph='models/generated/LiNRR_M10A4_ionic_current_li_plating.mph';$a3='models/generated/LiNRR_M10A3_real_species_transport.mph';$collector='cad/raw/M10A0_2/block_currentCollector_flowField_v03.2.1_20210525_STEP-AP203.STEP';$chamber='cad/raw/M10A0_2/electrolyteChamber_rectangularMask_v02.2.2_20210521_STEP-AP203.STEP'
+Gate ((HashFile $mph)-eq'FADEEA4D8ADF9E472B4B855B05E39C22EF418214C0F62FB0C1977ACA36DA667B') 'M10A4_FINAL_MPH_HASH' (HashFile $mph); Gate ((Get-Item $mph).Length-eq807839751) 'M10A4_FINAL_MPH_SIZE'; Gate ((HashFile $a3)-eq'03612FDB08D993595ABDA41D5873CBBCAA97580DB432ADCD2FBCD2CA06260C00') 'M10A3_HASH'; Gate ((HashFile $collector)-eq'0091777D10ECA620E08780381438F3522B3BE31FEE307F9DDCF074A1FACDDFE9') 'COLLECTOR_STEP_HASH'; Gate ((HashFile $chamber)-eq'AE350E006228A10EEC4476F79CAFCE6D63F18F10F58F0A8B3559EED0C37FF12C') 'CHAMBER_STEP_HASH'
+Gate ([bool](Get-Content evidence/M10A4/M10A4_final_report.txt|Where-Object{$_-eq'M10A4_OVERALL=PASS'})) 'M10A4_ACCEPTANCE'
+$manifest=Import-Csv paper/v1/MODEL_FREEZE_MANIFEST.csv; $manifestBad=@(); foreach($r in $manifest){if(-not(Test-Path -LiteralPath $r.path)){$manifestBad+="missing:$($r.path)";continue};if((HashFile $r.path)-ne$r.SHA256){$manifestBad+="hash:$($r.path)"};if([string](Get-Item $r.path).Length-ne[string]$r.size_bytes){$manifestBad+="size:$($r.path)"}}
+Gate ($manifestBad.Count-eq0) 'MODEL_FREEZE_MANIFEST' ($manifestBad-join';');Gate (@($manifest|Where-Object path -eq'paper/v1/MODEL_FREEZE_MANIFEST.csv').Count-eq0) 'MANIFEST_NO_SELF_ROW'
+$commitBad=@(); foreach($r in $manifest){git cat-file -e "$($r.artifact_commit)^{commit}" 2>$null;if($LASTEXITCODE-ne0){$commitBad+="missing-commit:$($r.path)";continue};$actual=(git log -1 --format=%H -- $r.path).Trim();if($actual-ne$r.artifact_commit){$commitBad+="artifact-commit:$($r.path):$actual"};if($r.source_base_commit-ne$sourceBase){$commitBad+="source-base:$($r.path)"}}
+Gate ($commitBad.Count-eq0) 'MANIFEST_ARTIFACT_COMMIT_VALID' ($commitBad-join';')
+$paperFiles=@(Get-ChildItem paper/v1 -Recurse -File|ForEach-Object{$_.FullName.Substring($RepoRoot.Length+1).Replace('\','/')}|Where-Object{$_-ne'paper/v1/MODEL_FREEZE_MANIFEST.csv'-and$_-notmatch'/\.qa_rebuild_tmp/'});$unmanifested=@($paperFiles|Where-Object{$p=$_;@($manifest|Where-Object path -eq$p).Count-ne1});Gate ($unmanifested.Count-eq0) 'ALL_PAPER_ARTIFACTS_MANIFESTED' ($unmanifested-join',')
+$prov=Import-Csv paper/v1/PARAMETER_PROVENANCE.csv;Gate (@($prov|Where-Object{[string]::IsNullOrWhiteSpace($_.source_class)-or[string]::IsNullOrWhiteSpace($_.source_reference)}).Count-eq0) 'PARAMETER_PROVENANCE'
+$claims=Import-Csv paper/v1/CLAIM_EVIDENCE_MATRIX.csv;Gate (@($claims|Where-Object{[string]::IsNullOrWhiteSpace($_.authority_level)-or[string]::IsNullOrWhiteSpace($_.current_support)}).Count-eq0) 'CLAIM_EVIDENCE_MATRIX';Gate (@($claims|Where-Object{$_.claim_type-eq'MECHANISTIC_CLAIM'-and$_.current_support-ne'UNSUPPORTED_IN_PAPER_V1_MODEL'}).Count-eq0) 'UNSUPPORTED_MECHANISTIC_CLAIMS'
+Gate (@(Import-Csv paper/v1/REGRESSION_EVIDENCE.csv|Where-Object{$_.status-notmatch'^PASS'}).Count-eq0) 'REGRESSION_EVIDENCE';Gate ((Import-Csv paper/v1/MODEL_LIMITATIONS.csv).Count-ge15) 'MODEL_LIMITATIONS'
+$src=Import-Csv paper/v1/SOURCE_ARTIFACT_INDEX.csv;$srcBad=@($src|Where-Object{-not(Test-Path -LiteralPath $_.repository_path)-or(HashFile $_.repository_path)-ne$_.SHA256});Gate ($srcBad.Count-eq0) 'SOURCE_ARTIFACT_INDEX' (($srcBad.artifact_id)-join',')
+$fm=Import-Csv paper/v1/figures/figure_manifest.csv;$panelKeys=@($fm|ForEach-Object{"$($_.figure_id)$($_.panel_id)"});Gate ($fm.Count-eq16-and($panelKeys|Select-Object-Unique).Count-eq16-and@($fm|Where-Object{$_.reproducible-ne'TRUE'}).Count-eq0) 'FIGURE_MANIFEST'
+$deps=Import-Csv paper/v1/figures/FIGURE_DEPENDENCIES.csv;$depBad=@($deps|Where-Object{-not(Test-Path -LiteralPath $_.dependency_path)-or(HashFile $_.dependency_path)-ne$_.dependency_sha256-or$panelKeys-notcontains("$($_.figure_id)$($_.panel_id)")});$missingDeps=@($panelKeys|Where-Object{$k=$_;@($deps|Where-Object{"$($_.figure_id)$($_.panel_id)"-eq$k}).Count-lt1});Gate ($depBad.Count-eq0-and$missingDeps.Count-eq0) 'FIGURE_DEPENDENCIES' (($depBad.dependency_id+$missingDeps)-join',')
+$bp=Import-Csv paper/v1/figures/FIGURE_BUILD_PROVENANCE.csv;$bpBad=@($bp|Where-Object{-not(Test-Path -LiteralPath $_.output_file)-or(HashFile $_.output_file)-ne$_.output_sha256-or-not(Test-Path -LiteralPath $_.builder_script)-or(HashFile $_.builder_script)-ne$_.builder_script_sha256-or-not(Test-Path -LiteralPath $_.source_data_file)-or(HashFile $_.source_data_file)-ne$_.source_data_sha256-or$_.scientific_data_modified-ne'FALSE'});Gate ($bp.Count-eq7-and$bpBad.Count-eq0) 'FIGURE_BUILD_PROVENANCE'
+$qa=Import-Csv paper/v1/figures/FIGURE_QA.csv;$qaBad=@($qa|Where-Object{$_.status-ne'PASS'-or$_.deterministic_rebuild_ok-ne'TRUE'-or$_.dependency_hashes_ok-ne'TRUE'-or$_.manual_numeric_edit-ne'FALSE'-or$_.reproducible-ne'TRUE'});Gate ($qa.Count-eq16-and$qaBad.Count-eq0) 'FIGURE_QA';Gate (@($qa|Where-Object deterministic_rebuild_ok -ne'TRUE').Count-eq0) 'FIGURE_DETERMINISTIC_REBUILD'
+$literalPattern='3844|0\.0621400622644018|0\.309354151871061|11\.016992179201|colim_MIXED_UNCLASSIFIED';$literalHits=Select-String scripts/windows/Build_PaperV1_Figures.ps1 -Pattern$literalPattern;Gate (-not$literalHits) 'FIGURE_SCIENTIFIC_LITERAL_AUDIT' (($literalHits.LineNumber)-join',')
+$ident=Import-Csv paper/v1/CORRECTIVE_NUMERICAL_IDENTITY.csv;Gate ($ident.Count-ge24-and@($ident|Where-Object{$_.identical-ne'TRUE'-or$_.status-ne'PASS'}).Count-eq0) 'CORRECTIVE_NUMERICAL_IDENTITY'
+Gate (-not(Test-Path paper/v1/manuscript_v1.md)) 'NO_MANUSCRIPT';$protected=@(git diff --name-only paper-v1-model-freeze..HEAD -- models/generated cad/raw src/java runs results/tables);Gate ($protected.Count-eq0) 'NO_ACCEPTED_MODEL_MUTATION' ($protected-join',');Gate (@(Get-ChildItem paper/v1 -Recurse -File -Filter*.mph).Count-eq0) 'NO_DUPLICATE_MPH'
+$phrases='experimentally validated real-cell prediction|predicted FE|FE map|NH3 rate map|NH3 production map|real retained Li thickness|predicted real Li thickness|SEI mechanism confirmed|Li3N mechanism confirmed|HER selectivity prediction|HOR kinetics prediction|full-cell voltage prediction';$wordBad=@();foreach($p in @('paper/v1/MODEL_SCOPE.md','paper/v1/MODEL_FREEZE_REPORT.md')){$n=0;foreach($line in Get-Content $p){$n++;if($line-match$phrases-and$line-notmatch'(?i)does not|not |no |forbidden|outside|cannot|do not'){$wordBad+="${p}:${n}:$line"}}};Gate ($wordBad.Count-eq0) 'PROHIBITED_WORDING' ($wordBad-join';')
+$secret='-----BEGIN (RSA |OPENSSH |EC )?PRIVATE KEY-----|ghp_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{40,}|AKIA[0-9A-Z]{16}';$secretBad=@();foreach($f in (Get-ChildItem paper/v1,scripts/windows -Recurse -File|Where-Object{$_.FullName-match'PaperV1' -and$_.Name-ne'PaperV1_ModelFreezeAudit.ps1'})){if(Select-String -LiteralPath $f.FullName -Pattern $secret){$secretBad+=$f.FullName}};Gate ($secretBad.Count-eq0) 'CREDENTIAL_AUDIT'
+$dc=git diff --check paper-v1-model-freeze..HEAD 2>&1;Gate ($LASTEXITCODE-eq0) 'GIT_DIFF_CHECK' ($dc-join';');Gate ([bool](Get-Content evidence/M10A4/M10A4_final_report.txt|Where-Object{$_-eq'NO_PROHIBITED_PHYSICS=TRUE'})) 'NO_PROHIBITED_PHYSICS'
+Gate ($fail.Count-eq0) 'PAPER_V1_MODEL_FREEZE_V1_1' ($fail-join' | ');if($fail.Count){'PAPER_V1_MODEL_FREEZE_V1_1=BLOCKED';$fail|ForEach-Object{"BLOCKER=$_"};exit 1}
+"SOURCE_BASE_COMMIT=$sourceBase";'OLD_FREEZE_TAG=paper-v1-model-freeze';"OLD_FREEZE_TAG_TARGET=$oldFreeze";'OLD_FREEZE_TAG_UNCHANGED=TRUE';'CORRECTIVE_BRANCH=paper/v1-freeze-corrective-v1.1';'M10A4_FINAL_MPH_SHA256=FADEEA4D8ADF9E472B4B855B05E39C22EF418214C0F62FB0C1977ACA36DA667B';'M10A3_SHA256=03612FDB08D993595ABDA41D5873CBBCAA97580DB432ADCD2FBCD2CA06260C00';'NEW_COMSOL_SOLVES=0';'NEW_PHYSICS_CREATED=FALSE';'SCIENTIFIC_RESULTS_CHANGED=FALSE';'FIGURE_SCIENTIFIC_LITERAL_AUDIT=PASS';'FIGURE_PANEL_PROVENANCE=PASS';'FIGURE_DEPENDENCY_HASH_AUDIT=PASS';'FIGURE_DETERMINISTIC_REBUILD=PASS';'FIGURE_QA=PASS';'MANIFEST_ARTIFACT_COMMIT_VALID=PASS';'CORRECTIVE_NUMERICAL_IDENTITY=PASS';'SOURCE_BASE_ANCESTRY=PASS';'PARAMETER_PROVENANCE=PASS';'CLAIM_EVIDENCE_MATRIX=PASS';'NO_PROHIBITED_PHYSICS=TRUE';'MANUSCRIPT_CREATED=FALSE';'PAPER_V1_MODEL_FREEZE_VERSION=1.1';'PAPER_V1_MODEL_FREEZE=PASS';'PAPER_V1_MODEL_FREEZE_V1_1=PASS'

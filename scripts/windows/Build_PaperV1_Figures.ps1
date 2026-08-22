@@ -1,13 +1,15 @@
 [CmdletBinding()]
 param(
-    [string]$RepoRoot
+    [string]$RepoRoot,
+    [string]$OutputDir
 )
 
 $ErrorActionPreference = 'Stop'
 if(-not $RepoRoot){$RepoRoot=(Resolve-Path (Join-Path $PSScriptRoot '../..')).Path}
 Add-Type -AssemblyName System.Drawing
 
-$outDir = Join-Path $RepoRoot 'paper/v1/figures'
+if(-not $OutputDir){$OutputDir=Join-Path $RepoRoot 'paper/v1/figures'}
+$outDir = [IO.Path]::GetFullPath($OutputDir)
 $dataDir = Join-Path $outDir 'source_data'
 New-Item -ItemType Directory -Force -Path $outDir, $dataDir | Out-Null
 
@@ -85,6 +87,9 @@ $m01 = Import-Csv (Join-Path $RepoRoot 'results/tables/M01_2_flow_analytic.csv')
 $m02 = Import-Csv (Join-Path $RepoRoot 'results/tables/M02_2_mms_convergence.csv') | Where-Object mesh -eq 'fine'
 $m03 = Import-Csv (Join-Path $RepoRoot 'results/tables/M03A_3_current_conservation.csv') | Where-Object mesh -eq 'fine'
 $a4 = Import-Csv (Join-Path $RepoRoot 'results/tables/M10A4_charge_conservation.csv') | Where-Object { $_.quantity -eq 'current_conservation_relative' -or $_.metric -eq 'current_conservation_relative' } | Select-Object -First 1
+$areaAudit=Import-Csv (Join-Path $RepoRoot 'results/tables/M10A4_electrochemical_area_audit.csv')
+$cathArea=$areaAudit|Where-Object {$_.selection_tag -eq 'sel_bnd_electrolyte_gde_top'}|Select-Object -First 1
+$cathAreaLabel=('{0:G6} {1}' -f [double]$cathArea.area_mm2,'mm2')
 @(
  [pscustomobject]@{stage='M01';metric='mass balance';value=$m01.mass_balance_error},
  [pscustomobject]@{stage='M02';metric='MMS L2 relative';value=$m02.L2_relative_error},
@@ -96,7 +101,7 @@ $g=$c.Graphics; $stages=@(
  @{n='M01';t='Flow operator';v=("mass residual`n{0:E2}" -f [double]$m01.mass_balance_error)},
  @{n='M02';t='Transport operator';v=("MMS L2 error`n{0:E2}" -f [double]$m02.L2_relative_error)},
  @{n='M03';t='Current/Faraday';v=("current residual`n{0:E2}" -f [double]$m03.current_conservation_relative_error)},
- @{n='M10';t='Real CAD transfer';v="named selections`n3844 mm2 plane"},
+ @{n='M10';t='Real CAD transfer';v=("named selections`n{0} plane" -f $cathAreaLabel)},
  @{n='M10A3';t='Neutral transport';v="real flow + N2`nGENERIC DONOR"},
  @{n='M10A4';t='Ionic/current';v="conserved fields`nspatial diagnostics"} )
 for($i=0;$i -lt $stages.Count;$i++){ $x=85+$i*382; $g.FillRectangle([System.Drawing.SolidBrush]::new($(if($i -lt 3){$blue}else{$teal})),$x,330,300,320); $s=$stages[$i]; $g.DrawString($s.n,[System.Drawing.Font]::new('Arial',28,[System.Drawing.FontStyle]::Bold),[System.Drawing.SolidBrush]::new($white),$x+20,355); $g.DrawString($s.t,[System.Drawing.Font]::new('Arial',16,[System.Drawing.FontStyle]::Bold),[System.Drawing.SolidBrush]::new($white),$x+20,420); $g.DrawString($s.v,[System.Drawing.Font]::new('Arial',14),[System.Drawing.SolidBrush]::new($white),$x+20,500); if($i -lt 5){$g.DrawLine([System.Drawing.Pen]::new($orange,8),$x+305,490,$x+375,490)} }
@@ -106,8 +111,13 @@ $g.DrawString('Scientific boundary: conservation and benchmark agreement establi
 Save-Figure $c 'Figure1_verification_first_architecture.png'
 
 # Figure 2: immutable real-cell rendering plus area distinction.
-$area=Import-Csv (Join-Path $RepoRoot 'results/tables/M10A4_electrochemical_area_audit.csv')
+$area=$areaAudit
 $area | Export-Csv (Join-Path $dataDir 'figure2_area_audit.csv') -NoTypeInformation
+$ssc=$area|Where-Object {$_.surface -eq 'SSC physical cut'}|Select-Object -First 1
+if(-not $cathArea-or-not$ssc){throw 'Authoritative cathode/SSC area rows missing'}
+$interfaceSide=[Math]::Sqrt([double]$cathArea.area_mm2)
+if($ssc.physical_definition-notmatch'(?<w>[0-9.]+)x(?<h>[0-9.]+) mm') {throw 'SSC dimensions unavailable in accepted area audit'}
+$sscW=[double]$Matches.w;$sscH=[double]$Matches.h;$sscComputed=$sscW*$sscH
 $c=New-Canvas 'Figure 2 | Real-cell geometry and flow routes' 'Frozen CAD ancestry and named interfaces; no geometry modification or new solve.'; $g=$c.Graphics
 Add-Panel $g 60 160 1460 1240 'a' 'Accepted real-cell geometry'
 Add-ImageFit $g (Join-Path $RepoRoot 'evidence/M10A4/physical_cell.png') 100 235 1380 850
@@ -115,12 +125,12 @@ $g.DrawString('N2 route  |  H2 route  |  electrolyte route',[System.Drawing.Font
 $g.DrawString('Source: accepted M10A4 result rendering',[System.Drawing.Font]::new('Arial',16),[System.Drawing.SolidBrush]::new($gray),180,1180)
 Add-Panel $g 1560 160 780 1240 'b' 'Area authority'
 $g.FillRectangle([System.Drawing.SolidBrush]::new($blue),1680,360,520,520)
-$g.DrawString('62 x 62 mm',[System.Drawing.Font]::new('Arial',25,[System.Drawing.FontStyle]::Bold),[System.Drawing.SolidBrush]::new($white),1830,560)
-$g.DrawString('3844 mm2',[System.Drawing.Font]::new('Arial',32,[System.Drawing.FontStyle]::Bold),[System.Drawing.SolidBrush]::new($white),1815,625)
+$g.DrawString(('{0:G6} x {0:G6} mm' -f $interfaceSide),[System.Drawing.Font]::new('Arial',25,[System.Drawing.FontStyle]::Bold),[System.Drawing.SolidBrush]::new($white),1830,560)
+$g.DrawString($cathAreaLabel,[System.Drawing.Font]::new('Arial',32,[System.Drawing.FontStyle]::Bold),[System.Drawing.SolidBrush]::new($white),1815,625)
 $g.DrawRectangle([System.Drawing.Pen]::new($orange,10),1730,410,420,420)
 $g.DrawString('Authoritative electrochemical interface',[System.Drawing.Font]::new('Arial',18,[System.Drawing.FontStyle]::Bold),[System.Drawing.SolidBrush]::new($navy),1630,930)
-$g.DrawString('Distinct from 60 x 60 mm SSC cut (3600 mm2)',[System.Drawing.Font]::new('Arial',17),[System.Drawing.SolidBrush]::new($red),1630,1000)
-$g.DrawString("Named selection:`nm10a3_sel_bnd_electrolyte_gde_top",[System.Drawing.Font]::new('Arial',16),[System.Drawing.SolidBrush]::new($gray),1630,1080)
+$g.DrawString(('Distinct from {0:G6} x {1:G6} mm SSC cut ({2:G6} mm2)' -f $sscW,$sscH,$sscComputed),[System.Drawing.Font]::new('Arial',17),[System.Drawing.SolidBrush]::new($red),1630,1000)
+$g.DrawString(("Named selection:`n"+$cathArea.selection_tag),[System.Drawing.Font]::new('Arial',16),[System.Drawing.SolidBrush]::new($gray),1630,1080)
 Save-Figure $c 'Figure2_real_cell_geometry_flow.png'
 
 # Figure 3: existing frozen concentration renderings only.
@@ -130,6 +140,7 @@ $panels=@(
  @{l='b';t='Li+ effective concentration';p='evidence/M10A4/li_concentration.png';n='M10A4B reduced electroneutral transport'},
  @{l='c';t='BF4- effective concentration';p='evidence/M10A4/li_concentration.png';n='cBF4 = cLi by accepted electroneutral reduction'},
  @{l='d';t='GENERIC DONOR availability';p='evidence/M10A3/proton_donor_real.png';n='Not a validated local ethanol field'} )
+$panels|ForEach-Object{[pscustomobject]@{panel=$_.l;title=$_.t;source_path=$_.p;interpretation=$_.n}}|Export-Csv (Join-Path $dataDir 'figure3_transport_sources.csv') -NoTypeInformation
 for($i=0;$i -lt 4;$i++){ $x=60+($i%2)*1170; $y=155+[Math]::Floor($i/2)*660; Add-Panel $g $x $y 1110 610 $panels[$i].l $panels[$i].t; Add-ImageFit $g (Join-Path $RepoRoot $panels[$i].p) ($x+40) ($y+80) 1030 420; $g.DrawString($panels[$i].n,[System.Drawing.Font]::new('Arial',15),[System.Drawing.SolidBrush]::new($gray),$x+55,$y+535) }
 Save-Figure $c 'Figure3_neutral_ionic_transport.png'
 
@@ -149,10 +160,15 @@ Save-Figure $c 'Figure4_current_distribution.png'
 
 # Figure 5: Faraday-equivalent charge program.
 $far=Import-Csv (Join-Path $RepoRoot 'results/tables/M10A4_li_faraday_ledger.csv')
-$f1=@($far|Where-Object {[Math]::Abs([double]$_.f_Li_current-1)-lt 1e-12}|Sort-Object {[double]$_.Q_C}|ForEach-Object{[pscustomobject]@{Q_label=('{0:G0}'-f[double]$_.Q_C);Q_C=$_.Q_C;mean_thickness_m=$_.mean_thickness_m;m_Li_equiv_kg=$_.m_Li_equiv_kg;CV_thickness=$_.CV_thickness;classification=$_.classification}})
+$upperFraction=($far|Where-Object classification -eq 'NUMERICAL_UPPER_BOUND'|ForEach-Object{[double]$_.f_Li_current}|Select-Object -Unique)
+if(@($upperFraction).Count-ne1){throw 'Accepted numerical-upper-bound fraction is ambiguous'}
+$sensitivityFractions=@($far|Where-Object classification -eq 'CURRENT_PARTITION_SENSITIVITY'|ForEach-Object{[double]$_.f_Li_current}|Sort-Object -Unique)
+$f1=@($far|Where-Object {[Math]::Abs([double]$_.f_Li_current-$upperFraction)-lt 1e-12}|Sort-Object {[double]$_.Q_C}|ForEach-Object{[pscustomobject]@{Q_label=('{0:G0}'-f[double]$_.Q_C);Q_C=$_.Q_C;mean_thickness_m=$_.mean_thickness_m;m_Li_equiv_kg=$_.m_Li_equiv_kg;CV_thickness=$_.CV_thickness;classification=$_.classification}})
 $f1 | Export-Csv (Join-Path $dataDir 'figure5_li_equivalent_f1.csv') -NoTypeInformation
-$c=New-Canvas 'Figure 5 | Li-equivalent Faradaic charge program' 'LI-EQUIVALENT | fLi = 1.00 is a NUMERICAL UPPER BOUND; 0.25/0.50/0.75 are current-partition sensitivities.'; $g=$c.Graphics
-Add-Panel $g 60 155 1080 1220 'a' '297 C spatial upper bound'; Add-ImageFit $g (Join-Path $RepoRoot 'evidence/M10A4/li_equivalent_thickness_297C_f1_upper_bound.png') 100 245 1000 860
+$sensLabel=($sensitivityFractions|ForEach-Object{'{0:F2}'-f$_})-join'/'
+$maxQ=($f1|ForEach-Object{[double]$_.Q_C}|Measure-Object -Maximum).Maximum
+$c=New-Canvas 'Figure 5 | Li-equivalent Faradaic charge program' (('LI-EQUIVALENT | fLi = {0:F2} is a NUMERICAL UPPER BOUND; {1} are current-partition sensitivities.' -f $upperFraction,$sensLabel)); $g=$c.Graphics
+Add-Panel $g 60 155 1080 1220 'a' (('{0:G0} C spatial upper bound' -f $maxQ)); Add-ImageFit $g (Join-Path $RepoRoot 'evidence/M10A4/li_equivalent_thickness_297C_f1_upper_bound.png') 100 245 1000 860
 Add-Panel $g 1180 155 1160 1220 'b' 'Charge-indexed mean thickness'; Add-BarChart $g $f1 'Q_label' 'mean_thickness_m' 1220 285 1070 700 'm'
 $g.DrawString('Ledger closes against fLi x Q',[System.Drawing.Font]::new('Arial',21,[System.Drawing.FontStyle]::Bold),[System.Drawing.SolidBrush]::new($teal),1340,1080)
 $g.DrawString('Not retained metallic-Li thickness; no plating kinetics.',[System.Drawing.Font]::new('Arial',19),[System.Drawing.SolidBrush]::new($red),1280,1150)
@@ -162,24 +178,35 @@ Save-Figure $c 'Figure5_li_equivalent_charge_program.png'
 $col=Import-Csv (Join-Path $RepoRoot 'results/tables/M10A4_spatial_colimitation.csv')
 $cats=@($col|Where-Object {$_.diagnostic -eq 'N2_LI_DONOR_CURRENT_COLIMITATION'})
 $cats | Export-Csv (Join-Path $dataDir 'figure6_colimitation_thresholds.csv') -NoTypeInformation
-$primary=@($cats|Where-Object {[Math]::Abs([double]$_.threshold_quantile-0.5)-lt 1e-12}|ForEach-Object{$short=@{CURRENT_RICH_N2_POOR='CURR-RICH / N2-POOR';N2_RICH_CURRENT_POOR='N2-RICH / CURR-POOR';LI_LIMITED='LI-LIMITED';DONOR_LIMITED='DONOR-LIMITED';BALANCED='BALANCED';MULTI_LIMITED='MULTI-LIMITED';MIXED_UNCLASSIFIED='MIXED / UNCLASSIFIED'}[$_.category];[pscustomobject]@{display=$short;category=$_.category;area_fraction=$_.area_fraction}})
-$c=New-Canvas 'Figure 6 | Spatial co-limitation diagnostic' 'Frozen N2 x Li+ x GENERIC DONOR x current fields; thresholds 0.40/0.50/0.60. Not an NH3-rate or FE map.'; $g=$c.Graphics
+$thresholds=@($cats|ForEach-Object{[double]$_.threshold_quantile}|Sort-Object -Unique)
+$primaryQ=@($cats|Where-Object robustness_status -eq 'PRIMARY'|ForEach-Object{[double]$_.threshold_quantile}|Select-Object -Unique)
+if($primaryQ.Count-ne1){throw 'Accepted primary co-limitation threshold is ambiguous'}
+$primary=@($cats|Where-Object {[Math]::Abs([double]$_.threshold_quantile-$primaryQ[0])-lt 1e-12}|ForEach-Object{$short=@{CURRENT_RICH_N2_POOR='CURR-RICH / N2-POOR';N2_RICH_CURRENT_POOR='N2-RICH / CURR-POOR';LI_LIMITED='LI-LIMITED';DONOR_LIMITED='DONOR-LIMITED';BALANCED='BALANCED';MULTI_LIMITED='MULTI-LIMITED';MIXED_UNCLASSIFIED='MIXED / UNCLASSIFIED'}[$_.category];[pscustomobject]@{display=$short;category=$_.category;area_fraction=$_.area_fraction}})
+$thresholdLabel=($thresholds|ForEach-Object{'{0:F2}'-f$_})-join'/'
+$c=New-Canvas 'Figure 6 | Spatial co-limitation diagnostic' (('Frozen N2 x Li+ x GENERIC DONOR x current fields; thresholds {0}. Not an NH3-rate or FE map.' -f $thresholdLabel)); $g=$c.Graphics
 Add-Panel $g 60 155 1320 1220 'a' 'Accepted regime map'; Add-ImageFit $g (Join-Path $RepoRoot 'evidence/M10A4/spatial_colimitation.png') 100 245 1240 850
-Add-Panel $g 1420 155 920 1220 'b' 'Primary q = 0.50 area fractions'; Add-HBarChart $g $primary 'display' 'area_fraction' 1460 280 830 700 'area fraction'
+Add-Panel $g 1420 155 920 1220 'b' (('Primary q = {0:F2} area fractions' -f $primaryQ[0])); Add-HBarChart $g $primary 'display' 'area_fraction' 1460 280 830 700 'area fraction'
 $g.DrawString('Category fractions close to unity at each threshold.',[System.Drawing.Font]::new('Arial',18),[System.Drawing.SolidBrush]::new($teal),1510,1080)
 $g.DrawString('Diagnostic only | no mechanistic proof',[System.Drawing.Font]::new('Arial',19,[System.Drawing.FontStyle]::Bold),[System.Drawing.SolidBrush]::new($red),1540,1140)
 Save-Figure $c 'Figure6_spatial_colimitation.png'
 
 # Figure 7: existing mesh evidence and identifiability gaps.
 $mesh=Import-Csv (Join-Path $RepoRoot 'results/tables/M10A4_mesh_convergence.csv')
+$meshSummary=$mesh|Where-Object {$_.mesh -eq 'comparison' -and $_.metric -eq 'MESH_MAX_KEY_DIFFERENCE'}|Select-Object -First 1
+if(-not$meshSummary-or$meshSummary.notes-notmatch'limiting_metric=(?<metric>[^;]+)'){throw 'Accepted mesh summary/limiting metric unavailable'}
+$meshLimitMetric=$Matches.metric
 $keys=@($mesh|Where-Object {$_.mesh -eq 'coarse' -and $_.relative_difference -and $_.metric -ne 'MESH_MAX_KEY_DIFFERENCE'}|Sort-Object {[double]$_.relative_difference} -Descending|Select-Object -First 10|ForEach-Object{[pscustomobject]@{display=if($_.metric.Length-gt28){$_.metric.Substring(0,28)}else{$_.metric};metric=$_.metric;relative_difference=$_.relative_difference;status=$_.status}})
 $keys | Export-Csv (Join-Path $dataDir 'figure7_mesh_key_differences.csv') -NoTypeInformation
 $c=New-Canvas 'Figure 7 | Robustness and identifiability' 'Existing evidence only. Medium mesh remains authoritative; coarse comparison is PASS_WITH_LIMITATION.'; $g=$c.Graphics
 Add-Panel $g 60 155 1420 1220 'a' 'Largest coarse-to-medium metric differences'; Add-HBarChart $g $keys 'display' 'relative_difference' 100 250 1340 750 'relative difference'
-$g.DrawString('MESH_MAX_KEY_DIFFERENCE = 0.0621400622644018',[System.Drawing.Font]::new('Arial',21,[System.Drawing.FontStyle]::Bold),[System.Drawing.SolidBrush]::new($orange),180,1100)
-$g.DrawString('limiting metric: colim_MIXED_UNCLASSIFIED',[System.Drawing.Font]::new('Arial',19),[System.Drawing.SolidBrush]::new($navy),180,1160)
+$g.DrawString(('MESH_MAX_KEY_DIFFERENCE = {0:G15}' -f [double]$meshSummary.value),[System.Drawing.Font]::new('Arial',21,[System.Drawing.FontStyle]::Bold),[System.Drawing.SolidBrush]::new($orange),180,1100)
+$g.DrawString(('limiting metric: '+$meshLimitMetric),[System.Drawing.Font]::new('Arial',19),[System.Drawing.SolidBrush]::new($navy),180,1160)
 Add-Panel $g 1520 155 820 1220 'b' 'Calibration boundary'
-$items=@('kappa electrolyte - PROVISIONAL','D_salt - CALIBRATION REQUIRED','t_plus - CALIBRATION REQUIRED','Applied current - SENSITIVITY','Generic donor - CALIBRATION REQUIRED','Retained Li - FUTURE EVIDENCE')
+$paperProv=Import-Csv (Join-Path $RepoRoot 'paper/v1/PARAMETER_PROVENANCE.csv')
+$cal=Import-Csv (Join-Path $RepoRoot 'results/tables/M10A4_calibration_required.csv')
+$wantedSymbols=@('kappa_M10A4_nominal','D_salt_a4b_eff','t_plus_a4b','j_app_sensitivity','D_donor','f_Li_current')
+$items=@($wantedSymbols|ForEach-Object{$s=$_;$r=$paperProv|Where-Object symbol -eq $s|Select-Object -First 1;if($r){('{0} - {1}'-f$r.symbol,$r.calibration_status)}})
+if($items.Count-lt4){throw 'Calibration provenance is incomplete'}
 for($i=0;$i -lt $items.Count;$i++){ $yy=300+$i*145; $g.FillEllipse([System.Drawing.SolidBrush]::new($(if($i -eq 0 -or $i -eq 3){$orange}else{$red})),1590,$yy,32,32); $g.DrawString($items[$i],[System.Drawing.Font]::new('Arial',18,[System.Drawing.FontStyle]::Bold),[System.Drawing.SolidBrush]::new($navy),1650,$yy-2) }
 Save-Figure $c 'Figure7_robustness_identifiability.png'
 

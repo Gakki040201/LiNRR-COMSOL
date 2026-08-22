@@ -1,5 +1,5 @@
 [CmdletBinding()]
-param([string]$RepoRoot)
+param([string]$RepoRoot,[switch]$SkipManifest)
 
 $ErrorActionPreference='Stop'
 if(-not $RepoRoot){$RepoRoot=(Resolve-Path (Join-Path $PSScriptRoot '../..')).Path}
@@ -140,8 +140,8 @@ $regSpecs=@(
 $reg=$regSpecs|ForEach-Object {[pscustomobject]@{regression_id=$_[0];stage=$_[1];metric=$_[2];accepted_value=$_[3];unit=$_[4];acceptance_rule=$_[5];status=$_[6];source_artifact=$_[7];source_sha256=(Hash $_[7]);paper_role=$_[8];notes=$_[9]}}
 Csv $reg (Join-Path $paper 'REGRESSION_EVIDENCE.csv')
 
-# Generate figures from frozen images/tables.
-& (Join-Path $RepoRoot 'scripts/windows/Build_PaperV1_Figures.ps1') -RepoRoot $RepoRoot
+# Generate figures from frozen images/tables. QA is intentionally separate.
+& (Join-Path $RepoRoot 'scripts/windows/Build_PaperV1_Figures.ps1') -RepoRoot $RepoRoot -OutputDir $fig
 
 # SI-ready byte-for-byte copies of the authoritative evidence; no MPH duplication.
 $siFiles=@(
@@ -151,30 +151,62 @@ foreach($rel in $siFiles){Copy-Item -LiteralPath (Join-Path $RepoRoot $rel) -Des
 $siReadme="# Paper V1 supporting evidence`n`nThese files are byte-for-byte copies of accepted ledgers and inventories for SI assembly. Giant MPH files are referenced by path and SHA256 in the freeze manifest and are not duplicated. No model solve was run during packaging."
 Set-Content (Join-Path $si 'README.md') $siReadme -Encoding utf8
 
-# Figure manifest and QA.
-$figureRows=@(
- @('F1','a','Verification-first architecture','results/tables/M10_preA4_regression_summary.csv','accepted regression tables','M01/M02/M03 accepted error metrics','scripts/windows/Build_PaperV1_Figures.ps1','paper/v1/figures/Figure1_verification_first_architecture.png','PNG','2400x1500; 300 dpi','NUMERICAL_VERIFICATION','TRUE','operator transfer, not experimental validation'),
- @('F2','a-b','Real cell geometry and flow','evidence/M10A4/physical_cell.png','accepted result rendering','physical cell + audited area','scripts/windows/Build_PaperV1_Figures.ps1','paper/v1/figures/Figure2_real_cell_geometry_flow.png','PNG','2400x1500; 300 dpi','REAL_GEOMETRY_FACT','TRUE','3844 mm2 distinguished from SSC cut'),
- @('F3','a-d','Neutral and ionic transport','evidence/M10A3/n2_dissolved_real.png','accepted frozen result images','N2, cLi=cBF4, generic donor','scripts/windows/Build_PaperV1_Figures.ps1','paper/v1/figures/Figure3_neutral_ionic_transport.png','PNG','2400x1500; 300 dpi','PROVISIONAL_SENSITIVITY_RESULT','TRUE','ionic calibration required; donor generic'),
- @('F4','a-c','Current distribution','results/tables/M10A4_current_distribution_statistics.csv','dset_a4b_ionic_en','accepted potential/current images and area-weighted statistics','scripts/windows/Build_PaperV1_Figures.ps1','paper/v1/figures/Figure4_current_distribution.png','PNG','2400x1500; 300 dpi','REAL_CELL_MODEL_PREDICTION','TRUE','CV read from authoritative table'),
- @('F5','a-b','Li-equivalent charge program','results/tables/M10A4_li_faraday_ledger.csv','accepted charge states','fLi=1 upper bound plus sensitivity ledger','scripts/windows/Build_PaperV1_Figures.ps1','paper/v1/figures/Figure5_li_equivalent_charge_program.png','PNG','2400x1500; 300 dpi','NUMERICAL_UPPER_BOUND','TRUE','not retained metallic Li'),
- @('F6','a-b','Spatial co-limitation','results/tables/M10A4_spatial_colimitation.csv','accepted threshold sweep','q=0.40,0.50,0.60 categories','scripts/windows/Build_PaperV1_Figures.ps1','paper/v1/figures/Figure6_spatial_colimitation.png','PNG','2400x1500; 300 dpi','DIAGNOSTIC_ONLY','TRUE','not rate/FE/mechanistic map'),
- @('F7','a-b','Robustness and identifiability','results/tables/M10A4_mesh_convergence.csv','accepted coarse/medium comparison','key relative differences and calibration gaps','scripts/windows/Build_PaperV1_Figures.ps1','paper/v1/figures/Figure7_robustness_identifiability.png','PNG','2400x1500; 300 dpi','PASS_WITH_LIMITATION','TRUE','medium mesh authoritative')
-)|ForEach-Object {[pscustomobject]@{figure_id=$_[0];panel_id=$_[1];title=$_[2];source_artifact=$_[3];source_dataset=$_[4];source_expression=$_[5];source_script=$_[6];export_file=$_[7];format=$_[8];resolution=$_[9];scientific_status=$_[10];reproducible=$_[11];notes=$_[12]}}
+# One row per scientifically distinct panel; dependency paths are normalized separately.
+$priorQaPass=$false;$qaPath=Join-Path $fig 'FIGURE_QA.csv';if(Test-Path $qaPath){$priorQa=Import-Csv $qaPath;$priorQaPass=($priorQa.Count-ge1-and@($priorQa|Where-Object{$_.status-ne'PASS'-or$_.deterministic_rebuild_ok-ne'TRUE'}).Count-eq0)}
+$figureSpecs=@(
+ @('F1','a','Verification-first architecture','accepted verification tables','M01 mass residual; M02 MMS error; M03 and M10A4 current closure','Figure1_verification_first_architecture.png','NUMERICAL_VERIFICATION','operator transfer, not experimental validation'),
+ @('F2','a','Accepted real-cell geometry','accepted M10A4 rendering','physical cell rendering','Figure2_real_cell_geometry_flow.png','REAL_GEOMETRY_FACT','no geometry modification'),
+ @('F2','b','Area authority','M10A4 electrochemical area audit','cathode interface and SSC reference rows','Figure2_real_cell_geometry_flow.png','REAL_GEOMETRY_FACT','active interface distinct from SSC cut'),
+ @('F3','a','Dissolved N2 availability','accepted M10A3 rendering','dissolved N2 field','Figure3_neutral_ionic_transport.png','REAL_CELL_MODEL_PREDICTION','frozen field'),
+ @('F3','b','Li+ effective concentration','accepted M10A4B rendering','cLi','Figure3_neutral_ionic_transport.png','PROVISIONAL_SENSITIVITY_RESULT','calibration required'),
+ @('F3','c','BF4- effective concentration','accepted reduced electroneutral representation','cBF4=cLi','Figure3_neutral_ionic_transport.png','PROVISIONAL_SENSITIVITY_RESULT','same accepted field by equality'),
+ @('F3','d','GENERIC DONOR availability','accepted M10A3 rendering','generic donor field','Figure3_neutral_ionic_transport.png','PROVISIONAL_SENSITIVITY_RESULT','not validated local ethanol'),
+ @('F4','a','Electrolyte potential','accepted M10A4 rendering','electrolyte potential','Figure4_current_distribution.png','DERIVED_DIAGNOSTIC','not full-cell voltage'),
+ @('F4','b','Cathode current magnitude','accepted M10A4 rendering','surface current magnitude after sign audit','Figure4_current_distribution.png','REAL_CELL_MODEL_PREDICTION','model field'),
+ @('F4','c','Distribution statistics','dset_a4b_ionic_en','area-weighted mean/min/max/P10/P50/P90/std/CV','Figure4_current_distribution.png','DERIVED_DIAGNOSTIC','values recovered from table'),
+ @('F5','a','Li-equivalent spatial upper bound','accepted M10A4D rendering','maximum accepted Q at upper-bound current fraction','Figure5_li_equivalent_charge_program.png','NUMERICAL_UPPER_BOUND','not retained metallic Li'),
+ @('F5','b','Charge-indexed mean thickness','accepted Faraday ledger','accepted Q and current-partition rows','Figure5_li_equivalent_charge_program.png','CURRENT_PARTITION_SENSITIVITY','Li-equivalent only'),
+ @('F6','a','Accepted co-limitation regime map','accepted M10A4E rendering','frozen category map','Figure6_spatial_colimitation.png','DIAGNOSTIC_ONLY','not rate or FE map'),
+ @('F6','b','Threshold-sensitive area fractions','accepted threshold sweep','accepted distinct quantiles; PRIMARY rows select primary threshold','Figure6_spatial_colimitation.png','DIAGNOSTIC_ONLY','no threshold change'),
+ @('F7','a','Mesh robustness','accepted mesh convergence table','coarse-to-medium differences and limiting metric','Figure7_robustness_identifiability.png','PASS_WITH_LIMITATION','medium mesh authoritative'),
+ @('F7','b','Calibration boundary','Paper V1 provenance and M10A4 calibration table','calibration-required inputs','Figure7_robustness_identifiability.png','CALIBRATION_REQUIRED','existing evidence only')
+)
+$figureRows=$figureSpecs|ForEach-Object{[pscustomobject]@{figure_id=$_[0];panel_id=$_[1];panel_title=$_[2];source_dataset=$_[3];source_expression=$_[4];source_script='scripts/windows/Build_PaperV1_Figures.ps1';export_file=('paper/v1/figures/'+$_[5]);format='PNG';resolution='2400x1500; 300 dpi';scientific_status=$_[6];reproducible=if($priorQaPass){'TRUE'}else{'PENDING_INDEPENDENT_QA'};notes=$_[7]}}
 Csv $figureRows (Join-Path $fig 'figure_manifest.csv')
-$qa=$figureRows|ForEach-Object {[pscustomobject]@{figure_id=$_.figure_id;panel_id=$_.panel_id;units_ok='TRUE';source_linked='TRUE';wording_ok='TRUE';classification_ok='TRUE';reproducible=$_.reproducible;manual_numeric_edit='FALSE';status='PASS';notes='Generated by source script from frozen repository evidence; no smoothing or manual numeric edit.'}}
-Csv $qa (Join-Path $fig 'FIGURE_QA.csv')
+
+function Dep([string]$f,[string]$p,[string]$id,[string]$path,[string]$role,[string]$class,[string]$notes=''){
+ if(-not(Test-Path (Join-Path $RepoRoot $path))){throw "Figure dependency missing: $path"}
+ [pscustomobject]@{figure_id=$f;panel_id=$p;dependency_id=$id;dependency_path=$path;dependency_sha256=Hash $path;dependency_role=$role;source_class=$class;required='TRUE';status='PASS';notes=$notes}
+}
+$deps=@(
+ Dep 'F1' 'a' 'F1A_M01' 'results/tables/M01_2_flow_analytic.csv' 'AUTHORITATIVE_VERIFICATION_TABLE' 'NUMERICAL_VERIFICATION'; Dep 'F1' 'a' 'F1A_M02' 'results/tables/M02_2_mms_convergence.csv' 'AUTHORITATIVE_VERIFICATION_TABLE' 'NUMERICAL_VERIFICATION'; Dep 'F1' 'a' 'F1A_M03' 'results/tables/M03A_3_current_conservation.csv' 'AUTHORITATIVE_VERIFICATION_TABLE' 'NUMERICAL_VERIFICATION'; Dep 'F1' 'a' 'F1A_A4' 'results/tables/M10A4_charge_conservation.csv' 'AUTHORITATIVE_VERIFICATION_TABLE' 'NUMERICAL_VERIFICATION';
+ Dep 'F2' 'a' 'F2A_CELL' 'evidence/M10A4/physical_cell.png' 'ACCEPTED_RENDERING' 'REAL_CAD'; Dep 'F2' 'b' 'F2B_AREA' 'results/tables/M10A4_electrochemical_area_audit.csv' 'AUTHORITATIVE_AREA_TABLE' 'REAL_CAD';
+ Dep 'F3' 'a' 'F3A_N2' 'evidence/M10A3/n2_dissolved_real.png' 'ACCEPTED_RENDERING' 'REAL_CELL_MODEL_PREDICTION'; Dep 'F3' 'b' 'F3B_LI' 'evidence/M10A4/li_concentration.png' 'ACCEPTED_RENDERING' 'PROVISIONAL_SENSITIVITY'; Dep 'F3' 'c' 'F3C_BF4' 'evidence/M10A4/li_concentration.png' 'ACCEPTED_RENDERING' 'PROVISIONAL_SENSITIVITY' 'BF4=cLi in accepted reduced electroneutral representation'; Dep 'F3' 'd' 'F3D_DONOR' 'evidence/M10A3/proton_donor_real.png' 'ACCEPTED_RENDERING' 'CALIBRATION_REQUIRED';
+ Dep 'F4' 'a' 'F4A_PHI' 'evidence/M10A4/electrolyte_potential.png' 'ACCEPTED_RENDERING' 'DERIVED_DIAGNOSTIC'; Dep 'F4' 'b' 'F4B_CURRENT' 'evidence/M10A4/cathode_current_density.png' 'ACCEPTED_RENDERING' 'REAL_CELL_MODEL_PREDICTION'; Dep 'F4' 'c' 'F4C_STATS' 'results/tables/M10A4_current_distribution_statistics.csv' 'AUTHORITATIVE_STATISTICS' 'DERIVED_DIAGNOSTIC';
+ Dep 'F5' 'a' 'F5A_MAP' 'evidence/M10A4/li_equivalent_thickness_297C_f1_upper_bound.png' 'ACCEPTED_RENDERING' 'NUMERICAL_UPPER_BOUND'; Dep 'F5' 'b' 'F5B_LEDGER' 'results/tables/M10A4_li_faraday_ledger.csv' 'AUTHORITATIVE_LEDGER' 'CURRENT_PARTITION_SENSITIVITY';
+ Dep 'F6' 'a' 'F6A_MAP' 'evidence/M10A4/spatial_colimitation.png' 'ACCEPTED_RENDERING' 'DIAGNOSTIC_ONLY'; Dep 'F6' 'b' 'F6B_TABLE' 'results/tables/M10A4_spatial_colimitation.csv' 'AUTHORITATIVE_DIAGNOSTIC_TABLE' 'DIAGNOSTIC_ONLY';
+ Dep 'F7' 'a' 'F7A_MESH' 'results/tables/M10A4_mesh_convergence.csv' 'AUTHORITATIVE_MESH_TABLE' 'NUMERICAL_VERIFICATION'; Dep 'F7' 'b' 'F7B_PROV' 'paper/v1/PARAMETER_PROVENANCE.csv' 'CONSOLIDATED_PROVENANCE' 'CALIBRATION_REQUIRED'; Dep 'F7' 'b' 'F7B_CAL' 'results/tables/M10A4_calibration_required.csv' 'AUTHORITATIVE_CALIBRATION_TABLE' 'CALIBRATION_REQUIRED'
+)
+$sourceData=@{F1='figure1_verification_metrics.csv';F2='figure2_area_audit.csv';F3='figure3_transport_sources.csv';F4='figure4_current_statistics.csv';F5='figure5_li_equivalent_f1.csv';F6='figure6_colimitation_thresholds.csv';F7='figure7_mesh_key_differences.csv'}
+foreach($f in $sourceData.Keys){$panel=($figureRows|Where-Object figure_id -eq $f|Select-Object -First 1).panel_id;$deps+=Dep $f $panel ($f+'_SOURCE_DATA') ('paper/v1/figures/source_data/'+$sourceData[$f]) 'GENERATED_SOURCE_DATA' 'DERIVED_FROM_ACCEPTED_EVIDENCE'}
+Csv $deps (Join-Path $fig 'FIGURE_DEPENDENCIES.csv')
+$builderRel='scripts/windows/Build_PaperV1_Figures.ps1';$buildProv=@()
+foreach($f in ($sourceData.Keys|Sort-Object)){$fr=$figureRows|Where-Object figure_id -eq $f|Select-Object -First 1;$sd='paper/v1/figures/source_data/'+$sourceData[$f];$buildProv+=[pscustomobject]@{figure_id=$f;output_file=$fr.export_file;output_sha256=Hash $fr.export_file;builder_script=$builderRel;builder_script_sha256=Hash $builderRel;source_data_file=$sd;source_data_sha256=Hash $sd;build_mode='FROZEN_EVIDENCE_STATIC_RENDER';scientific_data_modified='FALSE';notes='Source data recovered programmatically; output is subject to independent deterministic rebuild QA.'}}
+Csv $buildProv (Join-Path $fig 'FIGURE_BUILD_PROVENANCE.csv')
 
 # Traceability index. Each referenced path already exists at generation time.
-$index=@(); foreach($c in $claims){$index += [pscustomobject]@{artifact_id=('SRC_'+$c.claim_id);scientific_topic=$c.claim_text;repository_path=$c.model_artifact;stage=$c.section;SHA256=if(Test-Path (Join-Path $RepoRoot $c.model_artifact)){Hash $c.model_artifact}else{''};classification=$c.authority_level;paper_section=$c.section;figure_panel=(@{C01='F1a';C02='F1a';C03='F1a';C04='F2a';C05='F2b';C07='F3a';C08='F3d';C09='F3b-c';C10='F4';C11='F4';C12='F4c';C13='F5';C14='F5';C15='F6';C16='F6';C17='F6';C18='F7';C19='F7'}[$c.claim_id]);claim_ids=$c.claim_id;notes=$c.current_support}}
+$panelMap=@{C01='F1a';C02='F1a';C03='F1a';C04='F2a';C05='F2b';C07='F3a';C08='F3d';C09='F3b;F3c';C10='F4b';C11='F4b';C12='F4c';C13='F5b';C14='F5a;F5b';C15='F6b';C16='F6b';C17='F6a;F6b';C18='F7a';C19='F7b'}
+$index=@(); foreach($c in $claims){$index += [pscustomobject]@{artifact_id=('SRC_'+$c.claim_id);scientific_topic=$c.claim_text;repository_path=$c.model_artifact;stage=$c.section;SHA256=if(Test-Path (Join-Path $RepoRoot $c.model_artifact)){Hash $c.model_artifact}else{''};classification=$c.authority_level;paper_section=$c.section;figure_panel=$panelMap[$c.claim_id];claim_ids=$c.claim_id;notes=$c.current_support}}
 Csv $index (Join-Path $paper 'SOURCE_ARTIFACT_INDEX.csv')
 
 $report=@"
-# Paper V1 model freeze report
+# Paper V1 model freeze v1.1 corrective provenance report
 
 ## Outcome
 
-The Paper V1 transport-current evidence package is frozen against merged main ``a9314f89ee4a79492b88948dff912dc885feb7d6`` and source tag ``m10a4-realcell-electrochemistry-v1``. The accepted compact M10A4 model remains byte-identical at ``$(Val 'FINAL_MPH_SHA256')`` ($(Size 'models/generated/LiNRR_M10A4_ionic_current_li_plating.mph') bytes). No COMSOL solve or new physics was created.
+This is the Paper V1 Model Freeze v1.1 corrective provenance release, based on scientific source commit ``a9314f89ee4a79492b88948dff912dc885feb7d6`` and source tag ``m10a4-realcell-electrochemistry-v1``. The historical v1.0 tag ``paper-v1-model-freeze`` is retained unchanged. The accepted compact M10A4 model remains byte-identical at ``$(Val 'FINAL_MPH_SHA256')`` ($(Size 'models/generated/LiNRR_M10A4_ionic_current_li_plating.mph') bytes).
+
+No scientific model parameter changed. No COMSOL model changed. No solve occurred. No numerical result changed. Corrections are limited to actual Git artifact provenance, panel-level figure dependencies, programmatic recovery of scientific values, independent figure QA, byte-identical deterministic rebuild verification, and long-term source-base ancestry semantics.
 
 ## Verification architecture
 
@@ -197,7 +229,7 @@ M01 flow, M02 conservative transport, and M03 current/Faraday regression evidenc
 
 ## Figure and SI package
 
-Seven 2400x1500 PNG figures are generated reproducibly from accepted CSVs and existing accepted renderings. The figure manifest records source artifacts, datasets/expressions, scripts, classifications, and output files. The SI directory contains byte-for-byte copies of ledgers and inventories; MPH files are referenced rather than duplicated.
+Seven 2400x1500 PNG figures are generated from accepted CSVs and renderings. Panel-level dependencies carry byte hashes, build provenance records builder/source/output hashes, and ``Audit_PaperV1_Figures.ps1`` independently rebuilds into a temporary directory and requires byte-identical PNGs before reproducible status is granted.
 
 ## Limitations and experimental gaps
 
@@ -205,24 +237,38 @@ The model does not establish reaction mechanisms, FE, NH3 kinetics, full-cell vo
 
 ## Acceptance
 
-Final acceptance is determined only by ``scripts/windows/PaperV1_ModelFreezeAudit.ps1`` after manifest generation. The audit is fail-closed and checks branch/ancestry/tag, immutable hashes, manifest integrity, classification completeness, wording context, absence of new solves/physics/manuscript, secrets, and ``git diff --check``.
+Final acceptance is determined only by ``scripts/windows/PaperV1_ModelFreezeAudit.ps1`` after commit A and final manifest synchronization. The manifest separates the frozen source base from each artifact's actual introducing/latest commit and excludes its own recursive row.
 "@
 Set-Content (Join-Path $paper 'MODEL_FREEZE_REPORT.md') $report -Encoding utf8
 
 # Complete the source index with package tables, figures, and SI evidence (excluding the self-referential index itself).
-$packageIndexPaths=@('paper/v1/MODEL_SCOPE.md','paper/v1/PARAMETER_PROVENANCE.csv','paper/v1/CLAIM_EVIDENCE_MATRIX.csv','paper/v1/REGRESSION_EVIDENCE.csv','paper/v1/MODEL_LIMITATIONS.csv','paper/v1/MODEL_FREEZE_REPORT.md','paper/v1/figures/figure_manifest.csv','paper/v1/figures/FIGURE_QA.csv')
+$packageIndexPaths=@('paper/v1/MODEL_SCOPE.md','paper/v1/PARAMETER_PROVENANCE.csv','paper/v1/CLAIM_EVIDENCE_MATRIX.csv','paper/v1/REGRESSION_EVIDENCE.csv','paper/v1/MODEL_LIMITATIONS.csv','paper/v1/MODEL_FREEZE_REPORT.md','paper/v1/figures/figure_manifest.csv','paper/v1/figures/FIGURE_DEPENDENCIES.csv','paper/v1/figures/FIGURE_BUILD_PROVENANCE.csv')
+if(Test-Path (Join-Path $fig 'FIGURE_QA.csv')){$packageIndexPaths+='paper/v1/figures/FIGURE_QA.csv'}
 $packageIndexPaths += @($figureRows.export_file)
 $packageIndexPaths += @(Get-ChildItem -LiteralPath $si -File | ForEach-Object {$_.FullName.Substring($RepoRoot.Length+1).Replace('\','/')})
 foreach($rel in ($packageIndexPaths|Select-Object -Unique)){$index += [pscustomobject]@{artifact_id=('PKG_'+([IO.Path]::GetFileNameWithoutExtension($rel)-replace'[^A-Za-z0-9_]','_'));scientific_topic='Paper V1 freeze evidence package';repository_path=$rel;stage='PAPER_V1';SHA256=Hash $rel;classification='DERIVED_FROM_ACCEPTED_EVIDENCE';paper_section='Evidence package';figure_panel=if($rel-match'Figure([1-7])'){'F'+$Matches[1]}else{''};claim_ids='C01-C22';notes='Generated or copied reproducibly; see manifest for immutable byte identity'}}
 Csv $index (Join-Path $paper 'SOURCE_ARTIFACT_INDEX.csv')
 
-# Final manifest after every generated artifact exists. It intentionally does not self-hash.
+# Exact corrective-vs-historical identity ledger; no tolerance is used.
+$identityNames=@('ACTIVE_AREA_MM2','CURRENT_CONSERVATION_RELATIVE','MODEL_OHMIC_RESISTANCE_OHM','LI_CONSERVATION_RELATIVE','BF4_CONSERVATION_RELATIVE','J_CATH_MEAN','J_CATH_MIN','J_CATH_MAX','J_CATH_P10','J_CATH_P50','J_CATH_P90','J_CATH_STD','J_CATH_CV','LI_EQUIVALENT_MASS_9C_F1','LI_EQUIVALENT_MASS_45C_F1','LI_EQUIVALENT_MASS_54C_F1','LI_EQUIVALENT_MASS_99C_F1','LI_EQUIVALENT_MASS_297C_F1','LI_EQUIVALENT_MEAN_THICKNESS_297C_F1','FARADAY_LEDGER_MAX_RELATIVE','SPATIAL_COLIMITATION_THRESHOLD_SET','MESH_MAX_KEY_DIFFERENCE','MESH_LIMITING_METRIC','FINAL_MPH_SHA256')
+$historicalText=git show 'paper-v1-model-freeze:evidence/M10A4/M10A4_final_report.txt'
+function TextVal($lines,$name){$line=$lines|Where-Object{$_-match('^'+[regex]::Escape($name)+'=')}|Select-Object -Last 1;if(-not$line){throw "Identity value missing: $name"};($line-split'=',2)[1].Trim()}
+$units=@{ACTIVE_AREA_MM2='mm2';MODEL_OHMIC_RESISTANCE_OHM='ohm';LI_CONSERVATION_RELATIVE='1';BF4_CONSERVATION_RELATIVE='1';CURRENT_CONSERVATION_RELATIVE='1';J_CATH_MEAN='A/m2';J_CATH_MIN='A/m2';J_CATH_MAX='A/m2';J_CATH_P10='A/m2';J_CATH_P50='A/m2';J_CATH_P90='A/m2';J_CATH_STD='A/m2';J_CATH_CV='1';FARADAY_LEDGER_MAX_RELATIVE='1';MESH_MAX_KEY_DIFFERENCE='1'}
+$identity=$identityNames|ForEach-Object{$n=$_;$h=TextVal $historicalText $n;$c=Val $n;$same=($h-ceq$c);[pscustomobject]@{quantity=$n;historical_value=$h;corrective_value=$c;unit=if($units[$n]){$units[$n]}else{'NA'};identical=$same.ToString().ToUpperInvariant();source_historical='paper-v1-model-freeze:evidence/M10A4/M10A4_final_report.txt';source_corrective='evidence/M10A4/M10A4_final_report.txt';status=if($same){'PASS'}else{'FAIL'};notes='Exact string comparison; accepted scientific evidence is immutable.'}}
+if(@($identity|Where-Object status -ne 'PASS').Count){throw 'Corrective numerical identity failure'}
+Csv $identity (Join-Path $paper 'CORRECTIVE_NUMERICAL_IDENTITY.csv')
+$identityRel='paper/v1/CORRECTIVE_NUMERICAL_IDENTITY.csv'
+$index += [pscustomobject]@{artifact_id='PKG_CORRECTIVE_NUMERICAL_IDENTITY';scientific_topic='Corrective numerical identity';repository_path=$identityRel;stage='PAPER_V1_V1_1';SHA256=Hash $identityRel;classification='NUMERICAL_VERIFICATION_ONLY';paper_section='Corrective audit';figure_panel='';claim_ids='C01-C22';notes='Exact historical-vs-corrective identity ledger; no broad tolerance.'}
+Csv $index (Join-Path $paper 'SOURCE_ARTIFACT_INDEX.csv')
+
+# Final manifest after commit A. It intentionally does not self-hash.
+if($SkipManifest){'MODEL_FREEZE_MANIFEST=SKIPPED_FOR_COMMIT_A';'PAPER_V1_PACKAGE_BUILT=TRUE';return}
 $authoritative=@(
  'models/generated/LiNRR_M10A4_ionic_current_li_plating.mph','models/generated/LiNRR_M10A3_real_species_transport.mph','cad/raw/M10A0_2/block_currentCollector_flowField_v03.2.1_20210525_STEP-AP203.STEP','cad/raw/M10A0_2/electrolyteChamber_rectangularMask_v02.2.2_20210521_STEP-AP203.STEP','evidence/M10A4/M10A4_final_report.txt','evidence/M10A4/README_ACCEPTANCE.md','docs/M10A4_ionic_current_li_plating_contract.md','docs/DECISIONS.md',
  'results/tables/M10A4_manual_electrochemistry_reconciliation.csv','results/tables/M10A4_electrochemical_program_audit.csv','results/tables/M10A4_electrochemical_area_audit.csv','results/tables/M10A4_parameter_provenance.csv','results/tables/M10A4_calibration_required.csv','results/tables/M10A4_charge_conservation.csv','results/tables/M10A4_ionic_species_conservation.csv','results/tables/M10A4_resistance_audit.csv','results/tables/M10A4_current_distribution_statistics.csv','results/tables/M10A4_li_faraday_ledger.csv','results/tables/M10A4_spatial_colimitation.csv','results/tables/M10A4_mesh_convergence.csv',
  'src/java/LiNRR_M10A4_OhmicCurrent.java','src/java/LiNRR_M10A4_IonicTransportElectroneutral.java','src/java/LiNRR_M10A4_CurrentCrowding.java','src/java/LiNRR_M10A4_LiEquivalent.java','src/java/LiNRR_M10A4_SpatialColimitation.java','src/java/LiNRR_M10A4_ElectricalLoss.java','src/java/LiNRR_M10A4_MeshConvergence.java','src/java/LiNRR_M10A4_FinalAssembly.java','src/java/LiNRR_M10A4_FinalReload.java','src/java/LiNRR_M10A4_FinalCompact.java','scripts/windows/M10A4_FinalAcceptanceAudit.ps1',
  'results/tables/M01_2_flow_analytic.csv','results/tables/M01_2_flow_mesh.csv','results/tables/M02_2_diffusion_linear.csv','results/tables/M02_2_mms_convergence.csv','results/tables/M02_2_low_da_balance.csv','results/tables/M03A_3_current_conservation.csv','results/tables/M03A_3_faradaic_stoichiometry.csv','results/tables/M10_preA4_regression_summary.csv','evidence/M10A3/README_ACCEPTANCE.md','results/tables/M10A3_species_conservation.csv','evidence/M10A3/model_tree.json','evidence/M10A3/physics_inventory.csv','evidence/M10A3/dataset_inventory.csv','evidence/M10A3/selection_inventory.csv',
- 'paper/v1/MODEL_SCOPE.md','paper/v1/PARAMETER_PROVENANCE.csv','paper/v1/CLAIM_EVIDENCE_MATRIX.csv','paper/v1/REGRESSION_EVIDENCE.csv','paper/v1/MODEL_LIMITATIONS.csv','paper/v1/SOURCE_ARTIFACT_INDEX.csv','paper/v1/MODEL_FREEZE_REPORT.md','paper/v1/figures/figure_manifest.csv','paper/v1/figures/FIGURE_QA.csv','scripts/windows/Build_PaperV1_Figures.ps1','scripts/windows/Build_PaperV1_ModelFreeze.ps1','scripts/windows/PaperV1_ModelFreezeAudit.ps1'
+ 'paper/v1/MODEL_SCOPE.md','paper/v1/PARAMETER_PROVENANCE.csv','paper/v1/CLAIM_EVIDENCE_MATRIX.csv','paper/v1/REGRESSION_EVIDENCE.csv','paper/v1/MODEL_LIMITATIONS.csv','paper/v1/SOURCE_ARTIFACT_INDEX.csv','paper/v1/MODEL_FREEZE_REPORT.md','paper/v1/figures/figure_manifest.csv','paper/v1/figures/FIGURE_QA.csv','scripts/windows/Build_PaperV1_Figures.ps1','scripts/windows/Build_PaperV1_ModelFreeze.ps1','scripts/windows/Audit_PaperV1_Figures.ps1','scripts/windows/PaperV1_ModelFreezeAudit.ps1'
 )
 $authoritative += @($figureRows.export_file)
 $authoritative += @(Get-ChildItem -LiteralPath $paper -Recurse -File | ForEach-Object {$_.FullName.Substring($RepoRoot.Length+1).Replace('\','/')} | Where-Object {$_ -ne 'paper/v1/MODEL_FREEZE_MANIFEST.csv'})
@@ -230,7 +276,8 @@ $manifest=$authoritative|Select-Object -Unique|ForEach-Object {
  $rel=$_; if(-not(Test-Path (Join-Path $RepoRoot $rel))){throw "Manifest path missing: $rel"}
  $stage=if($rel-match'M01'){'M01'}elseif($rel-match'M02'){'M02'}elseif($rel-match'M03'){'M03'}elseif($rel-match'M10A3'){'M10A3'}elseif($rel-match'M10A4'){'M10A4'}else{'PAPER_V1'}
  $class=if($rel-match'\.mph$'){'IMMUTABLE_MODEL'}elseif($rel-match'geometry/cad'){'REAL_CAD'}elseif($rel-match'paper/v1'){'FREEZE_PACKAGE'}else{'ACCEPTED_EVIDENCE'}
- [pscustomobject]@{artifact=[IO.Path]::GetFileName($rel);path=$rel;SHA256=Hash $rel;size_bytes=Size $rel;git_commit='a9314f89ee4a79492b88948dff912dc885feb7d6';stage=$stage;classification=$class;paper_role=if($rel-match'Figure'){'MAIN_FIGURE'}elseif($rel-match'PARAMETER'){'PROVENANCE'}elseif($rel-match'CLAIM'){'CLAIM_CONTROL'}elseif($rel-match'REGRESSION'){'VERIFICATION_CHAIN'}else{'SOURCE_EVIDENCE'};mutable='FALSE';source_authority=if($stage-eq'PAPER_V1'){'DERIVED_FROM_ACCEPTED_EVIDENCE'}else{'ACCEPTED_REPOSITORY_ARTIFACT'};notes=if($rel-match'\.mph$'){'referenced in place; not copied'}else{''}}
+ $artifactCommit=(git log -1 --format=%H -- $rel).Trim();if(-not$artifactCommit){throw "No actual artifact commit for $rel"}
+ [pscustomobject]@{artifact=[IO.Path]::GetFileName($rel);path=$rel;SHA256=Hash $rel;size_bytes=Size $rel;source_base_commit='a9314f89ee4a79492b88948dff912dc885feb7d6';artifact_commit=$artifactCommit;stage=$stage;classification=$class;paper_role=if($rel-match'Figure'){'MAIN_FIGURE'}elseif($rel-match'PARAMETER'){'PROVENANCE'}elseif($rel-match'CLAIM'){'CLAIM_CONTROL'}elseif($rel-match'REGRESSION'){'VERIFICATION_CHAIN'}else{'SOURCE_EVIDENCE'};mutable='FALSE';source_authority=if($stage-eq'PAPER_V1'){'DERIVED_FROM_ACCEPTED_EVIDENCE'}else{'ACCEPTED_REPOSITORY_ARTIFACT'};notes=if($rel-match'\.mph$'){'referenced in place; not copied'}else{''}}
 }
 Csv $manifest (Join-Path $paper 'MODEL_FREEZE_MANIFEST.csv')
 'PAPER_V1_PACKAGE_BUILT=TRUE'
