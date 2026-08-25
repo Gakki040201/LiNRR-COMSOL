@@ -1,0 +1,30 @@
+plot_tag,label,plot_run_ok,warning,status,notes
+viz00_reactor_full,V00 | REACTOR | Physical cell | REAL / PHYSICAL,true,false,PASS,Fresh independent load; compact-M10A4 visualization field
+viz00_reactor_exploded,V00 | REACTOR | Exploded SSC/GDE location | DISPLAY SCALE ONLY,true,false,PASS,Fresh independent load; compact-M10A4 visualization field
+viz00_ssc_gde_location,V00 | REACTOR | Cathode SSC/GDE location | PHYSICAL TRUE SCALE,true,false,PASS,Fresh independent load; compact-M10A4 visualization field
+viz00_reaction_plane,V00 | REACTOR | AUTHORITATIVE REACTION PLANE | REAL INTERFACE,true,false,PASS,Fresh independent load; compact-M10A4 visualization field
+viz01_liq_velocity,V01 | FLOW | Electrolyte velocity | retained sol20 | LOG DISPLAY OF MAGNITUDE,true,false,PASS,Fresh independent load; compact-M10A4 visualization field
+viz01_liq_pressure,V01 | FLOW | Electrolyte pressure | retained sol20,true,false,PASS,Fresh independent load; compact-M10A4 visualization field
+viz01_liq_streamlines,V01 | FLOW | Electrolyte streamlines | retained sol20,true,false,PASS,Fresh independent load; compact-M10A4 visualization field
+viz02_n2_gas,V02 | SPECIES | N2 gas concentration | retained sol15 route,true,false,PASS,Fresh independent load; compact-M10A4 visualization field
+viz02_n2_dissolved,V02 | SPECIES | Dissolved N2 | final retained sol15,true,false,PASS,Fresh independent load; compact-M10A4 visualization field
+viz02_n2_reaction_plane,V02 | SPECIES | N2 at AUTHORITATIVE REACTION PLANE | REAL INTERFACE,true,false,PASS,Fresh independent load; compact-M10A4 visualization field
+viz02_donor,V02 | SPECIES | GENERIC DONOR | CALIBRATION REQUIRED,true,false,PASS,Fresh independent load; compact-M10A4 visualization field
+viz03_electrolyte_potential,V03 | IONICS | Electrolyte potential | NOT FULL-CELL VOLTAGE,true,false,PASS,Fresh independent load; compact-M10A4 visualization field
+viz03_li_concentration,V03 | IONICS | Li+ concentration | PROVISIONAL SENSITIVITY,true,false,PASS,Fresh independent load; compact-M10A4 visualization field
+viz03_bf4_concentration,V03 | IONICS | BF4- concentration | PROVISIONAL SENSITIVITY,true,false,PASS,Fresh independent load; compact-M10A4 visualization field
+viz03_ionic_current,V03 | IONICS | Ionic current density | SPECIES-FLUX IDENTITY,true,false,PASS,Fresh independent load; compact-M10A4 visualization field
+viz04_cathode_current,V04 | CURRENT | Cathode current | ELECTROLYTE OUTWARD,true,false,PASS,Fresh independent load; compact-M10A4 visualization field
+viz04_current_nonuniformity,V04 | CURRENT | Current nonuniformity | MAGNITUDE DIAGNOSTIC,true,false,PASS,Fresh independent load; compact-M10A4 visualization field
+viz04_current_crowding,V04 | CURRENT | Current crowding | SPATIAL ASSOCIATION,true,false,PASS,Fresh independent load; compact-M10A4 visualization field
+viz05_h9,V05 | LI-EQUIVALENT | 9 C | NUMERICAL UPPER BOUND f=1,true,false,PASS,Fresh independent load; compact-M10A4 visualization field
+viz05_h45,V05 | LI-EQUIVALENT | 45 C | NUMERICAL UPPER BOUND f=1,true,false,PASS,Fresh independent load; compact-M10A4 visualization field
+viz05_h54,V05 | LI-EQUIVALENT | 54 C | NUMERICAL UPPER BOUND f=1,true,false,PASS,Fresh independent load; compact-M10A4 visualization field
+viz05_h99,V05 | LI-EQUIVALENT | 99 C | NUMERICAL UPPER BOUND f=1,true,false,PASS,Fresh independent load; compact-M10A4 visualization field
+viz05_h297,V05 | LI-EQUIVALENT | 297 C | NUMERICAL UPPER BOUND f=1,true,false,PASS,Fresh independent load; compact-M10A4 visualization field
+viz06_n2_current,V06 | CO-LIMITATION | N2-current overlap | DIAGNOSTIC ONLY,true,false,PASS,Fresh independent load; compact-M10A4 visualization field
+viz06_donor_current,V06 | CO-LIMITATION | GENERIC DONOR-current overlap | CALIBRATION REQUIRED | DIAGNOSTIC ONLY,true,false,PASS,Fresh independent load; compact-M10A4 visualization field
+viz06_colim,V06 | CO-LIMITATION | Four-field co-limitation | DIAGNOSTIC ONLY,true,false,PASS,Fresh independent load; compact-M10A4 visualization field
+viz06_robustness,V06 | CO-LIMITATION | Threshold robustness q=0.40/0.50/0.60 | DIAGNOSTIC ONLY,true,false,PASS,Fresh independent load; compact-M10A4 visualization field
+viz07_ohmic_drop,V07 | ELECTRICAL | Electrolyte ohmic-drop diagnostic | NOT FULL-CELL VOLTAGE,true,false,PASS,Fresh independent load; compact-M10A4 visualization field
+viz07_joule,V07 | ELECTRICAL | Joule-source diagnostic | NO THERMAL FEEDBACK,true,false,PASS,Fresh independent load; compact-M10A4 visualization field
